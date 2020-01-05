@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="RNN(循环神经网络)参考：《深度学习入门之PyTorch》配套代码地址：https:&#x2F;&#x2F;github.com&#x2F;L1aoXingyu&#x2F;code-of-learn-deep-learning-with-pytorch 1. 前言卷积神经网络相当于人类的视觉，但是它没有记忆能力，只能处理一种特定的视觉任务，没办法根据以前的记忆来处理新的任务。 循环神经网络的提出是基于记忆模型的想法，期望网络能够记住前">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MLDL&#x2F;RNN">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="RNN(循环神经网络)参考：《深度学习入门之PyTorch》配套代码地址：https:&#x2F;&#x2F;github.com&#x2F;L1aoXingyu&#x2F;code-of-learn-deep-learning-with-pytorch 1. 前言卷积神经网络相当于人类的视觉，但是它没有记忆能力，只能处理一种特定的视觉任务，没办法根据以前的记忆来处理新的任务。 循环神经网络的提出是基于记忆模型的想法，期望网络能够记住前">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;base_rnn.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;BiRNN.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;deep_RNN.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;LSTM.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;LSTM_1.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;LSTM_2.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;LSTM_3.jpg">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;LSTM_4.jpg">
+<meta property="og:updated_time" content="2019-12-01T11:58:41.839Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;RNN&#x2F;IMG&#x2F;base_rnn.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/04/MLDL/RNN/"/>
+
+
+
+
+
+  <title>MLDL/RNN | 笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/MLDL/RNN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MLDL/RNN</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="RNN-循环神经网络"><a href="#RNN-循环神经网络" class="headerlink" title="RNN(循环神经网络)"></a>RNN(循环神经网络)</h1><p><em>参考：《深度学习入门之PyTorch》配套代码地址：<a href="https://github.com/L1aoXingyu/code-of-learn-deep-learning-with-pytorch" target="_blank" rel="noopener">https://github.com/L1aoXingyu/code-of-learn-deep-learning-with-pytorch</a></em></p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>卷积神经网络相当于人类的视觉，但是它没有记忆能力，只能处理一种特定的视觉任务，没办法根据以前的记忆来处理新的任务。</p>
+<p>循环神经网络的提出是基于记忆模型的想法，期望网络能够记住前面出现的特征，并依据特征推断后面的结果，并且整体的网络结构不断循环，因此得名循环神经网络。</p>
+<h2 id="2-网络结构"><a href="#2-网络结构" class="headerlink" title="2. 网络结构"></a>2. 网络结构</h2><p>使神经网络具有记忆性，一个很直观的做法是将隐藏层的信息进行保留作为下一个的输入，由此产生出的有以下几种网络结构：</p>
+<h3 id="2-1-基本-RNN"><a href="#2-1-基本-RNN" class="headerlink" title="2.1 基本 RNN"></a>2.1 基本 RNN</h3><p><img src="./IMG/base_rnn.png" alt="base_RNN"></p>
+<h3 id="2-2-双向-RNN（BiRNN"><a href="#2-2-双向-RNN（BiRNN" class="headerlink" title="2.2 双向 RNN（BiRNN)"></a>2.2 双向 RNN（BiRNN)</h3><p><img src="./IMG/BiRNN.png" alt="Bi_RNN"></p>
+<h3 id="2-3-深层-RNN"><a href="#2-3-深层-RNN" class="headerlink" title="2.3 深层 RNN"></a>2.3 深层 RNN</h3><p><img src="./IMG/deep_RNN.jpg" alt="Deep_RNN"></p>
+<p><em>以上图示均为按照时间线展开，实际只是网络的循环，故名循环神经网络</em></p>
+<h2 id="3-存在的问题"><a href="#3-存在的问题" class="headerlink" title="3. 存在的问题"></a>3. 存在的问题</h2><p>早期的循环神经网络具有特别好的记忆性，能够记住当前情景下的内容，但这种循环神经网络能够解决短时依赖问题，对于长时依赖问题，由于记忆的信息和预测位置之间的跨度太大，网络并不能记忆这么长时间的信息，而且随着时间跨度的增大，循环神经网络也越来越难学习这些信息。</p>
+<h2 id="4-循环神经网络的变式：LSTM-与-GRU"><a href="#4-循环神经网络的变式：LSTM-与-GRU" class="headerlink" title="4. 循环神经网络的变式：LSTM 与 GRU"></a>4. 循环神经网络的变式：LSTM 与 GRU</h2><h3 id="4-1-LSTM"><a href="#4-1-LSTM" class="headerlink" title="4.1 LSTM"></a>4.1 LSTM</h3><p>LSTM 是 Long Short Term Memory Networks的缩写，长短期记忆模型。LSTM 比基本的循环神经网络的网络结构内部要复杂。</p>
+<p>LSTM 的三个门：</p>
+<ul>
+<li>输入门，输入门控制着网络的输入</li>
+<li>遗忘门，遗忘门控制着记忆单元</li>
+<li>输出门，输出门控制着网络的输出</li>
+</ul>
+<p><img src="./IMG/LSTM.png" alt="LSTM"></p>
+<p><img src="./IMG/LSTM_1.jpg" alt="LSTM"></p>
+<p><img src="./IMG/LSTM_2.jpg" alt="LSTM"></p>
+<p><img src="./IMG/LSTM_3.jpg" alt="LSTM"></p>
+<h3 id="4-2-GRU"><a href="#4-2-GRU" class="headerlink" title="4.2 GRU"></a>4.2 GRU</h3><p>GRU是 Gated Recurrent Unit的缩写，由 cho 在2014年提出。GRU 和 LSTM 最大的不同在于 GRU 将遗忘门和输入门合成了一个 “更新门”， 同时网络只进行传递和保存的状态是 <code>ht</code>.</p>
+<p><img src="./IMG/LSTM_4.jpg" alt="LSTM"></p>
+<h3 id="4-3-收敛性问题"><a href="#4-3-收敛性问题" class="headerlink" title="4.3 收敛性问题"></a>4.3 收敛性问题</h3><p>RNN 的误差曲面上存在很多陡峭的斜坡，斜坡上误差的变化率特别大，正是这个原因导致道路 loss 曲线在不断跳跃。</p>
+<blockquote>
+<p>正是因为网络在训练过程中，梯度的变化范围很大，所以设置一个固定的学习率并不能有效收敛，同时梯度的变化并没有规律，所以设置衰减的学习率也不能满足条件。</p>
+</blockquote>
+<p>可以采用的办法是： <strong>梯度裁剪</strong>，使用梯度裁剪能够将大的梯度裁，在一定程度上避免收敛不好的问题。</p>
+<h2 id="5-循环神经网络的-pytorch-实现"><a href="#5-循环神经网络的-pytorch-实现" class="headerlink" title="5. 循环神经网络的 pytorch 实现"></a>5. 循环神经网络的 pytorch 实现</h2><h3 id="5-1-PyTorch-的循环网络模块"><a href="#5-1-PyTorch-的循环网络模块" class="headerlink" title="5.1 PyTorch 的循环网络模块"></a>5.1 PyTorch 的循环网络模块</h3><h4 id="1-标准-RNN"><a href="#1-标准-RNN" class="headerlink" title="1. 标准 RNN"></a>1. 标准 RNN</h4><ul>
+<li><code>nn.RNN()</code></li>
+</ul>
+<p>关于参数设置：</p>
+<ul>
+<li><code>input_size</code> 表示输入 x 的特征维度</li>
+<li><code>hidden_size</code> 表示输出 h 的特征维度</li>
+<li><code>num_layers</code> 表示网络层数，默认是 1 层</li>
+<li><code>nonlinearity</code> 表示非线性激活函数的选择，默认是 <code>tanh</code>，可以选择 <code>relu</code></li>
+<li><code>bias</code> 表示是否使用偏置，默认是 <code>True</code></li>
+<li><code>batch_first</code> 决定网络输入的维度顺序，默认网络输入按照 <code>(seq, batch, feature)</code> ，解释为：序列长度、批量、特征维度；如果该参数设置为 <code>True</code>，则顺序变成 <code>(batch, seq, feature)</code></li>
+<li><code>dropout</code> 参数接收0-1的数值，会在网络中除了最后一层之外的其他输出层加上 <code>dropout</code> 层</li>
+<li><code>bidirectional</code> 默认参数是 False</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/04/MLDL/pytorch/" rel="next" title="MLDL/pytorch">
+                <i class="fa fa-chevron-left"></i> MLDL/pytorch
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/04/MLDL/tensorflow/" rel="prev" title="MLDL/tensorflow">
+                MLDL/tensorflow <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RNN-循环神经网络"><span class="nav-number">1.</span> <span class="nav-text">RNN(循环神经网络)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-前言"><span class="nav-number">1.1.</span> <span class="nav-text">1. 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-网络结构"><span class="nav-number">1.2.</span> <span class="nav-text">2. 网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-基本-RNN"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 基本 RNN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-双向-RNN（BiRNN"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 双向 RNN（BiRNN)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-深层-RNN"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 深层 RNN</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-存在的问题"><span class="nav-number">1.3.</span> <span class="nav-text">3. 存在的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-循环神经网络的变式：LSTM-与-GRU"><span class="nav-number">1.4.</span> <span class="nav-text">4. 循环神经网络的变式：LSTM 与 GRU</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-LSTM"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 LSTM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-GRU"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 GRU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-收敛性问题"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 收敛性问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-循环神经网络的-pytorch-实现"><span class="nav-number">1.5.</span> <span class="nav-text">5. 循环神经网络的 pytorch 实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-PyTorch-的循环网络模块"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1 PyTorch 的循环网络模块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-标准-RNN"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">1. 标准 RNN</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

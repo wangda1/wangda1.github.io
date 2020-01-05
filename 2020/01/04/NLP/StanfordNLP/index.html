@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Stanford CoreNLPNot stanfordnlp!!  stanford-corenlp的gitpage主页：https:&#x2F;&#x2F;stanfordnlp.github.io&#x2F;CoreNLP&#x2F; stanford-corenlp的github仓库地址：https:&#x2F;&#x2F;github.com&#x2F;stanfordnlp&#x2F;CoreNLP stanford-corenlp的软件组件介绍：https:&#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP&#x2F;StanfordNLP">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;StanfordNLP&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="Stanford CoreNLPNot stanfordnlp!!  stanford-corenlp的gitpage主页：https:&#x2F;&#x2F;stanfordnlp.github.io&#x2F;CoreNLP&#x2F; stanford-corenlp的github仓库地址：https:&#x2F;&#x2F;github.com&#x2F;stanfordnlp&#x2F;CoreNLP stanford-corenlp的软件组件介绍：https:&#x2F;&#x2F;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-12-11T03:38:34.133Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/04/NLP/StanfordNLP/"/>
+
+
+
+
+
+  <title>NLP/StanfordNLP | 笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/StanfordNLP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NLP/StanfordNLP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Stanford-CoreNLP"><a href="#Stanford-CoreNLP" class="headerlink" title="Stanford CoreNLP"></a>Stanford CoreNLP</h1><p><strong>Not stanfordnlp!!</strong></p>
+<ol>
+<li><code>stanford-corenlp</code>的gitpage主页：<a href="https://stanfordnlp.github.io/CoreNLP/" target="_blank" rel="noopener">https://stanfordnlp.github.io/CoreNLP/</a></li>
+<li><code>stanford-corenlp</code>的github仓库地址：<a href="https://github.com/stanfordnlp/CoreNLP" target="_blank" rel="noopener">https://github.com/stanfordnlp/CoreNLP</a></li>
+<li><code>stanford-corenlp</code>的软件组件介绍：<a href="https://nlp.stanford.edu/software/" target="_blank" rel="noopener">https://nlp.stanford.edu/software/</a></li>
+</ol>
+<p>我们从上述链接可以发现stanfordnlp的主要组成部分：<code>Core</code>、<code>Projects</code>、<code>Archive</code><br>这些软件基本组合进<code>stanford-corenlp</code>，成为其组成部分，使用方法也比较多，大的区分为：</p>
+<ol>
+<li>直接使用对应组件的package，写java代码进行调用</li>
+<li>以<code>stanford-corenlp</code>服务的方式进行调用</li>
+</ol>
+<ul>
+<li><code>Command line usage</code> 通过命令行使用</li>
+</ul>
+<p><em><a href="https://stanfordnlp.github.io/CoreNLP/cmdline.html" target="_blank" rel="noopener">source</a></em></p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -mx1g -cp "*" edu.stanford.nlp.naturalli.OpenIE    # 从标准输入获取输入，输出到标准输出</span><br><span class="line">java -mx1g -cp "*" edu.stanford.nlp.naturalli.OpenIE  /<span class="built_in">path</span>/to/file1  /<span class="built_in">path</span>/to/file2    # 指定输入与输出路径</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>Stanford CoreNLP API</code> 通过<code>java programmatic API</code></li>
+</ul>
+<p><em><a href="https://stanfordnlp.github.io/CoreNLP/api.html" target="_blank" rel="noopener">source</a></em></p>
+<blockquote>
+<p>The backbone of the CoreNLP package is formed by two classes: Annotation and Annotator. Annotations are the data structure which hold the results of annotators. Annotations are basically maps, from keys to bits of the annotation, such as the parse, the part-of-speech tags, or named entity tags. Annotators are a lot like functions, except that they operate over Annotations instead of Objects. They do things like tokenize, parse, or NER tag sentences. Annotators and Annotations are integrated by AnnotationPipelines, which create sequences of generic Annotators. Stanford CoreNLP inherits from the AnnotationPipeline class, and is customized with NLP Annotators.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> edu.stanford.nlp.pipeline.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicPipelineExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution</span></span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        props.setProperty(<span class="string">"annotators"</span>, <span class="string">"tokenize, ssplit, pos, lemma, ner, parse, dcoref"</span>);</span><br><span class="line">        StanfordCoreNLP pipeline = <span class="keyword">new</span> StanfordCoreNLP(props);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// read some text in the text variable</span></span><br><span class="line">        String text = <span class="string">"..."</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// create an empty Annotation just with the given text</span></span><br><span class="line">        Annotation document = <span class="keyword">new</span> Annotation(text);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// run all Annotators on this text</span></span><br><span class="line">        pipeline.annotate(document);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>CoreNLP server</code> 通过web service运行<code>stanford-corenlp</code>（<code>python</code> or other）</li>
+</ul>
+<p><em>这种一般以服务的方式运行，通过其他语言的wrapper调用<a href="https://stanfordnlp.github.io/CoreNLP/other-languages.html" target="_blank" rel="noopener">source</a></em></p>
+<p>启动<br><em><a href="https://stanfordnlp.github.io/CoreNLP/corenlp-server.html" target="_blank" rel="noopener">source</a></em></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Run the server using all jars <span class="keyword">in</span> the current directory (e.g., the CoreNLP home directory)</span></span><br><span class="line">java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python wrapper：https://github.com/Lynten/stanford-corenlp/blob/master/stanfordcorenlp/corenlp.py</span></span><br><span class="line"><span class="comment"># Simple usage</span></span><br><span class="line"><span class="keyword">from</span> stanfordcorenlp <span class="keyword">import</span> StanfordCoreNLP</span><br><span class="line"></span><br><span class="line">nlp = StanfordCoreNLP(<span class="string">r'G:\JavaLibraries\stanford-corenlp-full-2018-02-27'</span>)</span><br><span class="line"></span><br><span class="line">sentence = <span class="string">'Guangdong University of Foreign Studies is located in Guangzhou.'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Tokenize:'</span>, nlp.word_tokenize(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Part of Speech:'</span>, nlp.pos_tag(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Named Entities:'</span>, nlp.ner(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Constituency Parsing:'</span>, nlp.parse(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Dependency Parsing:'</span>, nlp.dependency_parse(sentence)</span><br><span class="line"></span><br><span class="line">nlp.close() <span class="comment"># Do not forget to close! The backend server will consume a lot memery.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-Stanford-Named-Entity-Recognizer-NER"><a href="#1-Stanford-Named-Entity-Recognizer-NER" class="headerlink" title="1. Stanford Named Entity Recognizer (NER)"></a>1. Stanford Named Entity Recognizer (NER)</h2><p>参考：<a href="https://nlp.stanford.edu/software/CRF-NER.html" target="_blank" rel="noopener">https://nlp.stanford.edu/software/CRF-NER.html</a></p>
+<blockquote>
+<p>Stanford NER is also known as CRFClassifier. The software provides a general implementation of (arbitrary order) linear chain Conditional Random Field (CRF) sequence models. That is, by training your own models on labeled data, you can actually use this code to build sequence models for NER or any other task. (CRF models were pioneered by <a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf" target="_blank" rel="noopener">Lafferty, McCallum, and Pereira (2001)</a>; see <a href="http://people.cs.umass.edu/~mccallum/papers/crf-tutorial.pdf" target="_blank" rel="noopener">Sutton and McCallum (2006)</a> or <a href="http://arxiv.org/pdf/1011.4088v1" target="_blank" rel="noopener">Sutton and McCallum (2010)</a> for more comprehensible introductions.)</p>
+</blockquote>
+<h2 id="2-Stanford-OpenIE"><a href="#2-Stanford-OpenIE" class="headerlink" title="2. Stanford OpenIE"></a>2. Stanford OpenIE</h2><p>参考：<a href="https://nlp.stanford.edu/software/openie.html" target="_blank" rel="noopener">https://nlp.stanford.edu/software/openie.html</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//https://github.com/stanfordnlp/CoreNLP/blob/master/src/edu/stanford/nlp/naturalli/OpenIEDemo.java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">// Create the Stanford CoreNLP pipeline</span></span><br><span class="line">    Properties props = PropertiesUtils.asProperties(</span><br><span class="line">            <span class="string">"annotators"</span>, <span class="string">"tokenize,ssplit,pos,lemma,depparse,natlog,openie"</span></span><br><span class="line">    );</span><br><span class="line">    StanfordCoreNLP pipeline = <span class="keyword">new</span> StanfordCoreNLP(props);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Annotate an example document.</span></span><br><span class="line">    String text;</span><br><span class="line">    <span class="keyword">if</span> (args.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      text = IOUtils.slurpFile(args[<span class="number">0</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      text = <span class="string">"Obama was born in Hawaii. He is our president."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Annotation doc = <span class="keyword">new</span> Annotation(text);</span><br><span class="line">    pipeline.annotate(doc);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="学习参考"><a href="#学习参考" class="headerlink" title="学习参考"></a>学习参考</h2><ul>
+<li>Python中使用Stanford CoreNLP：<a href="https://blog.csdn.net/qq_35203425/article/details/80451243" target="_blank" rel="noopener">https://blog.csdn.net/qq_35203425/article/details/80451243</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/04/NLP/NLTK/" rel="next" title="NLP/NLTK">
+                <i class="fa fa-chevron-left"></i> NLP/NLTK
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/04/NLP/Transformer/" rel="prev" title="NLP/Transformer">
+                NLP/Transformer <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Stanford-CoreNLP"><span class="nav-number">1.</span> <span class="nav-text">Stanford CoreNLP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Stanford-Named-Entity-Recognizer-NER"><span class="nav-number">1.1.</span> <span class="nav-text">1. Stanford Named Entity Recognizer (NER)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Stanford-OpenIE"><span class="nav-number">1.2.</span> <span class="nav-text">2. Stanford OpenIE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习参考"><span class="nav-number">1.3.</span> <span class="nav-text">学习参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

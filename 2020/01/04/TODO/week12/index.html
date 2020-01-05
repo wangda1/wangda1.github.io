@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第十二周Course 《数值分析》 陈研：   函数逼近 6 讲 数值积分 5 讲 常微分方程 7 讲 偏微分方程 8 讲   《大数据技术》报告  《HadoopMapreduce》   cs224n课程主页：http:&#x2F;&#x2F;web.stanford.edu&#x2F;class&#x2F;cs224n&#x2F;index.html#schedule视频地址：https:&#x2F;&#x2F;www.youtube.com&#x2F;playlist?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TODO&#x2F;week12">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;TODO&#x2F;week12&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="第十二周Course 《数值分析》 陈研：   函数逼近 6 讲 数值积分 5 讲 常微分方程 7 讲 偏微分方程 8 讲   《大数据技术》报告  《HadoopMapreduce》   cs224n课程主页：http:&#x2F;&#x2F;web.stanford.edu&#x2F;class&#x2F;cs224n&#x2F;index.html#schedule视频地址：https:&#x2F;&#x2F;www.youtube.com&#x2F;playlist?">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-21T14:02:40.884Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/04/TODO/week12/"/>
+
+
+
+
+
+  <title>TODO/week12 | 笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/TODO/week12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">TODO/week12</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第十二周"><a href="#第十二周" class="headerlink" title="第十二周"></a>第十二周</h1><h2 id="Course"><a href="#Course" class="headerlink" title="Course"></a>Course</h2><ol>
+<li>《数值分析》 陈研：</li>
+</ol>
+<ul>
+<li>函数逼近 6 讲</li>
+<li>数值积分 5 讲</li>
+<li>常微分方程 7 讲</li>
+<li>偏微分方程 8 讲</li>
+</ul>
+<ol start="2">
+<li><p>《大数据技术》报告</p>
+</li>
+<li><p>《HadoopMapreduce》</p>
+</li>
+</ol>
+<h3 id="cs224n"><a href="#cs224n" class="headerlink" title="cs224n"></a>cs224n</h3><p>课程主页：<a href="http://web.stanford.edu/class/cs224n/index.html#schedule" target="_blank" rel="noopener">http://web.stanford.edu/class/cs224n/index.html#schedule</a><br>视频地址：<a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z</a></p>
+<ol>
+<li>Introduction and Word Vectors, Gensim word vectors example:</li>
+<li>Word Vectors 2 and Word Senses</li>
+<li>Python review session</li>
+<li>Word Window Classification, Neural Networks, and Matrix Calculus</li>
+<li>Backpropagation and Computation Graphs</li>
+<li>Linguistic Structure: Dependency Parsing</li>
+<li>The probability of a sentence? Recurrent Neural Networks and Language Models</li>
+<li>Vanishing Gradients and Fancy RNNs</li>
+<li>Machine Translation, Seq2Seq and Attention</li>
+<li>Practical Tips for Final Projects</li>
+<li>Question Answering and the Default Final Project</li>
+<li>ConvNets for NLP</li>
+<li>Information from parts of words: Subword Models</li>
+<li>Modeling contexts of use: Contextual Representations and Pretraining</li>
+<li>Transformers and Self-Attention For Generative Models</li>
+<li>Natural Language Generation</li>
+<li>Reference in Language and Coreference Resolution</li>
+<li>Multitask Learning: A general model for NLP?</li>
+<li>Constituency Parsing and Tree Recursive Neural Networks</li>
+<li>Safety, Bias, and Fairness</li>
+<li>Future of NLP + Deep Learning</li>
+</ol>
+<h3 id="Machine-Learning-李宏毅"><a href="#Machine-Learning-李宏毅" class="headerlink" title="Machine Learning 李宏毅"></a>Machine Learning 李宏毅</h3><p>视频地址： <a href="https://www.youtube.com/watch?v=CXgbekl66jc&amp;list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49" target="_blank" rel="noopener">https://www.youtube.com/watch?v=CXgbekl66jc&amp;list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49</a></p>
+<h3 id="Task："><a href="#Task：" class="headerlink" title="Task："></a>Task：</h3><ol>
+<li>《数值分析》每天2-3讲</li>
+<li>《cs224n》 每天1讲</li>
+</ol>
+<h2 id="Laborary"><a href="#Laborary" class="headerlink" title="Laborary"></a>Laborary</h2><ol>
+<li><p>学习 <code>pytorch</code> 的使用，能基本理解神经网络的搭建步骤，看懂代码的大致流程，并跑一段 RNN 的示例</p>
+</li>
+<li><p>研读至少3篇事件抽取综述和最新进展的论文，并做好笔记，记录发展历程</p>
+</li>
+<li><p>尝试阅读事件抽取的 code，并做一些尝试</p>
+</li>
+</ol>
+<h2 id="保持作息，注意运动，劳逸结合"><a href="#保持作息，注意运动，劳逸结合" class="headerlink" title="保持作息，注意运动，劳逸结合"></a>保持作息，注意运动，劳逸结合</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/04/SQL/SqlInjection/" rel="next" title="SQL/SqlInjection">
+                <i class="fa fa-chevron-left"></i> SQL/SqlInjection
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/04/README/" rel="prev" title="README">
+                README <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第十二周"><span class="nav-number">1.</span> <span class="nav-text">第十二周</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Course"><span class="nav-number">1.1.</span> <span class="nav-text">Course</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#cs224n"><span class="nav-number">1.1.1.</span> <span class="nav-text">cs224n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Machine-Learning-李宏毅"><span class="nav-number">1.1.2.</span> <span class="nav-text">Machine Learning 李宏毅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task："><span class="nav-number">1.1.3.</span> <span class="nav-text">Task：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Laborary"><span class="nav-number">1.2.</span> <span class="nav-text">Laborary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保持作息，注意运动，劳逸结合"><span class="nav-number">1.3.</span> <span class="nav-text">保持作息，注意运动，劳逸结合</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

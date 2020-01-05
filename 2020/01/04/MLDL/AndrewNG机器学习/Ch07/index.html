@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="正则化过拟合矛欠拟合问题的引入  欠拟合（underffit）： 高偏置（high bias） 过拟合（overfit）：   高方差（high variance）  代价函数的正则化   解决正则化的两个思路：  减少参数的数量 保持参数的数量，但使用正则化参数控制参数的大小  线性回归的正则化      求导的结果表明，加入正则化参数只是对参数乘上一个比1略小的因子。 使用线性代数的思想来解释">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MLDL&#x2F;AndrewNG机器学习&#x2F;Ch07">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;Ch07&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="正则化过拟合矛欠拟合问题的引入  欠拟合（underffit）： 高偏置（high bias） 过拟合（overfit）：   高方差（high variance）  代价函数的正则化   解决正则化的两个思路：  减少参数的数量 保持参数的数量，但使用正则化参数控制参数的大小  线性回归的正则化      求导的结果表明，加入正则化参数只是对参数乘上一个比1略小的因子。 使用线性代数的思想来解释">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_01.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_02.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_03.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_04.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_05.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_06.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_07.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_08.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_09.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_10.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_11.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_12.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_13.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_14.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_15.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_16.png">
+<meta property="og:updated_time" content="2019-12-04T04:20:55.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0&#x2F;IMG&#x2F;Andrew&#x2F;Andrew_01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/04/MLDL/AndrewNG机器学习/Ch07/"/>
+
+
+
+
+
+  <title>MLDL/AndrewNG机器学习/Ch07 | 笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MLDL/AndrewNG机器学习/Ch07</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h1><h2 id="过拟合矛欠拟合问题的引入"><a href="#过拟合矛欠拟合问题的引入" class="headerlink" title="过拟合矛欠拟合问题的引入"></a>过拟合矛欠拟合问题的引入</h2><p><img src="./IMG/../../IMG/Andrew/Andrew_01.png" alt="andrew_01"></p>
+<ul>
+<li>欠拟合（underffit）： 高偏置（high bias）</li>
+<li>过拟合（overfit）：   高方差（high variance）</li>
+</ul>
+<h2 id="代价函数的正则化"><a href="#代价函数的正则化" class="headerlink" title="代价函数的正则化"></a>代价函数的正则化</h2><p><img src="./../IMG/Andrew/Andrew_02.png" alt="andrew_02"></p>
+<p><img src="./../IMG/Andrew/Andrew_03.png" alt="andrew_03"></p>
+<p><img src="./IMG/../../IMG/Andrew/Andrew_04.png" alt="andrew_04"></p>
+<p>解决正则化的两个思路：</p>
+<ul>
+<li>减少参数的数量</li>
+<li>保持参数的数量，但使用正则化参数控制参数的大小</li>
+</ul>
+<h2 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h2><p><img src="./../IMG/Andrew/Andrew_05.png" alt="andrew_05"></p>
+<p><img src="./../IMG/Andrew/Andrew_06.png" alt="andrew_06"></p>
+<p><img src="./../IMG/Andrew/Andrew_07.png" alt="andrew_07"></p>
+<p><img src="./../IMG/Andrew/Andrew_08.png" alt="andrew_08"></p>
+<p><img src="./../IMG/Andrew/Andrew_09.png" alt="andrew_09"></p>
+<p><img src="./../IMG/Andrew/Andrew_10.png" alt="andrew_10"></p>
+<p>求导的结果表明，加入正则化参数只是对参数乘上一个比1略小的因子。</p>
+<p>使用线性代数的思想来解释（讨论方阵是否可逆）：</p>
+<p><img src="./../IMG/Andrew/Andrew_11.png" alt="andrew_11"></p>
+<p><img src="./../IMG/Andrew/Andrew_12.png" alt="andrew_12"></p>
+<h2 id="Logistic回归的正则化"><a href="#Logistic回归的正则化" class="headerlink" title="Logistic回归的正则化"></a>Logistic回归的正则化</h2><p>对Logistic求解算法的改进</p>
+<p><img src="./../IMG/Andrew/Andrew_13.png" alt="andrew_13"></p>
+<p><img src="./../IMG/Andrew/Andrew_14.png" alt="andrew_14"></p>
+<p><img src="./../IMG/Andrew/Andrew_15.png" alt="andrew_15"></p>
+<p><img src="./../IMG/Andrew/Andrew_16.png" alt="andrew_16"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/04/MLDL/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" rel="next" title="MLDL/环境部署">
+                <i class="fa fa-chevron-left"></i> MLDL/环境部署
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/04/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/" rel="prev" title="MLDL/AndrewNG机器学习/Ch6_classify">
+                MLDL/AndrewNG机器学习/Ch6_classify <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#正则化"><span class="nav-number">1.</span> <span class="nav-text">正则化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合矛欠拟合问题的引入"><span class="nav-number">1.1.</span> <span class="nav-text">过拟合矛欠拟合问题的引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代价函数的正则化"><span class="nav-number">1.2.</span> <span class="nav-text">代价函数的正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性回归的正则化"><span class="nav-number">1.3.</span> <span class="nav-text">线性回归的正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logistic回归的正则化"><span class="nav-number">1.4.</span> <span class="nav-text">Logistic回归的正则化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

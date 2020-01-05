@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Introduction of Bert, ELMO, GPT结构 传统的 encoding 方式 现在的 word embedding 的几种方式  1. 传统的 encoding 方式 1-of-N encoding   one hot 的方式，但缺乏词汇之间的语义相似度  word embedding   refer: https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=X7PH">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP&#x2F;Bert_ELMO_GPT">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="Introduction of Bert, ELMO, GPT结构 传统的 encoding 方式 现在的 word embedding 的几种方式  1. 传统的 encoding 方式 1-of-N encoding   one hot 的方式，但缺乏词汇之间的语义相似度  word embedding   refer: https:&#x2F;&#x2F;www.youtube.com&#x2F;watch?v=X7PH">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert2.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_3.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_4.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_5.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_7.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_8.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;erine.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_9.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;bert_10.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;gpt_1.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;gtp_2.png">
+<meta property="og:updated_time" content="2020-01-04T14:57:35.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Bert_ELMO_GPT&#x2F;word2com_1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/04/NLP/Bert_ELMO_GPT/"/>
+
+
+
+
+
+  <title>NLP/Bert_ELMO_GPT | 笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Bert_ELMO_GPT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NLP/Bert_ELMO_GPT</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Introduction-of-Bert-ELMO-GPT"><a href="#Introduction-of-Bert-ELMO-GPT" class="headerlink" title="Introduction of Bert, ELMO, GPT"></a>Introduction of Bert, ELMO, GPT</h1><h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
+<li>传统的 encoding 方式</li>
+<li>现在的 word embedding 的几种方式</li>
+</ul>
+<h2 id="1-传统的-encoding-方式"><a href="#1-传统的-encoding-方式" class="headerlink" title="1. 传统的 encoding 方式"></a>1. 传统的 encoding 方式</h2><ul>
+<li><p>1-of-N encoding</p>
+<p>  one hot 的方式，但缺乏词汇之间的语义相似度</p>
+</li>
+<li><p>word embedding</p>
+<p>  refer: <a href="https://www.youtube.com/watch?v=X7PH3NuYW0Q" target="_blank" rel="noopener">https://www.youtube.com/watch?v=X7PH3NuYW0Q</a></p>
+</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_1.png" alt="word2com"></p>
+<p><em>In the typical embedding, the same type hase the same embedding.</em></p>
+<p><strong>下图中的 word， 属于相同的 type，但是不同的 token</strong></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_2.png" alt="word2com"></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_3.png" alt="word2com"></p>
+<h2 id="2-ELMO"><a href="#2-ELMO" class="headerlink" title="2. ELMO"></a>2. ELMO</h2><p>Embeddings from Language Model (ELMO)</p>
+<h3 id="2-1-RNN-based-ELMO"><a href="#2-1-RNN-based-ELMO" class="headerlink" title="2.1 RNN-based ELMO"></a>2.1 RNN-based ELMO</h3><ul>
+<li>RNN-based language model</li>
+<li>不需要标注数据，直接 trainning</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_4.png" alt="elmo"></p>
+<h3 id="2-2-LSTM-based-ELMO"><a href="#2-2-LSTM-based-ELMO" class="headerlink" title="2.2 LSTM-based ELMO"></a>2.2 LSTM-based ELMO</h3><ul>
+<li>考虑进正向及反向的 contex 信息</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_5.png" alt="elmo"></p>
+<p>当深度的 LSTM 进行训练的时候，如何选取不同的 hidden layer作为 output 呢？？</p>
+<p>进行 weight sum:</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_6.png" alt="elmo"></p>
+<h2 id="3-BERT"><a href="#3-BERT" class="headerlink" title="3. BERT"></a>3. BERT</h2><p><strong>Encoder of Transformer</strong></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_7.png" alt="bert"></p>
+<p><em>在中文中，也许使用 character 更为有效</em></p>
+<h3 id="3-1-Training-of-Bert"><a href="#3-1-Training-of-Bert" class="headerlink" title="3.1 Training of Bert"></a>3.1 Training of Bert</h3><ul>
+<li>Approach 1: Masked LM</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert2.png" alt="bert_2"></p>
+<ul>
+<li>Approach 2: Next Sentence Prediction</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_3.png" alt="bert_3"></p>
+<h3 id="3-2-How-to-use-Bert"><a href="#3-2-How-to-use-Bert" class="headerlink" title="3.2 How to use Bert"></a>3.2 How to use Bert</h3><ul>
+<li>把 bert 的训练和下游的任务放在一起进行 train</li>
+</ul>
+<h4 id="case1-Sequence-gt-class"><a href="#case1-Sequence-gt-class" class="headerlink" title="case1: Sequence -&gt; class"></a>case1: Sequence -&gt; class</h4><p>在开头的地方给一个分类的符号，再通过 linear classifier 进行分类</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_4.png" alt="bert4"></p>
+<h4 id="case2-sentences’-word-slot"><a href="#case2-sentences’-word-slot" class="headerlink" title="case2: sentences’ word slot"></a>case2: sentences’ word slot</h4><p>句子的词分类问题，将句子中的每个词填入一个class slot</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_5.png" alt="bert_case_2"></p>
+<h4 id="case3-premise-gt-判断-hypothesis"><a href="#case3-premise-gt-判断-hypothesis" class="headerlink" title="case3: premise -&gt; 判断 hypothesis"></a>case3: premise -&gt; 判断 hypothesis</h4><p>输入两个句子，一个作为 premise，一个作为 hypothesis，判断是否正确：T/F/unknown</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_6.png" alt="bert_case_3"></p>
+<h4 id="case4-Extraction-based-QA"><a href="#case4-Extraction-based-QA" class="headerlink" title="case4: Extraction-based QA"></a>case4: Extraction-based QA</h4><p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_7.png" alt="bert_case_4"></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_8.png" alt="bert_case_4"></p>
+<h3 id="3-3-中文版本的-bert-–-Erine"><a href="#3-3-中文版本的-bert-–-Erine" class="headerlink" title="3.3 中文版本的 bert – Erine"></a>3.3 中文版本的 bert – Erine</h3><p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/erine.png" alt="erine"></p>
+<h3 id="3-4-What-bert-learns"><a href="#3-4-What-bert-learns" class="headerlink" title="3.4 What bert learns??"></a>3.4 What bert learns??</h3><p>研究者通过将 bert 24层的 embedding 输出对比发现， bert 的24层从低到高学习到了 NLP 的大部分过程：<code>文法-&gt;句法-&gt;语义</code></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_9.png" alt="bert_9"></p>
+<h3 id="3-5-Multilingual-Bert"><a href="#3-5-Multilingual-Bert" class="headerlink" title="3.5 Multilingual Bert"></a>3.5 Multilingual Bert</h3><p>多语言的 bert，google 的研究者爬取104种语言的 wiki进行训练 多语言版本的 bert</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_10.png" alt="bert_10"></p>
+<h2 id="4-GPT"><a href="#4-GPT" class="headerlink" title="4. GPT"></a>4. GPT</h2><p><strong>Generative Pre-Training</strong><br>特别大特别大的一个预训练模型</p>
+<p>GPT 是 transformer 的 decoder，由 openAI 制作</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/gpt_1.png" alt="GPT"></p>
+<p>GPT-2 model 特别巨大，能够在<strong>没有训练资料</strong>的情况下，做：</p>
+<ul>
+<li>Reading Comprehension</li>
+<li>Summarization</li>
+<li>Translation</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/gtp_2.png" alt="gpt_2"></p>
+<p>GPT-2 OpenAI 最大的model 拥有的参数有 1542M，但考虑到到多种问题并没有被 release，release 的 model 的版本与 bert 差不多.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul>
+<li><a href="https://talktotransformer.com/" target="_blank" rel="noopener">https://talktotransformer.com/</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/04/MLDL/%E6%9D%8E%E8%BD%A9%E7%94%B0%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%9F%B3/Ch1_introduction/" rel="next" title="MLDL/李轩田机器学习基石/Ch1_introduction">
+                <i class="fa fa-chevron-left"></i> MLDL/李轩田机器学习基石/Ch1_introduction
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/04/NLP/GCN/" rel="prev" title="NLP/GCN">
+                NLP/GCN <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction-of-Bert-ELMO-GPT"><span class="nav-number">1.</span> <span class="nav-text">Introduction of Bert, ELMO, GPT</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#结构"><span class="nav-number">1.1.</span> <span class="nav-text">结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-传统的-encoding-方式"><span class="nav-number">1.2.</span> <span class="nav-text">1. 传统的 encoding 方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ELMO"><span class="nav-number">1.3.</span> <span class="nav-text">2. ELMO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-RNN-based-ELMO"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1 RNN-based ELMO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-LSTM-based-ELMO"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.2 LSTM-based ELMO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-BERT"><span class="nav-number">1.4.</span> <span class="nav-text">3. BERT</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Training-of-Bert"><span class="nav-number">1.4.1.</span> <span class="nav-text">3.1 Training of Bert</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-How-to-use-Bert"><span class="nav-number">1.4.2.</span> <span class="nav-text">3.2 How to use Bert</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#case1-Sequence-gt-class"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">case1: Sequence -&gt; class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case2-sentences’-word-slot"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">case2: sentences’ word slot</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case3-premise-gt-判断-hypothesis"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">case3: premise -&gt; 判断 hypothesis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#case4-Extraction-based-QA"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">case4: Extraction-based QA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-中文版本的-bert-–-Erine"><span class="nav-number">1.4.3.</span> <span class="nav-text">3.3 中文版本的 bert – Erine</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-What-bert-learns"><span class="nav-number">1.4.4.</span> <span class="nav-text">3.4 What bert learns??</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Multilingual-Bert"><span class="nav-number">1.4.5.</span> <span class="nav-text">3.5 Multilingual Bert</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-GPT"><span class="nav-number">1.5.</span> <span class="nav-text">4. GPT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.6.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

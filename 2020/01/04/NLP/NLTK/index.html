@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="背景介绍NLTK 是最为知名的Python自然语言处理工具之一，全程：Natural Language ToolKit， 诞生于宾夕法尼亚大学，主要面向英文。但其很多模型或者模块都与语种无关，因此当实现了Tokenization 和分词之后，NLTK的很多工具包是可以复用的。 在NLTK中使用Stanford文本分析工具包也是一个常用的手段，如何在NLTK中调用Stanford中文工具包：  ht">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP&#x2F;NLTK">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;NLTK&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="背景介绍NLTK 是最为知名的Python自然语言处理工具之一，全程：Natural Language ToolKit， 诞生于宾夕法尼亚大学，主要面向英文。但其很多模型或者模块都与语种无关，因此当实现了Tokenization 和分词之后，NLTK的很多工具包是可以复用的。 在NLTK中使用Stanford文本分析工具包也是一个常用的手段，如何在NLTK中调用Stanford中文工具包：  ht">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-21T09:47:01.265Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/01/04/NLP/NLTK/"/>
+
+
+
+
+
+  <title>NLP/NLTK | 笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/NLTK/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NLP/NLTK</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>NLTK 是最为知名的Python自然语言处理工具之一，全程：Natural Language ToolKit， 诞生于宾夕法尼亚大学，主要面向英文。但其很多模型或者模块都与语种无关，因此当实现了Tokenization 和分词之后，NLTK的很多工具包是可以复用的。</p>
+<p>在NLTK中使用Stanford文本分析工具包也是一个常用的手段，如何在NLTK中调用Stanford中文工具包：</p>
+<ul>
+<li><a href="http://www.zmonster.me/2016/06/08/use-stanford-nlp-package-in-nltk.html" target="_blank" rel="noopener">http://www.zmonster.me/2016/06/08/use-stanford-nlp-package-in-nltk.html</a></li>
+<li><a href="http://www.cnblogs.com/baiboy/p/nltk1.html" target="_blank" rel="noopener">http://www.cnblogs.com/baiboy/p/nltk1.html</a></li>
+</ul>
+<h2 id="官方资料学习-https-www-nltk-org-book"><a href="#官方资料学习-https-www-nltk-org-book" class="headerlink" title="官方资料学习 https://www.nltk.org/book/"></a>官方资料学习 <a href="https://www.nltk.org/book/" target="_blank" rel="noopener">https://www.nltk.org/book/</a></h2><h3 id="5-Categorizing-and-Tagging-words"><a href="#5-Categorizing-and-Tagging-words" class="headerlink" title="5. Categorizing and Tagging words"></a>5. Categorizing and Tagging words</h3><h4 id="5-1-tag-sets-词性标注集"><a href="#5-1-tag-sets-词性标注集" class="headerlink" title="5.1 tag sets 词性标注集"></a>5.1 tag sets 词性标注集</h4><ul>
+<li><code>nltk.help.upenn(&#39;NN&#39;)</code> 可查询词性标注集的具体含义，如：</li>
+</ul>
+<ol>
+<li><code>NN</code> noun, common, singular or mass</li>
+<li><code>VB</code> verb, base form</li>
+<li><code>JJ</code> adjective or numeral, ordinal</li>
+<li><code>IN</code> preposition or conjunction, subordinating</li>
+<li><code>DT</code> determiner</li>
+<li><code>PRP</code> pronoun, personal</li>
+</ol>
+<h3 id="7-Extracting-Information-from-Text"><a href="#7-Extracting-Information-from-Text" class="headerlink" title="7. Extracting Information from Text"></a>7. Extracting Information from Text</h3><p>参考：<a href="https://www.nltk.org/book/ch07.html" target="_blank" rel="noopener">https://www.nltk.org/book/ch07.html</a></p>
+<h4 id="7-2-Chunking-分块-—-命名实体识别技术之一"><a href="#7-2-Chunking-分块-—-命名实体识别技术之一" class="headerlink" title="7.2 Chunking 分块 — 命名实体识别技术之一"></a>7.2 Chunking 分块 — 命名实体识别技术之一</h4><p>NLTK主要采用 chunk 技术来识别命名实体，这是一种基于规则的方法，如：</p>
+<ul>
+<li>Tag Patterns 标记模式</li>
+<li>Regular Expressions 正则表达式</li>
+<li>Classifier-Based Chunkers 基于分类器的分块器，主要加入不仅仅考虑 POS，还考虑 words 的内容</li>
+</ul>
+<p>人工标记的 tag patterns 用来对 POS 进行匹配和识别，因此 Part-of-Speech 词性标注是其前提；</p>
+<p>识别出的 chunk 的表示方法：  </p>
+<ul>
+<li>IOB标记（如 B-NP、I-NP等）</li>
+<li>树状图标记 （将 词性标注后的 token 表示成树的叶子节点</li>
+</ul>
+<h4 id="7-5-Named-Entity-Recognition"><a href="#7-5-Named-Entity-Recognition" class="headerlink" title="7.5 Named Entity Recognition"></a>7.5 Named Entity Recognition</h4><p>对命名实体识别中的一些词语进行解释：</p>
+<ul>
+<li><code>Facility</code> : human-made artifacts in the domains of architecture and civil engineering</li>
+<li><code>GPE</code> : geo-political entities such as city, state/province, and country</li>
+</ul>
+<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><ul>
+<li>NLTK 官方在线书籍：<a href="https://www.nltk.org/book/" target="_blank" rel="noopener">https://www.nltk.org/book/</a></li>
+<li>基于 NLTK 官方书籍的翻译版：《Python自然语言处理》 陈涛译</li>
+<li>52nlp: <a href="http://textminingonline.com/dive-into-nltk-part-i-getting-started-with-nltk" target="_blank" rel="noopener">http://textminingonline.com/dive-into-nltk-part-i-getting-started-with-nltk</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/04/NLP/LDA/" rel="next" title="NLP/LDA">
+                <i class="fa fa-chevron-left"></i> NLP/LDA
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/01/04/NLP/StanfordNLP/" rel="prev" title="NLP/StanfordNLP">
+                NLP/StanfordNLP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景介绍"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方资料学习-https-www-nltk-org-book"><span class="nav-number">2.</span> <span class="nav-text">官方资料学习 https://www.nltk.org/book/</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Categorizing-and-Tagging-words"><span class="nav-number">2.1.</span> <span class="nav-text">5. Categorizing and Tagging words</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-tag-sets-词性标注集"><span class="nav-number">2.1.1.</span> <span class="nav-text">5.1 tag sets 词性标注集</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Extracting-Information-from-Text"><span class="nav-number">2.2.</span> <span class="nav-text">7. Extracting Information from Text</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7-2-Chunking-分块-—-命名实体识别技术之一"><span class="nav-number">2.2.1.</span> <span class="nav-text">7.2 Chunking 分块 — 命名实体识别技术之一</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-5-Named-Entity-Recognition"><span class="nav-number">2.2.2.</span> <span class="nav-text">7.5 Named Entity Recognition</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习资料"><span class="nav-number">3.</span> <span class="nav-text">学习资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
