@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="千淘万漉虽辛苦，吹尽黄沙始到金">
+<meta property="og:type" content="website">
+<meta property="og:title" content="笔记记录">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;page&#x2F;22&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="千淘万漉虽辛苦，吹尽黄沙始到金">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/22/"/>
+
+
+
+
+
+  <title>笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Nf5_s5_h8Jo7hX6Vxqmp','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/wiki_data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/wiki_data/" itemprop="url">wiki data 简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T10:09:00+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
+                    <span itemprop="name">实体与关系抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Wikidata-简介"><a href="#Wikidata-简介" class="headerlink" title="Wikidata 简介"></a>Wikidata 简介</h1><p>这里为什么简要介绍 wiki data，因为实体链接（Entity link）常用到的数据集是 wiki data，</p>
+<h2 id="wiki-data-与-wiki-pedia-的关系"><a href="#wiki-data-与-wiki-pedia-的关系" class="headerlink" title="wiki data 与 wiki pedia 的关系"></a>wiki data 与 wiki pedia 的关系</h2><blockquote>
+<p>wikidata is a free and open knowledge base that can be read and edited by both humans and machines. Wikidata acts as central storage for the structured data of its Wikimedia sister projects including Wikipedia, Wikivoyage, Wikisource, and others.</p>
+</blockquote>
+<h2 id="wiki-data-的说明-url"><a href="#wiki-data-的说明-url" class="headerlink" title="wiki data 的说明 url"></a>wiki data 的说明 <a href="https://en.wikipedia.org/wiki/Wikidata" target="_blank" rel="noopener">url</a></h2><ul>
+<li>Items: Wikidata is a document-oriented database, focused on items, which represent topics, concepts, or objects.Each item is identified by a unique number, prefixed with the letter Q, known as a “QID”.</li>
+<li>Property: A property describes the data value of a statement and can be thought of as a category of data, for example color (P462) for the data value blue (Q1088).</li>
+<li>Statements: Statements are how any information known about an item is recorded in Wikidata. </li>
+<li>Lexemes: In linguistics, a lexeme is a unit of lexical meaning. Similarly, Wikidata’s lexemes are items with a structure that makes them more suitable to store lexicographical data.</li>
+</ul>
+<h2 id="Wikidata-api-的使用"><a href="#Wikidata-api-的使用" class="headerlink" title="Wikidata api 的使用"></a>Wikidata api 的使用</h2><ul>
+<li><a href="https://www.wikidata.org/w/api.php" target="_blank" rel="noopener">api document</a></li>
+<li><a href="https://www.mediawiki.org/wiki/API:Presenting_Wikidata_knowledge" target="_blank" rel="noopener">document2</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">params = dict (</span><br><span class="line">        action=<span class="string">'wbsearchentities'</span>,</span><br><span class="line">        format=<span class="string">'json'</span>,</span><br><span class="line">        language=<span class="string">'en'</span>,</span><br><span class="line">        uselang=<span class="string">'en'</span>,</span><br><span class="line">        <span class="comment"># type='property',</span></span><br><span class="line">        search=<span class="string">'Hubei Province'</span></span><br><span class="line">        )</span><br><span class="line">http_proxies = &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://127.0.0.1:1080"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"https://127.0.0.1:1080"</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(<span class="string">'https://www.wikidata.org/w/api.php?'</span>, params, proxies=http_proxies).json()</span><br><span class="line">print(response.get(<span class="string">'search'</span>)[<span class="number">0</span>][<span class="string">'id'</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Wikipedia-api-的使用"><a href="#Wikipedia-api-的使用" class="headerlink" title="Wikipedia api 的使用"></a>Wikipedia api 的使用</h2><ul>
+<li><a href="https://en.wikipedia.org/w/api.php?action=help&modules=query" target="_blank" rel="noopener">api document</a></li>
+<li><a href="https://www.mediawiki.org/wiki/API:Main_page" target="_blank" rel="noopener">document2</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">params_wikipedia = dict (</span><br><span class="line">        action=<span class="string">'query'</span>,</span><br><span class="line">        prop=<span class="string">'pageprops'</span>,</span><br><span class="line">        ppprop=<span class="string">'wikibase_item'</span>,</span><br><span class="line">        redirects=<span class="number">1</span>,</span><br><span class="line">        titles=<span class="string">'trump'</span></span><br><span class="line">)</span><br><span class="line">http_proxies = &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://127.0.0.1:1080"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"https://127.0.0.1:1080"</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(<span class="string">'https://en.www.wikipedia.org/w/api.php?'</span>, params, proxies=http_proxies).json()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>pip install wikipedia</code> 上述方法的 python 库版本</li>
+</ul>
+<blockquote>
+<p>Wikipedia is a Python library that makes it easy to access and parse data from Wikipedia.<br>Search Wikipedia, get article summaries, get data like links and images from a page, and more. Wikipedia wraps the MediaWiki API so you can focus on using Wikipedia data, not getting it.</p>
+</blockquote>
+<p>注： wikidata api 与 wikipedia api 所返回的的 QID 都是吧wikidata 中的 QID，但 pageId 不同，它分别代表在 Wikidata 与 Wikipedia 中的 page number.</p>
+<h2 id="Wikidata-数据源的下载"><a href="#Wikidata-数据源的下载" class="headerlink" title="Wikidata 数据源的下载"></a>Wikidata 数据源的下载</h2><p><a href="https://www.wikidata.org/wiki/Wikidata:Database_download" target="_blank" rel="noopener">https://www.wikidata.org/wiki/Wikidata:Database_download</a> 可下载 Wikidata 的数据（数据规模较大），进行关系抽取等任务。</p>
+<p><code>spacy</code> 的 EL（Entity Link）任务就是利用从 Wikidata 下载的数据进行模型的训练。</p>
+<blockquote>
+<p>This takes as input the locations of a Wikipedia and a Wikidata dump, and produces a KB directory + training file</p>
+<ul>
+<li>WikiData: get latest-all.json.bz2 from <a href="https://dumps.wikimedia.org/wikidatawiki/entities/" target="_blank" rel="noopener">https://dumps.wikimedia.org/wikidatawiki/entities/</a></li>
+<li>Wikipedia: get enwiki-latest-pages-articles-multistream.xml.bz2 from <a href="https://dumps.wikimedia.org/enwiki/latest/" target="_blank" rel="noopener">https://dumps.wikimedia.org/enwiki/latest/</a> (or for any other language)</li>
+</ul>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>两种方式进行 entity 的查询会返回一系列 candidate 进行候选，这种方法往往在 NLP 的 <code>实体对齐、实体消歧</code> 中存在一定的局限性，常作为 EL 的前序步骤。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86/" itemprop="url">关系抽取数据集</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T10:09:00+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
+                    <span itemprop="name">实体与关系抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关系抽取数据集"><a href="#关系抽取数据集" class="headerlink" title="关系抽取数据集"></a>关系抽取数据集</h1><h2 id="常用的几种精标关系抽取数据集"><a href="#常用的几种精标关系抽取数据集" class="headerlink" title="常用的几种精标关系抽取数据集"></a>常用的几种精标关系抽取数据集</h2><p><img src="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86/some-datasets-statistic.png" alt="几种常用的关系抽取数据集"></p>
+<ul>
+<li><p>FewRel <a href="https://github.com/thunlp/FewRel" target="_blank" rel="noopener">github</a></p>
+<blockquote>
+<p>以 wikipedia 作为语料库，以 wikipedia 作为知识图谱构建。由孙茂松教授领导的清华大学自然语言处理实验室发布了一个大规模精标注关系抽取数据集 FewRel。据了解，这是目前最大的精标注关系抽取数据集。该数据集包含 100 个类别、70,000 个实例，全面超越了以往的同类精标注数据集。FewRel 不仅可以应用在经典的监督/远监督关系抽取任务中，在新兴的少次学习（few-shot learning）任务上也有极大的探索价值和广阔的应用前景。相关论文《Classification Dataset with State-of-the-Art Evaluation》</p>
+</blockquote>
+</li>
+<li><p>SemEval-2010 Task 8</p>
+<blockquote>
+<p>SemEval(International Workshop on Semantic Evaluation) 国际语义评测大会，在会上有多个tasks，参赛人员完成相应的任务后可以投 paper 到 SemEval 2020.</p>
+</blockquote>
+<blockquote>
+<p>SemEval-2010的任务8关注的是两个名词之间的语义关系。例如，茶和人参是在“从德里人参的杯子里”的一种物质来源关系中。语义关系的自动识别有许多应用，如信息提取、文档摘要、机器翻译、词汇和语义网络的构建等。它还可以促进辅助任务，如wordsense消除歧义、语言建模、语法分析和识别文本蕴涵。<a href="https://languageresources.github.io/2018/05/13/%E5%8D%A2%E6%A2%A6%E4%BE%9D_SemEval2010%20Task8%20%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96%E6%95%B0%E6%8D%AE%E9%9B%86/" target="_blank" rel="noopener">来源</a> ， <a href="http://semeval2.fbk.eu/semeval2.php?location=data" target="_blank" rel="noopener">download</a></p>
+</blockquote>
+</li>
+<li><p>MUC（Message Understanding Conference) 关系抽取</p>
+<blockquote>
+<p>MUC-7的五大评测任务分别是命名实体识别、共指消解、模板元素填充、模板关系确定和场景模板填充。数据语料主要来自新闻语料，限定领域为飞机失事报道和航天器发射事件报道。</p>
+</blockquote>
+</li>
+<li><p>ACE 关系抽取数据集</p>
+<blockquote>
+<p>MUC会议停开后，ACE将关系抽取任务作为一个子任务从2002至2007年共持续六年。关系抽取任务也被定义的更加规范和系统。其中，获得认可的一届关系抽取任务主要是ACE-2004，其数据来源于语言数据联盟（LDC），分成广播新闻和新闻专线两部分，总共包括451和文档和5702个关系实例。ACE20014提供了丰富的标注信息，从而为信息抽取中的实体识别、指代消解和关系抽取等子任务提供基准的训练和测试语料库。</p>
+</blockquote>
+</li>
+<li><p>TAC-KBP 数据集：<a href="https://nlp.stanford.edu/projects/tacred/" target="_blank" rel="noopener">stanford-nlp-tacred</a></p>
+<blockquote>
+<p>TAC会议下的KBP评测下的ESF任务，可以视作是传统的关系抽取任务。该任务主要是抽取关于PER的25中属性和ORG的16中属性。主要是使用维基百科快照作为现有的知识库，从现有的新闻或者网络文本中获取关于实体的现有信息和更新信息，以构建知识库。</p>
+</blockquote>
+<blockquote>
+<p>TACRED is a large-scale relation extraction dataset with 106,264 examples built over newswire and web text from the corpus used in the yearly TAC Knowledge Base Population (TAC KBP) challenges. Examples in TACRED cover 41 relation types as used in the TAC KBP challenges (e.g., per:schools_attended and org:members) or are labeled as no_relation if no defined relation is held. These examples are created by combining available human annotations from the TAC KBP challenges and crowdsourcing.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://blog.csdn.net/lusic01/article/details/94018455" target="_blank" rel="noopener">CSDN-史上最大实体关系抽取数据集</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/" itemprop="url">实体链接（Entity Link）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T10:09:00+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
+                    <span itemprop="name">实体与关系抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="实体链接（Entity-Link）"><a href="#实体链接（Entity-Link）" class="headerlink" title="实体链接（Entity Link）"></a>实体链接（Entity Link）</h1><p>实体链接是构建知识图谱中 NER（实体抽取）后续的一步，主要对异构数据源中的不同 mention 对应到 Knowledge Base 中的 Entity.</p>
+<p>这里有一篇很不错的总结 <a href="https://mp.weixin.qq.com/s?__biz=MzI0ODcxODk5OA==&mid=2247512392&idx=3&sn=9aa4fcf03743afec55b3ce86526aea8a&chksm=e99e82b1dee90ba7e033a35937720529708042ba9107abf1063f8da582a7259d4e67d62c672e&mpshare=1&scene=1&srcid=0325Li1Uw40dxdp1IwPY0z5B&sharer_sharetime=1585144022945&sharer_shareid=df1013bd655d09f93207e8213ac4db3a#rd" target="_blank" rel="noopener">知识图谱-实体链接综述</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/Something/tmux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/13/Something/tmux/" itemprop="url">tmux tutorial</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T18:11:00+08:00">
+                2019-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Something/" itemprop="url" rel="index">
+                    <span itemprop="name">Something</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="tmux-Tutorial"><a href="#tmux-Tutorial" class="headerlink" title="tmux Tutorial"></a>tmux Tutorial</h1><p>项目地址 <a href="https://github.co/2019/01/13/Something/tmux/tmux" target="_blank" rel="noopener">tmux</a>，终端复用工具.<br>命令参考：<a href="https://www.cnblogs.com/kaiye/p/6275207.html" target="_blank" rel="noopener">https://www.cnblogs.com/kaiye/p/6275207.html</a></p>
+<p>tmux 中有几个比较重要的概念：</p>
+<ul>
+<li>session: 建立一个工作区会话</li>
+<li>window: 容纳多个窗格</li>
+<li>pane: 可以在窗格中分成多个窗格</li>
+<li><code>ctrl + B</code> 基本指令，使用该指令之后，输入的下一个指令解释为 <code>tmux</code> 命令</li>
+</ul>
+<ol>
+<li><p>session 的操作</p>
+<ul>
+<li>新建 session：<code>tmux new -s name_xxx</code> name_xxx 为 session name</li>
+<li>断开当前 session：<code>tmux detach</code> 或者快捷键：<code>ctrl+b</code> + <code>d</code></li>
+<li>进入之前的 session：<code>tmux attach-session -t session_name_xxx</code> = <code>tmux a -t session_name_xxx</code>； <code>tmux a</code> 默认进入第一个 session</li>
+<li>session 的删除： <code>tmux kill-session -t session_name_xxx</code>：关闭对应的 session；<code>tmux kill-server</code>：关闭服务器，所有会话都将关闭</li>
+<li><code>tmux list-session</code> 查看所有 session = <code>tmux l</code></li>
+</ul>
+</li>
+<li><p>一个 session 中新建 window</p>
+<p> <code>ctrl+B</code> -&gt; <code>c</code></p>
+<p> sesssion 中 window 之间的切换：<br>  <code>ctrl+B</code> -&gt; <code>n</code> 切换 next wiindow；<br>  <code>ctrl+B</code> -&gt; <code>p</code> 切换 previous window</p>
+</li>
+<li><p>一个 window 里新建 pane</p>
+<p> 左右切分 pane: <code>ctrl+B</code> -&gt; <code>%</code>；<br> 上下切分 pane: <code>ctrl+B</code> -&gt; <code>&quot;</code>；<br> pane 之间的切换使用 <code>ctrl+B</code> -&gt; 上下左右；<br> 关闭 pane: <code>ctrl+B</code> -&gt; <code>x</code></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/21/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span>
+  </nav>
+
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

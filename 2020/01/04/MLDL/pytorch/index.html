@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="MLDL," />
 
 
 
@@ -80,13 +80,14 @@
 
 
 <meta name="description" content="PyTorch参考：《深度学习入门之PyTorch》 0. 基本数据类型0.1 数据类型torch.Tensor 默认是 torch.FloatTensor    Data tyoe CPU tensor GPU tensor    32-bit floating point torch.FloatTensor torch.cuda.FloatTensor   64-bit floating">
+<meta name="keywords" content="MLDL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MLDL&#x2F;pytorch">
+<meta property="og:title" content="pytorch">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;MLDL&#x2F;pytorch&#x2F;index.html">
 <meta property="og:site_name" content="笔记记录">
 <meta property="og:description" content="PyTorch参考：《深度学习入门之PyTorch》 0. 基本数据类型0.1 数据类型torch.Tensor 默认是 torch.FloatTensor    Data tyoe CPU tensor GPU tensor    32-bit floating point torch.FloatTensor torch.cuda.FloatTensor   64-bit floating">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-04T03:55:34.488Z">
+<meta property="og:updated_time" content="2020-05-07T14:37:38.348Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -123,7 +124,7 @@
 
 
 
-  <title>MLDL/pytorch | 笔记记录</title>
+  <title>pytorch | 笔记记录</title>
   
 
 
@@ -229,9 +230,39 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Nf5_s5_h8Jo7hX6Vxqmp','2.0.0');
+</script>
+
+
+
+    </div>
   
 </nav>
 
@@ -277,7 +308,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MLDL/pytorch</h1>
+          <h1 class="post-title" itemprop="name headline">pytorch</h1>
         
 
         <div class="post-meta">
@@ -289,7 +320,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T11:55:34+08:00">
                 2020-01-04
               </time>
             
@@ -299,6 +330,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MLDL/" itemprop="url" rel="index">
+                    <span itemprop="name">MLDL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -393,7 +446,7 @@
 <ul>
 <li><code>Tensor.permute(a, b, c...)</code> 可以直接对高纬度矩阵进行转置操作</li>
 <li><code>torch.transpose()</code> 与 <code>permute()</code>作用相同，但只能操作两个维度</li>
-<li><code>Tensor.view()</code>; <code>view()</code> 仅能作用在连续的内存中，如果在调用了 <code>transpose()</code> 或 <code>permute()</code> 则可导致内存不连续，需要使用 <code>contiguous()</code>返回一个连续的内存拷贝；</li>
+<li><code>Tensor.view()</code>; <code>view()</code> 仅能作用在连续的内存中，即将连续的内存变换成所需要的维度，如果在调用了 <code>transpose()</code> 或 <code>permute()</code> 则可导致内存不连续，需要使用 <code>contiguous()</code>返回一个连续的内存拷贝；</li>
 <li><code>torch.reshape()</code> <em>version &gt;=0.4</em>, <code>== tensor.contiguous().view()</code></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a=np.array([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]])</span><br><span class="line">unpermuted=torch.tensor(a)</span><br><span class="line">print(unpermuted.size())              <span class="comment">#  ——&gt;  torch.Size([1, 2, 3])</span></span><br><span class="line"></span><br><span class="line">permuted=unpermuted.permute(<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">print(permuted.size())                <span class="comment">#  ——&gt;  torch.Size([3, 1, 2])</span></span><br><span class="line">print(permuted.is_contiguous())       <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line">view_test = unpermuted.view(<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">print(view_test.size())               <span class="comment">#  ——&gt;  torch.Size([1, 3, 2])</span></span><br><span class="line"></span><br><span class="line">view_test = view_test.view(<span class="number">-1</span>, <span class="number">2</span>)     <span class="comment">#  --&gt;  使用 -1 进行自动推导，包含两个维度</span></span><br><span class="line">view_test = view_test.view(<span class="number">-1</span>)        <span class="comment">#  --&gt;  只包含一个维度</span></span><br></pre></td></tr></table></figure>
@@ -416,6 +469,13 @@
 <p>压缩的维度为元素个数为 1 的维度，如：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = torch.randn(<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">a.size()                <span class="comment"># [2, 1]</span></span><br><span class="line">a.squeeze().size()      <span class="comment"># [2]</span></span><br></pre></td></tr></table></figure>
 
+<h3 id="0-7-torch-上的一些数学运算：-torch-bmm-torch-mm-torch-matmul-torch-mul"><a href="#0-7-torch-上的一些数学运算：-torch-bmm-torch-mm-torch-matmul-torch-mul" class="headerlink" title="0.7 torch 上的一些数学运算： torch.bmm(),torch.mm(),torch.matmul(),torch.mul()"></a>0.7 <code>torch</code> 上的一些数学运算： <code>torch.bmm(),torch.mm(),torch.matmul(),torch.mul()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 矩阵之间的相乘，叉乘</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.mm(mat1, mat2, out=<span class="literal">None</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.matmul(mat1, mat2, out=<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 矩阵的 batch 叉乘运算</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>batch1 = torch.randn(<span class="number">10</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>batch2 = torch.randn(<span class="number">10</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>res = torch.bmm(batch1, batch2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>res.size()</span><br><span class="line">torch.Size([<span class="number">10</span>, <span class="number">3</span>, <span class="number">5</span>])</span><br><span class="line"><span class="comment"># 矩阵各元素之间的相乘，是对应位之间的相乘</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.mul(mat1, mat2)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>torch.sum(input, dim, out=None)</code></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line">print(x.sum(<span class="number">0</span>)) <span class="comment">#按列求和</span></span><br><span class="line">print(x.sum(<span class="number">1</span>)) <span class="comment">#按行求和</span></span><br><span class="line">print(torch.sum(x))   <span class="comment">#按列求和</span></span><br><span class="line">print(torch.sum(x, <span class="number">0</span>))<span class="comment">#按列求和</span></span><br><span class="line">print(torch.sum(x, <span class="number">1</span>))<span class="comment">#按行求和</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="1-Variable-变量"><a href="#1-Variable-变量" class="headerlink" title="1. Variable(变量)"></a>1. Variable(变量)</h2><blockquote>
 <p>Variable 是神经网络计算图里的概念，提供了自动求导的功能。Variable 和 Tensor 本质上没有区别，不过 Variable 会被放入一个计算图中，然后进行前向传播、反向传播、自动求导。</p>
 </blockquote>
@@ -424,6 +484,8 @@
 
 <h3 id="1-1-Parameters"><a href="#1-1-Parameters" class="headerlink" title="1.1 Parameters"></a>1.1 Parameters</h3><p><code>class torch.nn.Parameter()</code></p>
 <p><code>Variable</code> 的一种，常被用于模块参数 <code>module parameter</code></p>
+<p><code>Variable</code> 已经被废除了。</p>
+<p><code>parameter</code> 是类型转换函数，将不可训练的类型<code>Tensor</code>转换成可训练的类型<code>parameter</code>，并将这个<code>parameter</code>绑定到这个 <code>module</code> 里面。（<code>net.parameter()</code> 中就有这个绑定的 <code>parameter</code>，参数优化的时候是可以进行优化的）</p>
 <p><code>Variable</code> 与 <code>Parameter</code>  的不同：</p>
 <ul>
 <li><code>Parameters</code> 是 <code>Variable</code> 的子类。 当把 <code>Parameters</code> 赋值给 <code>Modules</code>的时候，会被自动加到 <code>Module</code> 的参数列表中（会出现在 <code>parameters()</code> 迭代器中）。将 <code>Variable</code> 赋值给 <code>Module</code> 属性则不会有这样的影响。</li>
@@ -568,8 +630,12 @@
 </ul>
 <p>python 迭代器构造在数据集上。</p>
 <h2 id="8-模型的保存与加载"><a href="#8-模型的保存与加载" class="headerlink" title="8. 模型的保存与加载"></a>8. 模型的保存与加载</h2><p><em>参考：<a href="https://zhuanlan.zhihu.com/p/38056115" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38056115</a></em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存整个网络</span></span><br><span class="line">torch.save(net, PATH)</span><br><span class="line"><span class="comment"># 保存网络中的参数</span></span><br><span class="line">torch.save(net.state_dict(), PATH)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模型的加载，对应于以上两种保存的方式</span></span><br><span class="line">model_dict = torch.load(PATH)</span><br><span class="line">model_dict = model.load_state_dict(torch.load(PATH))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Approach 1</span></span><br><span class="line"><span class="comment"># 保存整个网络，保存的后缀可以为 .pt/.pth</span></span><br><span class="line">torch.save(net, PATH)</span><br><span class="line"></span><br><span class="line">model_dict = torch.load(PATH)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Approach 2</span></span><br><span class="line"><span class="comment"># 保存网络中的参数，</span></span><br><span class="line">torch.save(net.state_dict(), PATH)</span><br><span class="line">model = TheModelClass(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">model_dict = model.load_state_dict(torch.load(PATH))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Approach 3: Save model to resume training later</span></span><br><span class="line"><span class="comment"># 用于恢复 training 的过程，除了保存 model， 还需要保存 the state of optimizer,epochs,score等。</span></span><br><span class="line">state = &#123;</span><br><span class="line">    <span class="string">'epoch'</span>: epoch,</span><br><span class="line">    <span class="string">'state_dict'</span>: model.state_dict(),</span><br><span class="line">    <span class="string">'optimizer'</span>: optimizer.state_dict(),</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">torch.save(state, filepath)</span><br><span class="line"></span><br><span class="line">model.load_state_dict(state[<span class="string">'state_dict'</span>])</span><br><span class="line">optimizer.load_state_dict(state[<span class="string">'optimizer'</span>])</span><br></pre></td></tr></table></figure>
 
+<p>对于 approach 2 存在的一些缺点：</p>
+<blockquote>
+<p>However in this case, the serialized data is bound to the specific classes and the exact directory structure used, so it can break in various ways when used in other projects, or after some serious refactors.</p>
+</blockquote>
 <h2 id="9-参考"><a href="#9-参考" class="headerlink" title="9. 参考"></a>9. 参考</h2><ul>
 <li><a href="https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/" target="_blank" rel="noopener">PyTorch-官方教程</a></li>
 <li><a href="https://pytorch.org/docs/stable/torch.html" target="_blank" rel="noopener">pytorch-文档</a>    </li>
@@ -589,6 +655,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/MLDL/" rel="tag"># MLDL</a>
+          
+        </div>
+      
 
       
       
@@ -598,8 +670,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/04/MLDL/pytorch(2)/" rel="next" title="MLDL/pytorch(2)">
-                <i class="fa fa-chevron-left"></i> MLDL/pytorch(2)
+              <a href="/2020/01/04/MLDL/pytorch(2)/" rel="next" title="pytorch(2)">
+                <i class="fa fa-chevron-left"></i> pytorch(2)
               </a>
             
           </div>
@@ -608,8 +680,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/01/04/MLDL/RNN/" rel="prev" title="MLDL/RNN">
-                MLDL/RNN <i class="fa fa-chevron-right"></i>
+              <a href="/2020/01/04/MLDL/numpy%E4%B9%8B%E7%BB%B4%E5%BA%A6%E5%8F%98%E6%8D%A2/" rel="prev" title="numpy 之 维度变换">
+                numpy 之 维度变换 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -691,14 +763,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-count">214</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
@@ -728,7 +818,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PyTorch"><span class="nav-number">1.</span> <span class="nav-text">PyTorch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">0. 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-1-数据类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">0.1 数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-2-对-torch-Tensor-的操作方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">0.2 对 torch.Tensor 的操作方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-3-变换数据维度"><span class="nav-number">1.1.3.</span> <span class="nav-text">0.3 变换数据维度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-4-数据拼接"><span class="nav-number">1.1.4.</span> <span class="nav-text">0.4 数据拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-5-数据压栈"><span class="nav-number">1.1.5.</span> <span class="nav-text">0.5 数据压栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-6-数据压缩"><span class="nav-number">1.1.6.</span> <span class="nav-text">0.6 数据压缩</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Variable-变量"><span class="nav-number">1.2.</span> <span class="nav-text">1. Variable(变量)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Parameters"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1 Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Dataset-数据集"><span class="nav-number">1.3.</span> <span class="nav-text">2. Dataset(数据集)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-激励函数"><span class="nav-number">1.4.</span> <span class="nav-text">3. 激励函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Commonly-used-function"><span class="nav-number">1.5.</span> <span class="nav-text">4. Commonly used function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Containers（容器）-torch-nn-Module"><span class="nav-number">1.6.</span> <span class="nav-text">5. Containers（容器） torch.nn Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-nn-Linear-in-features-out-features-bias-True"><span class="nav-number">1.6.1.</span> <span class="nav-text">5.1 nn.Linear(in_features, out_features, bias=True)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-1-Parameters"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">5.1.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-2-Shape"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">5.1.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-3-Example"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">5.1.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-nn-Dropout-p-0-5-inplace-False"><span class="nav-number">1.6.2.</span> <span class="nav-text">5.2 nn.Dropout(p=0.5, inplace=False)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-nn-ReLU-inplace-False"><span class="nav-number">1.6.3.</span> <span class="nav-text">5.3 nn.ReLU(inplace=False)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-nn-Embedding-num-embeddings-embedding-dim-padding-idx-None-max-norm-None-norm-type-2-scale-grad-by-freq-False-sparse-False"><span class="nav-number">1.6.4.</span> <span class="nav-text">5.4 nn.Embedding(num_embeddings, embedding_dim, padding_idx=None, max_norm=None, norm_type=2, scale_grad_by_freq=False, sparse=False)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-nn-Sequential-args"><span class="nav-number">1.6.5.</span> <span class="nav-text">5.5 nn.Sequential(*args)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-nn-CrossEntropyLoss"><span class="nav-number">1.6.6.</span> <span class="nav-text">5.6 nn.CrossEntropyLoss</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-1-Parameters"><span class="nav-number">1.6.6.1.</span> <span class="nav-text">5.6.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-2-Shape"><span class="nav-number">1.6.6.2.</span> <span class="nav-text">5.6.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-3-Example"><span class="nav-number">1.6.6.3.</span> <span class="nav-text">5.6.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-nn-RNN"><span class="nav-number">1.6.7.</span> <span class="nav-text">5.7 nn.RNN()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-1-Parameters"><span class="nav-number">1.6.7.1.</span> <span class="nav-text">5.7.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-2-Shape"><span class="nav-number">1.6.7.2.</span> <span class="nav-text">5.7.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-3-Example"><span class="nav-number">1.6.7.3.</span> <span class="nav-text">5.7.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-8-nn-LSTM"><span class="nav-number">1.6.8.</span> <span class="nav-text">5.8 nn.LSTM()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8-1-Parameters"><span class="nav-number">1.6.8.1.</span> <span class="nav-text">5.8.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8-2-Shape"><span class="nav-number">1.6.8.2.</span> <span class="nav-text">5.8.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8-3-Example"><span class="nav-number">1.6.8.3.</span> <span class="nav-text">5.8.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-9-nn-GRU"><span class="nav-number">1.6.9.</span> <span class="nav-text">5.9 nn.GRU()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9-1-Parameters"><span class="nav-number">1.6.9.1.</span> <span class="nav-text">5.9.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9-2-Shape"><span class="nav-number">1.6.9.2.</span> <span class="nav-text">5.9.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9-3-Example"><span class="nav-number">1.6.9.3.</span> <span class="nav-text">5.9.3 Example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-torch-optim"><span class="nav-number">1.7.</span> <span class="nav-text">6. torch.optim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-如何使用-optimizer"><span class="nav-number">1.7.1.</span> <span class="nav-text">6.1 如何使用 optimizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-常用函数"><span class="nav-number">1.7.2.</span> <span class="nav-text">6.2 常用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-torch-utils"><span class="nav-number">1.8.</span> <span class="nav-text">7. torch.utils</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-torch-utils-data-Dataloader"><span class="nav-number">1.8.1.</span> <span class="nav-text">7.1 torch.utils.data.Dataloader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-模型的保存与加载"><span class="nav-number">1.9.</span> <span class="nav-text">8. 模型的保存与加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-参考"><span class="nav-number">1.10.</span> <span class="nav-text">9. 参考</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#PyTorch"><span class="nav-number">1.</span> <span class="nav-text">PyTorch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#0-基本数据类型"><span class="nav-number">1.1.</span> <span class="nav-text">0. 基本数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#0-1-数据类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">0.1 数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-2-对-torch-Tensor-的操作方法"><span class="nav-number">1.1.2.</span> <span class="nav-text">0.2 对 torch.Tensor 的操作方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-3-变换数据维度"><span class="nav-number">1.1.3.</span> <span class="nav-text">0.3 变换数据维度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-4-数据拼接"><span class="nav-number">1.1.4.</span> <span class="nav-text">0.4 数据拼接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-5-数据压栈"><span class="nav-number">1.1.5.</span> <span class="nav-text">0.5 数据压栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-6-数据压缩"><span class="nav-number">1.1.6.</span> <span class="nav-text">0.6 数据压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#0-7-torch-上的一些数学运算：-torch-bmm-torch-mm-torch-matmul-torch-mul"><span class="nav-number">1.1.7.</span> <span class="nav-text">0.7 torch 上的一些数学运算： torch.bmm(),torch.mm(),torch.matmul(),torch.mul()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Variable-变量"><span class="nav-number">1.2.</span> <span class="nav-text">1. Variable(变量)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Parameters"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1 Parameters</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Dataset-数据集"><span class="nav-number">1.3.</span> <span class="nav-text">2. Dataset(数据集)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-激励函数"><span class="nav-number">1.4.</span> <span class="nav-text">3. 激励函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Commonly-used-function"><span class="nav-number">1.5.</span> <span class="nav-text">4. Commonly used function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Containers（容器）-torch-nn-Module"><span class="nav-number">1.6.</span> <span class="nav-text">5. Containers（容器） torch.nn Module</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-nn-Linear-in-features-out-features-bias-True"><span class="nav-number">1.6.1.</span> <span class="nav-text">5.1 nn.Linear(in_features, out_features, bias=True)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-1-Parameters"><span class="nav-number">1.6.1.1.</span> <span class="nav-text">5.1.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-2-Shape"><span class="nav-number">1.6.1.2.</span> <span class="nav-text">5.1.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-3-Example"><span class="nav-number">1.6.1.3.</span> <span class="nav-text">5.1.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-nn-Dropout-p-0-5-inplace-False"><span class="nav-number">1.6.2.</span> <span class="nav-text">5.2 nn.Dropout(p=0.5, inplace=False)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-nn-ReLU-inplace-False"><span class="nav-number">1.6.3.</span> <span class="nav-text">5.3 nn.ReLU(inplace=False)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-nn-Embedding-num-embeddings-embedding-dim-padding-idx-None-max-norm-None-norm-type-2-scale-grad-by-freq-False-sparse-False"><span class="nav-number">1.6.4.</span> <span class="nav-text">5.4 nn.Embedding(num_embeddings, embedding_dim, padding_idx=None, max_norm=None, norm_type=2, scale_grad_by_freq=False, sparse=False)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-nn-Sequential-args"><span class="nav-number">1.6.5.</span> <span class="nav-text">5.5 nn.Sequential(*args)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-nn-CrossEntropyLoss"><span class="nav-number">1.6.6.</span> <span class="nav-text">5.6 nn.CrossEntropyLoss</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-1-Parameters"><span class="nav-number">1.6.6.1.</span> <span class="nav-text">5.6.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-2-Shape"><span class="nav-number">1.6.6.2.</span> <span class="nav-text">5.6.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-6-3-Example"><span class="nav-number">1.6.6.3.</span> <span class="nav-text">5.6.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-7-nn-RNN"><span class="nav-number">1.6.7.</span> <span class="nav-text">5.7 nn.RNN()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-1-Parameters"><span class="nav-number">1.6.7.1.</span> <span class="nav-text">5.7.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-2-Shape"><span class="nav-number">1.6.7.2.</span> <span class="nav-text">5.7.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-7-3-Example"><span class="nav-number">1.6.7.3.</span> <span class="nav-text">5.7.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-8-nn-LSTM"><span class="nav-number">1.6.8.</span> <span class="nav-text">5.8 nn.LSTM()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8-1-Parameters"><span class="nav-number">1.6.8.1.</span> <span class="nav-text">5.8.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8-2-Shape"><span class="nav-number">1.6.8.2.</span> <span class="nav-text">5.8.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-8-3-Example"><span class="nav-number">1.6.8.3.</span> <span class="nav-text">5.8.3 Example</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-9-nn-GRU"><span class="nav-number">1.6.9.</span> <span class="nav-text">5.9 nn.GRU()</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9-1-Parameters"><span class="nav-number">1.6.9.1.</span> <span class="nav-text">5.9.1 Parameters</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9-2-Shape"><span class="nav-number">1.6.9.2.</span> <span class="nav-text">5.9.2 Shape</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-9-3-Example"><span class="nav-number">1.6.9.3.</span> <span class="nav-text">5.9.3 Example</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-torch-optim"><span class="nav-number">1.7.</span> <span class="nav-text">6. torch.optim</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-如何使用-optimizer"><span class="nav-number">1.7.1.</span> <span class="nav-text">6.1 如何使用 optimizer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-常用函数"><span class="nav-number">1.7.2.</span> <span class="nav-text">6.2 常用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-torch-utils"><span class="nav-number">1.8.</span> <span class="nav-text">7. torch.utils</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-torch-utils-data-Dataloader"><span class="nav-number">1.8.1.</span> <span class="nav-text">7.1 torch.utils.data.Dataloader</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-模型的保存与加载"><span class="nav-number">1.9.</span> <span class="nav-text">8. 模型的保存与加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-参考"><span class="nav-number">1.10.</span> <span class="nav-text">9. 参考</span></a></li></ol></li></ol></div>
             
 
           </div>

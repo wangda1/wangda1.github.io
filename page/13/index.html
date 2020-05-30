@@ -229,9 +229,39 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Nf5_s5_h8Jo7hX6Vxqmp','2.0.0');
+</script>
+
+
+
+    </div>
   
 </nav>
 
@@ -260,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/Python/enumerate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -279,7 +309,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/" itemprop="url">NLP/Course/新闻推荐系统_武楚涵</a></h1>
+                <a class="post-title-link" href="/2019/11/14/Python/enumerate/" itemprop="url">enumerate</a></h1>
         
 
         <div class="post-meta">
@@ -291,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T11:27:50+08:00">
+                2019-11-14
               </time>
             
 
@@ -301,6 +331,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -331,1293 +383,1382 @@
       
         
           
-            <h1 id="新闻推荐"><a href="#新闻推荐" class="headerlink" title="新闻推荐"></a>新闻推荐</h1><p><em>清华大学武楚涵博士</em></p>
-<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu01.jpg" alt="wu_01"></p>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu02.jpg" alt="wu_02"></p>
+            <h1 id="enumerate-函数"><a href="#enumerate-函数" class="headerlink" title="enumerate() 函数"></a>enumerate() 函数</h1><p><code>enumerate()</code> 函数将一个可遍历的数据对象（如列表、元组、字符串等）组合成一个索引序列，同时列出数据和数据下标</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;seasons = [<span class="string">'Spring'</span>, <span class="string">'Summer'</span>, <span class="string">'Fall'</span>, <span class="string">'Winter'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(enumerate(seasons))</span><br><span class="line">[(<span class="number">0</span>, <span class="string">'Spring'</span>), (<span class="number">1</span>, <span class="string">'Summer'</span>), (<span class="number">2</span>, <span class="string">'Fall'</span>), (<span class="number">3</span>, <span class="string">'Winter'</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(enumerate(seasons, start=<span class="number">1</span>))       <span class="comment"># 下标从 1 开始</span></span><br><span class="line">[(<span class="number">1</span>, <span class="string">'Spring'</span>), (<span class="number">2</span>, <span class="string">'Summer'</span>), (<span class="number">3</span>, <span class="string">'Fall'</span>), (<span class="number">4</span>, <span class="string">'Winter'</span>)]</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/Python/print_function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/14/Python/print_function/" itemprop="url">print_function</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T10:24:34+08:00">
+                2019-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Print-Function"><a href="#Print-Function" class="headerlink" title="Print Function"></a>Print Function</h1><p><em>前言：由 Python function 引起的一系列知识点</em></p>
+<h2 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h2><p>在写 python 代码时，经常需要用到 <code>print</code> 函数进行打印输出，但这种方法带来便利的同时，也会常在调试结束后增加删去相关代码的负担。一个常用的方法是对 <code>print()</code> 包装一层，加入一些 <code>Debug</code> 的关键字</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">debug_print</span><span class="params">(*values, sep=<span class="string">' '</span>, end=<span class="string">'\n'</span>, file=sys.stdout, flush=False)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Print Function for debug</span></span><br><span class="line"><span class="string">    :param values:</span></span><br><span class="line"><span class="string">    :param sep:</span></span><br><span class="line"><span class="string">    :param end:</span></span><br><span class="line"><span class="string">    :param file:</span></span><br><span class="line"><span class="string">    :param flush:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> DEBUG:</span><br><span class="line">        print(*values, sep=sep, end=end, file=file, flush=flush)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>这需要用到的是 <code>print()</code> 的形参列表：<code>print(*values, sep=sep, end=end, file=file, flush=flush)</code>，这里的 <code>*values</code> 前面的 star 代表的意思是什么呢？</p>
+<h2 id="2-函数形参"><a href="#2-函数形参" class="headerlink" title="2. 函数形参"></a>2. 函数形参</h2><h3 id="2-1-函数形参中带有1个star"><a href="#2-1-函数形参中带有1个star" class="headerlink" title="2.1 函数形参中带有1个star"></a>2.1 函数形参中带有1个star</h3><p>具体详见：<a href="https://blog.csdn.net/qinyilang/article/details/5484415" target="_blank" rel="noopener">https://blog.csdn.net/qinyilang/article/details/5484415</a></p>
 <ol>
-<li>Google News Personalization: Scalable Online Collaborative Filtering”, WWW’07, pp. 271-280, 2007.</li>
+<li>函数形参加一个 star：表示可以接受多个参数，这适用于变参数传参的场景：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">sum_</span><span class="params">(*values)</span>:</span>      <span class="comment">#   被包装成 tuple</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>    print(values)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>    print(sum(*values)) <span class="comment">#   tuple 的解压操作</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = [<span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(a)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="comment"># print(sum(*a))</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(sum_(a))</span><br></pre></td></tr></table></figure>
+Output:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[1, 2]</span><br><span class="line">([1, 2],)</span><br><span class="line">3</span><br><span class="line">None</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu03.jpg" alt="wu_03"></p>
-<ol>
-<li>Jeong Woo Son, A.-Yeong Kim, Seong-Bae Park:<br>A location-based news article recommendation with explicit localized semantic analysis. SIGIR 2013: 293-302</li>
-<li>Trapit Bansal, Mrinal Kanti Das, Chiranjib Bhattacharyya:<br>Content Driven User Profiling for Comment-Worthy Recommendations of News and Blog Articles. RecSys 2015: 195-202</li>
-<li>Jianxun Lian, Fuzheng Zhang, Xing Xie, Guangzhong Sun:<br>Towards Better Representation Learning for Personalized News Recommendation: a Multi-Channel Deep Fusion Approach. IJCAI 2018: 3805-3811</li>
-</ol>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu04.jpg" alt="wu_04"></p>
-<ol>
-<li>Shumpei Okura, Yukihiro Tagami, Shingo Ono, Akira Tajima:<br>Embedding-based News Recommendation for Millions of Users. 1933-1942</li>
-</ol>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu05.jpg" alt="wu_05"></p>
-<ol>
-<li>Hongwei Wang, Fuzheng Zhang, Xing Xie, Minyi Guo:<br>DKN: Deep Knowledge-Aware Network for News Recommendation. WWW 2018: 1835-1844</li>
-</ol>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu06.jpg" alt="wu_06"></p>
-<ol>
-<li>Qiannan Zhu, Xiaofei Zhou, Zeliang Song, Jianlong Tan, Li Guo:<br>DAN: Deep Attention Neural Network for News Recommendation. AAAI 2019: 5973-5980</li>
-</ol>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu07.jpg" alt="wu_07"></p>
-<ol>
-<li>Dhruv Khattar, Vaibhav Kumar, Vasudeva Varma, Manish Gupta:<br>Weave&amp;Rec: A Word Embedding based 3-D Convolutional Network for News Recommendation. CIKM 2018: 1855-1858</li>
-</ol>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu08.jpg" alt="wu_08"></p>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu09.jpg" alt="wu_09"></p>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu10.jpg" alt="wu_10"></p>
-<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu11.jpg" alt="wu_11"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/%E5%BC%80%E6%94%BE%E5%9F%9F%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E5%88%98%E5%BA%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/Course/%E5%BC%80%E6%94%BE%E5%9F%9F%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E5%88%98%E5%BA%B7/" itemprop="url">NLP/Course/开放域的事件抽取_刘康</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/" itemprop="url">NLP/Course/事件抽取_陈玉博</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="事件抽取-讲座"><a href="#事件抽取-讲座" class="headerlink" title="事件抽取-讲座"></a>事件抽取-讲座</h1><p><em>主讲人：陈玉博，中科院自动化所，DmCNN的一作</em></p>
-<p><em>参考CSDN公开课视频：<a href="https://edu.csdn.net/course/play/25560/307899" target="_blank" rel="noopener">https://edu.csdn.net/course/play/25560/307899</a></em></p>
-<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_01.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_02.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_03.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_04.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_05.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_06.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_07.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_08.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_09.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_10.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_11.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_12.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_13.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_14.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_15.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_16.png" alt="chen_ee"></p>
-<h2 id="1-特征表示"><a href="#1-特征表示" class="headerlink" title="1. 特征表示"></a>1. 特征表示</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_17.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_18.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_19.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_20.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_21.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_22.png" alt="chen_ee"></p>
-<h2 id="2-训练数据生成和扩展"><a href="#2-训练数据生成和扩展" class="headerlink" title="2. 训练数据生成和扩展"></a>2. 训练数据生成和扩展</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_23.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_24.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_25.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_26.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_27.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_28.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_29.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_30.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_31.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_32.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_33.png" alt="chen_ee"></p>
-<h2 id="3-多事件协同抽取"><a href="#3-多事件协同抽取" class="headerlink" title="3. 多事件协同抽取"></a>3. 多事件协同抽取</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_34.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_35.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_36.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_37.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_38.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_39.png" alt="chen_ee"></p>
-<h2 id="4-篇章级事件抽取"><a href="#4-篇章级事件抽取" class="headerlink" title="4. 篇章级事件抽取"></a>4. 篇章级事件抽取</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_40.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_41.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_42.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_43.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_44.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_45.png" alt="chen_ee"></p>
-<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_47.png" alt="chen_ee"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/" itemprop="url">NLP/Course/中文事件抽取综述</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="中文事件抽取技术研究"><a href="#中文事件抽取技术研究" class="headerlink" title="中文事件抽取技术研究"></a>中文事件抽取技术研究</h2><p><em>C:/Users/wangc/Desktop/newsGrid/paper/事件抽取</em></p>
-<h3 id="1-Motivation"><a href="#1-Motivation" class="headerlink" title="1. Motivation"></a>1. Motivation</h3><h4 id="1-1-事件抽取的三大关键技术："><a href="#1-1-事件抽取的三大关键技术：" class="headerlink" title="1.1 事件抽取的三大关键技术："></a>1.1 事件抽取的三大关键技术：</h4><ul>
-<li>EMD（Entity Mention Detection），实体识别</li>
-<li>ED（Event Detection），事件的识别</li>
-<li>ARP（Argument Role Prediction），论元角色的识别</li>
-</ul>
-<h4 id="1-2-事件抽取的方法："><a href="#1-2-事件抽取的方法：" class="headerlink" title="1.2 事件抽取的方法："></a>1.2 事件抽取的方法：</h4><ul>
-<li>基于模式匹配的方法</li>
-<li>基于机器学习的方法</li>
-</ul>
-<h4 id="1-3-基于机器学习的方法把事件抽取的任务看作分类问题，"><a href="#1-3-基于机器学习的方法把事件抽取的任务看作分类问题，" class="headerlink" title="1.3 基于机器学习的方法把事件抽取的任务看作分类问题，"></a>1.3 基于机器学习的方法把事件抽取的任务看作分类问题，</h4><blockquote>
-<p>Hai Leong Chieu 和 Hwee Tou<br>Ng 于 2002 年首次在事件抽取中引入最大熵分类<br>器[9 ] ,用于事件元素的识别 ; David Ahn 2006 年结<br>合 MegaM 和 Timbl 两种机器学习方法分别实现了<br>事件抽取中事件类别识别和事件元素识别这两个主<br>要步骤 , 在 ACE 英文语料上均取得了不错的效<br>果[4 ] 。 但 Ahn 的方法由于将每个词作为一个实例<br>来训练机器学习模型 ,引入了大量的反例 ,导致正反<br>例严重不平衡 ;此外 ,事件类别的多元分类以及为每<br>类事件元素单独构造多元分类器在语料规模较小的<br>时候存在着一定的数据稀疏问题 。</p>
-</blockquote>
-<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><blockquote>
-<p>本文提出一种基于触发<br>词扩展和二元分类相结合的识别方法进行事件类别<br>的识别 ,多元分类模型的方法进行事件元素的识别 ,<br>较好的避免了正反例不平衡和数据稀疏问题 。</p>
-</blockquote>
-<p><strong>keywords: 基于触发词扩展和二元分类的事件识别，多元分类用于事件元素识别</strong></p>
-<h4 id="2-1-系统架构图"><a href="#2-1-系统架构图" class="headerlink" title="2.1 系统架构图"></a>2.1 系统架构图</h4><p><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B01.png" alt="系统架构图"></p>
-<h4 id="2-2-事件类别的识别"><a href="#2-2-事件类别的识别" class="headerlink" title="2.2 事件类别的识别"></a>2.2 事件类别的识别</h4><p>a. 通过对句子的分词查看扩充之后的触发词表，并对每一个候选事件划定一个候选事件类别的范围；</p>
-<p>b. 通过将候选事件类别识别看作一个二元分类的问题，判断是否为满足候选类别的事件；<br><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B02.png" alt="特征描述"></p>
-<h4 id="2-3-事件元素的识别"><a href="#2-3-事件元素的识别" class="headerlink" title="2.3 事件元素的识别"></a>2.3 事件元素的识别</h4><p>将事件元素的识别任务看成分类问题，转换为对文本中每个候选元素进行类别标签的识别，再进行挑选</p>
-<p>a. 三种多元分类的策略</p>
-<p><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B03.png" alt="分类策略"></p>
-<p>b. 特征的选取</p>
-<p><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B04.png" alt="分类特征"></p>
-<h3 id="3-Performance"><a href="#3-Performance" class="headerlink" title="3. Performance"></a>3. Performance</h3><p>使用 ACE 2005 中文语料作为实验数据，使用 F值的评价方法进行评测。</p>
-<h3 id="4-Conclusion"><a href="#4-Conclusion" class="headerlink" title="4. Conclusion"></a>4. Conclusion</h3><p>这篇文章采用的是对事件识别和事件论元识别的分类方法，一种典型的 Pipe Model，在模型的改进方面并没有多大的创新。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/word2vec/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/Course/word2vec/" itemprop="url">NLP/Course/word2vec</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#</p>
-<p><em>位置：C:\Users\wangc\Desktop\newsGrid\paper\representation\word2vec.pdf</em></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/Neural_Joint_Model_Of_Entities_And_Events/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/Course/Neural_Joint_Model_Of_Entities_And_Events/" itemprop="url">NLP/Course/Neural_Joint_Model_Of_Entities_And_Events</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#</p>
-<p><em>位置：C:\Users\wangc\Desktop\newsGrid\paper\事件抽取\1812.00195.pdf</em></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/Distributed-representation-of-words-and-phrases/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/Course/Distributed-representation-of-words-and-phrases/" itemprop="url">NLP/Course/Distributed-representation-of-words-and-phrases</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>#</p>
-<p><em>位置：C:\Users\wangc\Desktop\newsGrid\paper\representation\5021-distributed-representations-of-words-and-phrases-and-their-compositionality</em></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/CORPUS/ACE_2005/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/CORPUS/ACE_2005/" itemprop="url">NLP/CORPUS/ACE_2005</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ACE-2005-数据集详解"><a href="#ACE-2005-数据集详解" class="headerlink" title="ACE 2005 数据集详解"></a>ACE 2005 数据集详解</h1><p><code>ace_2005_td_v7_LDC2006T06</code></p>
-<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h2><h2 id="2-事件抽取任务"><a href="#2-事件抽取任务" class="headerlink" title="2. 事件抽取任务"></a>2. 事件抽取任务</h2><ul>
-<li>事件检测（Event Detection），主要是根据上下文识别出触发词以及代表的事件类型和子类型；</li>
-<li>事件元素识别（Argument Detection）：事件元素是指事件的参与者。</li>
-</ul>
-<h2 id="3-标注类型"><a href="#3-标注类型" class="headerlink" title="3. 标注类型"></a>3. 标注类型</h2><p>ACE2005定义了8种事件类别以及33种子类别。</p>
-<p><img src="/2020/01/04/NLP/CORPUS/ACE_2005/ace_2005.jpg" alt="ace_2005"></p>
-<p><img src="/2020/01/04/NLP/CORPUS/ACE_2005/ACE2005_datasets.png" alt="ace_2005"></p>
-<h2 id="4-文件类型分析"><a href="#4-文件类型分析" class="headerlink" title="4. 文件类型分析"></a>4. 文件类型分析</h2><h3 id="4-1-xxx-apf-xml-文件"><a href="#4-1-xxx-apf-xml-文件" class="headerlink" title="4.1 xxx.apf.xml 文件"></a>4.1 <code>xxx.apf.xml</code> 文件</h3><p>噶该文件为 <code>ACE annotation file format</code>，里面包含了多种标注：<code>entity</code>、<code>relation</code>、<code>event</code>；</p>
-<h4 id="4-1-1-entity-的标注"><a href="#4-1-1-entity-的标注" class="headerlink" title="4.1.1 entity 的标注"></a>4.1.1 <code>entity</code> 的标注</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">entity</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-E1"</span> <span class="attr">TYPE</span>=<span class="string">"PER"</span> <span class="attr">SUBTYPE</span>=<span class="string">"Individual"</span> <span class="attr">CLASS</span>=<span class="string">"SPC"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">entity_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-E1-2"</span> <span class="attr">TYPE</span>=<span class="string">"NOM"</span> <span class="attr">LDCTYPE</span>=<span class="string">"NOMPRE"</span> <span class="attr">LDCATR</span>=<span class="string">"TRUE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"490"</span> <span class="attr">END</span>=<span class="string">"498"</span>&gt;</span>Secretary<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"490"</span> <span class="attr">END</span>=<span class="string">"498"</span>&gt;</span>Secretary<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">entity_mention</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">entity_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-E1-14"</span> <span class="attr">TYPE</span>=<span class="string">"NAM"</span> <span class="attr">LDCTYPE</span>=<span class="string">"NAM"</span> <span class="attr">LDCATR</span>=<span class="string">"FALSE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"754"</span> <span class="attr">END</span>=<span class="string">"793"</span>&gt;</span>Secretary of Homeland Security Tom Ridge<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"785"</span> <span class="attr">END</span>=<span class="string">"793"</span>&gt;</span>Tom Ridge<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">entity_mention</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">entity</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-1-2-relation-的标注"><a href="#4-1-2-relation-的标注" class="headerlink" title="4.1.2 relation 的标注"></a>4.1.2 <code>relation</code> 的标注</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">relation</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-R2"</span> <span class="attr">TYPE</span>=<span class="string">"PART-WHOLE"</span> <span class="attr">SUBTYPE</span>=<span class="string">"Geographical"</span> <span class="attr">TENSE</span>=<span class="string">"Unspecified"</span> <span class="attr">MODALITY</span>=<span class="string">"Asserted"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relation_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-1"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relation_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E3"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-2"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relation_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-R2-1"</span> <span class="attr">LEXICALCONDITION</span>=<span class="string">"Possessive"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"1873"</span> <span class="attr">END</span>=<span class="string">"1882"</span>&gt;</span>our shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relation_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99-69"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"1873"</span> <span class="attr">END</span>=<span class="string">"1882"</span>&gt;</span>our shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">relation_mention_argument</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relation_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E3-70"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-2"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"1873"</span> <span class="attr">END</span>=<span class="string">"1875"</span>&gt;</span>our<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">relation_mention_argument</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">relation_mention</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">relation</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="4-1-3-event-的标注"><a href="#4-1-3-event-的标注" class="headerlink" title="4.1.3 event 的标注"></a>4.1.3 <code>event</code> 的标注</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">event</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-EV1"</span> <span class="attr">TYPE</span>=<span class="string">"Movement"</span> <span class="attr">SUBTYPE</span>=<span class="string">"Transport"</span> <span class="attr">MODALITY</span>=<span class="string">"Asserted"</span> <span class="attr">POLARITY</span>=<span class="string">"Positive"</span> <span class="attr">GENERICITY</span>=<span class="string">"Specific"</span> <span class="attr">TENSE</span>=<span class="string">"Past"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E96"</span> <span class="attr">ROLE</span>=<span class="string">"Vehicle"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E98"</span> <span class="attr">ROLE</span>=<span class="string">"Person"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99"</span> <span class="attr">ROLE</span>=<span class="string">"Destination"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E4"</span> <span class="attr">ROLE</span>=<span class="string">"Agent"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-EV1-1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"369"</span> <span class="attr">END</span>=<span class="string">"449"</span>&gt;</span>a 30-foot Cuban patrol boat with four heavily armed men landed on</span><br><span class="line">American shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ldc_scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"277"</span> <span class="attr">END</span>=<span class="string">"514"</span>&gt;</span>Even as the</span><br><span class="line">secretary of homeland security was putting his people on high alert last</span><br><span class="line">month, a 30-foot Cuban patrol boat with four heavily armed men landed on</span><br><span class="line">American shores, utterly undetected by the Coast Guard Secretary Ridge</span><br><span class="line">now leads<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ldc_scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">anchor</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"425"</span> <span class="attr">END</span>=<span class="string">"430"</span>&gt;</span>landed<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">anchor</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">event_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E96-178"</span> <span class="attr">ROLE</span>=<span class="string">"Vehicle"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"369"</span> <span class="attr">END</span>=<span class="string">"423"</span>&gt;</span>a 30-foot Cuban patrol boat with four heavily armed men<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">event_mention_argument</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">event_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E98-180"</span> <span class="attr">ROLE</span>=<span class="string">"Person"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"402"</span> <span class="attr">END</span>=<span class="string">"423"</span>&gt;</span>four heavily armed men<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">event_mention_argument</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">event_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99-181"</span> <span class="attr">ROLE</span>=<span class="string">"Destination"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"435"</span> <span class="attr">END</span>=<span class="string">"449"</span>&gt;</span>American shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">event_mention_argument</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">event_mention</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">event</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4-2-xxx-sgm-文件"><a href="#4-2-xxx-sgm-文件" class="headerlink" title="4.2 xxx.sgm 文件"></a>4.2 <code>xxx.sgm</code> 文件</h3><p><code>.sgm</code>文件为 SGM 格式的文件，其中保存的为新闻的原文</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DOC</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">DOCID</span>&gt;</span> CNN_CF_20030303.1900.00 <span class="tag">&lt;/<span class="name">DOCID</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">SOURCE</span>=<span class="string">"broadcast conversation"</span>&gt;</span> STORY <span class="tag">&lt;/<span class="name">DOCTYPE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">DATETIME</span>&gt;</span> 2003-03-03T19:00:00-05:00 <span class="tag">&lt;/<span class="name">DATETIME</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">BODY</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">HEADLINE</span>&gt;</span></span><br><span class="line">New Questions About Attacking Iraq; Is Torturing Terrorists Necessary?</span><br><span class="line"><span class="tag">&lt;/<span class="name">HEADLINE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TEXT</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TURN</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">SPEAKER</span>&gt;</span> BEGALA <span class="tag">&lt;/<span class="name">SPEAKER</span>&gt;</span></span><br><span class="line">Well, we'll debate that later on in the show. We'll have a couple of</span><br><span class="line">experts come out, so I'll withhold my comments until then. Even as the</span><br><span class="line">secretary of homeland security was putting his people on high alert last</span><br><span class="line">month, a 30-foot Cuban patrol boat with four heavily armed men landed on</span><br><span class="line">American shores, utterly undetected by the Coast Guard Secretary Ridge</span><br><span class="line">now leads. Now, why has our president placed homeland security in the</span><br><span class="line">hands of Republican political hacks instead of professionals, by the way?</span><br><span class="line">Attorney General John Ashcroft, for example, is a career politician. He</span><br><span class="line">lost an election to a dead man. Secretary of Homeland Security Tom Ridge</span><br><span class="line">is another career politician who was passed over by Mr. Bush for the vice</span><br><span class="line">presidency. And Deputy Secretary of Homeland Security Asa Hutchinson is</span><br><span class="line">yet another career politician and a graduate of the disgraceful Bob Jones</span><br><span class="line">University. Apparently, Mr. Bush only turns to professionals when it's</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-事件抽取"><a href="#5-事件抽取" class="headerlink" title="5. 事件抽取"></a>5. 事件抽取</h3><p>因为用ACE2005数据集多用来做事件抽取的任务，这里详细介绍下事件抽取相关。</p>
-<p>关于 event-type 以及 event-argument 的相关，可以参考 <a href="https://www.ldc.upenn.edu/sites/www.ldc.upenn.edu/files/english-events-guidelines-v5.4.3.pdf" target="_blank" rel="noopener">ldc-document</a></p>
-<h3 id="6-ACE-数据的预处理"><a href="#6-ACE-数据的预处理" class="headerlink" title="6. ACE 数据的预处理"></a>6. ACE 数据的预处理</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%A3%80%E6%B5%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%A3%80%E6%B5%8B/" itemprop="url">NLP/文本相似度检测</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/NLP/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" itemprop="url">NLP/文本数据预处理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:21+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>文本数据的预处理根据语种而有些不同，如：</p>
-<ul>
-<li>中文数据的文本预处理过程：分词、去停用词 …</li>
-<li>英文数据的文本预处理过程：分词、去停用词、<strong>提取词干</strong> …</li>
-</ul>
-<h2 id="1-中文数据的预处理"><a href="#1-中文数据的预处理" class="headerlink" title="1. 中文数据的预处理"></a>1. 中文数据的预处理</h2><p>1.1 统计词频的几种方法：</p>
-<h2 id="sklearn-feature-extraction-text"><a href="#sklearn-feature-extraction-text" class="headerlink" title="sklearn.feature_extraction.text"></a>sklearn.feature_extraction.text</h2><p>使用 <code>sklearn</code> 的包有两种统计词频的方法，第一种方法使用 wordcount，第二种方法则使用 TF-IDF方法</p>
-<ul>
-<li><code>CountVectorizer</code></li>
-</ul>
-<p><code>CountVectorizer</code> 统计词频后会将其表示成二维矩阵的形式，（i, j）代表 j 列所代表的的词在 i 文档中的词频，使用方式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vectorizer = CountVectorizer()</span><br><span class="line">X = vectorizer.fit_transform(corpus)            <span class="comment"># 输出形式：（i，j） count</span></span><br><span class="line">feature_name = vectorizer.get_feature_name()    <span class="comment"># 输出形式为 词列表</span></span><br><span class="line">X.toarray()                                     <span class="comment"># 输出形式为 矩阵</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>TfidfTransformer</code></li>
-</ul>
-<p><code>TfidfTransformer</code> 可对 <code>CountVectorizer</code> 向量化后的数据进行 TF-IDF 的计算，给出 TF-IDF 值，使用方式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transformer = TfidfTransformer()</span><br><span class="line">tfidf = transformer.fit_transform(vectorizer.fit_transform(corpus))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>TfidfVectorizer</code></li>
-</ul>
-<p><code>TfidfVectorizer</code> = <code>CountVectorizer</code> + <code>TfidfTransformer</code>， 使用方式为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tfidf2 = TfidfVectorizer()</span><br><span class="line">re = tfidf2.fit_transform(corpus)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-英文数据的预处理"><a href="#2-英文数据的预处理" class="headerlink" title="2. 英文数据的预处理"></a>2. 英文数据的预处理</h2><h3 id="2-1-Sentence-Tokenization"><a href="#2-1-Sentence-Tokenization" class="headerlink" title="2.1 Sentence Tokenization"></a>2.1 Sentence Tokenization</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">"Backgammon is one of the oldest known board games. Its history can be traced back nearly 5,000 years to archeological discoveries in the Middle East. It is a two player game where each player has fifteen checkers which move between twenty-four points according to the roll of two dice."</span></span><br><span class="line">sentences = nltk.sent_tokenize(text)</span><br><span class="line"><span class="keyword">for</span> sentence <span class="keyword">in</span> sentences:</span><br><span class="line">    print(sentence)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+<p><strong>对于这种变参数（即：函数形参中带有 * ），参数被传进函数的时候会被包装成 tuple 的一个参数</strong></p>
+<h3 id="2-2-函数形参中带有-2-个-star"><a href="#2-2-函数形参中带有-2-个-star" class="headerlink" title="2.2 函数形参中带有 2 个 star"></a>2.2 函数形参中带有 2 个 star</h3><p>这是一种多关键字参数的场景，传进的参数被包装成 <code>dict</code> 类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="function"><span class="keyword">def</span> <span class="title">print_</span><span class="params">(**kwargs)</span>:</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>    print(kwargs)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print_(a=<span class="number">3</span>, b=<span class="number">5</span>, c=<span class="number">6</span>)</span><br></pre></td></tr></table></figure>
 
 <p>Output:</p>
-<p>Backgammon is one of the oldest known board games.</p>
-<p>Its history can be traced back nearly 5,000 years to archeological discoveries in the Middle East.</p>
-<p>It is a two player game where each player has fifteen checkers which move between twenty-four points according to the roll of two dice.</p>
-<h3 id="2-2-Word-Tokenization"><a href="#2-2-Word-Tokenization" class="headerlink" title="2.2 Word Tokenization"></a>2.2 Word Tokenization</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> sentence <span class="keyword">in</span> sentences:</span><br><span class="line">    words = nltk.word_tokenize(sentence)</span><br><span class="line">    print(words)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&apos;a&apos;: 3, &apos;b&apos;: 5, &apos;c&apos;: 6&#125;</span><br></pre></td></tr></table></figure>
 
-<p>Output:</p>
-<p>[‘Backgammon’, ‘is’, ‘one’, ‘of’, ‘the’, ‘oldest’, ‘known’, ‘board’, ‘games’, ‘.’]</p>
-<p>[‘Its’, ‘history’, ‘can’, ‘be’, ‘traced’, ‘back’, ‘nearly’, ‘5,000’, ‘years’, ‘to’, ‘archeological’, ‘discoveries’, ‘in’, ‘the’, ‘Middle’, ‘East’, ‘.’]</p>
-<p>[‘It’, ‘is’, ‘a’, ‘two’, ‘player’, ‘game’, ‘where’, ‘each’, ‘player’, ‘has’, ‘fifteen’, ‘checkers’, ‘which’, ‘move’, ‘between’, ‘twenty-four’, ‘points’, ‘according’, ‘to’, ‘the’, ‘roll’, ‘of’, ‘two’, ‘dice’, ‘.’]</p>
-<h3 id="2-3-Text-Lemmatization-and-Stemming"><a href="#2-3-Text-Lemmatization-and-Stemming" class="headerlink" title="2.3 Text Lemmatization and Stemming"></a>2.3 Text Lemmatization and Stemming</h3><p>For grammatical reasons, documents can contain different forms of a word such as drive, drives, driving. Also, sometimes we have related words with a similar meaning, such as nation, national, nationality.</p>
-<p><strong>The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form.</strong></p>
-<p>Source: <a href="https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html" target="_blank" rel="noopener">https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html</a></p>
-<p>Examples:</p>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/12/README/" itemprop="url">README</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-12T22:39:57+08:00">
+                2019-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Blogs"><a href="#Blogs" class="headerlink" title="Blogs"></a>Blogs</h1><p>今天(10/21/2017)突然发现我的github不能这样子用，我完全把这玩意儿当成博客网站了，代码倒是没放多少<br>于是乎，打算把blogs都搬移到这里来，以便管理:)（只怪自己太菜了   </p>
+<p>打算分为以下模块：  </p>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>这里记录学习算法的历程</p>
+<h2 id="Operating-System"><a href="#Operating-System" class="headerlink" title="Operating System"></a>Operating System</h2><p>这里记录自己学习操作系统的历程  </p>
+<h2 id="Complier"><a href="#Complier" class="headerlink" title="Complier"></a>Complier</h2><p>这里记录自己学习编译原理的历程  </p>
+<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>这里记录自己在写C/C++时的一些细节的感悟  </p>
+<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><p>这里记录自己在用数据库时的一些常用命令</p>
+<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>这里记录自己用Linux过程中做的一些笔记与摘抄吧  </p>
+<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>这里记录自己了解了的python的一点皮毛  </p>
+<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>这里记录自己了解的JavaScript的一点皮毛  </p>
+<h2 id="Cypher-Security"><a href="#Cypher-Security" class="headerlink" title="Cypher Security"></a>Cypher Security</h2><p>这里记录自己学习的一些网络小技能  </p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>这里记录自己了解的SQL的一点皮毛  </p>
+<h2 id="Something"><a href="#Something" class="headerlink" title="Something"></a>Something</h2><p>这里是一些杂记:)</p>
+<h2 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h2><p>这里记录自己用matlab时的一些笔记与摘抄  </p>
+<h2 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h2><p>这里记录自己学习自然语言处理所遇到的坑和心得、方法总结</p>
+<p>写到这里，发现我真的在过去两年里学的好杂啊，但其实也未必是件坏事，至少它让我没闲着或者说开阔了一定的视野，让我在遇到问题的时候能有一丁点的解决思路<br>同时这中间也踩了不少坑，当然这些坑没白踩，对自己的自学能力也有一定的提高；<br>今天为什么突然心血来潮把这上面的笔记整理一下呢？因为一方面为了github pages做准备，以后有时间就搞一下好看一些，并且这里实现太乱了，看不下去；但最最重要的是接下来我要好好使用github码代码了，fork别人好的项目看看，自己做点有意思的项目，提高自己工程能力  也是为了增加一些自己的硬通货，嗯，就这样了好好写代码，好好思考，不要傻傻地当搬运工。   </p>
+<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><p>初步学习一个领域的知识时，不要纠结于细节的实现，这会让你抓不到大观，也不建议开始啃大部头书，这会打击学习兴趣<br>个人感觉最佳学习路线应该是：先明白做什么 –&gt; 再明白原理与原因 （为什么）–&gt; 后学习实现细节 –&gt; 最后尝试修改实现来优化效果</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/12/Python/%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%BF%AD%E4%BB%A3%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/12/Python/%E7%94%9F%E6%88%90%E5%99%A8%E4%B8%8E%E8%BF%AD%E4%BB%A3%E5%99%A8/" itemprop="url">生成器与迭代器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-12T22:28:31+08:00">
+                2019-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="生成器与迭代器"><a href="#生成器与迭代器" class="headerlink" title="生成器与迭代器"></a>生成器与迭代器</h1><p><em>前言：这是一篇比较散漫的文章，标题只是说明了中心的一部分，往往写这篇文章的理由是由一个具体的事件牵扯进来一串知识点，而这些知识点是我所不熟悉的</em></p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>使用 <code>concurrent.futures.ThreadPoolExecuter</code> 来提交并发任务是一种很常用的方法，往往如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">max_workers = thread_max_workers <span class="keyword">if</span> <span class="keyword">not</span> max_workers <span class="keyword">else</span> max_workers</span><br><span class="line">exe = cf.ThreadPoolExecutor(max_workers=max_workers) <span class="keyword">if</span> mode == <span class="string">'thread'</span> <span class="keyword">else</span> cf.ProcessPoolExecutor(max_workers=max_workers)</span><br><span class="line"><span class="keyword">with</span> exe <span class="keyword">as</span> executor:</span><br><span class="line">    <span class="keyword">if</span> args_list <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(max_workers):</span><br><span class="line">            executor.submit(func)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        executor.map(func, args_list)</span><br></pre></td></tr></table></figure>
+
+<p>但今天使用的时候是通过一个生成器传入参数，查看<a href="https://docs.python.org/zh-cn/3/library/concurrent.futures.html" target="_blank" rel="noopener">说明文档</a> <code>map(func, *iterables, timeout=None, chunksize=1)</code> 参数列表是迭代器对象，但执行不正确，异常退出</p>
+<h2 id="溯源"><a href="#溯源" class="headerlink" title="溯源"></a>溯源</h2><h3 id="生成器与迭代器-1"><a href="#生成器与迭代器-1" class="headerlink" title="生成器与迭代器"></a>生成器与迭代器</h3><p>详细见：<a href="https://www.zhihu.com/question/20829330" target="_blank" rel="noopener">https://www.zhihu.com/question/20829330</a></p>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>其实常见的 <code>list</code> 类型都是迭代器，一般来说实现了 <code>__next__</code> 方法（又称迭代器协议）就可使用 <code>for</code> 循环来访问</p>
+<p>关于迭代器：</p>
 <ul>
-<li>am, are, is =&gt; be</li>
-<li>dog, dogs, dog’s, dogs’ =&gt; dog</li>
+<li><p><code>itertools</code> 工具可以更快速高效地创建迭代对象，例如：<code>repeat()</code> 函数 <a href="https://docs.python.org/zh-cn/3/library/itertools.html" target="_blank" rel="noopener">https://docs.python.org/zh-cn/3/library/itertools.html</a></p>
+</li>
+<li><p><code>zip()</code> zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的对象，这样做的好处是节约了不少的内存。我们可以使用 list() 转换来输出列表。</p>
+</li>
 </ul>
-<p>The result of this mapping applied on a text will be something like that:<br><em>the boy’s dogs are different sizes =&gt; the boy dog be differ size</em><br>Stemming and lemmatization are special cases of normalization. However, they are different from each other.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zipped = zip(a,b)     <span class="comment"># 返回一个对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>zipped</span><br><span class="line">&lt;zip object at <span class="number">0x103abc288</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(zipped)  <span class="comment"># list() 转换为列表</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(zip(a,c))              <span class="comment"># 元素个数与最短的列表一致</span></span><br><span class="line">[(<span class="number">1</span>, <span class="number">4</span>), (<span class="number">2</span>, <span class="number">5</span>), (<span class="number">3</span>, <span class="number">6</span>)]</span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a1, a2 = zip(*zip(a,b))          <span class="comment"># 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(a1)</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(a2)</span><br><span class="line">[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a>生成器</h4><p>生成器其实本质上是一种迭代器，提供了对包含对象的延迟操作，正如访问 <code>list</code> 的时候需要把其中的所有内容提前加载进内存，生成器则不需要这样，吃多少取多少</p>
+<p>Python的两种方式提供生成器：</p>
+<ul>
+<li>生成器函数：即在函数中使用 <code>yield</code> 返回值的函数，会每次在 <code>yield</code> 返回后挂起，等待下次执行，举个例子吧</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">count</span><span class="params">(n)</span>:</span></span><br><span class="line">    print(<span class="string">'Max number is &#123;&#125;'</span>.format(n))</span><br><span class="line">    <span class="keyword">while</span> n &gt; <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">yield</span> n</span><br><span class="line">        n -= <span class="number">1</span></span><br><span class="line">f = count(<span class="number">3</span>)        <span class="comment">#   count()为生成器函数, f 为生成器</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> f:</span><br><span class="line">    print(i)        <span class="comment">#   仅输出一次 Max number is 3</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>生成器表达式：类似于列表推导</li>
+</ul>
+<p>列表推导</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>squares = [x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">5</span>)]</span><br></pre></td></tr></table></figure>
+<p>生成器表达式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>squares = (x**<span class="number">2</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">5</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>next(squares)</span><br></pre></td></tr></table></figure>
+<p>但正如前文中的问题，我们的生成器函数为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_sentences</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">            news_documents = db_topic_summary.find(&#123;<span class="string">'$or'</span>: [&#123;<span class="string">'news_summary_ne_with_nltk'</span>: &#123;<span class="string">'$in'</span>: [<span class="literal">None</span>]&#125;&#125;,</span><br><span class="line">                                                        &#123;<span class="string">'news_summary_ne_with_sn'</span>:  &#123;<span class="string">'$in'</span>: [<span class="literal">None</span>]&#125;&#125;]&#125;,</span><br><span class="line">                                                   &#123;<span class="string">'_id'</span>: <span class="number">1</span>, <span class="string">'news_summary_count'</span>: <span class="number">1</span>&#125;)</span><br><span class="line">        <span class="keyword">if</span> news_documents.count() &lt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">for</span> doc <span class="keyword">in</span> news_documents:</span><br><span class="line">            sentences = <span class="string">''</span></span><br><span class="line">            <span class="keyword">for</span> t <span class="keyword">in</span> doc[<span class="string">'news_summary_count'</span>][<span class="number">0</span>:<span class="number">3</span>]:</span><br><span class="line">                sentences += t[<span class="number">0</span>] + <span class="string">' '</span></span><br><span class="line">            <span class="keyword">yield</span> doc[<span class="string">'_id'</span>], sentences</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        print(e)</span><br></pre></td></tr></table></figure>
+<p>但为什么这样调用 <code>executer.map(func, get_sentences())</code> 不能成功运行呢，只是多了个参数而已，原来发现该生成器返回的是 <code>tuple</code>，func 并不是以一个 <code>tuple</code> 为形参的，解决方法：</p>
+<p>详细见：<a href="https://stackoverflow.com/questions/6785226/pass-multiple-parameters-to-concurrent-futures-executor-map" target="_blank" rel="noopener">https://stackoverflow.com/questions/6785226/pass-multiple-parameters-to-concurrent-futures-executor-map</a></p>
+<ol>
+<li>第一种方法： 并发的函数的形参设置为 <code>tuple</code>，在该函数内进行参数的解析</li>
+<li>第二种方法：使用 <code>lambda</code> 函数：<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(str1, str2)</span>:</span></span><br><span class="line">    time.sleep(<span class="number">2</span>)</span><br><span class="line">    print(str1 + str2)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_ab</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        <span class="keyword">yield</span> <span class="string">'a'</span>,<span class="string">'b'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    parallel_do(<span class="keyword">lambda</span> args: run(*args), get_ab())</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/NLP/Information_Retrieval/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/10/NLP/Information_Retrieval/" itemprop="url">Information_Retrieval</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-10T22:57:27+08:00">
+                2019-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h3><ul>
+<li>Introduction to Information Retrieval 《信息检索导论》 <a href="https://nlp.stanford.edu/IR-book/" target="_blank" rel="noopener">https://nlp.stanford.edu/IR-book/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/typedef/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/typedef/" itemprop="url">typedef</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="typedef及一些复杂的声明"><a href="#typedef及一些复杂的声明" class="headerlink" title="typedef及一些复杂的声明"></a>typedef及一些复杂的声明</h1><p>今天在做微机原理实验时，看了一些API的声明，被里面的一些函数的声明搞得有点头晕了，哎呀！我个C语言的渣。慌得我赶紧补了一发！</p>
+<h2 id="typedef-与-define"><a href="#typedef-与-define" class="headerlink" title="typedef 与 #define"></a>typedef 与 #define</h2><blockquote>
+<ul>
+<li>与 #define 不同，typedef给出的符号名称仅限于对类型，而不是对值；   </li>
+<li>typedef的解释由编译器，而不是由预处理器；  </li>
+<li>但在有限的范围内,typedef 比 #define 灵活。</li>
+</ul>
+</blockquote>
+<p>经典用法：<br>typedef unsigned char byte;  </p>
+<h1 id="define-byte-unsigned-char-同"><a href="#define-byte-unsigned-char-同" class="headerlink" title="define byte unsigned char;  同"></a>define byte unsigned char;  同</h1><p>但是，<br>typedef char * STRING；</p>
+<h1 id="define-STRING-char"><a href="#define-STRING-char" class="headerlink" title="define STRING char *"></a>define STRING char *</h1><p>前者,STRING name,sign 表示 char * name, * sign;<br>后者,STRING name,sign 表示 char * name,sign;    </p>
+<p><strong>另一个不可告人的原因是：</strong><br>typedef 常用于 复杂类型      </p>
+<p>来来来，这个告诉我是啥？  <em>* typedef char (</em> FRPTC()) [5] **    </p>
+<p>表示函数返回一个指向5个元素的char数组的指针；<br>** typedef char * FRPTC() [5] **<br>表示函数返回一个含有5个指向char的指针的数组；   </p>
+<h2 id="C的奇特的声明"><a href="#C的奇特的声明" class="headerlink" title="C的奇特的声明"></a>C的奇特的声明</h2><p>char * fump ();       //返回指向 char 的指针的函数；<br>char (* fump) ();     //指向返回类型为char 的函数的指针；<br>char (* flump[3])();  //由3个指针组成的数组，每个指针指向返回类型为char的函数；   </p>
+<p>注：(),[]的优先级相同，高于 * 的优先级</p>
+<p><strong>鄙人认为这些奇特的声明的辨认就严格按照优先级顺序进行结合</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/%E7%BC%93%E5%86%B2%E5%8C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/%E7%BC%93%E5%86%B2%E5%8C%BA/" itemprop="url">缓冲区</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="缓冲区问题"><a href="#缓冲区问题" class="headerlink" title="缓冲区问题"></a>缓冲区问题</h1><p>这篇文章关于缓冲区讲的比较清楚 <a href="http://blog.csdn.net/sole_cc/article/details/40383033" target="_blank" rel="noopener">http://blog.csdn.net/sole_cc/article/details/40383033</a> 感谢！</p>
+<p>今天在Socket编程时，遇到了一些输入与输出缓冲区问题：<br>思考了一下有以下几点：  </p>
+<p>stdin,stdout,stderror 标准输入输出应该对应的是键盘输入，显示器输出，显示器输出错误<br><em>缺省情况下是这样的，不过可以进行输入输出重定向到文件:)</em><br>当我们进行标准输入时会输入到缓冲区，并且平时输入的回车键\n也是作为一个字符保留在缓冲区的<strong>回车符一般用来表示输入完成</strong><br><em>\n作为标准输入流输入结束,getchar() scanf()即可从缓冲区取出数据</em><br>在socket编程里send,recv函数应该是将缓冲区数据发送与接收完成后自动清空缓冲区数据，当没有清空缓冲区时，通过键盘输入的数据有时虽不会<strong>立即回显</strong>，  也不太<br>但会保留在缓冲区中，当缓冲区数据需要回显的时候便显示出来  </p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><blockquote>
+<ul>
+<li>为什么我们从键盘上输入数据会立即回显？ eg:scanf()  </li>
+<li>通过回车键\n来作为Socket send()的结束字符?这和scanf()以空格作为结束字符同理？  </li>
+<li>缓冲区的一些操作？  </li>
+</ul>
+</blockquote>
+<h2 id="10-13-2017-补"><a href="#10-13-2017-补" class="headerlink" title="10/13/2017 补"></a>10/13/2017 补</h2><p>经查询后，发现缓冲区确实类似上述的操作，  </p>
+<h3 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h3><p><strong>全缓冲</strong>  </p>
 <blockquote>
-<p>Stemming usually refers to a crude heuristic process that chops off the ends of words in the hope of achieving this goal correctly most of the time, and often includes the removal of derivational affixes.<br>Lemmatization usually refers to doing things properly with the use of a vocabulary and morphological analysis of words, normally aiming to remove inflectional endings only and to return the base or dictionary form of a word, which is known as the lemma.</p>
+<ul>
+<li></li>
+</ul>
+<p><strong>行缓冲</strong>   </p>
+<ul>
+<li>代表为 stdin stdout</li>
+</ul>
 </blockquote>
-<p>Source: <a href="https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html" target="_blank" rel="noopener">https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html</a></p>
-<p>The difference is that a stemmer operates <strong>without knowledge of the context</strong>, and therefore cannot understand the difference between words which have different meaning depending on part of speech. But the stemmers also have some advantages, they are easier to implement and usually run faster. Also, the reduced “accuracy” may not matter for some applications.</p>
-<p>Examples:</p>
-<ol>
-<li>The word “better” has “good” as its lemma. This link is missed by stemming, as it requires a dictionary look-up.</li>
-<li>The word “play” is the base form for the word “playing”, and hence this is matched in both stemming and lemmatization.</li>
-<li>The word “meeting” can be either the base form of a noun or a form of a verb (“to meet”) depending on the context; e.g., “in our last meeting” or “We are meeting again tomorrow”. Unlike stemming, lemmatization attempts to select the correct lemma depending on the context.</li>
-</ol>
-<p>After we know what’s the difference, let’s see some examples using the NLTK tool.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> PorterStemmer, WordNetLemmatizer</span><br><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> wordnet</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compare_stemmer_and_lemmatizer</span><span class="params">(stemmer, lemmatizer, word, pos)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Print the results of stemmind and lemmitization using the passed stemmer, lemmatizer, word and pos (part of speech)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    print(<span class="string">"Stemmer:"</span>, stemmer.stem(word))</span><br><span class="line">    print(<span class="string">"Lemmatizer:"</span>, lemmatizer.lemmatize(word, pos))</span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line">lemmatizer = WordNetLemmatizer()</span><br><span class="line">stemmer = PorterStemmer()</span><br><span class="line">compare_stemmer_and_lemmatizer(stemmer, lemmatizer, word = <span class="string">"seen"</span>, pos = wordnet.VERB)</span><br><span class="line">compare_stemmer_and_lemmatizer(stemmer, lemmatizer, word = <span class="string">"drove"</span>, pos = wordnet.VERB)</span><br></pre></td></tr></table></figure>
-<p>Output:  </p>
-<p>Stemmer: seen<br>Lemmatizer: see</p>
-<p>Stemmer: drove<br>Lemmatizer: drive  </p>
-<h3 id="2-4-Stop-words"><a href="#2-4-Stop-words" class="headerlink" title="2.4 Stop words"></a>2.4 Stop words</h3><p>The NLTK tool has a predefined list of stopwords that refers to the most common words. If you use it for your first time, you need to download the stop words using this code: <code>nltk.download(“stopwords”)</code>. Once we complete the downloading, we can load the stopwords package from the nltk.corpus and use it to load the stop words.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords</span><br><span class="line">print(stopwords.words(<span class="string">"english"</span>))</span><br></pre></td></tr></table></figure>
-
-<p>outputs:<br>…</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stop_words = set(stopwords.words(<span class="string">"english"</span>))</span><br><span class="line">sentence = <span class="string">"Backgammon is one of the oldest known board games."</span></span><br><span class="line"></span><br><span class="line">words = nltk.word_tokenize(sentence)</span><br><span class="line">without_stop_words = [word <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">if</span> <span class="keyword">not</span> word <span class="keyword">in</span> stop_words]</span><br><span class="line">print(without_stop_words)</span><br></pre></td></tr></table></figure>
-
-<p>outputs:</p>
-<p>[‘Backgammon’, ‘one’, ‘oldest’, ‘known’, ‘board’, ‘games’, ‘.’]</p>
-<h3 id="2-5-Bag-of-words"><a href="#2-5-Bag-of-words" class="headerlink" title="2.5 Bag-of-words"></a>2.5 Bag-of-words</h3><h3 id="2-6-Tools"><a href="#2-6-Tools" class="headerlink" title="2.6 Tools"></a>2.6 Tools</h3><ul>
-<li><p><code>nltk</code> for pre-processing texts</p>
-</li>
-<li><p><code>sklearn</code> for bag-of-words models</p>
-</li>
+<p><strong>不缓冲</strong>  </p>
+<blockquote>
+<ul>
+<li>代表为 stderr <strong>标准错误当然是不能进行缓冲直接进行显示出来的哦</strong></li>
 </ul>
-<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h2><ul>
-<li>无论采用何种对非结构化文档向量化的 BoW 方法，均是通过 <code>dictionary</code> 与 <code>Sparse Matrix</code>两者结合的方式来展示，<code>Sparse Matrix</code> = <code>Sparse dictionary index matrix</code></li>
-</ul>
-<h2 id="4-学习参考"><a href="#4-学习参考" class="headerlink" title="4. 学习参考"></a>4. 学习参考</h2><ul>
-<li><a href="https://machinelearningmastery.com/clean-text-machine-learning-python/" target="_blank" rel="noopener">https://machinelearningmastery.com/clean-text-machine-learning-python/</a></li>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/%E6%B1%82%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/%E6%B1%82%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" itemprop="url">求排列组合</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">double Com(int low,int high)</span><br><span class="line">&#123;</span><br><span class="line">    double up,down;</span><br><span class="line">    double result;</span><br><span class="line">    up = 1;</span><br><span class="line">    down = 1;</span><br><span class="line">    for(int i=1;i&lt;=high;i++)</span><br><span class="line">    &#123;</span><br><span class="line">      up = up * (low - i +1);</span><br><span class="line">      down = down * i;</span><br><span class="line">    &#125;</span><br><span class="line">    result = up / down;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Complier/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/Complier/README/" itemprop="url">README</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Complier/" itemprop="url" rel="index">
+                    <span itemprop="name">Complier</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>尝试学了几次，终没有坚持下去</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ul>
+<li>2020/5/14: 增加 <code>LLVM</code> 相关知识</li>
 </ul>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/README/" itemprop="url">README</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">CypherSecurity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -1656,7 +1797,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/12/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/14/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/14/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1706,14 +1847,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-count">214</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>

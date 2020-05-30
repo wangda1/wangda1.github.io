@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="NLP,实体与关系抽取," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="spacy 使用记录NER的使用EL的使用update on 2020&#x2F;3&#x2F;26 spacy 并没有提供现成的 EL model，而是要通过spacy提供的 framework 自己训练出一个 model，至于为什么 spacy 不提供一个训练好的 model release 出来，见 issues#4511 作者给出了解释。 Model 的训练过程需要耗费较长时间，这里记录一下，步骤参考：htt">
+<meta name="keywords" content="NLP,实体与关系抽取">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spacy 使用记录">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;01&#x2F;16&#x2F;NLP&#x2F;%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96&#x2F;spacy&#x2F;index.html">
+<meta property="og:site_name" content="笔记记录">
+<meta property="og:description" content="spacy 使用记录NER的使用EL的使用update on 2020&#x2F;3&#x2F;26 spacy 并没有提供现成的 EL model，而是要通过spacy提供的 framework 自己训练出一个 model，至于为什么 spacy 不提供一个训练好的 model release 出来，见 issues#4511 作者给出了解释。 Model 的训练过程需要耗费较长时间，这里记录一下，步骤参考：htt">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-03-26T02:09:09.200Z">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/16/NLP/实体与关系抽取/spacy/"/>
+
+
+
+
+
+  <title>spacy 使用记录 | 笔记记录</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">笔记记录</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Nf5_s5_h8Jo7hX6Vxqmp','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/spacy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">spacy 使用记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T10:09:00+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
+                    <span itemprop="name">实体与关系抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="spacy-使用记录"><a href="#spacy-使用记录" class="headerlink" title="spacy 使用记录"></a>spacy 使用记录</h1><h2 id="NER的使用"><a href="#NER的使用" class="headerlink" title="NER的使用"></a>NER的使用</h2><h2 id="EL的使用"><a href="#EL的使用" class="headerlink" title="EL的使用"></a>EL的使用</h2><p>update on 2020/3/26</p>
+<p><code>spacy</code> 并没有提供现成的 EL model，而是要通过spacy提供的 framework 自己训练出一个 model，至于为什么 spacy 不提供一个训练好的 model release 出来，见 <a href="https://github.com/explosion/spaCy/issues/4511" target="_blank" rel="noopener">issues#4511</a> 作者给出了解释。</p>
+<p>Model 的训练过程需要耗费较长时间，这里记录一下，步骤参考：<a href="https://github.com/explosion/spaCy/tree/master/bin/wiki_entity_linking" target="_blank" rel="noopener">https://github.com/explosion/spaCy/tree/master/bin/wiki_entity_linking</a></p>
+<p>Step 1.</p>
+<p><code>python wikidata_pretrain_kb.py wiki/latest-all.json.bz2 wiki/enwiki-latest-pages-articles-multistream.xml.bz2 output/ en_core_web_md</code></p>
+<p>这里使用的是 英文的 <code>en_core_web_md</code> 模型，使用 <code>en_core_web_sm</code> 模型会报错。</p>
+<p>然后经历的过程大概是这样的：</p>
+<ul>
+<li>Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz 6核</li>
+<li>60GB 内存</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">2020-03-25 10:57:56,366 - INFO - __main__ - Creating KB with Wikipedia and WikiData</span><br><span class="line">2020-03-25 10:57:56,366 - INFO - __main__ - STEP 1: Loading NLP model en_core_web_md</span><br><span class="line">2020-03-25 10:58:09,601 - INFO - __main__ - STEP 2: Writing prior probabilities to output/prior_prob.csv</span><br><span class="line">2020-03-25 11:02:19,011 - INFO - bin.wiki_entity_linking.wikipedia_processor - processed 25000000 lines of Wikipedia XML dump</span><br><span class="line">2020-03-25 11:06:06,973 - INFO - bin.wiki_entity_linking.wikipedia_processor - processed 50000000 lines of Wikipedia XML dump</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-25 13:04:44,104 - INFO - bin.wiki_entity_linking.wikipedia_processor - Finished. processed 1154673507 lines of Wikipedia XML dump</span><br><span class="line">2020-03-25 13:06:49,519 - INFO - __main__ - STEP 3: Calculating and writing entity frequencies to output/entity_freq.csv</span><br><span class="line">2020-03-25 13:07:47,159 - INFO - __main__ - STEP 4: Parsing and writing Wikidata entity definitions to output/entity_defs.csv</span><br><span class="line">2020-03-25 13:11:46,605 - INFO - bin.wiki_entity_linking.wikidata_processor - processed 500000 lines of WikiData JSON dump</span><br><span class="line">2020-03-25 13:14:44,627 - INFO - bin.wiki_entity_linking.wikidata_processor - processed 1000000 lines of WikiData JSON dump</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-25 23:17:48,677 - INFO - bin.wiki_entity_linking.wikidata_processor - Finished. Processed 78951019 lines of WikiData JSON dump</span><br><span class="line">2020-03-25 23:17:52,051 - INFO - __main__ - STEP 4b: Writing Wikidata entity aliases to output/entity_alias.csv</span><br><span class="line">2020-03-25 23:17:56,290 - INFO - __main__ - STEP 4c: Writing Wikidata entity descriptions to output/entity_descriptions.csv</span><br><span class="line">2020-03-25 23:17:58,717 - INFO - __main__ - STEP 5: Parsing and writing Wikipedia gold entities to output/gold_entities.jsonl</span><br><span class="line">2020-03-25 23:19:36,808 - INFO - bin.wiki_entity_linking.wikipedia_processor - Processed 10000 articles</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-26 02:17:41,098 - INFO - bin.wiki_entity_linking.wikipedia_processor - Finished. Processed 6890313 articles</span><br><span class="line">2020-03-26 02:17:43,364 - INFO - __main__ - STEP 6: Creating the KB at output/kb</span><br><span class="line">2020-03-26 02:17:52,463 - INFO - bin.wiki_entity_linking.kb_creator - Loaded pretrained vectors of size 300</span><br><span class="line">2020-03-26 02:17:52,463 - INFO - bin.wiki_entity_linking.kb_creator - Filtering entities with fewer than 20 mentions</span><br><span class="line">2020-03-26 02:18:17,807 - INFO - bin.wiki_entity_linking.kb_creator - Kept 1148892 entities from the set of 5763431</span><br><span class="line">2020-03-26 02:18:17,808 - INFO - bin.wiki_entity_linking.kb_creator - Training entity encoder</span><br><span class="line">2020-03-26 02:18:27,323 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 1.0226774291992187 </span><br><span class="line">2020-03-26 02:20:38,614 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.3986138000488281 </span><br><span class="line">2020-03-26 02:22:47,917 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.22751368713378906 </span><br><span class="line">2020-03-26 02:24:58,512 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.15389662170410157 </span><br><span class="line">2020-03-26 02:27:09,470 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.11821630859375 </span><br><span class="line">2020-03-26 02:29:19,072 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.09795716857910156 </span><br><span class="line">2020-03-26 02:31:27,877 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.0902191925048828 </span><br><span class="line">2020-03-26 02:33:37,375 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07779336547851562 </span><br><span class="line">2020-03-26 02:35:46,578 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07243069458007813 </span><br><span class="line">2020-03-26 02:37:56,318 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07262858581542969 </span><br><span class="line">2020-03-26 02:40:06,218 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07191573333740234 </span><br><span class="line">2020-03-26 02:42:16,195 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07062159729003906 </span><br><span class="line">2020-03-26 02:44:26,376 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.0659771957397461 </span><br><span class="line">2020-03-26 02:46:36,478 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.06245959091186523 </span><br><span class="line">2020-03-26 02:48:08,080 - INFO - bin.wiki_entity_linking.train_descriptions - Trained entity descriptions on 343000 (non-unique) descriptions across 5 epochs</span><br><span class="line">2020-03-26 02:48:08,081 - INFO - bin.wiki_entity_linking.train_descriptions - Final loss: 0.06493917846679688</span><br><span class="line">2020-03-26 02:48:08,081 - INFO - bin.wiki_entity_linking.kb_creator - Getting entity embeddings</span><br><span class="line">2020-03-26 02:49:16,621 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 200000 entities</span><br><span class="line">2020-03-26 02:50:26,592 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 300000 entities</span><br><span class="line">2020-03-26 02:51:30,845 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 400000 entities</span><br><span class="line">2020-03-26 02:52:37,864 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 500000 entities</span><br><span class="line">2020-03-26 02:53:41,903 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 600000 entities</span><br><span class="line">2020-03-26 02:54:48,951 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 700000 entities</span><br><span class="line">2020-03-26 02:55:53,231 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 800000 entities</span><br><span class="line">2020-03-26 02:57:01,271 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 900000 entities</span><br><span class="line">2020-03-26 02:58:04,693 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1000000 entities</span><br><span class="line">2020-03-26 02:59:13,314 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1100000 entities</span><br><span class="line">2020-03-26 03:00:18,196 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1148892 entities</span><br><span class="line">2020-03-26 03:00:49,433 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1148892 entities</span><br><span class="line">2020-03-26 03:00:49,558 - INFO - bin.wiki_entity_linking.kb_creator - Adding 1148892 entities</span><br><span class="line">2020-03-26 03:00:57,009 - INFO - bin.wiki_entity_linking.kb_creator - Adding aliases from Wikipedia and Wikidata</span><br><span class="line">2020-03-26 03:00:57,011 - INFO - bin.wiki_entity_linking.kb_creator - Adding WP aliases</span><br><span class="line">2020-03-26 03:01:58,750 - INFO - __main__ - kb entities: 1148892</span><br><span class="line">2020-03-26 03:01:58,750 - INFO - __main__ - kb aliases: 1665015</span><br><span class="line">2020-03-26 03:02:09,177 - INFO - __main__ - Done!</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NLP/" rel="tag"># NLP</a>
+          
+            <a href="/tags/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" rel="tag"># 实体与关系抽取</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/wiki_data/" rel="next" title="wiki data 简介">
+                <i class="fa fa-chevron-left"></i> wiki data 简介
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/29/CMake/how-to-use-cmake/LearnCMake/" rel="prev" title="LearnCMake">
+                LearnCMake <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="wanncy" />
+            
+              <p class="site-author-name" itemprop="name">wanncy</p>
+              <p class="site-description motion-element" itemprop="description">千淘万漉虽辛苦，吹尽黄沙始到金</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#spacy-使用记录"><span class="nav-number">1.</span> <span class="nav-text">spacy 使用记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NER的使用"><span class="nav-number">1.1.</span> <span class="nav-text">NER的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL的使用"><span class="nav-number">1.2.</span> <span class="nav-text">EL的使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wanncy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

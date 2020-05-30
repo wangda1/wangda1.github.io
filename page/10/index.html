@@ -229,9 +229,39 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Nf5_s5_h8Jo7hX6Vxqmp','2.0.0');
+</script>
+
+
+
+    </div>
   
 </nav>
 
@@ -260,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Something/GoogleExplore/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/BigDataSystem/Batch/InputFormat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -279,7 +309,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/Something/GoogleExplore/" itemprop="url">Something/GoogleExplore</a></h1>
+                <a class="post-title-link" href="/2019/12/10/BigDataSystem/Batch/InputFormat/" itemprop="url">InputFormat</a></h1>
         
 
         <div class="post-meta">
@@ -291,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:34:55+08:00">
+                2019-12-10
               </time>
             
 
@@ -301,6 +331,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">BigDataSystem</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/Batch/" itemprop="url" rel="index">
+                    <span itemprop="name">Batch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -331,57 +394,31 @@
       
         
           
-            <h1 id="Google精确搜索，提高查询效率"><a href="#Google精确搜索，提高查询效率" class="headerlink" title="Google精确搜索，提高查询效率"></a>Google精确搜索，提高查询效率</h1><p><a href="http://www.cnblogs.com/xuanhun/p/3910134.html" target="_blank" rel="noopener">xuanhun</a>  感谢!</p>
-<p>这些搜索引擎的搜索技术来源于传统数据库的检索技术  </p>
-<h2 id="精确搜索"><a href="#精确搜索" class="headerlink" title="精确搜索"></a>精确搜索</h2><blockquote>
-<ul>
-<li>Google默认模糊搜索  </li>
-<li>“xxxxx”可进行精确搜索    </li>
-<li>通配符*可用于代替关键词  </li>
-<li>点号 . 可用于匹配任意字符  </li>
-</ul>
+            <h1 id="Hadoop-InputFormat"><a href="#Hadoop-InputFormat" class="headerlink" title="Hadoop InputFormat"></a>Hadoop InputFormat</h1><h2 id="What-is-Hadoop-InputFormat"><a href="#What-is-Hadoop-InputFormat" class="headerlink" title="What is Hadoop InputFormat?"></a>What is Hadoop InputFormat?</h2><blockquote>
+<p>Hadoop InputFormat describes the input-specification for execution of the Map-Reduce job.</p>
 </blockquote>
-<h2 id="约束条件"><a href="#约束条件" class="headerlink" title="约束条件"></a>约束条件</h2><blockquote>
-<ul>
-<li>“ + “用于强制搜索，即 + 前后的内容都必须包含;常和精确搜索 “ “ 一起来用  </li>
-</ul>
+<blockquote>
+<p>InputFormat describes how to split up and read input files. In MapReduce job execution, InputFormat is the first step. It is also responsible for creating the input splits and dividing them into records.</p>
 </blockquote>
-<h2 id="Bool逻辑"><a href="#Bool逻辑" class="headerlink" title="Bool逻辑"></a>Bool逻辑</h2><blockquote>
-<ul>
-<li>Google默认多个词间关系为逻辑与  </li>
-<li>当使用逻辑算符时，词语逻辑算符用空格分开  </li>
-<li>复杂的逻辑关系可以用()来分组 </li>
-<li>当运用非逻辑时，”搜索 -内容”格式</li>
-</ul>
+<blockquote>
+<p>Input files store the data for MapReduce job. Input files reside in HDFS. Although these files format is arbitrary, we can also use line-based log files and binary format. Hence, In MapReduce, InputFormat class is one of the fundamental classes which provides below functionality:</p>
 </blockquote>
-<h2 id="数字范围"><a href="#数字范围" class="headerlink" title="数字范围"></a>数字范围</h2><blockquote>
 <ul>
-<li>“ .. “表示一个数字范围</li>
+<li>InputFormat selects the files or other objects for input.</li>
+<li>It also defines the Data splits. It defines both the size of individual Map tasks and its potential execution server.</li>
+<li>Hadoop InputFormat defines the RecordReader. It is also responsible for reading actual records from the input files.</li>
 </ul>
-</blockquote>
-<h2 id="标题中搜索"><a href="#标题中搜索" class="headerlink" title="标题中搜索"></a>标题中搜索</h2><blockquote>
-<ul>
-<li>语法: intitle 或 allintitle  </li>
-<li>示例: intitle:”WSO 2.4” [ Sec. Info ], [ Files ],<br>[ Console ], [ Sql ], [ Php ], [ Safe mode ], [ String tools ], [ Bruteforce ], [ Network ], [ Self remove ]</li>
+<h2 id="Types-of-InputFormat-in-MapReduce"><a href="#Types-of-InputFormat-in-MapReduce" class="headerlink" title="Types of InputFormat in MapReduce"></a>Types of InputFormat in MapReduce</h2><ul>
+<li><code>FileInputFormat</code></li>
+<li><code>TextInputFormat</code></li>
+<li><code>KeyValueTextInputFormat</code></li>
+<li><code>SequenceFileAsTextInputFormat</code></li>
+<li><code>SequenceFileAsBinaryInputFormat</code></li>
+<li><code>NlineInputFormat</code></li>
+<li><code>DBInputFormat</code></li>
 </ul>
-</blockquote>
-<h2 id="正文中搜索"><a href="#正文中搜索" class="headerlink" title="正文中搜索"></a>正文中搜索</h2><blockquote>
-<ul>
-<li>语法: intext 或 allintext  </li>
-<li>示例: intitle:”index” intext:”Login to the Administrative Interface”</li>
-</ul>
-</blockquote>
-<h2 id="网址中搜索"><a href="#网址中搜索" class="headerlink" title="网址中搜索"></a>网址中搜索</h2><blockquote>
-<ul>
-<li>语法: inurl  </li>
-<li>示例: inurl:phpmyadmin/index.php &amp; (intext:username &amp; password &amp; “Welcome to”)  </li>
-</ul>
-</blockquote>
-<h2 id="锚点链接搜索"><a href="#锚点链接搜索" class="headerlink" title="锚点链接搜索"></a>锚点链接搜索</h2><blockquote>
-<ul>
-<li>语法: inanchor 或 allinanchor  </li>
-<li>示例: inanchor:修改密码   </li>
-</ul>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><blockquote>
+<p>Hence, InputFormat defines how to read data from a file into the Mapper instances. In this tutorial, we have learned many types of InputFormat like FileInputFormat, TextInputFormat etc. The default input format is TextInputFormat. If you have any query related to MapReduce InputFormat, so feel free to share with us. Hope we will solve them.</p>
 </blockquote>
 
           
@@ -431,7 +468,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Something/Dcoker/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Something/VSCode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -450,7 +487,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/Something/Dcoker/" itemprop="url">Something/Dcoker</a></h1>
+                <a class="post-title-link" href="/2019/12/10/Something/VSCode/" itemprop="url">VSCode</a></h1>
         
 
         <div class="post-meta">
@@ -462,8 +499,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:25:16+08:00">
+                2019-12-10
               </time>
             
 
@@ -472,6 +509,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Something/" itemprop="url" rel="index">
+                    <span itemprop="name">Something</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -502,11 +561,19 @@
       
         
           
-            <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看帮助</span></span><br><span class="line">docker xxx --help</span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">sudo docker pull image</span><br><span class="line"><span class="comment"># 创建容器</span></span><br><span class="line">docker run image</span><br><span class="line"><span class="comment"># 列出当前运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 列出所有的容器，包括运行的和不运行的</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment"># 删除容器</span></span><br><span class="line">docker rm container-id</span><br><span class="line"><span class="comment"># 容器的启动、进入、退出</span></span><br><span class="line">docker start [-i] container-id</span><br><span class="line"><span class="comment"># 容器的停止、重启</span></span><br><span class="line">docker stop container-id</span><br><span class="line">docker restart container-id</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/64493662" target="_blank" rel="noopener">Docker,深度学习的环境配置</a></li>
-<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">Docker 官方文档</a></li>
+            <h1 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h1><p>神器驾驭指南</p>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><h2 id="2-插件安装"><a href="#2-插件安装" class="headerlink" title="2. 插件安装"></a>2. 插件安装</h2><h2 id="3-快捷键"><a href="#3-快捷键" class="headerlink" title="3. 快捷键"></a>3. 快捷键</h2><ul>
+<li><code>F1</code> / <code>Ctrl+shift+P</code> 打开命令面板，可以执行VSCode的任何命令</li>
+</ul>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h3 id="3-1-在Java中不能导入第三方的库，出现-xxx-unresolve-的问题"><a href="#3-1-在Java中不能导入第三方的库，出现-xxx-unresolve-的问题" class="headerlink" title="3.1 在Java中不能导入第三方的库，出现　xxx unresolve　的问题"></a>3.1 在<code>Java</code>中不能导入第三方的库，出现　<code>xxx unresolve</code>　的问题</h3><p><em>ref: <a href="https://stackoverflow.com/a/57249227" target="_blank" rel="noopener">https://stackoverflow.com/a/57249227</a></em></p>
+<p>这种情况下有两种解决方法：</p>
+<ul>
+<li>使用　<code>maven</code>　或　<code>gradle</code>　引入 <code>Jar</code></li>
+<li>按照以下步骤进行： a. 在工程目录下创建　<code>lib</code>　文件夹，放入<code>.jar</code> 文件 　b. 新建 <code>.classpath</code> 在其中　<code>&lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/xxxx.jar&quot;/&gt;</code></li>
+<li>以上均不能解决问题，则　<code>F1</code> - input <code>Clean</code> - <code>clean workspace</code></li>
+</ul>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://nshen.net/article/2015-11-20/vscode/" target="_blank" rel="noopener">https://nshen.net/article/2015-11-20/vscode/</a></li>
 </ul>
 
           
@@ -556,7 +623,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/QT/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/BigDataSystem/Memory/Spark/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -575,7 +642,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/QT/README/" itemprop="url">QT/README</a></h1>
+                <a class="post-title-link" href="/2019/12/10/BigDataSystem/Memory/Spark/" itemprop="url">Spark</a></h1>
         
 
         <div class="post-meta">
@@ -587,8 +654,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:25:16+08:00">
+                2019-12-10
               </time>
             
 
@@ -598,544 +665,38 @@
           </span>
 
           
-
-          
+            <span class="post-category" >
             
-          
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">BigDataSystem</span>
+                  </a>
+                </span>
 
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="QT开发笔记"><a href="#QT开发笔记" class="headerlink" title="QT开发笔记"></a>QT开发笔记</h1><p>软件课设</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/QT/QMessageBox/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/QT/QMessageBox/" itemprop="url">QT/QMessageBox</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="QMessageBox"><a href="#QMessageBox" class="headerlink" title="QMessageBox"></a>QMessageBox</h1><p>弹窗</p>
-<h2 id="modal-dialog"><a href="#modal-dialog" class="headerlink" title="modal dialog"></a>modal dialog</h2><p>对话框的两种模式，default是application modal，两者区别见下：<br><strong>application modal</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">When an application modal dialog is opened, the user must finish interacting with the dialog and close it before they can access any other window in the application.</span><br></pre></td></tr></table></figure>
-<p>什么意思呢？就是在application dialog模式下，必须完成与该dialog的交互，才能与其它dialog交互，完全阻塞</p>
-<p><strong>window modal</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Window modal dialogs only block access to the window associated with the dialog, allowing the user to continue to use other windows in an application.</span><br></pre></td></tr></table></figure>
-<p>window modal模式下，就是非必须完成交互也能与其它不相关窗口交互</p>
-<h2 id="QMessageBox-1"><a href="#QMessageBox-1" class="headerlink" title="QMessageBox"></a>QMessageBox</h2><p>继承于QDialog class</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">QMessageBox box;</span><br><span class="line">        box.setWindowTitle(&quot;警告&quot;);</span><br><span class="line">        box.setIcon(QMessageBox::Warning);</span><br><span class="line">        box.setText(curFile+&quot;尚未保存，是否保存？&quot;);</span><br><span class="line">        QPushButton *yesBtn = box.addButton(&quot;是(&amp;Y)&quot;,QMessageBox::YesRole);</span><br><span class="line">        box.addButton(&quot;否(&amp;N)&quot;,QMessageBox::NoRole);</span><br><span class="line">        QPushButton *cancelBtn = box.addButton(&quot;取消&quot;,QMessageBox::RejectRole);</span><br><span class="line">        box.exec();                                                 //窗口关闭时获取DialogCode</span><br><span class="line">        if(box.clickedButton()==yesBtn) &#123;</span><br><span class="line">            return save();</span><br><span class="line">        &#125;</span><br><span class="line">        else if(box.clickedButton()==cancelBtn)&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/QT/QCustomPlot/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/QT/QCustomPlot/" itemprop="url">QT/QCustomPlot</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="QCustomPlot"><a href="#QCustomPlot" class="headerlink" title="QCustomPlot"></a>QCustomPlot</h1><p>QCustomPlot是一个绘图的第三方库，可用来绘制一些频谱图等</p>
-<h2 id="1-控件基本操作"><a href="#1-控件基本操作" class="headerlink" title="1.控件基本操作"></a>1.控件基本操作</h2><p>添加控件后，提升为一个类，即可进行画图</p>
-<h3 id="1-1begin"><a href="#1-1begin" class="headerlink" title="1.1begin"></a>1.1begin</h3><ul>
-<li><strong>customPlot-&gt;addGraph();</strong>    </li>
-<li><strong>customPlot-&gt;addGraph(customPlot-&gt;yAxis,customPlot-&gt;xAxis2);</strong> 第一个参数是key Axis,第二个参数是value Axis<br>添加一幅图形，这里指的是在一幅图里可以绘制多种，添加后会自动为每个Graph排序 Graph(0),Graph(1)…  </li>
-<li><strong>customPlot-&gt;graph(0)-&gt;set…;</strong><br>对绘制的每个图层，进行设置   </li>
-<li><strong>customPlot-&gt;replot();</strong><br>这个会自动发生，不添加此函数也可以 </li>
-</ul>
-<h3 id="1-2坐标轴-axes"><a href="#1-2坐标轴-axes" class="headerlink" title="1.2坐标轴 axes"></a>1.2坐标轴 axes</h3><p>可以操作上下左右四个axes: xAxis,xAxis2,yAxis,yAxis2<br>1.range</p>
-<ul>
-<li><strong>customPlot-&gt;xAxis-&gt;setRange(min,max);</strong></li>
-</ul>
-<p>2.Label</p>
-<ul>
-<li><strong>customPlot-&gt;xAxis-&gt;setLabel(“string”);</strong></li>
-</ul>
-<h3 id="1-3图例-legend"><a href="#1-3图例-legend" class="headerlink" title="1.3图例 legend"></a>1.3图例 legend</h3><p>1.先设置可视化!!!</p>
-<ul>
-<li><strong>customPlot-&gt;legend-&gt;setVisible(true);</strong>   </li>
-</ul>
-<p>2.名字交给图层</p>
-<h3 id="1-4-Ticker"><a href="#1-4-Ticker" class="headerlink" title="1.4 Ticker"></a>1.4 Ticker</h3><ul>
-<li><strong>customPlot-&gt;setTickLength(inside,outside);</strong><br>inside,outside分别为内外高的像素，即坐标轴上的标注高低  </li>
-<li><strong>customPlot-&gt;setSubTickLength(inside,outside);</strong>  </li>
-</ul>
-<h2 id="2-图层-graph"><a href="#2-图层-graph" class="headerlink" title="2.图层 graph"></a>2.图层 graph</h2><p>graph(0),graph(1),graph(2)…</p>
-<h3 id="2-1数据-data"><a href="#2-1数据-data" class="headerlink" title="2.1数据 data"></a>2.1数据 data</h3><ul>
-<li><strong>customPlot-&gt;graph(0)-&gt;setData(x0,y0);</strong><br>x0,y0是取样点数据，注意两者维度要保持一致</li>
-</ul>
-<h3 id="2-2图例-legend"><a href="#2-2图例-legend" class="headerlink" title="2.2图例 legend"></a>2.2图例 legend</h3><ul>
-<li><strong>customPlot-&gt;graph(0)-&gt;setName(“string”);</strong></li>
-</ul>
-<h3 id="2-3-样式"><a href="#2-3-样式" class="headerlink" title="2.3 样式"></a>2.3 样式</h3><ul>
-<li><strong>customPlot-&gt;graph(0)-&gt;setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));</strong><br>可以设置成画出各个取样点的样式   </li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/QT/menuIcon/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+                  ， 
                 
-                <a class="post-title-link" href="/2020/01/04/QT/menuIcon/" itemprop="url">QT/menuIcon</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
               
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/Memory/" itemprop="url" rel="index">
+                    <span itemprop="name">Memory</span>
+                  </a>
+                </span>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="menuIcon"><a href="#menuIcon" class="headerlink" title="menuIcon"></a>menuIcon</h1><p>添加菜单图标</p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>1.在menuBar输入框中输入自己要输入的一级菜单名称，二级菜单…</p>
-<p>2.Qt中的一个菜单被视为一个Action，在下面Action编辑器中更改“文本”等</p>
-<ul>
-<li>这里可以通过 &amp;Open,&amp;New,设置加速键，<strong>加速键</strong>：即当菜单处于激活状态时的快捷键</li>
-<li>这里也可以设置<strong>快捷键shortcut</strong>，在shortcut输入框中输入快捷键</li>
-</ul>
-<p>3.当要添加菜单图标时，需要用到“图标”后面的“添加文件”，“添加资源”；</p>
-<ul>
-<li><strong>资源文件</strong>：Qt使用资源文件将各种外部文件添加至最终生成的可执行文件中</li>
-<li>文件</li>
-</ul>
-<p>4.选取图标所在文件夹里的文件即可</p>
-<h2 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h2><p>原理与上述同，上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;mainwindow.h&quot;</span><br><span class="line">#include &quot;ui_mainwindow.h&quot;</span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    //创建新的动作</span><br><span class="line">    QAction *openAction = new QAction(&quot;&amp;Open&quot;,this);</span><br><span class="line">    //添加图标,这里的路径参考ui_mainwindow.h文件，里面代码与此相同</span><br><span class="line">    QIcon icon(&quot;:/myImages/img/actions/fileopen.png&quot;);</span><br><span class="line">    openAction-&gt;setIcon(icon);</span><br><span class="line">    //设置快捷键</span><br><span class="line">    openAction-&gt;setShortcut(QKeySequence(&quot;Ctrl+O&quot;));</span><br><span class="line">    //在文件菜单中设置新的打开动作</span><br><span class="line">    ui-&gt;menu-&gt;addAction(openAction);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    delete ui;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在主窗口的构造函数中添加”//“部分代码</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/QT/make/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/QT/make/" itemprop="url">QT/make</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+                
               
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
+            </span>
           
 
           
@@ -1214,7 +775,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/QT/layout/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/BigDataSystem/Stream/Storm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1233,7 +794,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/QT/layout/" itemprop="url">QT/layout</a></h1>
+                <a class="post-title-link" href="/2019/12/10/BigDataSystem/Stream/Storm/" itemprop="url">Storm</a></h1>
         
 
         <div class="post-meta">
@@ -1245,8 +806,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:25:16+08:00">
+                2019-12-10
               </time>
             
 
@@ -1255,6 +816,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">BigDataSystem</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/Stream/" itemprop="url" rel="index">
+                    <span itemprop="name">Stream</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1285,13 +879,221 @@
       
         
           
-            <h1 id="layout（布局管理器）"><a href="#layout（布局管理器）" class="headerlink" title="layout（布局管理器）"></a>layout（布局管理器）</h1><h2 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h2><p>布局管理器，作为Box控件，很明显是保持其他控件，如Button的变化一致性</p>
-<h2 id="QSplitter"><a href="#QSplitter" class="headerlink" title="QSplitter"></a>QSplitter</h2><p>分裂器的作用与上述类似，不过两者很大的区别在于</p>
-<p>当使用 QSplitter与vertical layout时</p>
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/BigDataSystem/Batch/hadoop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/10/BigDataSystem/Batch/hadoop/" itemprop="url">hadoop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:25:16+08:00">
+                2019-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">BigDataSystem</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/Batch/" itemprop="url" rel="index">
+                    <span itemprop="name">Batch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="1-安装与配置"><a href="#1-安装与配置" class="headerlink" title="1. 安装与配置"></a>1. 安装与配置</h2><h2 id="2-常用命令"><a href="#2-常用命令" class="headerlink" title="2. 常用命令"></a>2. 常用命令</h2><h3 id="2-1-对-HDFS-文件的增删改查命令"><a href="#2-1-对-HDFS-文件的增删改查命令" class="headerlink" title="2.1 对 HDFS 文件的增删改查命令"></a>2.1 对 <code>HDFS</code> 文件的增删改查命令</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本格式</span></span><br><span class="line">hadoop fs -cmd &lt;args&gt;</span><br><span class="line"><span class="comment"># ls</span></span><br><span class="line">hadoop fs -ls /</span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line">hadoop fs -r &lt;file&gt;</span><br><span class="line">hadoop fs -rm -r &lt;dir&gt;</span><br><span class="line"><span class="comment"># 新建文件夹</span></span><br><span class="line">hadoop fs -mkdir &lt;path&gt;</span><br><span class="line">hadoop fs -mkdir -p &lt;recursive path&gt;</span><br><span class="line"><span class="comment"># put</span></span><br><span class="line">hadoop fs -put &lt;local file&gt; &lt;hdfs file&gt;</span><br><span class="line"><span class="comment"># get</span></span><br><span class="line">hadoop fs -get &lt;hdfs file&gt; &lt;local file&gt;</span><br><span class="line"><span class="comment"># moveFromLocal</span></span><br><span class="line">hadoop fs -moveFromLocal &lt;local file&gt; &lt;hdfs dst&gt;</span><br><span class="line"><span class="comment"># copyFromLocal</span></span><br><span class="line">hadoop fs -copyFromLocal &lt;local src&gt; &lt;hdfs dst&gt;</span><br><span class="line"><span class="comment"># mv,cp ...</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-运行-hadoop-jar-包"><a href="#2-2-运行-hadoop-jar-包" class="headerlink" title="2.2 运行 hadoop jar 包"></a>2.2 运行 hadoop jar 包</h3><p><code>hadoop jar NaiveBayesDriver.jar naiveBayesDistribute</code></p>
+<h2 id="3-Q-amp-A"><a href="#3-Q-amp-A" class="headerlink" title="3. Q&amp;A"></a>3. Q&amp;A</h2><h3 id="3-1-hadoop-fs-put-当在文件路径中包含空格出现-unexpected-URISyntaxException"><a href="#3-1-hadoop-fs-put-当在文件路径中包含空格出现-unexpected-URISyntaxException" class="headerlink" title="3.1 hadoop fs -put 当在文件路径中包含空格出现 unexpected URISyntaxException"></a>3.1 <code>hadoop fs -put</code> 当在文件路径中包含空格出现 <code>unexpected URISyntaxException</code></h3><p>解决方法：　把空格使用　<code>%20</code>　替代</p>
+<h3 id="3-2-如何查看hadoop的库文件路径"><a href="#3-2-如何查看hadoop的库文件路径" class="headerlink" title="3.2 如何查看hadoop的库文件路径"></a>3.2 如何查看hadoop的库文件路径</h3><p><code>./bin/hadoop classpath</code>，当不在 <code>maven</code> 工程下进行编译java文件的时候，需要将这个路径引入 <code>classpath</code>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASSPATH=$($HADOOP_HOME/bin/hadoop classpath):$CLASSPATH</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-单机、伪分布、分布模式的切换"><a href="#3-3-单机、伪分布、分布模式的切换" class="headerlink" title="3.3 单机、伪分布、分布模式的切换"></a>3.3 <code>单机、伪分布、分布</code>模式的切换</h3><p><em>参考： <a href="http://dblab.xmu.edu.cn/blog/install-/2019/12/10/BigDataSystem/Batch/hadoop/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/install-/2019/12/10/BigDataSystem/Batch/hadoop/</a></em></p>
+<p>总共涉及四个文件的修改：</p>
 <ul>
-<li>QSplitter 会改变Button纵向大小</li>
-<li>vertical layout 不会改变纵向大小</li>
+<li>core-site.xml</li>
+<li>hdfs-site.xml</li>
+<li>mapred-site.xml</li>
+<li>yarn-site.xml</li>
 </ul>
+<h4 id="3-3-1-单机模式"><a href="#3-3-1-单机模式" class="headerlink" title="3.3.1 单机模式"></a>3.3.1 单机模式</h4><p>安装完成后，默认模式为单机模式</p>
+<ul>
+<li>core-site.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-2-伪分布模式"><a href="#3-3-2-伪分布模式" class="headerlink" title="3.3.2 伪分布模式"></a>3.3.2 伪分布模式</h4><ul>
+<li>core-site.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>file:/usr/loca/2019/12/10/BigDataSystem/Batch/hadoop/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">description</span>&gt;</span>Abase for other temporary directories. <span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://Master:9000<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hdfs-site.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.secondary.http-address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>Master:50090<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.namenode.name.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>file:/usr/loca/2019/12/10/BigDataSystem/Batch/hadoop/tmp/dfs/name<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.datanode.data.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>file:/usr/loca/2019/12/10/BigDataSystem/Batch/hadoop/tmp/dfs/data<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>与　<code>yarn</code> 有关的两个配置文件：</p>
+<ul>
+<li>mapred-site.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.framework.name<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>yarn<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span>	</span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>Master:10020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">name</span>&gt;</span>mapreduce.jobhistory.webapp.address<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">value</span>&gt;</span>Master:19888<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>yarn-site.xml</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- Site specific YARN configuration properties --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.resourcemanager.hostname<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>Master<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line">		<span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">name</span>&gt;</span>yarn.nodemanager.aux-services<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>mapreduce_shuffle<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">./bin/hdfs namenode -format   # 重新格式化 NameNode</span><br><span class="line">./sbin/start-dfs.sh  # 重启</span><br><span class="line">./sbin/start-yarn.sh      # 启动YARN</span><br><span class="line">./sbin/mr-jobhistory-daemon.sh start historyserver  # 开启历史服务器，才能在Web中查看任务运行情况</span><br></pre></td></tr></table></figure>
+
+<p>注意事项：</p>
+<blockquote>
+<p><strong>不启动 YARN 需重命名 mapred-site.xml</strong> 如果不想启动 YARN，务必把配置文件 mapred-site.xml 重命名，改成 mapred-site.xml.template，需要用时改回来就行。否则在该配置文件存在，而未开启 YARN 的情况下，运行程序会提示 “Retrying connect to server: 0.0.0.0/0.0.0.0:8032” 的错误，这也是为何该配置文件初始文件名为 mapred-site.xml.template。</p>
+</blockquote>
+<h4 id="3-3-3-分布模式"><a href="#3-3-3-分布模式" class="headerlink" title="3.3.3 分布模式"></a>3.3.3 分布模式</h4><p>配置文件相比于伪分布式模式多了一个 <code>slaves</code> 文件，里面包含由所有 slave 节点的 hostname，注意：　hosts　文件中应该加入对于 slave hostname 的解析<br>注意事项：</p>
+<blockquote>
+<p><strong>伪分布式、分布式配置切换时的注意事项</strong></p>
+</blockquote>
+<blockquote>
+<p>1, 从分布式切换到伪分布式时，不要忘记修改 slaves 配置文件；</p>
+</blockquote>
+<blockquote>
+<p>2, 在两者之间切换时，若遇到无法正常启动的情况，可以删除所涉及节点的临时文件夹，这样虽然之前的数据会被删掉，但能保证集群正确启动。所以如果集群以前能启动，但后来启动不了，特别是 DataNode 无法启动，不妨试着删除所有节点（包括 Slave 节点）上的 /usr/loca/2019/12/10/BigDataSystem/Batch/hadoop/tmp 文件夹，再重新执行一次 hdfs namenode -format，再次启动试试。</p>
+</blockquote>
+<h2 id="4-hadoop分布式程序开发的一般步骤"><a href="#4-hadoop分布式程序开发的一般步骤" class="headerlink" title="4. hadoop分布式程序开发的一般步骤"></a>4. <code>hadoop</code>分布式程序开发的一般步骤</h2><ul>
+<li>使用文件系统的接口，使用<code>FileSystem</code>类的一系列方法进行操作文件，这样具有一般性，既可以添加本地文件系统的路径<code>file://xxxx</code>，也可以使用HDFS文件系统的路径<code>hdfs://xxxxx</code></li>
+<li>可在打包成<code>jar</code>之前，先将数据集存放在本地文件系统，使用本地文件系统进行测试，没问题后将路径替换为HDFS文件系统的路径；</li>
+</ul>
+<p><em>虽然也可以直接在IDE中直接进行运行，操作HDFS</em></p>
 
           
         
@@ -1340,7 +1142,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Python/gc/Question_in_stackoverflow/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Java/java.util/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1359,7 +1161,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/Python/gc/Question_in_stackoverflow/" itemprop="url">Python/gc/Question_in_stackoverflow</a></h1>
+                <a class="post-title-link" href="/2019/12/10/Java/java.util/" itemprop="url">java</a></h1>
         
 
         <div class="post-meta">
@@ -1371,8 +1173,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:22+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:06:42+08:00">
+                2019-12-10
               </time>
             
 
@@ -1381,6 +1183,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1411,17 +1235,17 @@
       
         
           
-            <p><strong>Background truths(?):</strong> When python program exits, <code>gc</code>(<code>garbage collection</code>) works to collect memory in a common way <code>reference counting</code>.</p>
-<p><strong>Question:</strong> but what’s the order of objects’ destructing or similar with <code>java</code>?</p>
-<p>Pls see code below. The reference relationship is:(<code>--&gt;</code> means reference)  </p>
+            <h1 id="java-util-package"><a href="#java-util-package" class="headerlink" title="java.util package"></a>java.util package</h1><h2 id="查找数据结构"><a href="#查找数据结构" class="headerlink" title="查找数据结构"></a>查找数据结构</h2><p>使用Hash的<code>HashTable</code>、<code>HashMap</code>都具有很高效的查找效率</p>
 <ul>
-<li>ABC <code>--&gt;</code> A </li>
-<li>ABC <code>--&gt;</code> B </li>
-<li>A <code>--&gt;</code> C      </li>
+<li><code>java.util.HashMap</code></li>
+<li><code>java.util.HashTable</code></li>
 </ul>
-<p>And I could understand <strong>the construct order is abc, a, c, b</strong>, but why the destruct order is c, a, b, abc. <strong>c</strong> has the most reference, why firstly deleted.</p>
-<p>python version 3.7.1</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little a'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">        self._c = C() </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little a was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little b'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little b was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little c'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little c was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ABC</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little abc'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_ABC</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._a = A()</span><br><span class="line">        self._b = B()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little abc was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    abc = ABC()</span><br><span class="line">    abc.get_ABC()</span><br><span class="line">    print(sys.getrefcount(abc._a))</span><br><span class="line">    print(sys.getrefcount(abc._b))</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HashTable&lt;String, Double&gt; class_prob = <span class="keyword">new</span> HashTable&lt;String, Double&gt;();</span><br><span class="line">HashTable&lt;Map&lt;String, Double&gt;, Double&gt; class_term_prob = <span class="keyword">new</span> HashTable&lt;Map&lt;String, Double&gt;, Double&gt;();</span><br><span class="line">class_prob.put(classname, Double.valueOf(args[<span class="number">1</span>])/file_total);</span><br><span class="line">prob = class_prob.getOrDefault(classname, defaultValue: <span class="number">0.0</span>);</span><br><span class="line"></span><br><span class="line">Map&lt;String,String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">map.put(classname,term);</span><br><span class="line">class_term_prob.put(map, (count+<span class="number">1</span>)/(class_term_total.get(classname)+class_term_num.get(classname)));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>java.util.Map</code></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String word:words)&#123;</span><br><span class="line">    Map&lt;String,String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">    map.put(classname, word);</span><br><span class="line">    result += Math.log(class_term_prob.getOrDefault(map,<span class="number">1.0</span>/(class_term_total.get(classname)+class_term_num.get(classname))));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1469,7 +1293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Python/Crawler/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/NLP/Course/cs224n/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1488,7 +1312,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/Python/Crawler/README/" itemprop="url">Python/Crawler/README</a></h1>
+                <a class="post-title-link" href="/2019/12/05/NLP/Course/cs224n/README/" itemprop="url">README</a></h1>
         
 
         <div class="post-meta">
@@ -1500,8 +1324,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:22+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-05T11:24:01+08:00">
+                2019-12-05
               </time>
             
 
@@ -1510,6 +1334,50 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/Course/" itemprop="url" rel="index">
+                    <span itemprop="name">Course</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/Course/cs224n/" itemprop="url" rel="index">
+                    <span itemprop="name">cs224n</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -1540,12 +1408,458 @@
       
         
           
-            <h1 id="Crawler（爬虫）"><a href="#Crawler（爬虫）" class="headerlink" title="Crawler（爬虫）"></a>Crawler（爬虫）</h1><p>其实除了上述有的内容外，还应该包括：  </p>
+            <h1 id="CS224n"><a href="#CS224n" class="headerlink" title="CS224n"></a>CS224n</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ol>
+<li>12/5/2019 发现一份写的很易懂的blog：<a href="http://bitjoy.net/2019/08/02/cs224n%ef%bc%881-31%ef%bc%89translation-seq2seq-attention/" target="_blank" rel="noopener">http://bitjoy.net/2019/08/02/cs224n%ef%bc%881-31%ef%bc%89translation-seq2seq-attention/</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/05/NLP/Course/%E5%BC%80%E6%94%BE%E5%9F%9F%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E5%88%98%E5%BA%B7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/05/NLP/Course/%E5%BC%80%E6%94%BE%E5%9F%9F%E7%9A%84%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E5%88%98%E5%BA%B7/" itemprop="url">开放域的事件抽取_刘康</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-05T11:11:57+08:00">
+                2019-12-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/Course/" itemprop="url" rel="index">
+                    <span itemprop="name">Course</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/02/OperatingSystem/virtualization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/02/OperatingSystem/virtualization/" itemprop="url">virtualization</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T16:47:00+08:00">
+                2019-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">OperatingSystem</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/02/Java/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/02/Java/README/" itemprop="url">README</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-02T16:44:37+08:00">
+                2019-12-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Java"><a href="#Java" class="headerlink" title="Java"></a>Java</h1><h2 id="Java环境的配置"><a href="#Java环境的配置" class="headerlink" title="Java环境的配置"></a>Java环境的配置</h2><p>Java 环境变量的配置：</p>
 <ul>
-<li>Crawler-APP数据抓取  </li>
-<li>Crawler-分布式数据抓取  </li>
-<li>Crawler-解决IP封锁</li>
+<li><code>JAVA_HOME</code> 指向 JDK 的路径</li>
+<li><code>CLASS_PATH</code> 的路径常用： <code>.;%JAVA_HOME%\lib\;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar;</code></li>
+<li><code>PATH</code> 的路径常用： <code>%JAVA_HOME%\bin\;%JAVA_HOME%\jre\bin\;</code></li>
 </ul>
+<h2 id="IDEA-的环境配置（必要配置部分）"><a href="#IDEA-的环境配置（必要配置部分）" class="headerlink" title="IDEA 的环境配置（必要配置部分）"></a>IDEA 的环境配置（必要配置部分）</h2><p>JDK、Java Language Level的配置：</p>
+<p><code>File</code> - <code>Project Structure</code> - <code>Project</code> 可以配置：</p>
+<ul>
+<li><code>Project SDK</code> </li>
+<li><code>Project language level</code></li>
+<li><code>Project compiler output</code></li>
+</ul>
+<p>导入 jar 包：</p>
+<p><code>File</code> - <code>Project Structure</code> - <code>Modules</code> - <code>Dependencies</code> 点击 + 添加 jar 包的路径</p>
 
           
         
@@ -1585,7 +1899,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/9/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/11/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1635,14 +1949,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-count">214</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>

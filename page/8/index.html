@@ -229,9 +229,39 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" target="_blank" rel="noopener" class="st-search-show-outputs">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'Nf5_s5_h8Jo7hX6Vxqmp','2.0.0');
+</script>
+
+
+
+    </div>
   
 </nav>
 
@@ -260,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/BigDataSystem/Batch/hadoop/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/MLDL/tqdm/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -279,7 +309,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/BigDataSystem/Batch/hadoop/" itemprop="url">BigDataSystem/Batch/hadoop</a></h1>
+                <a class="post-title-link" href="/2020/01/02/MLDL/tqdm/" itemprop="url">tqdm</a></h1>
         
 
         <div class="post-meta">
@@ -291,8 +321,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:59:38+08:00">
+                2020-01-02
               </time>
             
 
@@ -301,6 +331,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MLDL/" itemprop="url" rel="index">
+                    <span itemprop="name">MLDL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -331,286 +383,11 @@
       
         
           
-            <h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><h2 id="1-安装与配置"><a href="#1-安装与配置" class="headerlink" title="1. 安装与配置"></a>1. 安装与配置</h2><h2 id="2-常用命令"><a href="#2-常用命令" class="headerlink" title="2. 常用命令"></a>2. 常用命令</h2><h2 id="3-Q-amp-A"><a href="#3-Q-amp-A" class="headerlink" title="3. Q&amp;A"></a>3. Q&amp;A</h2><h3 id="3-1-如何查看hadoop的库文件路径"><a href="#3-1-如何查看hadoop的库文件路径" class="headerlink" title="3.1 如何查看hadoop的库文件路径"></a>3.1 如何查看hadoop的库文件路径</h3><p><code>./bin/hadoop classpath</code>，当不在 <code>maven</code> 工程下进行编译java文件的时候，需要将这个路径引入 <code>classpath</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export CLASSPATH=$($HADOOP_HOME/bin/hadoop classpath):$CLASSPATH</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
+            <h1 id="tqdm"><a href="#tqdm" class="headerlink" title="tqdm"></a>tqdm</h1><p>tqdm 是快速，可扩展的 python 进度条，用户只需要封装任意的迭代器 <code>tqdm(iterator)</code></p>
+<h2 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(<span class="number">100</span>)):</span><br><span class="line">    time.sleep(<span class="number">0.01</span>)</span><br></pre></td></tr></table></figure>
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Algorithm/img/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/Algorithm/img/README/" itemprop="url">Algorithm/img/README</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这里放一些算法问题及解决动画中的图片</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/" itemprop="url">Algorithm/遗传算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="优化问题（一）遗传算法"><a href="#优化问题（一）遗传算法" class="headerlink" title="优化问题（一）遗传算法"></a>优化问题（一）遗传算法</h1><blockquote>
-<p>遗传算法（Genetic Algorithm, GA）起源于对生物系统所进行的计算机模拟研究。它是模仿自然界生物进化机制发展起来的随机全局搜索和优化方法，借鉴了达尔文的进化论和孟德尔的遗传学说。其本质是一种高效、并行、全局搜索的方法，能在搜索过程中自动获取和积累有关搜索空间的知识，并自适应地控制搜索过程以求得最佳解。</p>
-</blockquote>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>遗传算法是以面为单位的搜索，比以点为单位的搜索，更能发现全局最优解。</strong></p>
-<p><img src="./img/genetic_algorithm_process.jpeg" alt="process"></p>
-<h2 id="验证函数"><a href="#验证函数" class="headerlink" title="验证函数"></a>验证函数</h2><p>$$f(x)=xsin(10\pi x)+2$$</p>
-<h2 id="遗传算法的几个重要步骤"><a href="#遗传算法的几个重要步骤" class="headerlink" title="遗传算法的几个重要步骤"></a>遗传算法的几个重要步骤</h2><h3 id="1-基因的编码"><a href="#1-基因的编码" class="headerlink" title="1. 基因的编码"></a>1. 基因的编码</h3><p>编码的主要目的是为后期的遗传变异建立基础。</p>
-<p><img src="./img/genetic_algorithm.png" alt="code"></p>
-<p>1.1 基因的编码方式</p>
-<ul>
-<li>二进制编码</li>
-<li>浮点数编码</li>
-</ul>
-<p>在我们常用的问题中，基因型–编码；表现型–坐标；我们只需要在相应的坐标精度下使用一种编码表方式将坐标编码出来。</p>
-<h3 id="2-适应性评价与选择函数"><a href="#2-适应性评价与选择函数" class="headerlink" title="2. 适应性评价与选择函数"></a>2. 适应性评价与选择函数</h3><p>这里是对个体的评价和选择的过程，也是对搜索空间的修剪。</p>
-<p>2.1 适应度函数（fitness function）— 目标函数</p>
-<p>适应度函数即是衡量该基因型的个体对环境的适应度评估标准。它是我们作为选择函数选择的依据。我们可以很明显地以<strong>目标函数</strong>作为我们的适应度函数</p>
-<p>2.2 选择函数（selection）</p>
-<p><em>为什么这里会出现选择函数而不是直接对适应度最高的函数进行选择呢？</em></p>
-<p>模拟生物界的遗传进化规律，并不是所有的优良个体都会被保存，也不是所有的劣势个体都会被淘汰。</p>
-<p>常用方法：</p>
-<ul>
-<li>轮盘赌（Roulette Wheel Selection）</li>
-</ul>
-<p><em>转盘游戏</em></p>
-<p><img src="./img/roulette_wheel_selection.png" alt="roulette_wheel"></p>
-<h3 id="3-基因重组与基因突变"><a href="#3-基因重组与基因突变" class="headerlink" title="3. 基因重组与基因突变"></a>3. 基因重组与基因突变</h3><p>这部分是对搜索空间的扩大，通过对个体进行变异从而得到更多基因型和表现型的个体，这部分会有大量的随机操作</p>
-<p>3.1 基因重组</p>
-<p>通过对两个基因的编码进行部分替换得到</p>
-<p><img src="./img/ga_ge_reconstruct.png" alt="ge_reconstruct"></p>
-<p>3.2 基因突变</p>
-<p>对单个个体的基因型进行改变</p>
-<ul>
-<li>二进制的编码： <code>0</code> 与 <code>1</code> 之间的互换</li>
-<li>浮点数的编码：对浮点数增加/减少一个随机数</li>
-</ul>
-<h3 id="4-遗传算子总结"><a href="#4-遗传算子总结" class="headerlink" title="4. 遗传算子总结"></a>4. 遗传算子总结</h3><p><img src="./img/ga_operator.png" alt="ga_operator"></p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://blog.csdn.net/u010451580/article/details/51178225" target="_blank" rel="noopener">遗传算法详解</a></li>
-<li><a href="https://blog.csdn.net/zzzzjh/article/details/80633573" target="_blank" rel="noopener">遗传算法python实现</a></li>
+<li><a href="https://blog.csdn.net/qq_33472765/article/details/82940843" target="_blank" rel="noopener">csdn</a></li>
 </ul>
 
           
@@ -660,7 +437,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Algorithm/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/MLDL/torchnet/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -679,7 +456,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/Algorithm/README/" itemprop="url">Algorithm/README</a></h1>
+                <a class="post-title-link" href="/2020/01/02/MLDL/torchnet/" itemprop="url">torchnet</a></h1>
         
 
         <div class="post-meta">
@@ -691,8 +468,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:41:37+08:00">
+                2020-01-02
               </time>
             
 
@@ -701,6 +478,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MLDL/" itemprop="url" rel="index">
+                    <span itemprop="name">MLDL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -731,7 +530,7 @@
       
         
           
-            <h1 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h1>
+            <h1 id="torchnet"><a href="#torchnet" class="headerlink" title="torchnet"></a>torchnet</h1><h2 id="1-torchnet-dataset"><a href="#1-torchnet-dataset" class="headerlink" title="1. torchnet.dataset"></a>1. <code>torchnet.dataset</code></h2><h2 id="2-torchnet-engine"><a href="#2-torchnet-engine" class="headerlink" title="2. torchnet.engine"></a>2. <code>torchnet.engine</code></h2><h2 id="3-torchnet-meter"><a href="#3-torchnet-meter" class="headerlink" title="3. torchnet.meter"></a>3. <code>torchnet.meter</code></h2><h2 id="4-torchnet-utils"><a href="#4-torchnet-utils" class="headerlink" title="4. torchnet.utils"></a>4. <code>torchnet.utils</code></h2>
           
         
       
@@ -779,7 +578,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Algorithm/dynamic_Programming_sum/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/Latex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -798,7 +597,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/Algorithm/dynamic_Programming_sum/" itemprop="url">Algorithm/dynamic_Programming_sum</a></h1>
+                <a class="post-title-link" href="/2020/01/02/Something/Latex/" itemprop="url">Latex 写作语法</a></h1>
         
 
         <div class="post-meta">
@@ -810,8 +609,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:30:31+08:00">
+                2020-01-02
               </time>
             
 
@@ -820,6 +619,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Something/" itemprop="url" rel="index">
+                    <span itemprop="name">Something</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -850,13 +671,7 @@
       
         
           
-            <h1 id="Dynamic-Programming-总结"><a href="#Dynamic-Programming-总结" class="headerlink" title="Dynamic Programming 总结"></a>Dynamic Programming 总结</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h2 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h2><p>1.把多阶段决策过程转化成一系列的单阶段决策，利用各个阶段之间的递推关系来逐个确定每个阶段的最优化决策</p>
-<h2 id="算法设计步骤"><a href="#算法设计步骤" class="headerlink" title="算法设计步骤"></a>算法设计步骤</h2><p>1.定义最优子问题</p>
-<p>2.定义状态</p>
-<p>3.定义决策与状态转移方程</p>
-<p>4.确定边界条件</p>
-<p>重点在于<strong>状态转移方程 + 边界条件</strong></p>
-
+            
           
         
       
@@ -904,7 +719,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Algorithm/dynamic_Programming1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/MarkDown/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -923,7 +738,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/Algorithm/dynamic_Programming1/" itemprop="url">Algorithm/dynamic_Programming1</a></h1>
+                <a class="post-title-link" href="/2020/01/02/Something/MarkDown/" itemprop="url">MarkDown</a></h1>
         
 
         <div class="post-meta">
@@ -935,8 +750,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:30:31+08:00">
+                2020-01-02
               </time>
             
 
@@ -945,6 +760,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Something/" itemprop="url" rel="index">
+                    <span itemprop="name">Something</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -975,600 +812,1084 @@
       
         
           
-            <h1 id="Dynamic-Programming-（动态规划）"><a href="#Dynamic-Programming-（动态规划）" class="headerlink" title="Dynamic Programming （动态规划）"></a>Dynamic Programming （动态规划）</h1><h2 id="背包问题（0-1背包问题）"><a href="#背包问题（0-1背包问题）" class="headerlink" title="背包问题（0-1背包问题）"></a>背包问题（0-1背包问题）</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">小偷发现了n个商品，第i个商品重量为wi,价值为vi。小偷希望尽量拿走价值高的商品，但是他的背包只能容纳W重的商品。  </span><br><span class="line">求如何取舍这些商品？   </span><br><span class="line">由于对一个商品，要么被拿走要么不被拿走，所以被称为0-1背包问题</span><br></pre></td></tr></table></figure>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
-<li>最小子问题：拿到第i-1个商品是最优的，这个怎么考虑呢？（即在容量为<strong>w-vi</strong>的背包里，这里其实是错的），拿到第i-1个商品时，此时达到最优情况</li>
-<li>状态：由以上分析，状态参数应该至少有2个，g[i][v]代表在v的容量下，第i次是最优的，g当然代表v之和啦</li>
-<li><strong>第i次该如何选取呢？</strong>这个不像装配站问题，有前面确定的路可走，这里考虑<strong>拿与不拿</strong>,什么意思？拿，g[i-1][W-Wi]最优；不拿，g[i-1][W]最优；</li>
-<li>状态转换方程：<strong>g[i][v] = max{g[i-1][W],g[i-1][W-Wi]+vi}</strong> 为什么会有拿与不拿呢？当然是背包总容量限制啦</li>
-<li>边界条件：g[0][0] = 0 肯定是最优的</li>
+            <h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><h2 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h2><p><a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="noopener">简书</a><br><a href="http://wowubuntu.com/markdown/#p" target="_blank" rel="noopener">Wow!Ubuntu</a>  感谢!</p>
+<h2 id="Markdown优点"><a href="#Markdown优点" class="headerlink" title="Markdown优点:"></a>Markdown优点:</h2><ul>
+<li>纯文本，兼容性强</li>
+<li>格式转换方便，可以轻松地转换为html,电子书等</li>
+<li>Markdown语法有极好的可读性</li>
 </ul>
-<h3 id="题目引用"><a href="#题目引用" class="headerlink" title="题目引用"></a>题目引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有编号分别为a,b,c,d,e的五件物品，它们的重量分别是2,2,6,5,4，它们的价值分别是6,3,5,4,6，现在给你个承重为10的背包，如何让背包里装入的物品具有最  </span><br><span class="line">的价值总和</span><br></pre></td></tr></table></figure>
-<p><img src="img/package.png" alt=""></p>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const int w[6]=&#123;0,2,2,6,5,4&#125;;//商品重量 第一数值为0，为了方便编程</span><br><span class="line">const int v[6]=&#123;0,6,3,5,4,6&#125;;//商品价值 第一数值为0，为了方便编程</span><br><span class="line">const int W = 10; //背包容量</span><br><span class="line">int c[6][11] = &#123;0&#125;;//c[i][j]表示在商品1到i中，背包容量为j时，最大价值</span><br><span class="line">int l[6]=&#123;0&#125;;</span><br><span class="line"></span><br><span class="line">void dp_package() &#123;</span><br><span class="line">    for(int i=1;i&lt;=W;i++)               //i 代表此时背包容量</span><br><span class="line">        for(int j=1;j&lt;6;j++) &#123;          //j 代表第j个背包</span><br><span class="line">            if(i&gt;=w[j]) &#123;</span><br><span class="line">                if(c[j-1][i] &lt; c[j-1][i-w[j]] + v[j]) &#123;</span><br><span class="line">                    c[j][i] = c[j-1][i-w[j]] + v[j];        //此时为拿第i个商品的情况</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    c[j][i] = c[j-1][W];                    //此时为不拿第i个商品的情况</span><br><span class="line">    </span><br><span class="line">                &#125; </span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                c[j][i] = c[j-1][i];                         </span><br><span class="line">            &#125;           </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    dp_package();</span><br><span class="line">    cout&lt;&lt;c[5][10]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h3><p>第一遍看这个算法，没看明白！后来看到这个<a href="http://blog.csdn.net/mu399/article/details/7722810#reply" target="_blank" rel="noopener">http://blog.csdn.net/mu399/article/details/7722810#reply</a> 才有点头绪；  </p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><blockquote>
+<p># 一级标题<br>## 二级标题<br>### 三级标题  </p>
+</blockquote>
+<p>#可以有六级，表示六级标题</p>
+<h2 id="列表与引用"><a href="#列表与引用" class="headerlink" title="列表与引用"></a>列表与引用</h2><blockquote>
+<p>- 文本1<br>- 文本2<br>- 文本3</p>
+</blockquote>
+<p>或者显示1,2,3的情况，使用:</p>
+<blockquote>
+<p>1.文本1<br>2.文本2<br>3.文本3  </p>
+</blockquote>
+<p>注意：<strong>这些符号需在与后续文本之间加上一空格字符才能正确地显示</strong></p>
+<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><blockquote>
 <ul>
-<li>从容量为1-W递归考虑，这个是由于每次我们需要的是试探i-Wi时的最优情况，因此不得不从头考虑  </li>
+<li>当在一个文本块需要强制换行时，可以使用两个空格+换行符来强制换行，否则仅用一个换行符并不能起到换行的作用；</li>
+<li>恰当的使用空白行也能起到换行的作用；</li>
 </ul>
-<h3 id="部分背包问题"><a href="#部分背包问题" class="headerlink" title="部分背包问题"></a>部分背包问题</h3><p>部分背包问题的意思是商品可以拿去部分，这样就可以用<strong>贪心算法</strong>做了，每次寻求<strong>商品价值/商品重量</strong>最大的加入到背包中</p>
-<h2 id="最大公共子序列问题-LCS-Longest-Common-Sequence"><a href="#最大公共子序列问题-LCS-Longest-Common-Sequence" class="headerlink" title="最大公共子序列问题(LCS:Longest Common Sequence)"></a>最大公共子序列问题(LCS:Longest Common Sequence)</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><ul>
-<li>公共子序列：两个序列中公共的子序列，如:”1A2C3D4B56”与”B1D23CA45B6A” 的公共子序列有 123456 或者其它</li>
-<li>最长公共子序列即最长的：上题中，LCS即”123456“与”12C4B6”</li>
-</ul>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个字符串str1和str2，返回两个字符串的最长公共子序列</p>
-<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LCS的最优子结构定理：设X=&#123;x1，x2，……，xm&#125;和Y=&#123;y1，y2，……，yn&#125;为两个序列，并设Z=&#123;z1、z2、……，zk&#125;为X和Y的任意一个LCS，则：</span><br><span class="line">（1）如果xm=yn，那么zk=xm=yn，而且Zk-1是Xm-1和Yn-1的一个LCS。</span><br><span class="line">（2）如果xm≠yn，那么zk≠xm蕴含Z是是Xm-1和Yn的一个LCS。</span><br><span class="line">（3）如果xm≠yn，那么zk≠yn蕴含Z是是Xm和Yn-1的一个LCS。</span><br><span class="line">定理说明两个序列的一个LCS也包含两个序列的前缀的一个LCS，即LCS问题具有最优子结构性质。</span><br></pre></td></tr></table></figure>
-<p>状态转换方程与边界条件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">          |- 0; i,j=0</span><br><span class="line">c[i][j]-- |- c[i-1][j-1]+1; i,j&gt;0,Xi=Yj</span><br><span class="line">          |- max&#123;c[i-1][j],c[i][j-1]&#125;;i,j&gt;0,Xi!=Yj</span><br></pre></td></tr></table></figure>
-<p>如何求得该LCS呢？贴出一段伪码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PRINT_LCS(b,X,i,j)</span><br><span class="line">    if i==0 or j==0</span><br><span class="line">        then return</span><br><span class="line">    if b[i][j] == &apos;\&apos;</span><br><span class="line">        then PRINT_LCS(b,X,i-1,j-1)</span><br><span class="line">             print X[i]</span><br><span class="line">     else if b[i][j] == &apos;|&apos;</span><br><span class="line">                then PRINT_LCS(b,X,i-1,j)</span><br><span class="line">             else PRINT_LSC(b,X,i,j-1)</span><br></pre></td></tr></table></figure>
-<p>这里分析了一下思想就是在一路走来的路上留下痕迹，最后便于通过递归来寻迹，不过这样开销太大了</p>
-<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Algorithm/dynamic_Programming0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/Algorithm/dynamic_Programming0/" itemprop="url">Algorithm/dynamic_Programming0</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Dynamic-Programming-（动态规划）"><a href="#Dynamic-Programming-（动态规划）" class="headerlink" title="Dynamic Programming （动态规划）"></a>Dynamic Programming （动态规划）</h1><p>参考：</p>
-<p>博客园 <a href="http://www.cnblogs.com/Anker/archive/2013/03/15/2961725.html" target="_blank" rel="noopener">http://www.cnblogs.com/Anker/archive/2013/03/15/2961725.html</a></p>
-<p>适合于求解多阶段决策问题的最优解</p>
-<p>常见的有以下几类问题：</p>
+</blockquote>
+<h2 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h2><blockquote>
 <ul>
-<li>装配站问题</li>
-<li>背包问题</li>
-<li>最长公共子序列问题</li>
+<li>粗体：用2个<em>包含的内容，例如**文本*\</em></li>
+<li>斜体：用1个<em>包含的内容，例如*文本\</em></li>
 </ul>
-<h2 id="装配站问题"><a href="#装配站问题" class="headerlink" title="装配站问题"></a>装配站问题</h2><p>问题描述：</p>
-<p>　一个汽车公司在有2条装配线的工厂内生产汽车，每条装配线有n个装配站，不同装配线上对应的装配站执行的功能相同，<br>但是每个站执行的时间是不同的。在装配汽车时，为了提高速度，可以在这两天装配线上的装配站中做出选择，即可以将部<br>分完成的汽车在任何装配站上从一条装配线移到另一条装配线上。装配过程如下图所示：</p>
-<p><img src="img/dp_zp0.png" alt=""></p>
-<p>装配过程的时间包括：进入装配线时间e、每装配线上各个装配站执行时间a、从一条装配线移到另外一条装配线的时间t<br>离开最后一个装配站时间x。举个例子来说明，现在有2条装配线，每条装配线上有6个装配站，各个时间如下图所示：<br><img src="img/dp_zp1.png" alt="">  </p>
-<p>从图中可以看出按照红色箭头方向进行装配汽车最快，时间为38。分别现在装配线1上的装配站1、3和6，装配线2上装配站2、4和5。</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
-<li>最小子问题与状态：求到第几个站的最短时间 f[0][i],f[1][i]</li>
-<li>状态转换方程：f[0][i] = min{f[0][i-1]+a[0][j],f[1][i-1]+t[1][i-1]+a[0][i]},f[2][i]同理</li>
-<li>边界条件：f[0][0],f[1][0]，这个可以根据状态转换方程加以确定</li>
-</ul>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">6</span>] = &#123;&#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">4</span>&#125;,&#123;<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> t[<span class="number">2</span>][<span class="number">5</span>] = &#123;&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> e[<span class="number">2</span>] = &#123;<span class="number">2</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> x[<span class="number">2</span>] = &#123;<span class="number">3</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">2</span>][<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> l[<span class="number">2</span>][<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> fs,ls;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>] = e[<span class="number">0</span>]+a[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    f[<span class="number">1</span>][<span class="number">0</span>] = e[<span class="number">1</span>]+a[<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;<span class="number">6</span>;j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(f[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j] &lt;= f[<span class="number">1</span>][j<span class="number">-1</span>] + t[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j]) &#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = f[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j];</span><br><span class="line">            l[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = f[<span class="number">1</span>][j<span class="number">-1</span>] + t[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j];</span><br><span class="line">            l[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(f[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j] &lt;= f[<span class="number">0</span>][j<span class="number">-1</span>] + t[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j]) &#123;</span><br><span class="line">            f[<span class="number">1</span>][j] = f[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j];</span><br><span class="line">            l[<span class="number">1</span>][j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            f[<span class="number">1</span>][j] = f[<span class="number">0</span>][j<span class="number">-1</span>] + t[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j];</span><br><span class="line">            l[<span class="number">1</span>][j] = <span class="number">0</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(f[<span class="number">0</span>][<span class="number">5</span>]+x[<span class="number">0</span>] &lt;= f[<span class="number">1</span>][<span class="number">5</span>]+x[<span class="number">1</span>]) &#123;</span><br><span class="line">        fs = f[<span class="number">0</span>][<span class="number">5</span>]+x[<span class="number">0</span>];</span><br><span class="line">        ls = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        fs = f[<span class="number">1</span>][<span class="number">5</span>]+x[<span class="number">1</span>];</span><br><span class="line">        ls =<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_station</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    r = l[r][i];</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;l[r][i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        print_station(r,i<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;r&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    dp();</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"最短时间为"</span>&lt;&lt;fs&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;ls&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    r = ls;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">5</span>;j&gt;<span class="number">0</span>;j--) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;l[r][j]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        r = l[r][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"reverse output!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    print_station(ls,<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;ls&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/Algorithm/anti-optimum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/Algorithm/anti-optimum/" itemprop="url">Algorithm/anti-optimum</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/README/" itemprop="url">README</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Blogs"><a href="#Blogs" class="headerlink" title="Blogs"></a>Blogs</h1><p>今天(10/21/2017)突然发现我的github不能这样子用，我完全把这玩意儿当成博客网站了，代码倒是没放多少<br>于是乎，打算把blogs都搬移到这里来，以便管理:)（只怪自己太菜了   </p>
-<p>打算分为以下模块：  </p>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><p>这里记录学习算法的历程</p>
-<h2 id="Operating-System"><a href="#Operating-System" class="headerlink" title="Operating System"></a>Operating System</h2><p>这里记录自己学习操作系统的历程  </p>
-<h2 id="Complier"><a href="#Complier" class="headerlink" title="Complier"></a>Complier</h2><p>这里记录自己学习编译原理的历程  </p>
-<h2 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h2><p>这里记录自己在写C/C++时的一些细节的感悟  </p>
-<h2 id="Database"><a href="#Database" class="headerlink" title="Database"></a>Database</h2><p>这里记录自己在用数据库时的一些常用命令</p>
-<h2 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h2><p>这里记录自己用Linux过程中做的一些笔记与摘抄吧  </p>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p>这里记录自己了解了的python的一点皮毛  </p>
-<h2 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h2><p>这里记录自己了解的JavaScript的一点皮毛  </p>
-<h2 id="Cypher-Security"><a href="#Cypher-Security" class="headerlink" title="Cypher Security"></a>Cypher Security</h2><p>这里记录自己学习的一些网络小技能  </p>
-<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>这里记录自己了解的SQL的一点皮毛  </p>
-<h2 id="Something"><a href="#Something" class="headerlink" title="Something"></a>Something</h2><p>这里是一些杂记:)</p>
-<h2 id="Matlab"><a href="#Matlab" class="headerlink" title="Matlab"></a>Matlab</h2><p>这里记录自己用matlab时的一些笔记与摘抄  </p>
-<h2 id="NLP"><a href="#NLP" class="headerlink" title="NLP"></a>NLP</h2><p>这里记录自己学习自然语言处理所遇到的坑和心得、方法总结</p>
-<p>写到这里，发现我真的在过去两年里学的好杂啊，但其实也未必是件坏事，至少它让我没闲着或者说开阔了一定的视野，让我在遇到问题的时候能有一丁点的解决思路<br>同时这中间也踩了不少坑，当然这些坑没白踩，对自己的自学能力也有一定的提高；<br>今天为什么突然心血来潮把这上面的笔记整理一下呢？因为一方面为了github pages做准备，以后有时间就搞一下好看一些，并且这里实现太乱了，看不下去；但最最重要的是接下来我要好好使用github码代码了，fork别人好的项目看看，自己做点有意思的项目，提高自己工程能力  也是为了增加一些自己的硬通货，嗯，就这样了好好写代码，好好思考，不要傻傻地当搬运工。   </p>
-<h2 id="个人感悟"><a href="#个人感悟" class="headerlink" title="个人感悟"></a>个人感悟</h2><p>初步学习一个领域的知识时，不要纠结于细节的实现，这会让你抓不到大观，也不建议开始啃大部头书，这会打击学习兴趣<br>个人感觉最佳学习路线应该是：先明白做什么 –&gt; 再明白原理与原因 （为什么）–&gt; 后学习实现细节 –&gt; 最后尝试修改实现来优化效果</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/TODO/week12/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/04/TODO/week12/" itemprop="url">TODO/week12</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:38:23+08:00">
-                2020-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="第十二周"><a href="#第十二周" class="headerlink" title="第十二周"></a>第十二周</h1><h2 id="Course"><a href="#Course" class="headerlink" title="Course"></a>Course</h2><ol>
-<li>《数值分析》 陈研：</li>
-</ol>
+</blockquote>
+<h2 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠\"></a>反斜杠\</h2><blockquote>
+<p>为什么我上面在引用里使用了一些符号但是却以文本的形式显示出来的呢？这得靠\的帮助，当你在文本中需要#,&gt;,-<br>等这些普通意义的符号时就只用在前面加上\就OK了</p>
+</blockquote>
+<h2 id="链接与图片"><a href="#链接与图片" class="headerlink" title="链接与图片"></a>链接与图片</h2><blockquote>
 <ul>
-<li>函数逼近 6 讲</li>
-<li>数值积分 5 讲</li>
-<li>常微分方程 7 讲</li>
-<li>偏微分方程 8 讲</li>
+<li>插入链接：[显示文本](链接地址)  </li>
+<li>插入图片：![](图片链接地址)</li>
 </ul>
-<ol start="2">
-<li><p>《大数据技术》报告</p>
-</li>
-<li><p>《HadoopMapreduce》</p>
-</li>
+</blockquote>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><blockquote>
+<ul>
+<li>用|表示竖列对齐  </li>
+<li>用---区分名称与数值  </li>
+<li>用:表示左，右，中间对齐</li>
+</ul>
+</blockquote>
+<p><em>例如:</em>  </p>
+<blockquote>
+<p>| Tables                     | Are           | Cool        |<br>| ------------- |:-----: | -----:|<br>| col 3 is                   | right-aligned | $1600       |<br>| col 2 is                   | centered      |   $12       |<br>| zebra stripes              | are neat      |    $1       |  </p>
+</blockquote>
+<p><em>显示效果：</em>  </p>
+<table>
+<thead>
+<tr>
+<th>Tables</th>
+<th align="center">Are</th>
+<th align="right">Cool</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>col 3 is</td>
+<td align="center">right-aligned</td>
+<td align="right">$1600</td>
+</tr>
+<tr>
+<td>col 2 is</td>
+<td align="center">centered</td>
+<td align="right">$12</td>
+</tr>
+<tr>
+<td>zebra stripes</td>
+<td align="center">are neat</td>
+<td align="right">$1</td>
+</tr>
+</tbody></table>
+<h2 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a>代码引用</h2><blockquote>
+<ul>
+<li>单段代码引用：用  &#39;  包括整个代码段显示为一个代码段  </li>
+<li>多段代码引用：用  &#39;&#39;&#39;  置于代码段的首行与末行</li>
+</ul>
+</blockquote>
+<h2 id="编写数学公式"><a href="#编写数学公式" class="headerlink" title="编写数学公式"></a>编写数学公式</h2><p><em>参考：<a href="https://juejin.im/post/5a6721bd518825733201c4a2#heading-1" target="_blank" rel="noopener">https://juejin.im/post/5a6721bd518825733201c4a2#heading-1</a></em></p>
+<p>数学公式的编写类似于 Latex 中的用法，这里介绍一些常用的：</p>
+<ul>
+<li><code>$$\left(\sum_{k=\frac{1}{2}}^{N^2}\frac{1}{k}\right)$$</code></li>
+</ul>
+<p>$$\left(\sum_{k=\frac{1}{2}}^{N^2}\frac{1}{k}\right)$$</p>
+<ul>
+<li><code>$$\left(\int_a^b\sqrt{2x}dx\right)$$</code></li>
+</ul>
+<p>$$\left[\int_a^b\sqrt{2x}dx\right]$$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$\begin&#123;bmatrix&#125;</span><br><span class="line">    1 &amp; 2 \\\\</span><br><span class="line">    3 &amp; 4</span><br><span class="line">\end&#123;bmatrix&#125;$$</span><br></pre></td></tr></table></figure>
+
+<p>$$\begin{bmatrix}<br>    1 &amp; 2 \\<br>    3 &amp; 4<br>\end{bmatrix}$$</p>
+<ul>
+<li>数学公式中的空格</li>
+</ul>
+<p>markdown 中数学公式中的空格</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">没有空格 $ab$</span><br><span class="line">小空格 a\,b</span><br><span class="line">中等空格 a\;b</span><br><span class="line">大空格 a\ b</span><br><span class="line">quad空格 $a\quad b$</span><br><span class="line">qquad空格 $a\qquad b$</span><br></pre></td></tr></table></figure>
+
+<p>没有空格 $ab$<br>小空格 $a,b$<br>中等空格 $a;b$<br>大空格 $a\ b$<br>quad空格 $a\quad b$<br>qquad空格 $a\qquad b$</p>
+<ul>
+<li>数学公式的换行</li>
+</ul>
+<p>使用 <code>\\</code> 或 <code>\\</code> 进行数学公式的换行，使用在 <code>\begin \end</code> 块中，见以下示例。</p>
+<ul>
+<li>数学公式的对齐</li>
+</ul>
+<p>使用 <code>aligned</code> + <code>&amp;</code></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">r<span class="emphasis">_&#123;t&#125; =&amp; \sigma(W_</span>&#123;ir&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;ir&#125; + W<span class="emphasis">_&#123;hr&#125;h_</span>&#123;(t-1)&#125; + b_&#123;hr&#125;) \\</span><br><span class="line">z<span class="emphasis">_&#123;t&#125; =&amp; \sigma(W_</span>&#123;iz&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;iz&#125; + W<span class="emphasis">_&#123;hz&#125;h_</span>&#123;(t-1)&#125; + b_&#123;hz&#125;) \\</span><br><span class="line">n<span class="emphasis">_&#123;t&#125; =&amp; tanh(W_</span>&#123;in&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;in&#125; + r<span class="emphasis">_&#123;t&#125;*(W_</span>&#123;hn&#125;h<span class="emphasis">_&#123;(t-1)&#125; + b_</span>&#123;hn&#125;)) \\</span><br><span class="line">h<span class="emphasis">_&#123;t&#125; =&amp; (1-z_</span>&#123;t&#125;) <span class="emphasis">* n_&#123;t&#125; + z_&#123;t&#125; *</span> h_&#123;(t-1)&#125;        </span><br><span class="line">\end&#123;aligned&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
+
+<p>$$<br>\begin{aligned}<br>r_{t} =&amp; \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \<br>z_{t} =&amp; \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \<br>n_{t} =&amp; tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \<br>h_{t} =&amp; (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}<br>\end{aligned}<br>$$</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/NLP/%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%A3%80%E6%B5%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/31/NLP/%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%A3%80%E6%B5%8B/" itemprop="url">文本相似度检测</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-31T19:22:54+08:00">
+                2019-12-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/28/BigDataSystem/Consistency/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/28/BigDataSystem/Consistency/README/" itemprop="url">README</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-28T20:59:51+08:00">
+                2019-12-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">BigDataSystem</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/Consistency/" itemprop="url" rel="index">
+                    <span itemprop="name">Consistency</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h1><p>一致性问题，一致性问题是分布式系统中比较常见的问题。</p>
+<p>这里主要分析 <code>Paxo</code> 与 <code>Raft</code> 两种分布式一致性协议。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/Mathmatics/Numerical%20Analysis/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/Mathmatics/Numerical%20Analysis/README/" itemprop="url">README</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T20:32:48+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathmatics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathmatics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathmatics/Numerical-Analysis/" itemprop="url" rel="index">
+                    <span itemprop="name">Numerical Analysis</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数值分析"><a href="#数值分析" class="headerlink" title="数值分析"></a>数值分析</h1><p>数值分析是从计算机的角度解决数学中常见的运算问题。</p>
+<p>这里为了能记得比较清晰一些，找了在<code>python</code>上的实验进行实验，加深印象。</p>
+<p>推荐视频</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/av27803928?from=search&seid=1984628040516151416" target="_blank" rel="noopener">陈妍-中国农大-数值计算方法</a></li>
+<li>配套讲义-百度云</li>
+</ul>
+<p>推荐书籍</p>
+<ul>
+<li>Burden的《Numerical Analysis》</li>
+</ul>
+<p>编程书籍</p>
+<ul>
+<li>《MATLAB 数值计算》（2013修订版） Cleve Moler 《Numerical Computation with MATLAB》2008/2013 修订版</li>
+</ul>
+<hr>
+<p>2019/12/25 update</p>
+<p>加入搜集到的一些经典算法的实现</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/Mathmatics/LinearAlgebra/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/25/Mathmatics/LinearAlgebra/README/" itemprop="url">README</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T20:31:49+08:00">
+                2019-12-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathmatics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathmatics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathmatics/LinearAlgebra/" itemprop="url" rel="index">
+                    <span itemprop="name">LinearAlgebra</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Linear-Algebra"><a href="#Linear-Algebra" class="headerlink" title="Linear Algebra"></a>Linear Algebra</h1><p>?????????</p>
+<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><h3 id="mit-18-06sc"><a href="#mit-18-06sc" class="headerlink" title="mit 18.06sc"></a>mit 18.06sc</h3><p><em>Instructor: Prof. Gilbert Strang</em></p>
+<p>????</p>
+<ul>
+<li><a href="https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/" target="_blank" rel="noopener">course home</a></li>
+</ul>
+<p>????</p>
+<ul>
+<li>MIT 18.06C????????</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/22/HAM/antenna/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/22/HAM/antenna/" itemprop="url">antenna</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-22T22:26:55+08:00">
+                2019-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HAM/" itemprop="url" rel="index">
+                    <span itemprop="name">HAM</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="天线的基本知识"><a href="#天线的基本知识" class="headerlink" title="天线的基本知识"></a>天线的基本知识</h1><h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p><em>天线的工作原理以前上电磁波课的时候一直不明白，看了这个视频茅塞顿开</em></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ZaXm6wau-jc" target="_blank" rel="noopener">video</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/51098683" target="_blank" rel="noopener">知乎-看完这个，你就是半个天线专家</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/28552572" target="_blank" rel="noopener">无线电频谱划分及相关基础知识</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/18/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url">关系抽取</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-18T19:38:18+08:00">
+                2019-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
+                    <span itemprop="name">实体与关系抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="关系抽取"><a href="#关系抽取" class="headerlink" title="关系抽取"></a>关系抽取</h1><p><em>这里我所理解的关系抽取是相对于事件抽取而言少了触发词检测和事件类别识别的工作，侧重于在对实体与实体之间的修饰关系的抽取，而不同于实体与动作之间关系的抽取</em></p>
+<h2 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h2><h3 id="Survey"><a href="#Survey" class="headerlink" title="Survey"></a>Survey</h3><ol>
+<li><em>A Survey of Deep Learning Methods for Relation Extraction.Shantanu Kumar. 2017.</em></li>
+<li><em>Relation Extraction : A Survey.Sachin Pawara,b, Girish K. Palshikara, Pushpak</em></li>
 </ol>
-<h3 id="cs224n"><a href="#cs224n" class="headerlink" title="cs224n"></a>cs224n</h3><p>课程主页：<a href="http://web.stanford.edu/class/cs224n/index.html#schedule" target="_blank" rel="noopener">http://web.stanford.edu/class/cs224n/index.html#schedule</a><br>视频地址：<a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z</a></p>
-<ol>
-<li>Introduction and Word Vectors, Gensim word vectors example:</li>
-<li>Word Vectors 2 and Word Senses</li>
-<li>Python review session</li>
-<li>Word Window Classification, Neural Networks, and Matrix Calculus</li>
-<li>Backpropagation and Computation Graphs</li>
-<li>Linguistic Structure: Dependency Parsing</li>
-<li>The probability of a sentence? Recurrent Neural Networks and Language Models</li>
-<li>Vanishing Gradients and Fancy RNNs</li>
-<li>Machine Translation, Seq2Seq and Attention</li>
-<li>Practical Tips for Final Projects</li>
-<li>Question Answering and the Default Final Project</li>
-<li>ConvNets for NLP</li>
-<li>Information from parts of words: Subword Models</li>
-<li>Modeling contexts of use: Contextual Representations and Pretraining</li>
-<li>Transformers and Self-Attention For Generative Models</li>
-<li>Natural Language Generation</li>
-<li>Reference in Language and Coreference Resolution</li>
-<li>Multitask Learning: A general model for NLP?</li>
-<li>Constituency Parsing and Tree Recursive Neural Networks</li>
-<li>Safety, Bias, and Fairness</li>
-<li>Future of NLP + Deep Learning</li>
+<h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><ol>
+<li>project on github: <a href="https://github.com/topics/relation-extraction?l=python" target="_blank" rel="noopener">https://github.com/topics/relation-extraction?l=python</a></li>
 </ol>
-<h3 id="Machine-Learning-李宏毅"><a href="#Machine-Learning-李宏毅" class="headerlink" title="Machine Learning 李宏毅"></a>Machine Learning 李宏毅</h3><p>视频地址： <a href="https://www.youtube.com/watch?v=CXgbekl66jc&amp;list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49" target="_blank" rel="noopener">https://www.youtube.com/watch?v=CXgbekl66jc&amp;list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49</a></p>
-<h3 id="Task："><a href="#Task：" class="headerlink" title="Task："></a>Task：</h3><ol>
-<li>《数值分析》每天2-3讲</li>
-<li>《cs224n》 每天1讲</li>
+<p><strong>Star project</strong></p>
+<ul>
+<li><a href="https://github.com/thunlp/OpenNRE" target="_blank" rel="noopener">OpenNRE</a></li>
+</ul>
+<blockquote>
+<p><a href="https://magi.com/" target="_blank" rel="noopener">Magi</a> is not a supervised system, which means it is open domain relation extraction, this is not included in OpenNRE. If you have an English application, <a href="https://stanfordnlp.github.io/CoreNLP/openie.html" target="_blank" rel="noopener">OpenIE</a>, <a href="http://reverb.cs.washington.edu/" target="_blank" rel="noopener">ReVerb</a> or other open relation extraction tools are worth to have a try.</p>
+</blockquote>
+<ul>
+<li><a href="https://stanfordnlp.github.io/CoreNLP/openie.html#simple-corenlp-api" target="_blank" rel="noopener">OpenIE</a>(stanford open information extraction)</li>
+</ul>
+<h2 id="预定义的关系抽取"><a href="#预定义的关系抽取" class="headerlink" title="预定义的关系抽取"></a>预定义的关系抽取</h2><p>抽取的关系类别是定义好的，给定的语料的结构也是比较单一的，是预定义的关系抽取。是个有监督的关系抽取技术，例如：<code>OpenNRE</code>，常见的语料有：<code>ACE</code>、<code>SemEval</code>、<code>TAC-KBP</code></p>
+<h2 id="开放域的关系抽取"><a href="#开放域的关系抽取" class="headerlink" title="开放域的关系抽取"></a>开放域的关系抽取</h2><p><em>来源：<a href="https://zhuanlan.zhihu.com/p/41207156" target="_blank" rel="noopener">中科院赵军：开放域事件抽取|CCF-GAIR 2018</a></em></p>
+<p><code>Freebase</code> 4000多万实体，上万个属性关系，24亿个事实三元组。依靠人工标注的训练集在这方面肯定是行不通的，必须考虑一些自动的或者弱监督的、半监督的方法来做开放域的关系抽取。通常在开放域的关系抽取抽出的关系字段是链接两个实体的文本。</p>
+<blockquote>
+<p>Typically the relation name is just the text linking two arguments. For example, Barack Obama was born in Hawaii would create a triple (Barack Obama; was born in; Hawaii), corresponding to the open domain relation was-born-in(Barack-Obama, Hawaii). </p>
+</blockquote>
+<h3 id="如何获取训练语料"><a href="#如何获取训练语料" class="headerlink" title="如何获取训练语料"></a>如何获取训练语料</h3><ul>
+<li>基于句法的方法，通过句法分析器，对句子找出同样表达的三元结构，放在一起就是我们需要的知识</li>
+<li>基于知识监督的方法</li>
+</ul>
+<blockquote>
+<p>2007 年 CIKM 的论文最早提出这样的思想，在 Wikipedia 中可以分成两个区域，一个区域是结构化部分，我们叫做 Infobox，另一个区域是自然语言表达的部分，这两部分描述的信息有重叠，比如描述清华大学和建校时间的知识，在 Infobox 和自然语言里面有重叠的描述，如果把这两部分对应起来，就可以对应两边区域的知识，一边是它的训练集。这是一个非常简单的思想。如果用 Infobox 的结构化信息在 wikipedia 条目的自然语言文本中进行回标，可以自动产生训练语料。</p>
+</blockquote>
+<h3 id="thunlp-在关系抽取方面的成果"><a href="#thunlp-在关系抽取方面的成果" class="headerlink" title="thunlp 在关系抽取方面的成果"></a>thunlp 在关系抽取方面的成果</h3><p><a href="https://www.jiqizhixin.com/articles/2019-11-18-2" target="_blank" rel="noopener">机器之心-知识图谱从哪里来：实体关系抽取的现状与未来</a></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ol>
+<li>thunlp 资料整理：<a href="https://github.com/thunlp/NREPapers" target="_blank" rel="noopener">https://github.com/thunlp/NREPapers</a></li>
+<li>知乎用户整理：<a href="https://zhuanlan.zhihu.com/p/73857023" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/73857023</a></li>
+<li>一个比较好的网站：<a href="http://nlpprogress.com/english/relationship_extraction.html" target="_blank" rel="noopener">http://nlpprogress.com/english/relationship_extraction.html</a></li>
+<li><a href="http://www.shuang0420.com/2018/09/15/%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96-%E5%AE%9E%E4%BD%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" target="_blank" rel="noopener">徐阿衡的博客</a></li>
+<li><a href="https://yam.gift/2019/12/11/KG/2019-12-11-Relationship-Extraction/?nsukey=C6qNhMRVv4F%2FfrB0wEm0d8laZp4NeQQhIxPtI4QcWyBc6pesMsAdSSRj6edN80HZT5vwAgaX9oE9BC8r1E%2BKm%2BFPy%2BsryhViv5eojtlJf4g%2ButND7rBNLT3VwGHdOc9Dl75gahGONWGc9rLIRd%2FXcz10kqKjHJxM74C3eVAzjzF0nz9DUIaVzKJJ1p2Pghmh6GXYpaNSiWa8fM4k82EGuA%3D%3D" target="_blank" rel="noopener">Yam大佬的博客</a></li>
 </ol>
-<h2 id="Laborary"><a href="#Laborary" class="headerlink" title="Laborary"></a>Laborary</h2><ol>
-<li><p>学习 <code>pytorch</code> 的使用，能基本理解神经网络的搭建步骤，看懂代码的大致流程，并跑一段 RNN 的示例</p>
-</li>
-<li><p>研读至少3篇事件抽取综述和最新进展的论文，并做好笔记，记录发展历程</p>
-</li>
-<li><p>尝试阅读事件抽取的 code，并做一些尝试</p>
-</li>
-</ol>
-<h2 id="保持作息，注意运动，劳逸结合"><a href="#保持作息，注意运动，劳逸结合" class="headerlink" title="保持作息，注意运动，劳逸结合"></a>保持作息，注意运动，劳逸结合</h2>
+
           
         
       
@@ -1607,7 +1928,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/7/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/9/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1657,14 +1978,32 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">159</span>
+                  <span class="site-state-item-count">214</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
 
             
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
             
 
           </nav>
