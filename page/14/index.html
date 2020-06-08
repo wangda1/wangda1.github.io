@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/JavaScript/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/%E6%B1%82%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/JavaScript/README/" itemprop="url">README</a></h2>
+                <a class="post-title-link" href="/2019/11/08/C/%E6%B1%82%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88/" itemprop="url">求排列组合</a></h2>
         
 
         <div class="post-meta">
@@ -348,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
                   </a>
                 </span>
 
@@ -387,7 +387,943 @@
       
         
           
-            <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p>学习Javascript是因为当初想开发一个Chrome插件，就是在仓库中的Chrome-extension，实现网页的快照功能</p>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">double Com(int low,int high)</span><br><span class="line">&#123;</span><br><span class="line">    double up,down;</span><br><span class="line">    double result;</span><br><span class="line">    up = 1;</span><br><span class="line">    down = 1;</span><br><span class="line">    for(int i=1;i&lt;=high;i++)</span><br><span class="line">    &#123;</span><br><span class="line">      up = up * (low - i +1);</span><br><span class="line">      down = down * i;</span><br><span class="line">    &#125;</span><br><span class="line">    result = up / down;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/typedef/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/typedef/" itemprop="url">typedef</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="typedef及一些复杂的声明"><a href="#typedef及一些复杂的声明" class="headerlink" title="typedef及一些复杂的声明"></a>typedef及一些复杂的声明</h1><p>今天在做微机原理实验时，看了一些API的声明，被里面的一些函数的声明搞得有点头晕了，哎呀！我个C语言的渣。慌得我赶紧补了一发！</p>
+<h2 id="typedef-与-define"><a href="#typedef-与-define" class="headerlink" title="typedef 与 #define"></a>typedef 与 #define</h2><blockquote>
+<ul>
+<li>与 #define 不同，typedef给出的符号名称仅限于对类型，而不是对值；   </li>
+<li>typedef的解释由编译器，而不是由预处理器；  </li>
+<li>但在有限的范围内,typedef 比 #define 灵活。</li>
+</ul>
+</blockquote>
+<p>经典用法：<br>typedef unsigned char byte;  </p>
+<h1 id="define-byte-unsigned-char-同"><a href="#define-byte-unsigned-char-同" class="headerlink" title="define byte unsigned char;  同"></a>define byte unsigned char;  同</h1><p>但是，<br>typedef char * STRING；</p>
+<h1 id="define-STRING-char"><a href="#define-STRING-char" class="headerlink" title="define STRING char *"></a>define STRING char *</h1><p>前者,STRING name,sign 表示 char * name, * sign;<br>后者,STRING name,sign 表示 char * name,sign;    </p>
+<p><strong>另一个不可告人的原因是：</strong><br>typedef 常用于 复杂类型      </p>
+<p>来来来，这个告诉我是啥？  <em>* typedef char (</em> FRPTC()) [5] **    </p>
+<p>表示函数返回一个指向5个元素的char数组的指针；<br>** typedef char * FRPTC() [5] **<br>表示函数返回一个含有5个指向char的指针的数组；   </p>
+<h2 id="C的奇特的声明"><a href="#C的奇特的声明" class="headerlink" title="C的奇特的声明"></a>C的奇特的声明</h2><p>char * fump ();       //返回指向 char 的指针的函数；<br>char (* fump) ();     //指向返回类型为char 的函数的指针；<br>char (* flump[3])();  //由3个指针组成的数组，每个指针指向返回类型为char的函数；   </p>
+<p>注：(),[]的优先级相同，高于 * 的优先级</p>
+<p><strong>鄙人认为这些奇特的声明的辨认就严格按照优先级顺序进行结合</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" itemprop="url">输入输出</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="输入输出问题"><a href="#输入输出问题" class="headerlink" title="输入输出问题"></a>输入输出问题</h1><p>以前没有注意过C/C++的输入与输出问题，总觉得很简单，直到今天才发现，输入输出里面还是有很多学问呢</p>
+<h2 id="几个特殊的字符"><a href="#几个特殊的字符" class="headerlink" title="几个特殊的字符"></a>几个特殊的字符</h2><blockquote>
+<ul>
+<li>‘\0’ 空白字符  ASCII码：0x00  出现在字符串结尾</li>
+<li>‘ ‘  空格字符  ASCII码：0x20  </li>
+<li>‘\n’ 换行符    ASCII码：0x0a</li>
+</ul>
+</blockquote>
+<h2 id="输入函数"><a href="#输入函数" class="headerlink" title="输入函数"></a>输入函数</h2><p><code>scanf()</code><br>头文件 stdio.h  不能输入空格，换行，tab符号，遇到即输入结束<br><code>gets()</code><br>头文件 stdio.h  能够输入空格，换行，tab符号<br><code>cin</code><br>头文件 iostream 不能输入空格，换行，tab符号，遇到即输入结束<br><code>getline()</code><br>头文件 iostream 能够输入空格，换行，tab符号<br><code>int fgets(char *string,int size,FILE *stream)  返回值：成功返回非负值；失败返回EOF</code>   </p>
+<p>将字符串定位到文件流输出  eg: fgets(char *string,stdin)标准输入  </p>
+<h2 id="输出函数"><a href="#输出函数" class="headerlink" title="输出函数"></a>输出函数</h2><p>与上述对应<br><code>int fputs(char *string,FILE *stream)</code><br>与输入的区别在于无size限制</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Complier/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/Complier/README/" itemprop="url">README</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Complier/" itemprop="url" rel="index">
+                    <span itemprop="name">Complier</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>尝试学了几次，终没有坚持下去</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ul>
+<li>2020/5/14: 增加 <code>LLVM</code> 相关知识</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/%E7%BC%93%E5%86%B2%E5%8C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/%E7%BC%93%E5%86%B2%E5%8C%BA/" itemprop="url">缓冲区</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="缓冲区问题"><a href="#缓冲区问题" class="headerlink" title="缓冲区问题"></a>缓冲区问题</h1><p>这篇文章关于缓冲区讲的比较清楚 <a href="http://blog.csdn.net/sole_cc/article/details/40383033" target="_blank" rel="noopener">http://blog.csdn.net/sole_cc/article/details/40383033</a> 感谢！</p>
+<p>今天在Socket编程时，遇到了一些输入与输出缓冲区问题：<br>思考了一下有以下几点：  </p>
+<p>stdin,stdout,stderror 标准输入输出应该对应的是键盘输入，显示器输出，显示器输出错误<br><em>缺省情况下是这样的，不过可以进行输入输出重定向到文件:)</em><br>当我们进行标准输入时会输入到缓冲区，并且平时输入的回车键\n也是作为一个字符保留在缓冲区的<strong>回车符一般用来表示输入完成</strong><br><em>\n作为标准输入流输入结束,getchar() scanf()即可从缓冲区取出数据</em><br>在socket编程里send,recv函数应该是将缓冲区数据发送与接收完成后自动清空缓冲区数据，当没有清空缓冲区时，通过键盘输入的数据有时虽不会<strong>立即回显</strong>，  也不太<br>但会保留在缓冲区中，当缓冲区数据需要回显的时候便显示出来  </p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><blockquote>
+<ul>
+<li>为什么我们从键盘上输入数据会立即回显？ eg:scanf()  </li>
+<li>通过回车键\n来作为Socket send()的结束字符?这和scanf()以空格作为结束字符同理？  </li>
+<li>缓冲区的一些操作？  </li>
+</ul>
+</blockquote>
+<h2 id="10-13-2017-补"><a href="#10-13-2017-补" class="headerlink" title="10/13/2017 补"></a>10/13/2017 补</h2><p>经查询后，发现缓冲区确实类似上述的操作，  </p>
+<h3 id="缓冲区"><a href="#缓冲区" class="headerlink" title="缓冲区"></a>缓冲区</h3><p><strong>全缓冲</strong>  </p>
+<blockquote>
+<ul>
+<li></li>
+</ul>
+<p><strong>行缓冲</strong>   </p>
+<ul>
+<li>代表为 stdin stdout</li>
+</ul>
+</blockquote>
+<p><strong>不缓冲</strong>  </p>
+<blockquote>
+<ul>
+<li>代表为 stderr <strong>标准错误当然是不能进行缓冲直接进行显示出来的哦</strong></li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/README/" itemprop="url">README</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">CypherSecurity</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Java/Chapter1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/Java/Chapter1/" itemprop="url">Chapter1</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Java概述"><a href="#Java概述" class="headerlink" title="Java概述"></a>Java概述</h1><h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>起源于sun公司后被Oracel公司合并<br>java.sun.com—oracel.com</p>
+<p>Java三大平台</p>
+<ul>
+<li>Java SE</li>
+<li>Java EE</li>
+<li>Java ME</li>
+</ul>
+<h2 id="相关词"><a href="#相关词" class="headerlink" title="相关词"></a>相关词</h2><p>1.<strong>JVM</strong> Java Virtual Meachine<br>JVM Java虚拟机，定义了Java程序运行的环境，如指令集，寄存器集……虚拟cpu与内存结构等<br>JVM 给Java程序带来了很多优点，如安全性，跨平台，自动垃圾回收  </p>
+<p>2.<strong>JRE</strong> Java Runtime Environment<br>当不作java程序开发，而仅仅是运行java程序时，下载安装JRE即可<br>3.<strong>JDK</strong> Java Development Kit<br>java开发者必备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">三者的关系大致是这样的：  </span><br><span class="line">JRE = JVM + API(Lib)  </span><br><span class="line">JDK = JRE + Tools(Complier,Debugger...)</span><br></pre></td></tr></table></figure>
+<h2 id="核心机制"><a href="#核心机制" class="headerlink" title="核心机制"></a>核心机制</h2><ul>
+<li>JVM</li>
+<li>Code Security</li>
+<li>Garbage Collection</li>
+</ul>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>Java语言与C++类似，语法更为简单</p>
+<ul>
+<li>OOP较纯粹于C++</li>
+<li>平台无关性</li>
+<li>安全稳定</li>
+<li>支持多线程（来源于JVM）</li>
+<li>丰富的类库<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Java与C++的一些区别:</span><br><span class="line">*** 无直接指针操作</span><br><span class="line">*** 自动内存管理,无delete</span><br><span class="line">*** 数据类型长度固定(JVM)</span><br><span class="line">*** 不用头文件</span><br><span class="line">*** 不包含结构和联合</span><br><span class="line">*** 不支持宏</span><br><span class="line">*** 不用多重继承</span><br><span class="line">*** 无类外全局变量</span><br><span class="line">*** 无 goto</span><br></pre></td></tr></table></figure>
+<h2 id="编译与运行机制"><a href="#编译与运行机制" class="headerlink" title="编译与运行机制"></a>编译与运行机制</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">                                             |-----JVM for Dos</span><br><span class="line">source.java---source.class（字节码bytecode，用于JVM） |------JVM for Win</span><br><span class="line">                                             |-----JVM for UNIX</span><br></pre></td></tr></table></figure>
+<h2 id="Tools"><a href="#Tools" class="headerlink" title="Tools"></a>Tools</h2></li>
+<li>javac———complier</li>
+<li>java———-</li>
+<li>jar———–</li>
+<li>javaw———</li>
+<li>javadoc——-</li>
+</ul>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>(1) 直接使用JDK<br>(2) 文本工具 + 调用JDK<br>(3) IDE,如eclipe,NetBeans<br>(4) 自己配置文本编辑器   </p>
 
           
         
@@ -732,7 +1668,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/%E5%BE%AE%E5%88%86%E4%B8%8E%E7%A7%AF%E5%88%86/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/JavaScript/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -751,7 +1687,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/Matlab/%E5%BE%AE%E5%88%86%E4%B8%8E%E7%A7%AF%E5%88%86/" itemprop="url">微分与积分</a></h2>
+                <a class="post-title-link" href="/2019/11/08/JavaScript/README/" itemprop="url">README</a></h2>
         
 
         <div class="post-meta">
@@ -786,8 +1722,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Matlab/" itemprop="url" rel="index">
-                    <span itemprop="name">Matlab</span>
+                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
+                    <span itemprop="name">JavaScript</span>
                   </a>
                 </span>
 
@@ -825,933 +1761,7 @@
       
         
           
-            <h1 id="微积分中一些常用的公式与技巧"><a href="#微积分中一些常用的公式与技巧" class="headerlink" title="微积分中一些常用的公式与技巧"></a>微积分中一些常用的公式与技巧</h1><h2 id="含参变量积分的微分公式，这个经常忘，呜"><a href="#含参变量积分的微分公式，这个经常忘，呜" class="headerlink" title="含参变量积分的微分公式，这个经常忘，呜~"></a>含参变量积分的微分公式，这个经常忘，呜<del>~</del></h2><blockquote>
-<ul>
-<li>[百度知道]<a href="https://zhidao.baidu.com/question/1832163828264520420.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/1832163828264520420.html</a></li>
-<li>三大块，这个是个完整的公式</li>
-</ul>
-</blockquote>
-<h2 id="积分符号内取微分计算积分，据听说费曼提到，很少人用"><a href="#积分符号内取微分计算积分，据听说费曼提到，很少人用" class="headerlink" title="积分符号内取微分计算积分，据听说费曼提到，很少人用"></a>积分符号内取微分计算积分，据听说费曼提到，很少人用</h2><blockquote>
-<ul>
-<li>[知乎]<a href="https://www.zhihu.com/question/24481887" target="_blank" rel="noopener">https://www.zhihu.com/question/24481887</a></li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/Matlab/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Matlab/" itemprop="url" rel="index">
-                    <span itemprop="name">Matlab</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="MATLAB"><a href="#MATLAB" class="headerlink" title="MATLAB"></a>MATLAB</h1><p>Learn how to use matlab</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/Matlab/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url">线性代数</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Matlab/" itemprop="url" rel="index">
-                    <span itemprop="name">Matlab</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/figure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/Matlab/figure/" itemprop="url">figure</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Matlab/" itemprop="url" rel="index">
-                    <span itemprop="name">Matlab</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><h2 id="plot"><a href="#plot" class="headerlink" title="plot"></a>plot</h2><blockquote>
-<ul>
-<li>plot(x,y);  </li>
-<li>plot(x,y1;x,y2);  </li>
-<li>plot(matrix);  绘制矩阵每一列的数据，以矩阵行为坐标  </li>
-</ul>
-</blockquote>
-<h2 id="hold-amp-figure"><a href="#hold-amp-figure" class="headerlink" title="hold &amp; figure"></a>hold &amp; figure</h2><blockquote>
-<ul>
-<li>hold on;hold off;用于在同一幅图形里继续绘图  </li>
-<li>figure,figure1,figure2用于绘制第几幅图形  </li>
-</ul>
-</blockquote>
-<h2 id="线条与标注"><a href="#线条与标注" class="headerlink" title="线条与标注"></a>线条与标注</h2><blockquote>
-<ul>
-<li>plot(x,y,’:ok’)  <strong>线条类型</strong>为点  <strong>点类型</strong>为.   <strong>颜色</strong>为黑色  </li>
-<li>axis(v)  思维矢量设置坐标轴  </li>
-<li>legend(‘string1’,’string2’,etc)  设置图例  </li>
-<li>text(x_coordinate,y_coordinate,’string’)  在图形不同位置添加文本框</li>
-<li>gtext(‘string’)  文本框的位置由鼠标确定  </li>
-<li>title(‘string’)   设置标题  </li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title(&apos;\alpha \beta \gamma&apos;)  希腊字母  </span><br><span class="line">title(&apos;x^2&apos;)    设置上标   </span><br><span class="line">title(&apos;x_5&apos;)    创建下标  </span><br><span class="line">title(&apos;k^&#123;-1&#125;&apos;)   创建下标</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/C/%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" itemprop="url">输入输出</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="输入输出问题"><a href="#输入输出问题" class="headerlink" title="输入输出问题"></a>输入输出问题</h1><p>以前没有注意过C/C++的输入与输出问题，总觉得很简单，直到今天才发现，输入输出里面还是有很多学问呢</p>
-<h2 id="几个特殊的字符"><a href="#几个特殊的字符" class="headerlink" title="几个特殊的字符"></a>几个特殊的字符</h2><blockquote>
-<ul>
-<li>‘\0’ 空白字符  ASCII码：0x00  出现在字符串结尾</li>
-<li>‘ ‘  空格字符  ASCII码：0x20  </li>
-<li>‘\n’ 换行符    ASCII码：0x0a</li>
-</ul>
-</blockquote>
-<h2 id="输入函数"><a href="#输入函数" class="headerlink" title="输入函数"></a>输入函数</h2><p><code>scanf()</code><br>头文件 stdio.h  不能输入空格，换行，tab符号，遇到即输入结束<br><code>gets()</code><br>头文件 stdio.h  能够输入空格，换行，tab符号<br><code>cin</code><br>头文件 iostream 不能输入空格，换行，tab符号，遇到即输入结束<br><code>getline()</code><br>头文件 iostream 能够输入空格，换行，tab符号<br><code>int fgets(char *string,int size,FILE *stream)  返回值：成功返回非负值；失败返回EOF</code>   </p>
-<p>将字符串定位到文件流输出  eg: fgets(char *string,stdin)标准输入  </p>
-<h2 id="输出函数"><a href="#输出函数" class="headerlink" title="输出函数"></a>输出函数</h2><p>与上述对应<br><code>int fputs(char *string,FILE *stream)</code><br>与输入的区别在于无size限制</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/OperatingSystem/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">OperatingSystem</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Operating-System"><a href="#Operating-System" class="headerlink" title="Operating System"></a>Operating System</h1><p>10/2017</p>
-<p>最近在学习操作系统，这里主要写一下自己在看书看视频时的一些思考；  </p>
-<p>参考教材：《操作系统概念》《UNIX环境高级编程》<br>参考视频： 浙江大学 李善平 《操作系统原理》</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/classic_problems/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/OperatingSystem/classic_problems/" itemprop="url">classic_problems</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">OperatingSystem</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="经典同步问题"><a href="#经典同步问题" class="headerlink" title="经典同步问题"></a>经典同步问题</h1><p>抄一下代码，想一下idea</p>
-<h2 id="Producer-Consumer-problem（生产者-消费者问题）"><a href="#Producer-Consumer-problem（生产者-消费者问题）" class="headerlink" title="Producer-Consumer problem（生产者-消费者问题）"></a>Producer-Consumer problem（生产者-消费者问题）</h2><p>又名有界缓冲区问题  </p>
-<p>原则：  </p>
-<ul>
-<li>缓冲区有界  </li>
-<li>同步，互斥读写  </li>
-</ul>
-<p>解决方式：  </p>
-<ul>
-<li>semaphore mutex 初值为1，互斥信号量  </li>
-<li>semaphore full,empty full初值为0，empty初值为n，计数信号量  </li>
-</ul>
-<p><strong>备注：</strong>解决互斥问题并不是Dijkstra大神的初心，毕竟这用“关中”也可以实现，这带来的还有避免了空操作；  </p>
-<p>实现：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Producer:</span><br><span class="line">do &#123;</span><br><span class="line"></span><br><span class="line">  //produce product</span><br><span class="line">  </span><br><span class="line">  wait(empty);</span><br><span class="line">  wait(mutex);</span><br><span class="line">  </span><br><span class="line">  //add product into buffer</span><br><span class="line">  </span><br><span class="line">  signal(mutex);</span><br><span class="line">  signal(full);</span><br><span class="line">  </span><br><span class="line">&#125;while(TRUE);</span><br><span class="line"></span><br><span class="line">Consumer:</span><br><span class="line">do &#123;</span><br><span class="line">  wait(full);</span><br><span class="line">  wait(mutex);</span><br><span class="line">  </span><br><span class="line">  //remove product from buffer</span><br><span class="line">  </span><br><span class="line">  signal(mutex);</span><br><span class="line">  signal(empty);</span><br><span class="line">  </span><br><span class="line">  //consume product</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Readers-Writers-Problem（读者-写者问题）"><a href="#Readers-Writers-Problem（读者-写者问题）" class="headerlink" title="Readers-Writers Problem（读者-写者问题）"></a>Readers-Writers Problem（读者-写者问题）</h2><p>原则：  </p>
-<ul>
-<li>多进程可同时读，单进程可写  </li>
-<li>读写进程互斥  </li>
-<li>避免出现读/写进程饥饿  </li>
-</ul>
-<p>解决方式：  </p>
-<ul>
-<li>semaphore mutex,wrt 初值为1，mutex保护readercount，wrt保护共享数据  </li>
-<li>int readercount 初值为0，表示读进程个数  </li>
-</ul>
-<p>实现：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Writer:</span><br><span class="line">do &#123; </span><br><span class="line">  wait(wrt);</span><br><span class="line">  </span><br><span class="line">  //writing is performed  </span><br><span class="line">  </span><br><span class="line">  signal(wrt);</span><br><span class="line">&#125;while(TRUE);</span><br><span class="line"></span><br><span class="line">Reader:</span><br><span class="line">do &#123;</span><br><span class="line">  wait(mutex);</span><br><span class="line">  readercount ++;</span><br><span class="line">  if(readercount == 1)          //当是第一个要读的进程时申请wrt；若非第一个读的，直接进入</span><br><span class="line">    wait(wrt);</span><br><span class="line">  signal(mutex);</span><br><span class="line">  </span><br><span class="line">  //reading is performed</span><br><span class="line">  </span><br><span class="line">  wait(mutex);</span><br><span class="line">  readercount --;</span><br><span class="line">  if(readercount == 0)          //当是最后一个要离开的进程时释放wrt；若非最后一个，直接离开</span><br><span class="line">    signal(wrt);</span><br><span class="line">  signal(mutex);</span><br><span class="line">&#125;while(TRUE);</span><br></pre></td></tr></table></figure>
-<p><strong>当然了，这并没有解决饥饿问题(starvation)，很明显会造成Writer进程饥饿</strong>  </p>
+            <h1 id="JavaScript"><a href="#JavaScript" class="headerlink" title="JavaScript"></a>JavaScript</h1><p>学习Javascript是因为当初想开发一个Chrome插件，就是在仓库中的Chrome-extension，实现网页的快照功能</p>
 
           
         
@@ -1791,7 +1801,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/13/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/15/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/13/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/15/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1841,7 +1851,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">256</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1852,7 +1862,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1863,7 +1873,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/Make/Makefile/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CMake/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/C/Make/Makefile/" itemprop="url">Makefile</a></h2>
+                <a class="post-title-link" href="/2019/11/08/C/CMake/README/" itemprop="url">README</a></h2>
         
 
         <div class="post-meta">
@@ -359,8 +359,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/Make/" itemprop="url" rel="index">
-                    <span itemprop="name">Make</span>
+                  <a href="/categories/C/CMake/" itemprop="url" rel="index">
+                    <span itemprop="name">CMake</span>
                   </a>
                 </span>
 
@@ -398,216 +398,11 @@
       
         
           
-            <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>Makefile 文件是  make  的规则文件，是一种 build 脚本，里面阐明了编译链接的顺序及所需要的相关文件</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>命令规则：  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target:prerequisites</span><br><span class="line">  command</span><br></pre></td></tr></table></figure>
-<p>target 为目标文件，prerequisites为依赖文件，commmand为要执行的shell命令<strong>前面要以TAB键开头</strong><br>并默认第一个目标文件为最终要生成的目标文件，然后后续的过程就是以这个文件为根，进行依赖文件展开，检查时间戳，执行规则  </p>
-<p>时间戳：这里指的是 make  可以在编译过程中依据文件的更新程度来决定哪些文件需要重新编译，哪些文件需要重新链接生成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">edit : main.o kbd.o command.o display.o \</span><br><span class="line">       insert.o search.o files.o utils.o</span><br><span class="line">        cc -o edit main.o kbd.o command.o display.o \</span><br><span class="line">                   insert.o search.o files.o utils.o</span><br><span class="line"> </span><br><span class="line">main.o : main.c defs.h</span><br><span class="line">        cc -c main.c</span><br><span class="line">kbd.o : kbd.c defs.h command.h</span><br><span class="line">        cc -c kbd.c</span><br><span class="line">command.o : command.c defs.h command.h</span><br><span class="line">        cc -c command.c</span><br><span class="line">display.o : display.c defs.h buffer.h</span><br><span class="line">        cc -c display.c</span><br><span class="line">insert.o : insert.c defs.h buffer.h</span><br><span class="line">        cc -c insert.c</span><br><span class="line">search.o : search.c defs.h buffer.h</span><br><span class="line">        cc -c search.c</span><br><span class="line">files.o : files.c defs.h buffer.h command.h</span><br><span class="line">        cc -c files.c</span><br><span class="line">utils.o : utils.c defs.h</span><br><span class="line">        cc -c utils.c</span><br><span class="line">clean :</span><br><span class="line">        rm edit main.o kbd.o command.o display.o \</span><br><span class="line">           insert.o search.o files.o utils.o</span><br></pre></td></tr></table></figure>
-<p>以此makefile文件为例，若command.c发生改变，只需重新编译生成新的中间代码文件command.o，再重新进行链接<br>但如果 defs.h  文件发生改变，则全部.o文件都需要重新编译，重新链接</p>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>当然了上述.o文件一大堆，可以用一个变量名来代替，引用变量用  $(object) 或者  ${object}</p>
-<p>上面可以修改成</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o kbd.o command.o display.o \</span><br><span class="line">          insert.osearch.o files.o utils.o </span><br><span class="line">edit : $(objects)</span><br><span class="line">        cc -o edit $(objects)</span><br><span class="line">main.o : main.c defs.h</span><br><span class="line">        cc -c main.c</span><br><span class="line">kbd.o : kbd.c defs.h command.h</span><br><span class="line">        cc -c kbd.c</span><br><span class="line">command.o : command.c defs.h command.h</span><br><span class="line">        cc -c command.c</span><br><span class="line">display.o : display.c defs.h buffer.h</span><br><span class="line">        cc -c display.c</span><br><span class="line">insert.o : insert.c defs.h buffer.h</span><br><span class="line">        cc -c insert.c</span><br><span class="line">search.o : search.c defs.h buffer.h</span><br><span class="line">        cc -c search.c</span><br><span class="line">files.o : files.c defs.h buffer.h command.h</span><br><span class="line">        cc -c files.c</span><br><span class="line">utils.o : utils.c defs.h</span><br><span class="line">        cc -c utils.c</span><br><span class="line">clean :</span><br><span class="line">        rm edit $(objects)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="自动推导"><a href="#自动推导" class="headerlink" title="自动推导"></a>自动推导</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">只要make看到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中，如果make找到一个whatever.o，那么whatever.c，就会是whatever.o的依赖文件。</span><br><span class="line">并且 cc -c whatever.c 也会被推导出来</span><br></pre></td></tr></table></figure>
-<p>画风就变成了酱紫  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o kbd.o command.o display.o \</span><br><span class="line">          insert.o search.o files.o utils.o</span><br><span class="line"> </span><br><span class="line">edit : $(objects)</span><br><span class="line">        cc -o edit $(objects)</span><br><span class="line"> </span><br><span class="line">main.o : defs.h</span><br><span class="line">kbd.o : defs.h command.h</span><br><span class="line">command.o : defs.h command.h</span><br><span class="line">display.o : defs.h buffer.h</span><br><span class="line">insert.o : defs.h buffer.h</span><br><span class="line">search.o : defs.h buffer.h</span><br><span class="line">files.o : defs.h buffer.h command.h</span><br><span class="line">utils.o : defs.h</span><br><span class="line"> </span><br><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">        rm edit $(objects)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CPP/static_extern_const/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/C/CPP/static_extern_const/" itemprop="url">static_extern_const</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="static-extern-const"><a href="#static-extern-const" class="headerlink" title="static extern const"></a>static extern const</h1><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>静态，声明后变量的存储区域位于静态存储区</p>
-<ul>
-<li><strong>静态局部变量</strong>：变量声明后位于静态存储区，但作用域仍限定在函数内部，即<strong>不能被其他函数访问</strong></li>
-<li><strong>静态全局变量</strong>：全局变量已经是静态的为什么还有static呢？作用在于限定作用域为本文件内部，即使其他文件 extern 也不能被访问到</li>
-</ul>
-<h2 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h2><p>引用，引用位于其它地方的声明，函数，变量等<br>如多个文件，一个文件中全局 int a;另一个文件中可以 extern int a;告诉编译器到其他文件中查找 a 的定义；</p>
-<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>这家伙用处比较大，容我一一道来<br><strong>用const即意味着此对象不能够被改变</strong></p>
-<h3 id="常对象成员"><a href="#常对象成员" class="headerlink" title="常对象成员"></a>常对象成员</h3><p><strong>声明</strong></p>
-<ol>
-<li>类名 const 对象名: Student const stu1;  </li>
-<li>const 类名 对象名: const Student stu1;  </li>
-</ol>
-<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
-<li>常对象的数据成员全部是<strong>常数据成员</strong>     </li>
-</ul>
-<p><em>如何初始化呢?</em>   构造函数的参数初始化表方式，不二法门!  </p>
-<ul>
-<li>成员函数可不是常成员函数了，性质不变，但权限变了，<strong>非常成员函数不得访问常对象数据，常成员函数能够访问不得修改!</strong>     </li>
-</ul>
-<p><em>如何声明常成员函数呢？</em>   void get_time() const; 函数后加一个<strong>const</strong></p>
-<ul>
-<li>常成员函数不能调用另一个非 const 成员函数，即使此函数不修改数据，编译不通过</li>
+            <h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><p>用 CLion 写信号处理的软件课设的时候出现了链接找不到函数实现的情况，问了老司机，一眼指出我的 CMakeLists.txt 写的有问题    </p>
+<p>这是什么鬼？  查查才知道，于是乎，还是好好学习一下    </p>
+<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
+<li>《CMake Practice》及网上 blogs</li>
+<li>CMake 官方网站  <a href="https://cmake.org/" target="_blank" rel="noopener">https://cmake.org/</a></li>
 </ul>
 
           
@@ -840,7 +635,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CMake/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CPP/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -859,7 +654,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/C/CMake/README/" itemprop="url">README</a></h2>
+                <a class="post-title-link" href="/2019/11/08/C/CPP/README/" itemprop="url">C++ README</a></h2>
         
 
         <div class="post-meta">
@@ -905,8 +700,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CMake/" itemprop="url" rel="index">
-                    <span itemprop="name">CMake</span>
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
                   </a>
                 </span>
 
@@ -944,12 +739,1060 @@
       
         
           
-            <h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><p>用 CLion 写信号处理的软件课设的时候出现了链接找不到函数实现的情况，问了老司机，一眼指出我的 CMakeLists.txt 写的有问题    </p>
-<p>这是什么鬼？  查查才知道，于是乎，还是好好学习一下    </p>
-<h2 id="资料"><a href="#资料" class="headerlink" title="资料"></a>资料</h2><ul>
-<li>《CMake Practice》及网上 blogs</li>
-<li>CMake 官方网站  <a href="https://cmake.org/" target="_blank" rel="noopener">https://cmake.org/</a></li>
+            <h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><h2 id="C-演变"><a href="#C-演变" class="headerlink" title="C++ 演变"></a>C++ 演变</h2><ul>
+<li>c++ 98（1.0）</li>
+<li>c++ 03</li>
+<li>c++ 11（2.0）</li>
+<li>c++ 14</li>
 </ul>
+<h2 id="class"><a href="#class" class="headerlink" title="class"></a>class</h2><p>class 可以分为：</p>
+<ul>
+<li>base: without pointer（成员变量中不带指针）</li>
+<li>oriented：with pointer（成员变量中带有指针）</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CPP/MultiDefinition/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/CPP/MultiDefinition/" itemprop="url">MultiDefinition</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="multiple-definition"><a href="#multiple-definition" class="headerlink" title="multiple definition"></a>multiple definition</h1><p>重复定义问题，以前没有注意到这个问题，觉得会有这种影响吗？不还是有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#ifndefine</span><br><span class="line">#define</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>这就大错特错了，为什么呢？因为这涉及到<strong>重复定义</strong>与<strong>重复包含</strong>问题</p>
+<h2 id="重复包含-multiple-include"><a href="#重复包含-multiple-include" class="headerlink" title="重复包含(multiple include)"></a>重复包含(multiple include)</h2><p>这里指的是在编译阶段进行宏展开时，为了避免重复包含某个头文件，而采取的 define方法</p>
+<p><strong>场景</strong></p>
+<p><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong>test1.h<strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">...</span><br><span class="line">int a = 1;</span><br><span class="line">char a[]=&quot;Hello world&quot;;</span><br></pre></td></tr></table></figure>
+<p><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong>test2.h<strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;test1.h&quot;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">int b = 1;</span><br><span class="line">int c = 2;</span><br></pre></td></tr></table></figure>
+<p><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong>test.cpp<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;test1.h&quot;</span><br><span class="line">#include &quot;test2.h&quot;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>编译阶段进行宏展开时会报错，重复包含了！！！</p>
+<h2 id="重复定义-multiple-definition"><a href="#重复定义-multiple-definition" class="headerlink" title="重复定义(multiple definition)"></a>重复定义(multiple definition)</h2><p><strong>场景</strong><br><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong>test1.h<strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#ifnfine ...</span><br><span class="line">#define ...</span><br><span class="line">int a = 1;</span><br><span class="line">char a[]=&quot;Hello world&quot;;</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong>test2.h<strong><strong><strong><strong><strong><strong><strong><strong>***</strong></strong></strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#ifndefine ...</span><br><span class="line">#define ...</span><br><span class="line"></span><br><span class="line">#include &quot;test1.h&quot;</span><br><span class="line"></span><br><span class="line">int b = 1;</span><br><span class="line">int c = 2;</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p><strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong>test.cpp<strong><strong><strong><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;test1.h&quot;</span><br><span class="line">#include &quot;test2.h&quot;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>会报出重复定义错误<br>原因：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">工程中的.cpp文件都是独立解释的，每份.cpp文件解释后会生成一份符号表（编译之后），但在链接时因为每份符号表都有定义就出现了</span><br><span class="line">重复定义的情况</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1.当我们需要一份常量头文件时，如   </p>
+<p><strong><strong><strong><strong>****</strong></strong></strong></strong>global.h<strong><strong><strong><strong><strong><strong>*****</strong></strong></strong></strong></strong></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#ifndefine GLOBAL_H_</span><br><span class="line">#define GLOBAL_H_</span><br><span class="line"></span><br><span class="line">Pi = 3.1415926;</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<p>可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在.c文件中声明变量，然后建一个头文件(.h文件)在所有的变量声明前加上extern，注意这里不要对变量进行的初始化。</span><br><span class="line">然后在其他需要使用全局变量的.c文件中包含.h文件。编译器会为.c生成目标文件，然后链接时，如果该.c文件使用了全局变量，链接器就会链接到此.c文件</span><br></pre></td></tr></table></figure>
+
+<p>2.当函数设置成内嵌 inline 时，也不会出现重复定义，不过一般不建议这样做</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CPP/static_extern_const/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/CPP/static_extern_const/" itemprop="url">static_extern_const</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="static-extern-const"><a href="#static-extern-const" class="headerlink" title="static extern const"></a>static extern const</h1><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>静态，声明后变量的存储区域位于静态存储区</p>
+<ul>
+<li><strong>静态局部变量</strong>：变量声明后位于静态存储区，但作用域仍限定在函数内部，即<strong>不能被其他函数访问</strong></li>
+<li><strong>静态全局变量</strong>：全局变量已经是静态的为什么还有static呢？作用在于限定作用域为本文件内部，即使其他文件 extern 也不能被访问到</li>
+</ul>
+<h2 id="extern"><a href="#extern" class="headerlink" title="extern"></a>extern</h2><p>引用，引用位于其它地方的声明，函数，变量等<br>如多个文件，一个文件中全局 int a;另一个文件中可以 extern int a;告诉编译器到其他文件中查找 a 的定义；</p>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><p>这家伙用处比较大，容我一一道来<br><strong>用const即意味着此对象不能够被改变</strong></p>
+<h3 id="常对象成员"><a href="#常对象成员" class="headerlink" title="常对象成员"></a>常对象成员</h3><p><strong>声明</strong></p>
+<ol>
+<li>类名 const 对象名: Student const stu1;  </li>
+<li>const 类名 对象名: const Student stu1;  </li>
+</ol>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
+<li>常对象的数据成员全部是<strong>常数据成员</strong>     </li>
+</ul>
+<p><em>如何初始化呢?</em>   构造函数的参数初始化表方式，不二法门!  </p>
+<ul>
+<li>成员函数可不是常成员函数了，性质不变，但权限变了，<strong>非常成员函数不得访问常对象数据，常成员函数能够访问不得修改!</strong>     </li>
+</ul>
+<p><em>如何声明常成员函数呢？</em>   void get_time() const; 函数后加一个<strong>const</strong></p>
+<ul>
+<li>常成员函数不能调用另一个非 const 成员函数，即使此函数不修改数据，编译不通过</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/2019/11/08/C/CPP/static_extern_const/const.png" alt="const keyword"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CPP/Template/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/CPP/Template/" itemprop="url">Template</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Template"><a href="#Template" class="headerlink" title="Template"></a>Template</h1><p>关于函数模板与函数重载</p>
+<h2 id="Function-Template"><a href="#Function-Template" class="headerlink" title="Function Template"></a>Function Template</h2><p>函数模板：<br>建立一个通用函数，其类型名与参数类型都不确定，用虚拟类型来代替<br>定义（声明）：  </p>
+<ul>
+<li>template <typename T>  或</li>
+<li>template <class T><br>当有多个不同类型的参数时  </li>
+<li>template &lt;class T1,typename T2&gt; </li>
+</ul>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">    template &lt;typename Type&gt;              //这里是类模板的声明</span><br><span class="line"></span><br><span class="line">class stackTest &#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    stackTest();</span><br><span class="line">    bool isempty();</span><br><span class="line">    bool isfull();</span><br><span class="line">    bool push(const Type &amp; item);</span><br><span class="line">    bool pop(Type &amp; item);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    enum &#123;MAX = 10&#125;;                //声明constant variables</span><br><span class="line">    Type items[MAX];</span><br><span class="line">    int top;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">    template &lt;typename Type&gt;            //这里是函数模板的声明，每一函数前都要声明</span><br><span class="line">    stackTest&lt;Type&gt;::stackTest() &#123;</span><br><span class="line">    top = 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;typename Type&gt;</span><br><span class="line">bool stackTest&lt;Type&gt;::isempty() &#123;</span><br><span class="line">        return top == 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;typename Type&gt;</span><br><span class="line">bool stackTest&lt;Type&gt;::isfull() &#123;</span><br><span class="line">    return top == MAX;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;typename Type&gt;</span><br><span class="line">bool stackTest&lt;Type&gt;::push(const Type &amp;item) &#123;</span><br><span class="line">    if (isfull())   return false;</span><br><span class="line">    else &#123;</span><br><span class="line">        items[top] = item;</span><br><span class="line">        top ++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">template &lt;typename Type&gt;</span><br><span class="line">bool stackTest&lt;Type&gt;::pop(Type &amp;item) &#123;</span><br><span class="line">    if(isempty()) return false;</span><br><span class="line">    else &#123;</span><br><span class="line">        item = items[--top];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Function-overloading"><a href="#Function-overloading" class="headerlink" title="Function overloading"></a>Function overloading</h2><p>函数重载：<br>一个函数名重新赋予它新的含义，使一个函数名可以多用</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CPP/namespace/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/CPP/namespace/" itemprop="url">namespace</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h1><p>关于命名空间的使用</p>
+<ul>
+<li>概念</li>
+</ul>
+<p><code>命名空间，所谓命名空间，实际上就是一个由程序设计者命名的内存区域</code></p>
+<ul>
+<li>背景</li>
+</ul>
+<p>在不同的头文件中包含有相同的函数名或者类名时，同时包含两个头文件，预编译是会出现编译错误，歧义</p>
+<ul>
+<li>解决方式</li>
+</ul>
+<p>1.别名</p>
+<p><code>namespace TV = Television</code></p>
+<p>2.using 命名空间成员名</p>
+<p><code>using std::cout</code></p>
+<p>3.using namespace 命名空间名</p>
+<p><code>using namespace std</code>  但这种方式在有很多命名空间时会带来麻烦</p>
+<p>4.常用方式</p>
+<p>命名空间较少或者类名与函数名较少时，常用 using namespace 的方式<br>命名空间较多的时候常用一个头文件把 需要用到的类或函数包含在内  using xx::xx,using xx::yy,using yy::yy</p>
+<ul>
+<li>备注</li>
+</ul>
+<p>1.当在mian函数中全局声明的变量，表面上不属于任何命名空间，实则属于隐含的 全局空间<br>2.在命名空间中不能包含预处理<br>3.命名空间可以嵌套</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/Make/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/Make/README/" itemprop="url">README</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/Make/" itemprop="url" rel="index">
+                    <span itemprop="name">Make</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h1><p>一直以来 build 文件的时候知道有个  Makefile  可是具体三要素（背景，实现与功能）都不清楚</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li>《阮一峰的网络日志》  <a href="http://www.ruanyifeng.com/blog/2015/02/make.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/02/make.html</a></li>
+<li>《GNU Make》  <a href="https://www.gnu.org/software/make/manual/make.html" target="_blank" rel="noopener">https://www.gnu.org/software/make/manual/make.html</a></li>
+<li>博客  <a href="http://blog.csdn.net/ruglcc/article/details/7814546/" target="_blank" rel="noopener">http://blog.csdn.net/ruglcc/article/details/7814546/</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/Make/Makefile/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/C/Make/Makefile/" itemprop="url">Makefile</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/Make/" itemprop="url" rel="index">
+                    <span itemprop="name">Make</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><p>Makefile 文件是  make  的规则文件，是一种 build 脚本，里面阐明了编译链接的顺序及所需要的相关文件</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>命令规则：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">target:prerequisites</span><br><span class="line">  command</span><br></pre></td></tr></table></figure>
+<p>target 为目标文件，prerequisites为依赖文件，commmand为要执行的shell命令<strong>前面要以TAB键开头</strong><br>并默认第一个目标文件为最终要生成的目标文件，然后后续的过程就是以这个文件为根，进行依赖文件展开，检查时间戳，执行规则  </p>
+<p>时间戳：这里指的是 make  可以在编译过程中依据文件的更新程度来决定哪些文件需要重新编译，哪些文件需要重新链接生成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">edit : main.o kbd.o command.o display.o \</span><br><span class="line">       insert.o search.o files.o utils.o</span><br><span class="line">        cc -o edit main.o kbd.o command.o display.o \</span><br><span class="line">                   insert.o search.o files.o utils.o</span><br><span class="line"> </span><br><span class="line">main.o : main.c defs.h</span><br><span class="line">        cc -c main.c</span><br><span class="line">kbd.o : kbd.c defs.h command.h</span><br><span class="line">        cc -c kbd.c</span><br><span class="line">command.o : command.c defs.h command.h</span><br><span class="line">        cc -c command.c</span><br><span class="line">display.o : display.c defs.h buffer.h</span><br><span class="line">        cc -c display.c</span><br><span class="line">insert.o : insert.c defs.h buffer.h</span><br><span class="line">        cc -c insert.c</span><br><span class="line">search.o : search.c defs.h buffer.h</span><br><span class="line">        cc -c search.c</span><br><span class="line">files.o : files.c defs.h buffer.h command.h</span><br><span class="line">        cc -c files.c</span><br><span class="line">utils.o : utils.c defs.h</span><br><span class="line">        cc -c utils.c</span><br><span class="line">clean :</span><br><span class="line">        rm edit main.o kbd.o command.o display.o \</span><br><span class="line">           insert.o search.o files.o utils.o</span><br></pre></td></tr></table></figure>
+<p>以此makefile文件为例，若command.c发生改变，只需重新编译生成新的中间代码文件command.o，再重新进行链接<br>但如果 defs.h  文件发生改变，则全部.o文件都需要重新编译，重新链接</p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>当然了上述.o文件一大堆，可以用一个变量名来代替，引用变量用  $(object) 或者  ${object}</p>
+<p>上面可以修改成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o kbd.o command.o display.o \</span><br><span class="line">          insert.osearch.o files.o utils.o </span><br><span class="line">edit : $(objects)</span><br><span class="line">        cc -o edit $(objects)</span><br><span class="line">main.o : main.c defs.h</span><br><span class="line">        cc -c main.c</span><br><span class="line">kbd.o : kbd.c defs.h command.h</span><br><span class="line">        cc -c kbd.c</span><br><span class="line">command.o : command.c defs.h command.h</span><br><span class="line">        cc -c command.c</span><br><span class="line">display.o : display.c defs.h buffer.h</span><br><span class="line">        cc -c display.c</span><br><span class="line">insert.o : insert.c defs.h buffer.h</span><br><span class="line">        cc -c insert.c</span><br><span class="line">search.o : search.c defs.h buffer.h</span><br><span class="line">        cc -c search.c</span><br><span class="line">files.o : files.c defs.h buffer.h command.h</span><br><span class="line">        cc -c files.c</span><br><span class="line">utils.o : utils.c defs.h</span><br><span class="line">        cc -c utils.c</span><br><span class="line">clean :</span><br><span class="line">        rm edit $(objects)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="自动推导"><a href="#自动推导" class="headerlink" title="自动推导"></a>自动推导</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">只要make看到一个[.o]文件，它就会自动的把[.c]文件加在依赖关系中，如果make找到一个whatever.o，那么whatever.c，就会是whatever.o的依赖文件。</span><br><span class="line">并且 cc -c whatever.c 也会被推导出来</span><br></pre></td></tr></table></figure>
+<p>画风就变成了酱紫  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">objects = main.o kbd.o command.o display.o \</span><br><span class="line">          insert.o search.o files.o utils.o</span><br><span class="line"> </span><br><span class="line">edit : $(objects)</span><br><span class="line">        cc -o edit $(objects)</span><br><span class="line"> </span><br><span class="line">main.o : defs.h</span><br><span class="line">kbd.o : defs.h command.h</span><br><span class="line">command.o : defs.h command.h</span><br><span class="line">display.o : defs.h buffer.h</span><br><span class="line">insert.o : defs.h buffer.h</span><br><span class="line">search.o : defs.h buffer.h</span><br><span class="line">files.o : defs.h buffer.h command.h</span><br><span class="line">utils.o : defs.h</span><br><span class="line"> </span><br><span class="line">.PHONY : clean</span><br><span class="line">clean :</span><br><span class="line">        rm edit $(objects)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           
         
@@ -1154,876 +1997,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/C/CPP/leetcode/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/C/CPP/leetcode/README/" itemprop="url">8 week</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:35+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>2020/2/12 – 2020/4/12 8周 leetcode 速成</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/07/NLP/LDA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/07/NLP/LDA/" itemprop="url">LDA</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-07T10:11:03+08:00">
-                2019-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>LDA </p>
-<h2 id="输入与训练"><a href="#输入与训练" class="headerlink" title="输入与训练"></a>输入与训练</h2><p><code>The interface follows conventions found in scikit-learn</code> LDA的接口遵循 <code>scikit-learn</code> 的规范，因此可使用 <code>scikit-learn</code> 提供的数据预处理方法如 <code>CountVectorizer</code> 或 <code>TfidfVectorizer</code> 将文本数据转化为向量，并作为 LDA 的输入进行训练。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>model = lda.LDA(n_topics=<span class="number">20</span>, n_iter=<span class="number">1000</span>, random_state=<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>model.fit(vectorizer.fit_transform(corpus).toarray())   <span class="comment"># Input the weight</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><ul>
-<li>Topic-Word Distribution</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>topic_word = model.topic_word_  <span class="comment"># model.components_ also works</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>n_top_words = <span class="number">8</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i, topic_dist <span class="keyword">in</span> enumerate(topic_word):</span><br><span class="line"><span class="meta">... </span>    topic_words = np.array(vocab)[np.argsort(topic_dist)][:-(n_top_words+<span class="number">1</span>):<span class="number">-1</span>]</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">'Topic &#123;&#125;: &#123;&#125;'</span>.format(i, <span class="string">' '</span>.join(topic_words)))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Document-Topic Distribution</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>doc_topic = model.doc_topic_</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>):</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">"&#123;&#125; (top topic: &#123;&#125;)"</span>.format(titles[i], doc_topic[i].argmax()))</span><br><span class="line"><span class="meta">... </span>    print(<span class="string">"&#123;&#125; (top topic: &#123;&#125;)"</span>.format(titles[i], np.argsort(doc_topic[i])[:<span class="number">-4</span>:<span class="number">-1</span>]))</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>由此，我们观察到 <code>lda</code> 全程对 TF-Matrix 进行计算，并没有考虑词语的上下文关系，是 Bow 模型。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://pypi.org/project/lda/" target="_blank" rel="noopener">https://pypi.org/project/lda/</a></li>
-<li><a href="https://juejin.im/post/5ab365f25188252c32199636" target="_blank" rel="noopener">https://juejin.im/post/5ab365f25188252c32199636</a></li>
-<li><a href="https://github.com/scarlettgin/novel_analysis" target="_blank" rel="noopener">https://github.com/scarlettgin/novel_analysis</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/26/Python/gc/Question_in_stackoverflow/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/26/Python/gc/Question_in_stackoverflow/" itemprop="url">Question_in_stackoverflow</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-26T11:28:11+08:00">
-                2019-08-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/gc/" itemprop="url" rel="index">
-                    <span itemprop="name">gc</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>Background truths(?):</strong> When python program exits, <code>gc</code>(<code>garbage collection</code>) works to collect memory in a common way <code>reference counting</code>.</p>
-<p><strong>Question:</strong> but what’s the order of objects’ destructing or similar with <code>java</code>?</p>
-<p>Pls see code below. The reference relationship is:(<code>--&gt;</code> means reference)  </p>
-<ul>
-<li>ABC <code>--&gt;</code> A </li>
-<li>ABC <code>--&gt;</code> B </li>
-<li>A <code>--&gt;</code> C      </li>
-</ul>
-<p>And I could understand <strong>the construct order is abc, a, c, b</strong>, but why the destruct order is c, a, b, abc. <strong>c</strong> has the most reference, why firstly deleted.</p>
-<p>python version 3.7.1</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little a'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">        self._c = C() </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little a was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little b'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little b was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little c'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little c was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ABC</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.name = <span class="string">'little abc'</span></span><br><span class="line">        print(self.name)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_ABC</span><span class="params">(self)</span>:</span></span><br><span class="line">        self._a = A()</span><br><span class="line">        self._b = B()</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'little abc was deleted'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    abc = ABC()</span><br><span class="line">    abc.get_ABC()</span><br><span class="line">    print(sys.getrefcount(abc._a))</span><br><span class="line">    print(sys.getrefcount(abc._b))</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/29/CMake/how-to-use-cmake/LearnCMake/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/29/CMake/how-to-use-cmake/LearnCMake/" itemprop="url">LearnCMake</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-07-29T09:59:51+08:00">
-                2019-07-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CMake/" itemprop="url" rel="index">
-                    <span itemprop="name">CMake</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CMake/how-to-use-cmake/" itemprop="url" rel="index">
-                    <span itemprop="name">how-to-use-cmake</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.14</span>)</span><br><span class="line"><span class="keyword">project</span>(My_project VERSION <span class="number">1.1</span>.<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="Set-variables"><a href="#Set-variables" class="headerlink" title="Set variables"></a>Set variables</h1><ul>
-<li>By default, anything is a string<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span>(MY_VARIABLE <span class="string">"This is a variable."</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="Print-message"><a href="#Print-message" class="headerlink" title="Print message"></a>Print message</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message</span>(STATUS <span class="variable">$&#123;MY_VARIABLE&#125;</span>)</span><br><span class="line"><span class="keyword">set</span>(My_bool <span class="string">"This is a string"</span>)</span><br></pre></td></tr></table></figure>
-<h1 id="Control-flow"><a href="#Control-flow" class="headerlink" title="Control flow"></a>Control flow</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="keyword">NOT</span> <span class="variable">$&#123;My_bool&#125;</span>)</span><br><span class="line">    <span class="keyword">message</span>(STATUS <span class="string">"This is true case"</span>)</span><br><span class="line"><span class="keyword">elseif</span>()</span><br><span class="line"><span class="keyword">else</span>()</span><br><span class="line">    <span class="keyword">message</span>(STATUS <span class="string">"This is false case"</span>)</span><br><span class="line"><span class="keyword">endif</span>()</span><br></pre></td></tr></table></figure>
-
-<h1 id="for-and-while-loop"><a href="#for-and-while-loop" class="headerlink" title="for and while loop"></a>for and while loop</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">foreach</span>(idx RANGE <span class="number">100</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">endforeach</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(my_value <span class="keyword">LESS</span> <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">endwhile</span>()</span><br></pre></td></tr></table></figure>
-<h1 id="STREQUAL"><a href="#STREQUAL" class="headerlink" title="STREQUAL"></a>STREQUAL</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include_directories</span>()</span><br></pre></td></tr></table></figure>
-
-<h1 id="Adding-targets-amp-subdirectories"><a href="#Adding-targets-amp-subdirectories" class="headerlink" title="Adding targets &amp; subdirectories"></a>Adding targets &amp; subdirectories</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_executable</span>()</span><br><span class="line"><span class="keyword">add_library</span>()</span><br><span class="line"><span class="keyword">add_subdirectory</span>()</span><br></pre></td></tr></table></figure>
-
-
-<h1 id="Cmake-internal-variables"><a href="#Cmake-internal-variables" class="headerlink" title="Cmake internal variables"></a>Cmake internal variables</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"This is cmake module path: "</span> <span class="variable">$&#123;CMAKE_MODULE_PATH&#125;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="variable">$&#123;CMAKE_CURRENT_SOURCE_DIR&#125;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"proj is "</span> <span class="variable">$&#123;PROJECT_NAME&#125;</span>)</span><br><span class="line"><span class="keyword">message</span>(STATUS <span class="string">"proj name is "</span> <span class="variable">$&#123;PROJECT_VERSION&#125;</span>)</span><br></pre></td></tr></table></figure>
-
-<h1 id="Adding-include-directories"><a href="#Adding-include-directories" class="headerlink" title="Adding include directories"></a>Adding include directories</h1><blockquote>
-<p>To use additional headers located in separate directories<br>include xxx for all targets</p>
-</blockquote>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">include_directories</span>()</span><br></pre></td></tr></table></figure>
-
-<h1 id="include-xxx-only-for-the-specificed-target"><a href="#include-xxx-only-for-the-specificed-target" class="headerlink" title="include xxx only for the specificed target"></a>include xxx only for the specificed target</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_include_directories</span>()</span><br></pre></td></tr></table></figure>
-
-<h1 id="Add-pre-processors"><a href="#Add-pre-processors" class="headerlink" title="Add pre-processors"></a>Add pre-processors</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_definitions</span>()</span><br></pre></td></tr></table></figure>
-
-<h1 id="Set-target-properties"><a href="#Set-target-properties" class="headerlink" title="Set target properties"></a>Set target properties</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set_target_properties</span>()</span><br></pre></td></tr></table></figure>
-
-<h1 id="Linking-libraries"><a href="#Linking-libraries" class="headerlink" title="Linking libraries"></a>Linking libraries</h1><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">target_link_libraries</span>()</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>Option<br><code>option()</code></p>
-</li>
-<li><p>File simliar to io to operate file</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">file</span>(WRITE xxx.txt <span class="string">"this is a test to write\n"</span>)</span><br><span class="line"><span class="keyword">file</span>(APPEND xxx/xxx.txt <span class="string">"This is a test to append"</span>)</span><br><span class="line"><span class="keyword">file</span>(READ &lt;filename&gt; &lt;variable&gt;)</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">- <span class="keyword">String</span>: manipulate the <span class="keyword">string</span> </span><br><span class="line">`<span class="keyword">string</span>()`</span><br><span class="line"></span><br><span class="line">- <span class="keyword">math</span> <span class="keyword">command</span> that performs arithmetic</span><br><span class="line">`<span class="keyword">math</span>(EXPR My_sum <span class="string">"1+1"</span>)`</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- <span class="keyword">List</span>: manipulate the lists</span><br><span class="line">`<span class="keyword">list</span>()`</span><br><span class="line"></span><br><span class="line"><span class="comment">## Functions </span></span><br><span class="line">&gt; functions run in differ scope with parent <span class="keyword">function</span></span><br><span class="line">```cmake</span><br><span class="line"><span class="keyword">function</span>(doubleIt VALUE)</span><br><span class="line">    <span class="keyword">math</span>(EXPR RESULT <span class="string">"$&#123;VALUE&#125; * 2"</span>)</span><br><span class="line">    <span class="keyword">set</span>(VALUE RESULT PARENT_SCOPE)</span><br><span class="line"><span class="keyword">endfunction</span>()</span><br></pre></td></tr></table></figure></li>
-<li><p>an arbitary number of arguments</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(doubleEach)</span><br><span class="line">    <span class="keyword">foreach</span>(ARG <span class="variable">$&#123;ARGN&#125;</span>)</span><br><span class="line">        <span class="keyword">math</span>(EXPR N <span class="string">"$&#123;ARG&#125; * 2"</span>)</span><br><span class="line">        <span class="keyword">message</span>(STATUS <span class="string">"$&#123;N&#125;)</span></span><br><span class="line"><span class="string">    endforeach()</span></span><br><span class="line"><span class="string">endfunction()</span></span><br></pre></td></tr></table></figure>
-<h2 id="macro-endmacro"><a href="#macro-endmacro" class="headerlink" title="macro/endmacro"></a>macro/endmacro</h2><blockquote>
-<p>macro set all variables in the caller’s scope</p>
-</blockquote>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">macro</span>(doubleIt VALUE)</span><br><span class="line">    <span class="keyword">math</span>(EXPR RESULT <span class="string">"$&#123;VALUE&#125; * 2"</span>)</span><br><span class="line"><span class="keyword">endmacro</span>()</span><br></pre></td></tr></table></figure>
-<h2 id="Run-options"><a href="#Run-options" class="headerlink" title="Run options"></a>Run options</h2></li>
-<li><p>-P option runs the given script, but doesn’t generate a build pipeline<br><code>cmake -P hello.txt</code></p>
-</li>
-<li><p>-D option defines the variable<br><code>cmake -DNAME=xxxx -P hello.txt</code></p>
-</li>
-</ul>
-<h2 id="Including-Other-Scripts"><a href="#Including-Other-Scripts" class="headerlink" title="Including Other Scripts"></a>Including Other Scripts</h2><blockquote>
-<p>cmake variables are defined at file scope.<br><code>include</code>command executes another CMake script. Use the variable <code>CMAKE_MODULE_PATH</code> as a search path.</p>
-</blockquote>
-<blockquote>
-<p><code>add_subdirectory</code>command creates a new scope. Use it to add another CMake-based subproject, such as a library or executable, to the calling project.<br>None of the variables defined in the subproject’s script will pollute the parent’s scope.</p>
-</blockquote>
-<h2 id="add-custom-command"><a href="#add-custom-command" class="headerlink" title="add_custom_command"></a>add_custom_command</h2><blockquote>
-<p>可在目标编译链接之前/编译链接之后执行 command</p>
-</blockquote>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">add_custom_command</span>(<span class="keyword">TARGET</span> test_elf PRE_LINK</span><br><span class="line"><span class="keyword">COMMAND</span></span><br><span class="line">cp <span class="variable">$&#123;CMAKE_BINARY_DIR&#125;</span>/cfg/start.o <span class="variable">$&#123;CMAKE_BINARY_DIR&#125;</span>/. &amp;&amp; </span><br><span class="line">cp <span class="variable">$&#123;CMAKE_SOURCE_DIR&#125;</span>/<span class="keyword">target</span>/imx6_gcc/imx6.ld <span class="variable">$&#123;CMAKE_BINARY_DIR&#125;</span>/.</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">COMMAND</span> <span class="variable">$&#123;CMAKE_COMMAND&#125;</span> -E copy_if_different xxx_src xxx_dst</span><br></pre></td></tr></table></figure>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h2><ul>
-<li>The difference of <code>include</code> and <code>include_directories()</code>: include to include </li>
-</ul>
-<p>ref: <a href="https://preshing.com/20170522/learn-cmakes-scripting-language-in-15-minutes/" target="_blank" rel="noopener">https://preshing.com/20170522/learn-cmakes-scripting-language-in-15-minutes/</a></p>
-<p><a href="https://cmake.org/cmake-tutorial/" target="_blank" rel="noopener">https://cmake.org/cmake-tutorial/</a></p>
-<p><a href="https://www.jianshu.com/p/aaa19816f7ad" target="_blank" rel="noopener">https://www.jianshu.com/p/aaa19816f7ad</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/spacy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/spacy/" itemprop="url">spacy 使用记录</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T10:09:00+08:00">
-                2019-01-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
-                    <span itemprop="name">实体与关系抽取</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="spacy-使用记录"><a href="#spacy-使用记录" class="headerlink" title="spacy 使用记录"></a>spacy 使用记录</h1><h2 id="NER的使用"><a href="#NER的使用" class="headerlink" title="NER的使用"></a>NER的使用</h2><h2 id="EL的使用"><a href="#EL的使用" class="headerlink" title="EL的使用"></a>EL的使用</h2><p>update on 2020/3/26</p>
-<p><code>spacy</code> 并没有提供现成的 EL model，而是要通过spacy提供的 framework 自己训练出一个 model，至于为什么 spacy 不提供一个训练好的 model release 出来，见 <a href="https://github.com/explosion/spaCy/issues/4511" target="_blank" rel="noopener">issues#4511</a> 作者给出了解释。</p>
-<p>Model 的训练过程需要耗费较长时间，这里记录一下，步骤参考：<a href="https://github.com/explosion/spaCy/tree/master/bin/wiki_entity_linking" target="_blank" rel="noopener">https://github.com/explosion/spaCy/tree/master/bin/wiki_entity_linking</a></p>
-<p>Step 1.</p>
-<p><code>python wikidata_pretrain_kb.py wiki/latest-all.json.bz2 wiki/enwiki-latest-pages-articles-multistream.xml.bz2 output/ en_core_web_md</code></p>
-<p>这里使用的是 英文的 <code>en_core_web_md</code> 模型，使用 <code>en_core_web_sm</code> 模型会报错。</p>
-<p>然后经历的过程大概是这样的：</p>
-<ul>
-<li>Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz 6核</li>
-<li>60GB 内存</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">2020-03-25 10:57:56,366 - INFO - __main__ - Creating KB with Wikipedia and WikiData</span><br><span class="line">2020-03-25 10:57:56,366 - INFO - __main__ - STEP 1: Loading NLP model en_core_web_md</span><br><span class="line">2020-03-25 10:58:09,601 - INFO - __main__ - STEP 2: Writing prior probabilities to output/prior_prob.csv</span><br><span class="line">2020-03-25 11:02:19,011 - INFO - bin.wiki_entity_linking.wikipedia_processor - processed 25000000 lines of Wikipedia XML dump</span><br><span class="line">2020-03-25 11:06:06,973 - INFO - bin.wiki_entity_linking.wikipedia_processor - processed 50000000 lines of Wikipedia XML dump</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-25 13:04:44,104 - INFO - bin.wiki_entity_linking.wikipedia_processor - Finished. processed 1154673507 lines of Wikipedia XML dump</span><br><span class="line">2020-03-25 13:06:49,519 - INFO - __main__ - STEP 3: Calculating and writing entity frequencies to output/entity_freq.csv</span><br><span class="line">2020-03-25 13:07:47,159 - INFO - __main__ - STEP 4: Parsing and writing Wikidata entity definitions to output/entity_defs.csv</span><br><span class="line">2020-03-25 13:11:46,605 - INFO - bin.wiki_entity_linking.wikidata_processor - processed 500000 lines of WikiData JSON dump</span><br><span class="line">2020-03-25 13:14:44,627 - INFO - bin.wiki_entity_linking.wikidata_processor - processed 1000000 lines of WikiData JSON dump</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-25 23:17:48,677 - INFO - bin.wiki_entity_linking.wikidata_processor - Finished. Processed 78951019 lines of WikiData JSON dump</span><br><span class="line">2020-03-25 23:17:52,051 - INFO - __main__ - STEP 4b: Writing Wikidata entity aliases to output/entity_alias.csv</span><br><span class="line">2020-03-25 23:17:56,290 - INFO - __main__ - STEP 4c: Writing Wikidata entity descriptions to output/entity_descriptions.csv</span><br><span class="line">2020-03-25 23:17:58,717 - INFO - __main__ - STEP 5: Parsing and writing Wikipedia gold entities to output/gold_entities.jsonl</span><br><span class="line">2020-03-25 23:19:36,808 - INFO - bin.wiki_entity_linking.wikipedia_processor - Processed 10000 articles</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-26 02:17:41,098 - INFO - bin.wiki_entity_linking.wikipedia_processor - Finished. Processed 6890313 articles</span><br><span class="line">2020-03-26 02:17:43,364 - INFO - __main__ - STEP 6: Creating the KB at output/kb</span><br><span class="line">2020-03-26 02:17:52,463 - INFO - bin.wiki_entity_linking.kb_creator - Loaded pretrained vectors of size 300</span><br><span class="line">2020-03-26 02:17:52,463 - INFO - bin.wiki_entity_linking.kb_creator - Filtering entities with fewer than 20 mentions</span><br><span class="line">2020-03-26 02:18:17,807 - INFO - bin.wiki_entity_linking.kb_creator - Kept 1148892 entities from the set of 5763431</span><br><span class="line">2020-03-26 02:18:17,808 - INFO - bin.wiki_entity_linking.kb_creator - Training entity encoder</span><br><span class="line">2020-03-26 02:18:27,323 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 1.0226774291992187 </span><br><span class="line">2020-03-26 02:20:38,614 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.3986138000488281 </span><br><span class="line">2020-03-26 02:22:47,917 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.22751368713378906 </span><br><span class="line">2020-03-26 02:24:58,512 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.15389662170410157 </span><br><span class="line">2020-03-26 02:27:09,470 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.11821630859375 </span><br><span class="line">2020-03-26 02:29:19,072 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.09795716857910156 </span><br><span class="line">2020-03-26 02:31:27,877 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.0902191925048828 </span><br><span class="line">2020-03-26 02:33:37,375 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07779336547851562 </span><br><span class="line">2020-03-26 02:35:46,578 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07243069458007813 </span><br><span class="line">2020-03-26 02:37:56,318 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07262858581542969 </span><br><span class="line">2020-03-26 02:40:06,218 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07191573333740234 </span><br><span class="line">2020-03-26 02:42:16,195 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07062159729003906 </span><br><span class="line">2020-03-26 02:44:26,376 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.0659771957397461 </span><br><span class="line">2020-03-26 02:46:36,478 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.06245959091186523 </span><br><span class="line">2020-03-26 02:48:08,080 - INFO - bin.wiki_entity_linking.train_descriptions - Trained entity descriptions on 343000 (non-unique) descriptions across 5 epochs</span><br><span class="line">2020-03-26 02:48:08,081 - INFO - bin.wiki_entity_linking.train_descriptions - Final loss: 0.06493917846679688</span><br><span class="line">2020-03-26 02:48:08,081 - INFO - bin.wiki_entity_linking.kb_creator - Getting entity embeddings</span><br><span class="line">2020-03-26 02:49:16,621 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 200000 entities</span><br><span class="line">2020-03-26 02:50:26,592 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 300000 entities</span><br><span class="line">2020-03-26 02:51:30,845 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 400000 entities</span><br><span class="line">2020-03-26 02:52:37,864 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 500000 entities</span><br><span class="line">2020-03-26 02:53:41,903 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 600000 entities</span><br><span class="line">2020-03-26 02:54:48,951 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 700000 entities</span><br><span class="line">2020-03-26 02:55:53,231 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 800000 entities</span><br><span class="line">2020-03-26 02:57:01,271 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 900000 entities</span><br><span class="line">2020-03-26 02:58:04,693 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1000000 entities</span><br><span class="line">2020-03-26 02:59:13,314 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1100000 entities</span><br><span class="line">2020-03-26 03:00:18,196 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1148892 entities</span><br><span class="line">2020-03-26 03:00:49,433 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1148892 entities</span><br><span class="line">2020-03-26 03:00:49,558 - INFO - bin.wiki_entity_linking.kb_creator - Adding 1148892 entities</span><br><span class="line">2020-03-26 03:00:57,009 - INFO - bin.wiki_entity_linking.kb_creator - Adding aliases from Wikipedia and Wikidata</span><br><span class="line">2020-03-26 03:00:57,011 - INFO - bin.wiki_entity_linking.kb_creator - Adding WP aliases</span><br><span class="line">2020-03-26 03:01:58,750 - INFO - __main__ - kb entities: 1148892</span><br><span class="line">2020-03-26 03:01:58,750 - INFO - __main__ - kb aliases: 1665015</span><br><span class="line">2020-03-26 03:02:09,177 - INFO - __main__ - Done!</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/22/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/20/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/22/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2073,7 +2051,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">256</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2084,7 +2062,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2095,7 +2073,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

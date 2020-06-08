@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="千淘万漉虽辛苦，吹尽黄沙始到金">
+<meta name="description" content="Latex线下环境 TeXlive+TeXstuido  线上环境 overleaf  基本格式1234\begin&amp;#123;document&amp;#125;\section&amp;#123;text&amp;#125;\subsection&amp;#123;text&amp;#125;\end&amp;#123;document&amp;#125;   斜体\textit{text} 加粗\textbf{text} 角标\textsuper">
 <meta name="keywords" content="Something">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Latex 写作语法">
+<meta property="og:title" content="Latex 入门">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;02&#x2F;Something&#x2F;Latex&#x2F;index.html">
 <meta property="og:site_name" content="笔记记录">
-<meta property="og:description" content="千淘万漉虽辛苦，吹尽黄沙始到金">
+<meta property="og:description" content="Latex线下环境 TeXlive+TeXstuido  线上环境 overleaf  基本格式1234\begin&amp;#123;document&amp;#125;\section&amp;#123;text&amp;#125;\subsection&amp;#123;text&amp;#125;\end&amp;#123;document&amp;#125;   斜体\textit{text} 加粗\textbf{text} 角标\textsuper">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-29T08:58:22.813Z">
+<meta property="og:updated_time" content="2020-06-01T10:03:00.031Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -124,7 +124,7 @@
 
 
 
-  <title>Latex 写作语法 | 笔记记录</title>
+  <title>Latex 入门 | 笔记记录</title>
   
 
 
@@ -312,7 +312,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Latex 写作语法</h2>
+          <h2 class="post-title" itemprop="name headline">Latex 入门</h2>
         
 
         <div class="post-meta">
@@ -384,7 +384,38 @@
       
 
       
-        
+        <h1 id="Latex"><a href="#Latex" class="headerlink" title="Latex"></a>Latex</h1><h2 id="线下环境"><a href="#线下环境" class="headerlink" title="线下环境"></a>线下环境</h2><ul>
+<li>TeXlive+TeXstuido</li>
+</ul>
+<h2 id="线上环境"><a href="#线上环境" class="headerlink" title="线上环境"></a>线上环境</h2><ul>
+<li><a href="https://www.overleaf.com/" target="_blank" rel="noopener">overleaf</a></li>
+</ul>
+<h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;document&#125;</span><br><span class="line">\section&#123;text&#125;</span><br><span class="line">\subsection&#123;text&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>斜体<code>\textit{text}</code></li>
+<li>加粗<code>\textbf{text}</code></li>
+<li>角标<code>\textsuperscript</code></li>
+<li>换行<code>\newline</code> 或 <code>\\</code></li>
+</ul>
+<h2 id="新建列表"><a href="#新建列表" class="headerlink" title="新建列表"></a>新建列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;itemize&#125;</span><br><span class="line">\item</span><br><span class="line">\item</span><br><span class="line">\end&#123;itemize&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[htbp]</span><br><span class="line">\caption&#123;spacy NER Accuracy Table\textsuperscript&#123;\cite&#123;b3&#125;&#125;&#125;</span><br><span class="line">\begin&#123;center&#125;</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;F&#125;&amp;\textbf&#123;P&#125;&amp;\textbf&#123;R&#125; \\</span><br><span class="line">\hline</span><br><span class="line">85.55&amp;85.89&amp;85.21  \\</span><br><span class="line">\hline</span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\label&#123;tab1&#125;</span><br><span class="line">\end&#123;center&#125;</span><br><span class="line">\end&#123;table&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">\includegraphics[scale=0.6]&#123;figure/entity_top5.png&#125;</span><br><span class="line">\caption&#123;Top 5 entities in multiple categories.&#125;</span><br><span class="line">\label&#123;fig&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>文本中的引用</p>
+<p><code>text\cite{bn}</code></p>
+<p>Reference 的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;thebibliography&#125;&#123;00&#125;</span><br><span class="line">\bibitem&#123;b1&#125;</span><br><span class="line">\bibitem&#123;b2&#125;</span><br><span class="line">\bibitem&#123;b3&#125;</span><br><span class="line">\end&#123;thebibliography&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/3e842d67ada2" target="_blank" rel="noopener">Latex环境配置</a></li>
+<li><a href="https://blog.csdn.net/JueChenYi/article/details/77116011" target="_blank" rel="noopener">latex插入表格</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32925549" target="_blank" rel="noopener">latex插入图片</a></li>
+<li><a href="https://blog.csdn.net/Gentleman_Qin/article/details/79963396" target="_blank" rel="noopener">常用Latex参考</a></li>
+</ul>
+
       
     </div>
     
@@ -507,8 +538,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -527,7 +567,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">256</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -538,7 +578,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -549,7 +589,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -582,6 +622,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Latex"><span class="nav-number">1.</span> <span class="nav-text">Latex</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线下环境"><span class="nav-number">1.1.</span> <span class="nav-text">线下环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线上环境"><span class="nav-number">1.2.</span> <span class="nav-text">线上环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本格式"><span class="nav-number">1.3.</span> <span class="nav-text">基本格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新建列表"><span class="nav-number">1.4.</span> <span class="nav-text">新建列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入表格"><span class="nav-number">1.5.</span> <span class="nav-text">插入表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入图片"><span class="nav-number">1.6.</span> <span class="nav-text">插入图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">1.7.</span> <span class="nav-text">Reference</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.8.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/processSynchronization/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/OperatingSystem/processSynchronization/" itemprop="url">processSynchronization</a></h2>
+                <a class="post-title-link" href="/2019/11/08/Matlab/%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" itemprop="url">线性代数</a></h2>
         
 
         <div class="post-meta">
@@ -348,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">OperatingSystem</span>
+                  <a href="/categories/Matlab/" itemprop="url" rel="index">
+                    <span itemprop="name">Matlab</span>
                   </a>
                 </span>
 
@@ -387,49 +387,298 @@
       
         
           
-            <h1 id="进程同步的一些算法"><a href="#进程同步的一些算法" class="headerlink" title="进程同步的一些算法"></a>进程同步的一些算法</h1><p>这些算法主要用于解决<strong>临界区问题</strong><br>所谓临界区，即对共享数据访问与操作的代码，主要要求是最多只有一个进程在临界区内  </p>
-<p>临界区问题的解答需要满足以下三点需求：  </p>
-<blockquote>
-<ul>
-<li>互斥(mutual exclusion)</li>
-<li>前进“空闲可进”(progress)  </li>
-<li>有限等待(bounded waiting)</li>
-</ul>
-</blockquote>
-<p>下面是软件实现的几种算法： </p>
-<h2 id="Peterson算法（仅限于2个进程）"><a href="#Peterson算法（仅限于2个进程）" class="headerlink" title="Peterson算法（仅限于2个进程）"></a>Peterson算法（仅限于2个进程）</h2><p><strong>采用共享数据 turn,flag 来实现 预约与轮转 的算法</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    flag[i] = TRUE;           //flag[i]=TRUE 表示i想进入临界区</span><br><span class="line">    turn = j;                 //turn 表示哪一个 可以进入临界区</span><br><span class="line">    while(flag[j]&amp;&amp;turn == j);</span><br><span class="line">    </span><br><span class="line">    临界区  </span><br><span class="line">    </span><br><span class="line">    flag[i] = FALSE;</span><br><span class="line">     </span><br><span class="line">    剩余区  </span><br><span class="line">    </span><br><span class="line">    &#125;while(TRUE);</span><br></pre></td></tr></table></figure>
-<p>注解：</p>
-<blockquote>
-<ul>
-<li>当若只包含turn则只能满足条件1，互斥进入，存在问题2，有空闲不让进情况  </li>
-<li>flag 主要用于解决条件2，让想进入临界区的有限次等待可以进入</li>
-</ul>
-</blockquote>
-<h2 id="面包店算法-（可用于n个进程）"><a href="#面包店算法-（可用于n个进程）" class="headerlink" title="面包店算法 （可用于n个进程）"></a>面包店算法 （可用于n个进程）</h2><p><strong>类似面包店取号</strong></p>
-<blockquote>
-<ul>
-<li>choosing = TRUE 表示开始取号</li>
-<li>number[i]  表示取得的号码  </li>
-<li>number最小的进入临界区</li>
-<li>(number[j],j)&lt;(number[i],i) 若number[j]&lt;number[i]则返回1；若number[j]==number[i]&amp;&amp;j&lt;i则返回1</li>
-</ul>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    choosing[i] = TRUE;                                           //开始取号码</span><br><span class="line">    number[i] = MAX&#123;number[0],number[1]...number[i-1]&#125; + 1；      //取号码</span><br><span class="line">    choosing[i] = FALSE;                                          //取号结束</span><br><span class="line">     </span><br><span class="line">    for(j=0;j&lt;i;j++) &#123;</span><br><span class="line">      while(choosing[j]);                                         //碰到有正在取号的则等待，若无choosing，还是会出现一些问题</span><br><span class="line">      while((number[j] != 0)&amp;&amp;((number[j],j)&lt;(number[i],i)));     //碰到比自己号码小的想要进入的则等待</span><br><span class="line">      &#125;</span><br><span class="line">     </span><br><span class="line">     临界区  </span><br><span class="line">     </span><br><span class="line">     number[i] = 0;                                               //重新置号</span><br><span class="line">     </span><br><span class="line">     剩余区  </span><br><span class="line">     </span><br><span class="line">&#125;while(TRUE);</span><br></pre></td></tr></table></figure>
+            
+          
+        
+      
+    </div>
+    
+    
+    
 
-<p>下面是一些总结： <strong>预约+互斥</strong><br>两者相同点：</p>
-<blockquote>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/Matlab/README/" itemprop="url">README</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Matlab/" itemprop="url" rel="index">
+                    <span itemprop="name">Matlab</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="MATLAB"><a href="#MATLAB" class="headerlink" title="MATLAB"></a>MATLAB</h1><p>Learn how to use matlab</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/%E5%BE%AE%E5%88%86%E4%B8%8E%E7%A7%AF%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/Matlab/%E5%BE%AE%E5%88%86%E4%B8%8E%E7%A7%AF%E5%88%86/" itemprop="url">微分与积分</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Matlab/" itemprop="url" rel="index">
+                    <span itemprop="name">Matlab</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="微积分中一些常用的公式与技巧"><a href="#微积分中一些常用的公式与技巧" class="headerlink" title="微积分中一些常用的公式与技巧"></a>微积分中一些常用的公式与技巧</h1><h2 id="含参变量积分的微分公式，这个经常忘，呜"><a href="#含参变量积分的微分公式，这个经常忘，呜" class="headerlink" title="含参变量积分的微分公式，这个经常忘，呜~"></a>含参变量积分的微分公式，这个经常忘，呜<del>~</del></h2><blockquote>
 <ul>
-<li>存在一个预约机制(flag &amp; number)，即保证条件3能够满足</li>
-<li>在对共享数据进行操作时都特别小心(flag,number[n])因为临界区问题的源头在这里 </li>
-<li>在进入临界区检查时，都用while()检查其它进程有没有满足条件，若有，空操作；若无，进入；（进程之间应该谦让）</li>
-<li>出了临界区之后，立即对自己的预约进行消除(flag[i] = FALSE,number[i] = 0)</li>
+<li>[百度知道]<a href="https://zhidao.baidu.com/question/1832163828264520420.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/1832163828264520420.html</a></li>
+<li>三大块，这个是个完整的公式</li>
 </ul>
 </blockquote>
-<p>两者不同点：</p>
-<blockquote>
+<h2 id="积分符号内取微分计算积分，据听说费曼提到，很少人用"><a href="#积分符号内取微分计算积分，据听说费曼提到，很少人用" class="headerlink" title="积分符号内取微分计算积分，据听说费曼提到，很少人用"></a>积分符号内取微分计算积分，据听说费曼提到，很少人用</h2><blockquote>
 <ul>
-<li>互斥的实现：前者通过turn，后者通过number的大小比较来实现</li>
+<li>[知乎]<a href="https://www.zhihu.com/question/24481887" target="_blank" rel="noopener">https://www.zhihu.com/question/24481887</a></li>
 </ul>
 </blockquote>
 
@@ -480,7 +729,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Python/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Matlab/figure/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -499,7 +748,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/Python/README/" itemprop="url">README</a></h2>
+                <a class="post-title-link" href="/2019/11/08/Matlab/figure/" itemprop="url">figure</a></h2>
         
 
         <div class="post-meta">
@@ -534,8 +783,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/Matlab/" itemprop="url" rel="index">
+                    <span itemprop="name">Matlab</span>
                   </a>
                 </span>
 
@@ -573,793 +822,32 @@
       
         
           
-            <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p>学习python呢，是因为学习爬虫时，用python的库很爽，结果就学了一点皮毛   </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/semaphore/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/OperatingSystem/semaphore/" itemprop="url">semaphore</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">OperatingSystem</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="进程同步之信号量实现-semaphore"><a href="#进程同步之信号量实现-semaphore" class="headerlink" title="进程同步之信号量实现  semaphore"></a>进程同步之信号量实现  semaphore</h1><p>信号量的提出—Dijkstra大神<br>信号量分为  二进制信号量 与 计数信号量<br>操作分为  P操作(waiting) 与 V操作(signal)</p>
-<h2 id="二进制信号量-mutex"><a href="#二进制信号量-mutex" class="headerlink" title="二进制信号量 mutex"></a>二进制信号量 mutex</h2><p>二进制信号量主要用于解决 互斥问题  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    waiting(mutex);</span><br><span class="line">    </span><br><span class="line">    //critical section</span><br><span class="line">    </span><br><span class="line">    signal(mutex);</span><br><span class="line">    </span><br><span class="line">    //remainder section</span><br><span class="line">    </span><br><span class="line">&#125;while(TRUE);</span><br></pre></td></tr></table></figure>
-
-<h2 id="计数信号量"><a href="#计数信号量" class="headerlink" title="计数信号量"></a>计数信号量</h2><p>结构  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">  int value;</span><br><span class="line">  struct process *list;</span><br><span class="line">&#125; semaphore;</span><br></pre></td></tr></table></figure>
-<p>P,V操作的定义:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wait(semaphore *S) &#123;</span><br><span class="line">  S-&gt;value--;</span><br><span class="line">  if(S-&gt;value &lt; 0) &#123;</span><br><span class="line">  </span><br><span class="line">    //add this process to S-&gt;list</span><br><span class="line">    </span><br><span class="line">    block();   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">signal(semaphore *S) &#123;</span><br><span class="line">  S-&gt;value ++ ;</span><br><span class="line">  if(S-&gt;value &lt;= 0) &#123;</span><br><span class="line">    </span><br><span class="line">    //remove a P process from S-&gt;list</span><br><span class="line">    </span><br><span class="line">    wakeup(P);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>信号量的初值</p>
-<blockquote>
+            <h1 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h1><h2 id="plot"><a href="#plot" class="headerlink" title="plot"></a>plot</h2><blockquote>
 <ul>
-<li>对于一般计数信号量初值一般设置为1</li>
-<li>对于同步问题处置一般设置为0 </li>
+<li>plot(x,y);  </li>
+<li>plot(x,y1;x,y2);  </li>
+<li>plot(matrix);  绘制矩阵每一列的数据，以矩阵行为坐标  </li>
 </ul>
 </blockquote>
-<p>说一下我的理解：<br>wait(S)操作是用在访问与操作临界区之前，用于申请，或者说测试释放可用，执行-操作；<br>signal(S)操作用于访问与操作临界区之后，对临界区访问权限的释放，或者说发送一个可用信号，执行+操作；</p>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><strong>1.wait()signal()位置</strong>   </p>
-<p>为了防止出现死锁，一般将wait()与signal()放置在<strong>紧贴</strong>临界区的位置上  </p>
-<p><strong>2.S-&gt;list的访问</strong>  </p>
-<p><strong>一般使用FIFO</strong>以保证条件3即有限等待次数的实现，当使用其它的访问算法时，可能会违背条件3，<strong>出现饥饿</strong> </p>
-<p><strong>3.wait()signal()都属于原子操作</strong></p>
-<p>当单cpu情况下可以用“关中”即<strong>关闭中断</strong>的方式来实现<br>当多cpu情况下可以…emmm…反正记住PV都属于Atomic Operations :-) !!!</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Python/requests/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/Python/requests/" itemprop="url">requests</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h1><p>python requests模块使用：</p>
-<p>官方文档：<a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="noopener">http://docs.python-requests.org/zh_CN/latest/user/quickstart.html</a></p>
-<p><code>import requests</code></p>
-<h2 id="01-发送请求"><a href="#01-发送请求" class="headerlink" title="01 发送请求"></a>01 发送请求</h2><h3 id="1-1-GET"><a href="#1-1-GET" class="headerlink" title="1.1 GET"></a>1.1 GET</h3><ul>
-<li><p>当URL参数不多的时候，可以这样<br><code>requests.get(&#39;http://baidu.com&#39;)</code></p>
-</li>
-<li><p>当参数多的时候，可以通过一个dic来传递参数，使其自动构造URL</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paydict = &#123;<span class="string">'key1'</span>:<span class="string">'value1'</span>,<span class="string">'key2'</span>:<span class="string">'value2'</span>&#125;</span><br><span class="line">r = requests.get(<span class="string">'http://baidu.com'</span>,params=paydict<span class="string">')</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="1-2-POST"><a href="#1-2-POST" class="headerlink" title="1.2 POST"></a>1.2 POST</h3><h2 id="02-响应内容"><a href="#02-响应内容" class="headerlink" title="02 响应内容"></a>02 响应内容</h2><p><strong>返回值r是Response对象</strong></p>
+<h2 id="hold-amp-figure"><a href="#hold-amp-figure" class="headerlink" title="hold &amp; figure"></a>hold &amp; figure</h2><blockquote>
 <ul>
-<li><p>r.encoding 编码，这个可以自己设置</p>
-</li>
-<li><p>r.text 返回文本形式内容</p>
-</li>
-<li><p>r.content 返回二进制形式内容</p>
-</li>
-<li><p>r.raw 返回原始内容</p>
-</li>
+<li>hold on;hold off;用于在同一幅图形里继续绘图  </li>
+<li>figure,figure1,figure2用于绘制第几幅图形  </li>
 </ul>
-<h2 id="03-Misc"><a href="#03-Misc" class="headerlink" title="03 Misc"></a>03 Misc</h2><h3 id="3-1-requests-请求资源的高效利用"><a href="#3-1-requests-请求资源的高效利用" class="headerlink" title="3.1 requests 请求资源的高效利用"></a>3.1 requests 请求资源的高效利用</h3><p>requests 底层是 http，http 底层是 tcp。</p>
-<p>遇到一个问题： 当使用爬虫爬取数据，如何在爬取多个 url 时，充分利用资源：</p>
-<p>参考：</p>
-<ol>
-<li><a href="https://stackoverflow.com/questions/10115126/python-requests-close-http-connection" target="_blank" rel="noopener">stackoverflow</a></li>
-<li><a href="https://requests.readthedocs.io/zh_CN/latest/user/advanced.html#session-objects" target="_blank" rel="noopener">requests docs</a></li>
-<li><a href="https://www.cnblogs.com/gl1573/p/10129382.html" target="_blank" rel="noopener">Python: requests 详解超时和重试</a></li>
-</ol>
-<p>当在爬虫过程中使用多线程爬取内容时，往往会出现 <code>too many open files</code> 的 error,</p>
-<ul>
-<li>TCP 在建立连接后，默认会保持一段时间的连接，当我们使用以下代码把网页内容 pull 下来后，我们需要及时关闭连接。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url, proxies=proxies, headers=headers, timeout=timeout)</span><br><span class="line">response_content = response.content</span><br><span class="line"><span class="comment"># 无论 get/post 方法，均可以使用 close() 关闭连接</span></span><br><span class="line">response.close()</span><br><span class="line"><span class="comment"># 或者使用 with-statement 管理 context</span></span><br><span class="line"><span class="keyword">with</span> requests.get(url, proxies=proxies, headers=headers, timeout=timeout) <span class="keyword">as</span> r:</span><br><span class="line">    response_content = response.content</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>requests 中的 <code>session</code> 对象，可以在一个会话中保持一些请求的参数，借用官方文档：</li>
-</ul>
-<blockquote>
-<p>会话对象让你能够跨请求保持某些参数。它也会在同一个 Session 实例发出的所有请求之间保持 cookie， 期间使用 urllib3 的 connection pooling 功能。所以如果你向同一主机发送多个请求，底层的 TCP 连接将会被重用，从而带来显著的性能提升。 (参见 HTTP persistent connection).</p>
 </blockquote>
-<p>使用 <code>session</code> 的目的还是利用 <code>session</code> 的 <code>connection pool</code> 功能，可以高效地复用链接。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 with-statement</span></span><br><span class="line"><span class="keyword">with</span> requests.Session() <span class="keyword">as</span> s:</span><br><span class="line">    s.get(<span class="string">'http://example.com/aaa'</span>)</span><br><span class="line">    s.get(<span class="string">'http://example.com/bbb'</span>)</span><br><span class="line">    s.get(<span class="string">'http://example.com/ccc'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用 close() 方法</span></span><br><span class="line">s = requests.Session()</span><br><span class="line">s.get(<span class="string">'http://example.com/aaa'</span>)</span><br><span class="line">s.get(<span class="string">'http://example.com/bbb'</span>)</span><br><span class="line">s.get(<span class="string">'http://example.com/ccc'</span>)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
-
+<h2 id="线条与标注"><a href="#线条与标注" class="headerlink" title="线条与标注"></a>线条与标注</h2><blockquote>
 <ul>
-<li><p>同时还应该及时清理建立连接较慢和返回较慢的连接，以提高爬虫的效率，主要使用的手段是 <code>timeout</code> 与 <code>max_retries</code></p>
-<p>  <code>timeout</code> 应注意其可以为（连接超时，读取超时）：连接超时指建立连接的最大时间，读取超时指收到服务器回复的最大时间，也可单独设置。</p>
-</li>
+<li>plot(x,y,’:ok’)  <strong>线条类型</strong>为点  <strong>点类型</strong>为.   <strong>颜色</strong>为黑色  </li>
+<li>axis(v)  思维矢量设置坐标轴  </li>
+<li>legend(‘string1’,’string2’,etc)  设置图例  </li>
+<li>text(x_coordinate,y_coordinate,’string’)  在图形不同位置添加文本框</li>
+<li>gtext(‘string’)  文本框的位置由鼠标确定  </li>
+<li>title(‘string’)   设置标题  </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_response</span><span class="params">(url, proxies, headers, timeout=<span class="params">(<span class="number">5</span>, <span class="number">10</span>)</span>, max_retries=<span class="number">3</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    存在连接时间较长阻塞的情况，这里设置 timeout, max_retries</span></span><br><span class="line"><span class="string">    :param url: 请求的 url</span></span><br><span class="line"><span class="string">    :param proxies:</span></span><br><span class="line"><span class="string">    :param header:</span></span><br><span class="line"><span class="string">    :param time_out: (connect_time_out, read_time_out)</span></span><br><span class="line"><span class="string">    :param max_retries: 重试次数</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; max_retries:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            response = requests.get(url, proxies=proxies, headers=headers, timeout=timeout)</span><br><span class="line">            response_content = response.content</span><br><span class="line">            response.close()</span><br><span class="line">            <span class="keyword">return</span> response_content</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.RequestException <span class="keyword">as</span> e:</span><br><span class="line">            log.error(<span class="string">'&#123;&#125; times request'</span>.format(i+<span class="number">1</span>) + str(e) + url)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title(&apos;\alpha \beta \gamma&apos;)  希腊字母  </span><br><span class="line">title(&apos;x^2&apos;)    设置上标   </span><br><span class="line">title(&apos;x_5&apos;)    创建下标  </span><br><span class="line">title(&apos;k^&#123;-1&#125;&apos;)   创建下标</span><br></pre></td></tr></table></figure>
 
-    
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/layout/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/QT/layout/" itemprop="url">layout</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/QT/" itemprop="url" rel="index">
-                    <span itemprop="name">QT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="layout（布局管理器）"><a href="#layout（布局管理器）" class="headerlink" title="layout（布局管理器）"></a>layout（布局管理器）</h1><h2 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h2><p>布局管理器，作为Box控件，很明显是保持其他控件，如Button的变化一致性</p>
-<h2 id="QSplitter"><a href="#QSplitter" class="headerlink" title="QSplitter"></a>QSplitter</h2><p>分裂器的作用与上述类似，不过两者很大的区别在于</p>
-<p>当使用 QSplitter与vertical layout时</p>
-<ul>
-<li>QSplitter 会改变Button纵向大小</li>
-<li>vertical layout 不会改变纵向大小</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/QT/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/QT/" itemprop="url" rel="index">
-                    <span itemprop="name">QT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="QT开发笔记"><a href="#QT开发笔记" class="headerlink" title="QT开发笔记"></a>QT开发笔记</h1><p>软件课设</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/make/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/QT/make/" itemprop="url">make</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/QT/" itemprop="url" rel="index">
-                    <span itemprop="name">QT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -1583,7 +1071,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/SQL/DataQuery/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1602,7 +1090,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/SQL/DataQuery/" itemprop="url">DataQuery</a></h2>
+                <a class="post-title-link" href="/2019/11/08/QT/README/" itemprop="url">README</a></h2>
         
 
         <div class="post-meta">
@@ -1637,8 +1125,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SQL/" itemprop="url" rel="index">
-                    <span itemprop="name">SQL</span>
+                  <a href="/categories/QT/" itemprop="url" rel="index">
+                    <span itemprop="name">QT</span>
                   </a>
                 </span>
 
@@ -1676,10 +1164,297 @@
       
         
           
-            <h1 id="数据查询"><a href="#数据查询" class="headerlink" title="数据查询"></a>数据查询</h1><p><code>SELECT * FROM (tables);</code></p>
-<p><code>SELECT first_name FROM student_info WHERE id = 1;</code></p>
-<p><code>SELECT * FROM student_info WHERE id = &#39;&#39; and name = &#39;&#39;;</code></p>
+            <h1 id="QT开发笔记"><a href="#QT开发笔记" class="headerlink" title="QT开发笔记"></a>QT开发笔记</h1><p>软件课设</p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/layout/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/QT/layout/" itemprop="url">layout</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/QT/" itemprop="url" rel="index">
+                    <span itemprop="name">QT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="layout（布局管理器）"><a href="#layout（布局管理器）" class="headerlink" title="layout（布局管理器）"></a>layout（布局管理器）</h1><h2 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h2><p>布局管理器，作为Box控件，很明显是保持其他控件，如Button的变化一致性</p>
+<h2 id="QSplitter"><a href="#QSplitter" class="headerlink" title="QSplitter"></a>QSplitter</h2><p>分裂器的作用与上述类似，不过两者很大的区别在于</p>
+<p>当使用 QSplitter与vertical layout时</p>
+<ul>
+<li>QSplitter 会改变Button纵向大小</li>
+<li>vertical layout 不会改变纵向大小</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/make/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/QT/make/" itemprop="url">make</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/QT/" itemprop="url" rel="index">
+                    <span itemprop="name">QT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -1866,11 +1641,168 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/menuIcon/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/QT/menuIcon/" itemprop="url">menuIcon</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/QT/" itemprop="url" rel="index">
+                    <span itemprop="name">QT</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="menuIcon"><a href="#menuIcon" class="headerlink" title="menuIcon"></a>menuIcon</h1><p>添加菜单图标</p>
+<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>1.在menuBar输入框中输入自己要输入的一级菜单名称，二级菜单…</p>
+<p>2.Qt中的一个菜单被视为一个Action，在下面Action编辑器中更改“文本”等</p>
+<ul>
+<li>这里可以通过 &amp;Open,&amp;New,设置加速键，<strong>加速键</strong>：即当菜单处于激活状态时的快捷键</li>
+<li>这里也可以设置<strong>快捷键shortcut</strong>，在shortcut输入框中输入快捷键</li>
+</ul>
+<p>3.当要添加菜单图标时，需要用到“图标”后面的“添加文件”，“添加资源”；</p>
+<ul>
+<li><strong>资源文件</strong>：Qt使用资源文件将各种外部文件添加至最终生成的可执行文件中</li>
+<li>文件</li>
+</ul>
+<p>4.选取图标所在文件夹里的文件即可</p>
+<h2 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h2><p>原理与上述同，上代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;mainwindow.h&quot;</span><br><span class="line">#include &quot;ui_mainwindow.h&quot;</span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    //创建新的动作</span><br><span class="line">    QAction *openAction = new QAction(&quot;&amp;Open&quot;,this);</span><br><span class="line">    //添加图标,这里的路径参考ui_mainwindow.h文件，里面代码与此相同</span><br><span class="line">    QIcon icon(&quot;:/myImages/img/actions/fileopen.png&quot;);</span><br><span class="line">    openAction-&gt;setIcon(icon);</span><br><span class="line">    //设置快捷键</span><br><span class="line">    openAction-&gt;setShortcut(QKeySequence(&quot;Ctrl+O&quot;));</span><br><span class="line">    //在文件菜单中设置新的打开动作</span><br><span class="line">    ui-&gt;menu-&gt;addAction(openAction);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    delete ui;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在主窗口的构造函数中添加”//“部分代码</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/14/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/16/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/14/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/16/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1920,7 +1852,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">256</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1931,7 +1863,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1942,7 +1874,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

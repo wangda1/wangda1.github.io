@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/DNS/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,671 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/DNS/" itemprop="url">DNS</a></h2>
+                <a class="post-title-link" href="/2019/11/08/OperatingSystem/README/" itemprop="url">README</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">OperatingSystem</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Operating-System"><a href="#Operating-System" class="headerlink" title="Operating System"></a>Operating System</h1><p>10/2017</p>
+<p>最近在学习操作系统，这里主要写一下自己在看书看视频时的一些思考；  </p>
+<p>参考教材：《操作系统概念》《UNIX环境高级编程》<br>参考视频： 浙江大学 李善平 《操作系统原理》</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/classic_problems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/OperatingSystem/classic_problems/" itemprop="url">classic_problems</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">OperatingSystem</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="经典同步问题"><a href="#经典同步问题" class="headerlink" title="经典同步问题"></a>经典同步问题</h1><p>抄一下代码，想一下idea</p>
+<h2 id="Producer-Consumer-problem（生产者-消费者问题）"><a href="#Producer-Consumer-problem（生产者-消费者问题）" class="headerlink" title="Producer-Consumer problem（生产者-消费者问题）"></a>Producer-Consumer problem（生产者-消费者问题）</h2><p>又名有界缓冲区问题  </p>
+<p>原则：  </p>
+<ul>
+<li>缓冲区有界  </li>
+<li>同步，互斥读写  </li>
+</ul>
+<p>解决方式：  </p>
+<ul>
+<li>semaphore mutex 初值为1，互斥信号量  </li>
+<li>semaphore full,empty full初值为0，empty初值为n，计数信号量  </li>
+</ul>
+<p><strong>备注：</strong>解决互斥问题并不是Dijkstra大神的初心，毕竟这用“关中”也可以实现，这带来的还有避免了空操作；  </p>
+<p>实现：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Producer:</span><br><span class="line">do &#123;</span><br><span class="line"></span><br><span class="line">  //produce product</span><br><span class="line">  </span><br><span class="line">  wait(empty);</span><br><span class="line">  wait(mutex);</span><br><span class="line">  </span><br><span class="line">  //add product into buffer</span><br><span class="line">  </span><br><span class="line">  signal(mutex);</span><br><span class="line">  signal(full);</span><br><span class="line">  </span><br><span class="line">&#125;while(TRUE);</span><br><span class="line"></span><br><span class="line">Consumer:</span><br><span class="line">do &#123;</span><br><span class="line">  wait(full);</span><br><span class="line">  wait(mutex);</span><br><span class="line">  </span><br><span class="line">  //remove product from buffer</span><br><span class="line">  </span><br><span class="line">  signal(mutex);</span><br><span class="line">  signal(empty);</span><br><span class="line">  </span><br><span class="line">  //consume product</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Readers-Writers-Problem（读者-写者问题）"><a href="#Readers-Writers-Problem（读者-写者问题）" class="headerlink" title="Readers-Writers Problem（读者-写者问题）"></a>Readers-Writers Problem（读者-写者问题）</h2><p>原则：  </p>
+<ul>
+<li>多进程可同时读，单进程可写  </li>
+<li>读写进程互斥  </li>
+<li>避免出现读/写进程饥饿  </li>
+</ul>
+<p>解决方式：  </p>
+<ul>
+<li>semaphore mutex,wrt 初值为1，mutex保护readercount，wrt保护共享数据  </li>
+<li>int readercount 初值为0，表示读进程个数  </li>
+</ul>
+<p>实现：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Writer:</span><br><span class="line">do &#123; </span><br><span class="line">  wait(wrt);</span><br><span class="line">  </span><br><span class="line">  //writing is performed  </span><br><span class="line">  </span><br><span class="line">  signal(wrt);</span><br><span class="line">&#125;while(TRUE);</span><br><span class="line"></span><br><span class="line">Reader:</span><br><span class="line">do &#123;</span><br><span class="line">  wait(mutex);</span><br><span class="line">  readercount ++;</span><br><span class="line">  if(readercount == 1)          //当是第一个要读的进程时申请wrt；若非第一个读的，直接进入</span><br><span class="line">    wait(wrt);</span><br><span class="line">  signal(mutex);</span><br><span class="line">  </span><br><span class="line">  //reading is performed</span><br><span class="line">  </span><br><span class="line">  wait(mutex);</span><br><span class="line">  readercount --;</span><br><span class="line">  if(readercount == 0)          //当是最后一个要离开的进程时释放wrt；若非最后一个，直接离开</span><br><span class="line">    signal(wrt);</span><br><span class="line">  signal(mutex);</span><br><span class="line">&#125;while(TRUE);</span><br></pre></td></tr></table></figure>
+<p><strong>当然了，这并没有解决饥饿问题(starvation)，很明显会造成Writer进程饥饿</strong>  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/processSynchronization/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/OperatingSystem/processSynchronization/" itemprop="url">processSynchronization</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">OperatingSystem</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="进程同步的一些算法"><a href="#进程同步的一些算法" class="headerlink" title="进程同步的一些算法"></a>进程同步的一些算法</h1><p>这些算法主要用于解决<strong>临界区问题</strong><br>所谓临界区，即对共享数据访问与操作的代码，主要要求是最多只有一个进程在临界区内  </p>
+<p>临界区问题的解答需要满足以下三点需求：  </p>
+<blockquote>
+<ul>
+<li>互斥(mutual exclusion)</li>
+<li>前进“空闲可进”(progress)  </li>
+<li>有限等待(bounded waiting)</li>
+</ul>
+</blockquote>
+<p>下面是软件实现的几种算法： </p>
+<h2 id="Peterson算法（仅限于2个进程）"><a href="#Peterson算法（仅限于2个进程）" class="headerlink" title="Peterson算法（仅限于2个进程）"></a>Peterson算法（仅限于2个进程）</h2><p><strong>采用共享数据 turn,flag 来实现 预约与轮转 的算法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    flag[i] = TRUE;           //flag[i]=TRUE 表示i想进入临界区</span><br><span class="line">    turn = j;                 //turn 表示哪一个 可以进入临界区</span><br><span class="line">    while(flag[j]&amp;&amp;turn == j);</span><br><span class="line">    </span><br><span class="line">    临界区  </span><br><span class="line">    </span><br><span class="line">    flag[i] = FALSE;</span><br><span class="line">     </span><br><span class="line">    剩余区  </span><br><span class="line">    </span><br><span class="line">    &#125;while(TRUE);</span><br></pre></td></tr></table></figure>
+<p>注解：</p>
+<blockquote>
+<ul>
+<li>当若只包含turn则只能满足条件1，互斥进入，存在问题2，有空闲不让进情况  </li>
+<li>flag 主要用于解决条件2，让想进入临界区的有限次等待可以进入</li>
+</ul>
+</blockquote>
+<h2 id="面包店算法-（可用于n个进程）"><a href="#面包店算法-（可用于n个进程）" class="headerlink" title="面包店算法 （可用于n个进程）"></a>面包店算法 （可用于n个进程）</h2><p><strong>类似面包店取号</strong></p>
+<blockquote>
+<ul>
+<li>choosing = TRUE 表示开始取号</li>
+<li>number[i]  表示取得的号码  </li>
+<li>number最小的进入临界区</li>
+<li>(number[j],j)&lt;(number[i],i) 若number[j]&lt;number[i]则返回1；若number[j]==number[i]&amp;&amp;j&lt;i则返回1</li>
+</ul>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    choosing[i] = TRUE;                                           //开始取号码</span><br><span class="line">    number[i] = MAX&#123;number[0],number[1]...number[i-1]&#125; + 1；      //取号码</span><br><span class="line">    choosing[i] = FALSE;                                          //取号结束</span><br><span class="line">     </span><br><span class="line">    for(j=0;j&lt;i;j++) &#123;</span><br><span class="line">      while(choosing[j]);                                         //碰到有正在取号的则等待，若无choosing，还是会出现一些问题</span><br><span class="line">      while((number[j] != 0)&amp;&amp;((number[j],j)&lt;(number[i],i)));     //碰到比自己号码小的想要进入的则等待</span><br><span class="line">      &#125;</span><br><span class="line">     </span><br><span class="line">     临界区  </span><br><span class="line">     </span><br><span class="line">     number[i] = 0;                                               //重新置号</span><br><span class="line">     </span><br><span class="line">     剩余区  </span><br><span class="line">     </span><br><span class="line">&#125;while(TRUE);</span><br></pre></td></tr></table></figure>
+
+<p>下面是一些总结： <strong>预约+互斥</strong><br>两者相同点：</p>
+<blockquote>
+<ul>
+<li>存在一个预约机制(flag &amp; number)，即保证条件3能够满足</li>
+<li>在对共享数据进行操作时都特别小心(flag,number[n])因为临界区问题的源头在这里 </li>
+<li>在进入临界区检查时，都用while()检查其它进程有没有满足条件，若有，空操作；若无，进入；（进程之间应该谦让）</li>
+<li>出了临界区之后，立即对自己的预约进行消除(flag[i] = FALSE,number[i] = 0)</li>
+</ul>
+</blockquote>
+<p>两者不同点：</p>
+<blockquote>
+<ul>
+<li>互斥的实现：前者通过turn，后者通过number的大小比较来实现</li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/OperatingSystem/semaphore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/OperatingSystem/semaphore/" itemprop="url">semaphore</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">OperatingSystem</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="进程同步之信号量实现-semaphore"><a href="#进程同步之信号量实现-semaphore" class="headerlink" title="进程同步之信号量实现  semaphore"></a>进程同步之信号量实现  semaphore</h1><p>信号量的提出—Dijkstra大神<br>信号量分为  二进制信号量 与 计数信号量<br>操作分为  P操作(waiting) 与 V操作(signal)</p>
+<h2 id="二进制信号量-mutex"><a href="#二进制信号量-mutex" class="headerlink" title="二进制信号量 mutex"></a>二进制信号量 mutex</h2><p>二进制信号量主要用于解决 互斥问题  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">    waiting(mutex);</span><br><span class="line">    </span><br><span class="line">    //critical section</span><br><span class="line">    </span><br><span class="line">    signal(mutex);</span><br><span class="line">    </span><br><span class="line">    //remainder section</span><br><span class="line">    </span><br><span class="line">&#125;while(TRUE);</span><br></pre></td></tr></table></figure>
+
+<h2 id="计数信号量"><a href="#计数信号量" class="headerlink" title="计数信号量"></a>计数信号量</h2><p>结构  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">  int value;</span><br><span class="line">  struct process *list;</span><br><span class="line">&#125; semaphore;</span><br></pre></td></tr></table></figure>
+<p>P,V操作的定义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">wait(semaphore *S) &#123;</span><br><span class="line">  S-&gt;value--;</span><br><span class="line">  if(S-&gt;value &lt; 0) &#123;</span><br><span class="line">  </span><br><span class="line">    //add this process to S-&gt;list</span><br><span class="line">    </span><br><span class="line">    block();   </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">signal(semaphore *S) &#123;</span><br><span class="line">  S-&gt;value ++ ;</span><br><span class="line">  if(S-&gt;value &lt;= 0) &#123;</span><br><span class="line">    </span><br><span class="line">    //remove a P process from S-&gt;list</span><br><span class="line">    </span><br><span class="line">    wakeup(P);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>信号量的初值</p>
+<blockquote>
+<ul>
+<li>对于一般计数信号量初值一般设置为1</li>
+<li>对于同步问题处置一般设置为0 </li>
+</ul>
+</blockquote>
+<p>说一下我的理解：<br>wait(S)操作是用在访问与操作临界区之前，用于申请，或者说测试释放可用，执行-操作；<br>signal(S)操作用于访问与操作临界区之后，对临界区访问权限的释放，或者说发送一个可用信号，执行+操作；</p>
+<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><strong>1.wait()signal()位置</strong>   </p>
+<p>为了防止出现死锁，一般将wait()与signal()放置在<strong>紧贴</strong>临界区的位置上  </p>
+<p><strong>2.S-&gt;list的访问</strong>  </p>
+<p><strong>一般使用FIFO</strong>以保证条件3即有限等待次数的实现，当使用其它的访问算法时，可能会违背条件3，<strong>出现饥饿</strong> </p>
+<p><strong>3.wait()signal()都属于原子操作</strong></p>
+<p>当单cpu情况下可以用“关中”即<strong>关闭中断</strong>的方式来实现<br>当多cpu情况下可以…emmm…反正记住PV都属于Atomic Operations :-) !!!</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/GoogleHack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/GoogleHack/" itemprop="url">GoogleHack</a></h2>
         
 
         <div class="post-meta">
@@ -398,11 +1062,167 @@
       
         
           
-            <h1 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h1><h2 id="DNS域名解析记录"><a href="#DNS域名解析记录" class="headerlink" title="DNS域名解析记录"></a>DNS域名解析记录</h2><p><strong>记录</strong>  </p>
-<p>1.A记录：解析IPv4地址记录<br>2.AAAA记录： 解析IPv6地址记录<br>3.CNAME记录： 解析别名记录<br>4.NS记录： 解析子域名指定DNS服务器记录<br>5.MX记录： 解析SMTP服务器记录</p>
-<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>1.正向解析: 查询A记录</p>
-<p>2.反向解析: 查询PTR记录<br>  完成逆向域名解析，系统提供一个特别域，该特别域称为逆向解析域in-addr.arpa。这样欲解析的IP地址就会被表达成一种像域名一样的可显示串形式，后缀以逆向解析域域名”in-addr.arpa”结尾</p>
-<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>dnsenum 可用于DNS的多项查询  </p>
+            <h1 id="GoogleHack"><a href="#GoogleHack" class="headerlink" title="GoogleHack"></a>GoogleHack</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<ul>
+<li>寻找持续构建工具Jenkins的管理面板   </li>
+<li>搞定xampp  </li>
+<li>后门查找  </li>
+<li>google hack database  </li>
+</ul>
+</blockquote>
+<h2 id="GoogleHack查询语法"><a href="#GoogleHack查询语法" class="headerlink" title="GoogleHack查询语法"></a>GoogleHack查询语法</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/README/" itemprop="url">README</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">CypherSecurity</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
+                    <span itemprop="name">2016</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="WhiteHat"><a href="#WhiteHat" class="headerlink" title="WhiteHat"></a>WhiteHat</h1><p>Learn something interesting</p>
 
           
         
@@ -612,7 +1432,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/DNS/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -631,7 +1451,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/README/" itemprop="url">README</a></h2>
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/DNS/" itemprop="url">DNS</a></h2>
         
 
         <div class="post-meta">
@@ -716,7 +1536,11 @@
       
         
           
-            <h1 id="WhiteHat"><a href="#WhiteHat" class="headerlink" title="WhiteHat"></a>WhiteHat</h1><p>Learn something interesting</p>
+            <h1 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h1><h2 id="DNS域名解析记录"><a href="#DNS域名解析记录" class="headerlink" title="DNS域名解析记录"></a>DNS域名解析记录</h2><p><strong>记录</strong>  </p>
+<p>1.A记录：解析IPv4地址记录<br>2.AAAA记录： 解析IPv6地址记录<br>3.CNAME记录： 解析别名记录<br>4.NS记录： 解析子域名指定DNS服务器记录<br>5.MX记录： 解析SMTP服务器记录</p>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>1.正向解析: 查询A记录</p>
+<p>2.反向解析: 查询PTR记录<br>  完成逆向域名解析，系统提供一个特别域，该特别域称为逆向解析域in-addr.arpa。这样欲解析的IP地址就会被表达成一种像域名一样的可显示串形式，后缀以逆向解析域域名”in-addr.arpa”结尾</p>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>dnsenum 可用于DNS的多项查询  </p>
 
           
         
@@ -765,7 +1589,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/%E8%AF%B7%E6%B1%82%E8%A7%A3%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/Proxy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -784,7 +1608,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/%E8%AF%B7%E6%B1%82%E8%A7%A3%E6%9E%90/" itemprop="url">请求解析</a></h2>
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/Proxy/" itemprop="url">Proxy</a></h2>
         
 
         <div class="post-meta">
@@ -869,343 +1693,15 @@
       
         
           
-            <h1 id="浏览器请求解析"><a href="#浏览器请求解析" class="headerlink" title="浏览器请求解析"></a>浏览器请求解析</h1><p><a href="http://2277259257.iteye.com/blog/2026803" target="_blank" rel="noopener">引用</a>  感谢!</p>
-<p>在HTTP服务中三个环节  <strong>请求 – 处理 – 响应</strong>  每个环节的编码格式都是很重要的，统一的编码格式才不致出现访问出错或者网页乱码的情况  </p>
-<h2 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h2><blockquote>
+            <h1 id="Proxy-For-Use"><a href="#Proxy-For-Use" class="headerlink" title="Proxy For Use"></a>Proxy For Use</h1><h2 id="mitmproxy"><a href="#mitmproxy" class="headerlink" title="mitmproxy"></a>mitmproxy</h2><blockquote>
 <ul>
-<li>浏览器会对请求进行编码组合成请求的URL;</li>
+<li>命令: mitmproxy -p 8800 用于设置  mitmproxy 监听端口为 8800  </li>
+<li>命令: L 可用于过滤 设置过滤条件，例如,Limit:/.js 仅查看js请求   </li>
+<li>命令: I 可用于拦截请求,例如，Intercept filter: -u .php 可用于拦截 php 请求  </li>
 </ul>
 </blockquote>
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><blockquote>
-<ul>
-<li>请求的媒体类型与编码都会写入消息头中;</li>
-</ul>
-</blockquote>
-<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><blockquote>
-<ul>
-<li>响应的内容媒体类型与编码在消息头中;</li>
-</ul>
-</blockquote>
+<h2 id="Owasp-zap"><a href="#Owasp-zap" class="headerlink" title="Owasp-zap"></a>Owasp-zap</h2><p>OWASP Zed Attak Proxy Project 攻击代理(简称ZAP),功能  “拦截代理”  “自动处理”  “被动处理”  “暴力破解”  “端口扫描”  “蜘蛛搜索”等功能<br>会话类调试工具，调试功能不会产生大量请求，对服务器影响小</p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/NetTools/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/NetTools/" itemprop="url">NetTools</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一些网络工具的使用"><a href="#一些网络工具的使用" class="headerlink" title="一些网络工具的使用"></a>一些网络工具的使用</h1><h2 id="dnsenum"><a href="#dnsenum" class="headerlink" title="dnsenum"></a>dnsenum</h2><p>多线程perl脚本枚举域的DNS信息并发现非连续的IP段工具  </p>
-<p>主要功能:  </p>
-<blockquote>
-<ul>
-<li>获取主机的地址（A记录）</li>
-<li>获取名称服务器（线程）</li>
-<li>获取MX记录（线程化）</li>
-<li>对名称服务器执行axfr查询并获取BIND VERSION（线程化）</li>
-<li>通过Google抓取获取额外的名称和子域(google query = “allinurl: -www site:domain”)</li>
-<li>读取文件爆破子域，也可以对具有NS记录的子域执行递归查询（开启所有线程）</li>
-<li>计算C类域网络范围并对其执行whois查询（线程化）</li>
-<li>对网络（C类或/和whois网络）执行反向查找（线程化）</li>
-<li>将ip段写入domain_ips.txt文件</li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2017/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2017/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2017/" itemprop="url" rel="index">
-                    <span itemprop="name">2017</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="学会一些工具的使用"><a href="#学会一些工具的使用" class="headerlink" title="学会一些工具的使用"></a>学会一些工具的使用</h1>
           
         
       
@@ -1414,524 +1910,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/WordPress/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/WordPress/" itemprop="url">WordPress</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="WordPress漏洞利用"><a href="#WordPress漏洞利用" class="headerlink" title="WordPress漏洞利用"></a>WordPress漏洞利用</h1><h2 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h2><blockquote>
-<ul>
-<li>WordPress插件注入漏洞 <a href="https://www.exploit-db.com/exploits/36613/" target="_blank" rel="noopener">EXPLOIT-DATABASE</a>  </li>
-<li><a href="http://www.freebuf.com/articles/web/65894.html" target="_blank" rel="noopener">FREEBUF</a></li>
-</ul>
-</blockquote>
-<h2 id="WPScan的利用"><a href="#WPScan的利用" class="headerlink" title="WPScan的利用"></a>WPScan的利用</h2><blockquote>
-<ul>
-<li>命令  wpscan -url URL</li>
-</ul>
-</blockquote>
-<h2 id="nikto的利用"><a href="#nikto的利用" class="headerlink" title="nikto的利用"></a>nikto的利用</h2><blockquote>
-<ul>
-<li>命令  nikto  -h   URL  </li>
-<li>可以通过一些cookies查看是否为WordPress站点，用于验证是否为WordPress站点</li>
-</ul>
-</blockquote>
-<h2 id="Backup组件下载漏洞"><a href="#Backup组件下载漏洞" class="headerlink" title="Backup组件下载漏洞"></a>Backup组件下载漏洞</h2><blockquote>
-<ul>
-<li>路径: wp-content/wpbackitup_backups/</li>
-</ul>
-</blockquote>
-<h2 id="Slider-Revolution-Plugin-任意文件下载漏洞"><a href="#Slider-Revolution-Plugin-任意文件下载漏洞" class="headerlink" title="Slider Revolution Plugin 任意文件下载漏洞"></a>Slider Revolution Plugin 任意文件下载漏洞</h2><blockquote>
-<ul>
-<li>路径: wp-admin/admin-ajax.php?action=revslider_show_image&amp;img=文件名  </li>
-<li>例如: wp-admin/admin-ajax.php?action=revslider_show_image&amp;img=../wp-config.php</li>
-<li>可以下载当前目录下的任意文件(路径首先正确),特别地，当拿到wp-config文件后就bam!bam!bam!</li>
-</ul>
-</blockquote>
-<h2 id="Complete-Gallery-Manager-3-3-3任意文件上传漏洞"><a href="#Complete-Gallery-Manager-3-3-3任意文件上传漏洞" class="headerlink" title="Complete Gallery Manager 3.3.3任意文件上传漏洞"></a>Complete Gallery Manager 3.3.3任意文件上传漏洞</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2017/Nessus/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2017/Nessus/" itemprop="url">Nessus</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2017/" itemprop="url" rel="index">
-                    <span itemprop="name">2017</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Nessus"><a href="#Nessus" class="headerlink" title="Nessus"></a>Nessus</h1><p>要考试了，紧张地学习了一下，赶紧做做笔记走人</p>
-<p>通过浏览器管理，输入    <a href="https://kali:8834" target="_blank" rel="noopener">https://kali:8834</a>   </p>
-<p>大致的扫描步骤是这样的</p>
-<h2 id="新建policy（或用以前的策略）"><a href="#新建policy（或用以前的策略）" class="headerlink" title="新建policy（或用以前的策略）"></a>新建policy（或用以前的策略）</h2><p>这里主要是选用 Advanced Scan， 里面可以选用 各种扫描所用到的  plugines，自我定制</p>
-<h2 id="新建-Scan-任务"><a href="#新建-Scan-任务" class="headerlink" title="新建 Scan 任务"></a>新建 Scan 任务</h2><p>这里需要选用  policy  是作为扫描的策略，及  Scan name 和 Target IP</p>
-<h2 id="开始-Scan"><a href="#开始-Scan" class="headerlink" title="开始 Scan"></a>开始 Scan</h2><p>等待几分钟后，会出现详细的 Vulnerability 信息，可以在里面具体的查看 INFO ，并且会给出解决方法与漏洞具体信息</p>
-<p>就这样了，考试之后再搞搞！！！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2017/metasploit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2017/metasploit/" itemprop="url">metasploit</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2017/" itemprop="url" rel="index">
-                    <span itemprop="name">2017</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h1><p>这个在 Kali中是自带的，无需安装</p>
-<p>我的 kali 4.6.0 amd64</p>
-<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>metasploit 默认使用 postgresql 数据库，进行一些信息的存储与检索</p>
-<ol>
-<li>启动  postgresql</li>
-</ol>
-<ul>
-<li>service postgresql start</li>
-</ul>
-<ol start="2">
-<li>初始化 msfdb</li>
-</ol>
-<ul>
-<li>msfdb init<br>初始化  数据库为  msfdb    用户名为  msf   默认密码为  空</li>
-</ul>
-<ol start="3">
-<li>启动</li>
-</ol>
-<ul>
-<li>msfconsole<br>控制台启动 metsploit</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/16/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/18/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/16/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/18/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1981,7 +1964,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">214</span>
+                  <span class="site-state-item-count">256</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1992,7 +1975,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2003,7 +1986,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">56</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
