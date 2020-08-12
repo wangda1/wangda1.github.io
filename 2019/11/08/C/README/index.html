@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="C&#x2F;C++C&#x2F;C++一些小知识和一些常用的代码    1.2017&#x2F;5&#x2F;25  typedef及一些复杂的声明  https:&#x2F;&#x2F;github.com&#x2F;wangda1&#x2F;oh&#x2F;blob&#x2F;master&#x2F;typedef.md">
+<meta name="description" content="C&#x2F;C++C&#x2F;C++一些小知识和一些常用的代码   数组的初始化C语言中数组的初始化， 1234567int a[5] = &amp;#123;1,2,3,4,5&amp;#125;; &#x2F;&#x2F; 完全初始化：1,2,3,4,5int a[5] = &amp;#123;1,2&amp;#125;;       &#x2F;&#x2F; 不完全初始化：1,2,0,0,0int a[5];               &#x2F;&#x2F; 完全不初始化int a[] = &amp;">
 <meta name="keywords" content="C">
 <meta property="og:type" content="article">
 <meta property="og:title" content="README">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;08&#x2F;C&#x2F;README&#x2F;index.html">
 <meta property="og:site_name" content="笔记记录">
-<meta property="og:description" content="C&#x2F;C++C&#x2F;C++一些小知识和一些常用的代码    1.2017&#x2F;5&#x2F;25  typedef及一些复杂的声明  https:&#x2F;&#x2F;github.com&#x2F;wangda1&#x2F;oh&#x2F;blob&#x2F;master&#x2F;typedef.md">
+<meta property="og:description" content="C&#x2F;C++C&#x2F;C++一些小知识和一些常用的代码   数组的初始化C语言中数组的初始化， 1234567int a[5] = &amp;#123;1,2,3,4,5&amp;#125;; &#x2F;&#x2F; 完全初始化：1,2,3,4,5int a[5] = &amp;#123;1,2&amp;#125;;       &#x2F;&#x2F; 不完全初始化：1,2,0,0,0int a[5];               &#x2F;&#x2F; 完全不初始化int a[] = &amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-05T09:29:43.387Z">
+<meta property="og:updated_time" content="2020-07-18T03:28:35.648Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -385,6 +385,10 @@
 
       
         <h1 id="C-C"><a href="#C-C" class="headerlink" title="C/C++"></a>C/C++</h1><p>C/C++一些小知识和一些常用的代码  </p>
+<h2 id="数组的初始化"><a href="#数组的初始化" class="headerlink" title="数组的初始化"></a>数组的初始化</h2><p>C语言中数组的初始化，</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;; <span class="comment">// 完全初始化：1,2,3,4,5</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>&#125;;       <span class="comment">// 不完全初始化：1,2,0,0,0</span></span><br><span class="line"><span class="keyword">int</span> a[<span class="number">5</span>];               <span class="comment">// 完全不初始化</span></span><br><span class="line"><span class="keyword">int</span> a[] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> a[<span class="number">5</span>] = &#123;<span class="number">0</span>&#125;;        <span class="comment">// char 类型数组全为 '\0'  strlen(a)==0</span></span><br><span class="line"><span class="keyword">char</span> a[<span class="number">5</span>] = &#123;<span class="string">'a'</span>&#125;;      <span class="comment">// char 类型数组为 'a','\0'... strlen(a) == 1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意 char 与 int 中 0和0的区别！！！</strong></p>
 <ul>
 <li>1.2017/5/25  typedef及一些复杂的声明  <a href="https://github.com/wangda1/oh/blob/master/typedef.md" target="_blank" rel="noopener">https://github.com/wangda1/oh/blob/master/typedef.md</a></li>
 </ul>
@@ -540,7 +544,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -551,7 +555,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -562,7 +566,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -605,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-C"><span class="nav-number">1.</span> <span class="nav-text">C/C++</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C-C"><span class="nav-number">1.</span> <span class="nav-text">C/C++</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组的初始化"><span class="nav-number">1.1.</span> <span class="nav-text">数组的初始化</span></a></li></ol></li></ol></div>
             
 
           </div>

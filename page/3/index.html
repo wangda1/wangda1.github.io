@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/C/CPP/leetcode/w1/P124/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/C/CPP/STL/summary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/02/20/C/CPP/leetcode/w1/P124/" itemprop="url">Problem 124</a></h2>
+                <a class="post-title-link" href="/2020/06/13/C/CPP/STL/summary/" itemprop="url">C++ STL 总结</a></h2>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T21:30:00+08:00">
-                2020-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T22:36:00+08:00">
+                2020-06-13
               </time>
             
 
@@ -370,19 +370,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
-                    <span itemprop="name">w1</span>
+                  <a href="/categories/C/CPP/STL/" itemprop="url" rel="index">
+                    <span itemprop="name">STL</span>
                   </a>
                 </span>
 
@@ -420,378 +409,940 @@
       
         
           
-            <h1 id="Binary-Tree-Maximum-Path-Sum"><a href="#Binary-Tree-Maximum-Path-Sum" class="headerlink" title="Binary Tree Maximum Path Sum"></a>Binary Tree Maximum Path Sum</h1><h2 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h2><p>这道题与 <code>P.687</code> 有点异曲同工的意味，使用递归解法，关键在于</p>
+            <h1 id="STL总结"><a href="#STL总结" class="headerlink" title="STL总结"></a>STL总结</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="Notes"><a href="#Notes" class="headerlink" title="Notes"></a>Notes</h2><ul>
+<li>并不是所有 container 都支持 subscript operator，支持的有 <code>std::string</code>、<code>std::vector</code></li>
+</ul>
+<h2 id="容器定义和初始化"><a href="#容器定义和初始化" class="headerlink" title="容器定义和初始化"></a>容器定义和初始化</h2><p>顺序容器中有个特殊的存在即：<code>array</code>，<code>array</code>的大小也是类型的一部分，因此，当定义一个 <code>array</code> 时，除了指定元素类型，还要指定容器大小：<code>array&lt;int, 10&gt;</code>.</p>
+<ul>
+<li><code>array</code> 从开始构造就不是空的，若使用列表初始化，初始化方式为：列表+默认初始化；</li>
+<li>不接受大小参数的构造函数；</li>
+<li>两个 <code>array</code> 之间的拷贝，必须满足类型与大小都相同的条件；</li>
+</ul>
+<p><img src="/2020/06/13/C/CPP/STL/summary/container_init_function.jpg" alt="init_function"></p>
+<h2 id="赋值和swap"><a href="#赋值和swap" class="headerlink" title="赋值和swap"></a>赋值和<code>swap</code></h2><p><em>赋值 !=  初始化</em></p>
+<p>容器类型常用的赋值方式为：</p>
+<ul>
+<li><code>=</code></li>
+<li><code>assign function</code></li>
+</ul>
+<p>以上两种运算符对于可变空间的容器来说，是适用的，如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; a = &#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; b = &#123;<span class="string">"c"</span>, <span class="string">"d"</span>, <span class="string">"e"</span>, <span class="string">"f"</span>&#125;;</span><br><span class="line"><span class="keyword">auto</span> be = b.<span class="built_in">begin</span>();</span><br><span class="line"><span class="comment">// 赋值运算导致 左边容器的迭代器、引用和指针失效</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"before =: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// before =: c</span></span><br><span class="line">b = a;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"after =: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// after =: a</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"before assign: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// before assign: c</span></span><br><span class="line">b.assign(&#123;<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>&#125;)</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"after assign: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// after assign: a</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// swap 操作不会导致上述情况的发生， array 和 string 除外</span></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"before swap: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// before swap: c</span></span><br><span class="line">swap(a, b);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"after swap: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// after swap: c</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// array 对空间要求较高，并不支持 assign</span></span><br><span class="line"><span class="built_in">array</span>&lt;<span class="keyword">int</span>,10&gt; a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="comment">// &#123;1,2,3,4,0,0,0,0,0,0&#125;</span></span><br><span class="line"><span class="built_in">array</span>&lt;<span class="keyword">int</span>,10&gt; b = &#123;<span class="number">2</span>&#125;;</span><br><span class="line"><span class="comment">// &#123;2,0,0,0,0,0,0,0,0,0,0&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"before =: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// before =: 2</span></span><br><span class="line">b = a;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"after =: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// after =: 1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Do not support assign</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"before swap: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// before swap: 2</span></span><br><span class="line">swap(a, b);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"after swap: "</span>&lt;&lt;*be&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="comment">// after swap: 1</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/C/CPP/c++11/decltype/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/13/C/CPP/c++11/decltype/" itemprop="url">C++ 11 之 decltype 关键字</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T14:03:00+08:00">
+                2020-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
+                    <span itemprop="name">c++11</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="decltype"><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h1><blockquote>
+<p>By using the new <code>decltype</code> keyword, you can let the compiler find ouy the type of an expression. This is the realization of the often requested typeof feature.</p>
+<p>One application of <code>decltype</code> is to declare return types. Another is to use it in metaprogramming or to pass trhe type of a lambda.</p>
+</blockquote>
+<h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><ul>
+<li><code>decltype</code>, used to declare return types</li>
+</ul>
+<p>用在函数模板中，函数的返回值类型与模板参数有关，可使用 <code>decltype</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="keyword">decltype</span>(x+y) add(T1 x, T2 y);           <span class="comment">// was not possible before c++11, because the return expression uses objects not introduced or in scope yet.</span></span><br></pre></td></tr></table></figure>
+
+<p>在 C++11 中，你可以这样写，即把函数返回值类型写在函数参数列表之后</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line">auto add(T1 x, T2 y)-&gt;decltype(x+y);</span><br></pre></td></tr></table></figure>
+
+<p>这种用法和 <code>lambdas</code> 声明返回值类型的语法是一样的</p>
+<p><code>[...](...)mutable throwSpec -&gt; retType {...}</code></p>
+<ul>
+<li><code>decltype</code>, used in metaprogramming</li>
+</ul>
+<p><img src="/2020/06/13/C/CPP/c++11/decltype/decltype_metaprogramming.png" alt="decltype_metaprogramming"></p>
+<ul>
+<li><code>decltype</code>, used to pass the type of a lambda</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> cmp = [](<span class="keyword">const</span> Person&amp; p1, <span class="keyword">const</span> Person&amp; p2) &#123;</span><br><span class="line">    <span class="keyword">return</span> p1.lastname() &lt; p2.lastname() ||</span><br><span class="line">    (p1.lastname()==p2.lastname() &amp;&amp;</span><br><span class="line">    p1.firstname() &lt; p2.firstname());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 对于 lambdas 常常只有 object，我们可以使用 `decltype` 取其 type</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">set</span>&lt;Person, <span class="keyword">decltype</span>(cmp)&gt; coll(cmp);</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.bilibili.com/video/BV1p4411v7Dh?p=13" target="_blank" rel="noopener">C++11新特性-侯捷</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/10/Algorithm/optimization/summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/10/Algorithm/optimization/summary/" itemprop="url">最优化问题</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-10T13:43:00+08:00">
+                2020-06-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/optimization/" itemprop="url" rel="index">
+                    <span itemprop="name">optimization</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="最优化问题"><a href="#最优化问题" class="headerlink" title="最优化问题"></a>最优化问题</h1><p>最优化问题其实是搜索问题，用朴素的思想考虑就是一个 <code>BFS</code> 的过程，不同的算法是对搜索树的剪枝（Prune）,在 <a href="https://www.zhihu.com/question/22311234/answer/22392442" target="_blank" rel="noopener">戴克斯特拉算法（Dijkstra）的本质是贪心，还是动态规划？ - 大雄的回答 - 知乎</a>看到他的解释觉得很有道理，这里记录下</p>
+<blockquote>
+<p>贪心是一种特殊的动态规划，动态规划的本质是独立的子问题，而贪心则是每次可以找到最优的独立子问题。贪心和动归不是互斥的，而是包含的，贪心更快，但约束更强，适应范围更小。动归和bfs的关系也是一样的。展开一点讲，在求解最优化问题时，有多个解。而求解的过程类似一个树，我们称之为求解树。一般的求解树真的是一棵树，所以我们只能用bfs来搜索，顶多剪枝。有些特殊的求解树，中间很多结点是重合的，结点个数比所有搜索分支的个数少很多个数量级。这类问题较特殊，我们可以保存中间的搜索过程。而记忆化搜索和动态规划本质上就是一个东西，快就快在可以不用重复计算很多中间结果（所谓的最优子问题）。还有一些特殊的求解树，更特殊，它们不止有很多重复结点，而且每次选择分支的时候，我们可以证明只要选择一个分支，这个分支的解就一定比其他选择更优。这类问题就是贪心了，所以bfs，dp，贪心三个方法都是解决最优化问题的方法，根据问题的不同，约束越大的问题可以用越快的方法，越慢的方法可以解决的问题越普适。=========================更新===========================换一种思路动态规划的状态转移函数，可以抽象成这样一种函数：f(x)=g(f(x1), f(x2), f(x3), … f(xn))其中f就是我们说的独立问题，每个f都有一个唯一值，也就是没有后效性。贪心也是这个函数，但可以证明：f(xi) &gt;= f(x1|x2|…|xn)那么我们就不用再去计算除了f(xi)以外的任何子状态了，所以就更快而标准的bfs，虽然也有f(x)=g(f(x1), f(x2), f(x3), … f(xn))但是因为对于任意的f(x)，它的子问题f(xi)的输入状态xi都不同（换一种思路也可以说f(xi)在不同的路径下值都不同，本质上是我们怎么定义xi，到底是狭义的参数还是广义的状态），所以无法使用内存去换取时间，就只能去遍历所有状态了。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/06/C/CPP/c++11/CPP_2011_new_features/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/06/C/CPP/c++11/CPP_2011_new_features/" itemprop="url">C++ 11 新特性--侯捷</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-06T05:21:00+08:00">
+                2020-06-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
+                    <span itemprop="name">c++11</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="C-2011（C-2-0）中的一些新特性"><a href="#C-2011（C-2-0）中的一些新特性" class="headerlink" title="C++ 2011（C++ 2.0）中的一些新特性"></a>C++ 2011（C++ 2.0）中的一些新特性</h1><h2 id="variadic-template-parameter"><a href="#variadic-template-parameter" class="headerlink" title="variadic template parameter"></a><strong><code>variadic template parameter</code></strong></h2><p><img src="/2020/06/06/C/CPP/c++11/CPP_2011_new_features/variadic_parameter.png" alt="variadic template"></p>
+<h2 id="auto"><a href="#auto" class="headerlink" title="auto"></a><code>auto</code></h2><p><img src="/2020/06/06/C/CPP/c++11/CPP_2011_new_features/auto.png" alt="auto"></p>
+<h2 id="ranged-base-for"><a href="#ranged-base-for" class="headerlink" title="ranged-base for"></a><code>ranged-base for</code></h2><p><img src="/2020/06/06/C/CPP/c++11/CPP_2011_new_features/range_based_for.png" alt="range_based_for"></p>
+<h2 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a><code>lambda</code></h2><p>戳 <a href="./lambda.md">lambda</a></p>
+<h2 id="unordered-container"><a href="#unordered-container" class="headerlink" title="unordered container"></a><code>unordered container</code></h2><h2 id="Initizlizer-Lists"><a href="#Initizlizer-Lists" class="headerlink" title="Initizlizer Lists"></a><code>Initizlizer Lists</code></h2><p>列表初始化</p>
+<blockquote>
+<p>Before C++11, initialization could happen with parentheses <code>()</code>, braces <code>{}</code>, and/or assignment operators <code>=</code>.</p>
+<p>C++ 11 introduced the concept of uniform initialization, which means that for any initizlization, you can use one common syntax. This syntax uses braces.</p>
+</blockquote>
+<h2 id="详解-initialization-list背后的原理"><a href="#详解-initialization-list背后的原理" class="headerlink" title="详解 initialization list背后的原理"></a>详解 <code>initialization list</code>背后的原理</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> value[] &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; c &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>,<span class="number">11</span>,<span class="number">13</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; cities &#123;</span><br><span class="line">    <span class="string">"Berlin"</span>, <span class="string">"New York"</span>, <span class="string">"London"</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">complex</span>&lt;<span class="keyword">double</span>&gt; c&#123;<span class="number">4.0</span>, <span class="number">3.0</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>其实是利用一个事实：编译器看到 {t1, t2, t3…tn} 便做出一个 initializer_list<T>，它关联至一个 <code>array&lt;T,n&gt;</code>。调用函数（例如 ctor）时该 array 内的元素可被编译器分解逐一传给函数。但若函数参数是个 initializer_list<T>，调用者会将它们自动转化为一个 initializer_list<T> 传入</p>
+</blockquote>
+<p><img src="/2020/06/06/C/CPP/c++11/CPP_2011_new_features/uniform_initizlization.png" alt="initializer_list"></p>
+<ul>
+<li>列表初始化会执行值初始化</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i;              <span class="comment">//  undefined</span></span><br><span class="line"><span class="keyword">int</span> j&#123;&#125;;            <span class="comment">//  0</span></span><br><span class="line"><span class="keyword">int</span>* p;             <span class="comment">//  undefined</span></span><br><span class="line"><span class="keyword">int</span>* q&#123;&#125;;           <span class="comment">//  nullptr</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="std-initializer-list-的其他用法"><a href="#std-initializer-list-的其他用法" class="headerlink" title="std::initializer_list 的其他用法"></a><code>std::initializer_list</code> 的其他用法</h2><ul>
+<li>当做函数形参传入，此时不再像列表初始化一样，逐个进行复制，而是作为整体参数传入</li>
+</ul>
+<p><img src="/2020/06/06/C/CPP/c++11/CPP_2011_new_features/initializer_list_argument.png" alt="initializer_list"></p>
+<ul>
+<li>对于 <code>ctor</code> 中包含了：列表初始化 与 <code>std::initializer_list</code> 两种方式，Prefer 后者</li>
+</ul>
+<p><img src="/2020/06/06/C/CPP/c++11/CPP_2011_new_features/perfer_initializer.png" alt="prefer_initializer"></p>
+<h2 id="string-与-vector-的初始化"><a href="#string-与-vector-的初始化" class="headerlink" title="string 与 vector 的初始化"></a><code>string</code> 与 <code>vector</code> 的初始化</h2><p><code>string</code> 的初始化方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> s1;          <span class="comment">// 默认初始化，s1 为空串</span></span><br><span class="line"><span class="built_in">string</span> s2 = s1;     <span class="comment">// 拷贝初始化</span></span><br><span class="line"><span class="built_in">string</span> s3 = <span class="string">"hiya"</span>; <span class="comment">// 拷贝初始化</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s4</span><span class="params">(<span class="string">"hiya"</span>)</span></span>;  <span class="comment">// 直接初始化</span></span><br><span class="line"><span class="function"><span class="built_in">string</span> <span class="title">s5</span><span class="params">(<span class="number">10</span>, <span class="string">'c'</span>)</span></span>; <span class="comment">// 直接初始化</span></span><br></pre></td></tr></table></figure>
+
+<p><code>vector</code> 的初始化方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;T&gt; v1;       <span class="comment">// 空 vector，执行默认初始化</span></span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt; v2(v1);</span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt; v2 = v1;</span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt; v3(n, val);</span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt; v4(n);</span><br><span class="line"><span class="comment">// vector&lt;int&gt; v4(10); // 10个0值构成的 vector</span></span><br><span class="line"><span class="comment">// vector&lt;string&gt; v4(10); // 10个空串构成的 vector</span></span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt; v5 &#123;a,b,c...&#125;;    <span class="comment">// 列表初始化，v5 包含了初始值的元素</span></span><br><span class="line"><span class="built_in">vector</span>&lt;T&gt; v6 = &#123;a,b,c...&#125;</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v1(<span class="number">10</span>, <span class="number">1</span>);          <span class="comment">//  10个1</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v2&#123;<span class="number">10</span>,<span class="number">1</span>&#125;;           <span class="comment">//  10和1</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v3(<span class="number">10</span>);             <span class="comment">//  10个0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; vs1&#123;<span class="number">10</span>&#125;;         <span class="comment">//  不能列表初始化，考虑其他初始化 10 个空串</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; vs2&#123;<span class="string">"hi"</span>&#125;;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; vs3(<span class="string">"hi"</span>);       <span class="comment">//  错误！不能使用字符串字面值构建 vector</span></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; vs4&#123;<span class="number">10</span>, <span class="string">"hi"</span>&#125;;   <span class="comment">//  10个 hi</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/03/C/CPP/CPP%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/03/C/CPP/CPP%E5%BC%BA%E5%88%B6%E8%BD%AC%E6%8D%A2%E7%B1%BB%E5%9E%8B/" itemprop="url">C++ 强制转换类型</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-03T14:52:00+08:00">
+                2020-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="四类强制转换类型函数"><a href="#四类强制转换类型函数" class="headerlink" title="四类强制转换类型函数"></a>四类强制转换类型函数</h1><h2 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a><code>const_cast</code></h2><ul>
+<li>常量指针与非常量指针之间的转换</li>
+<li>常量引用与非常量引用之间的转换</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a_int;</span><br><span class="line">a_int = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; b_int = a_int;</span><br><span class="line"><span class="keyword">int</span>&amp; c_int = <span class="keyword">const_cast</span>&lt;<span class="keyword">int</span>&amp;&gt;(b_int);</span><br><span class="line">c_int = <span class="number">6</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"a: "</span>&lt;&lt;a_int&lt;&lt;<span class="built_in">endl</span>;               <span class="comment">// 6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> a_int = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; b_int = a_int;</span><br><span class="line"><span class="keyword">int</span>&amp; c_int = <span class="keyword">const_cast</span>&lt;<span class="keyword">int</span>&amp;&gt;(b_int);</span><br><span class="line">c_int = <span class="number">6</span>;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;<span class="string">"a: "</span>&lt;&lt;a_int&lt;&lt;<span class="built_in">endl</span>;               <span class="comment">// 6</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a><code>static_cast</code></h2><p>仅限于这两种转换：</p>
+<ul>
+<li>类层次结构中基类和派生类之间的指针或引用的转换。<code>up_cast</code> 是安全的，<code>down_cast</code> 是不安全的</li>
+<li>基本数据类型之间的转换，如：int 与 char等；</li>
+<li><blockquote>
+<p>c++ primer: c++ 的任何隐式转换都是通过 <code>static_cast</code> 实现的</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">A* a = <span class="keyword">new</span> A(<span class="number">23</span>, <span class="string">"wanncy"</span>);</span><br><span class="line">base* bs = <span class="keyword">static_cast</span>&lt;base*&gt; (a);</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;bs-&gt;getName()&lt;&lt;<span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="dynamic-cast"><a href="#dynamic-cast" class="headerlink" title="dynamic_cast"></a><code>dynamic_cast</code></h2><p>用于父子类之间指针的转换：</p>
+<ul>
+<li>当从子类到基类的指针转换，<code>dynamic_cast</code> 成功转换，没有什么运行异常，且达到预期效果；</li>
+<li>从基类到子类的转换，<code>dynamic_cast</code>在转换时没有报错，但输出一个 <code>nullptr</code>，<code>dynamic_cast</code> 在程序运行过程中类转换进行了检查“运行期类型信息”（RTTI）</li>
+</ul>
+<h2 id="reinterpret-cast"><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a><code>reinterpret_cast</code></h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://blog.csdn.net/ydar95/article/details/69822540" target="_blank" rel="noopener">c++四种强制类型转换</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/03/C/CPP/CPP%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/03/C/CPP/CPP%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" itemprop="url">C++ 内存管理</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-03T14:52:00+08:00">
+                2020-06-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="C-中的内存管理"><a href="#C-中的内存管理" class="headerlink" title="C++中的内存管理"></a>C++中的内存管理</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p><img src="/2020/06/03/C/CPP/CPP%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/cpp_memory_layout.png" alt="C++内存布局"></p>
+<p>在看到侯捷老师讲解关于C++内存管理一节中，关于Object内存分配的问题，总是以16Byte对齐内存空间，想到了以前在玩 <code>ctf</code> 的时候看到的有关 <code>glibc</code> 内存管理的内容，特地翻看了一下，复习了下关于 <code>glibc中ptmalloc</code></p>
+<p>在介绍 <code>ptmalloc</code> 之前，先来看下 32位linux 系统的内存经典布局（大小为4GB）：</p>
+<p><img src="/2020/06/03/C/CPP/CPP%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/32_bit_memory_layout.png" alt="32bits_layout">，这里图中已经标识各个segment的功能，其中注意几点：</p>
+<ul>
+<li>stack的生长方向为由高地址-&gt;低地址；</li>
+<li>heap的生长方向为由低地址-&gt;高地址；</li>
+<li>局部变量（stack）、全局变量（Data segment/BSS segment）、静态变量（Data segment/BSS segment）的存储空间；</li>
+</ul>
+<h2 id="ptmalloc对于内存的管理"><a href="#ptmalloc对于内存的管理" class="headerlink" title="ptmalloc对于内存的管理"></a><code>ptmalloc</code>对于内存的管理</h2><p><code>ptmalloc</code>是啥？</p>
+<blockquote>
+<p>a fast, memory-efficient implementation of malloc for Unix systems.</p>
+</blockquote>
+<p>这里关于 <code>ptmalloc</code> 如何进行内存分配不再赘述，具体可参考 <strong>ptmalloc内存管理剖析-华庭</strong>，与本篇主题相关的是内存管理单元–<code>chunk</code>这一数据结构，它是以下这种形式，并且32位系统中按照 16Bytes 对齐：</p>
+<p><img src="/2020/06/03/C/CPP/CPP%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/ptmalloc_chunk.png" alt="chunk"></p>
+<p>这也与侯捷老师所说的申请内存时的 cookie 相照应？</p>
+<h2 id="C-变量何时分配内存空间"><a href="#C-变量何时分配内存空间" class="headerlink" title="C++ 变量何时分配内存空间"></a>C++ 变量何时分配内存空间</h2><p>在一日执行下面这段函数代码的时候：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getCom</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Com local_c;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">"getCom "</span> &lt;&lt; &amp;local_c &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; __cplusplus &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	A a;</span><br><span class="line">	base b = base(a);</span><br><span class="line">	getCom();</span><br><span class="line">	A a1;</span><br><span class="line">	getCom();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现结果如下：</p>
+<p><img src="/2020/06/03/C/CPP/CPP%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/run_memory_layout.png" alt="CPP_Run_memory_layout"></p>
+<p>为什么两次局部变量申请到的地址空间是一样的呢？猜想应该是在编译过程中会将函数中的所有变量提前（提到最前面，类似C语言），统一申请内存空间，通过在 Visual Studio 中调试观察发现：</p>
+<ul>
+<li>确实是变量的空间先进行申请，但局部变量的初值是不确定的；</li>
+<li>即使 <code>int a=0</code>的方式，也是先申请<code>a</code>的内存空间，后进行赋值；</li>
+</ul>
+<h2 id="结构体之内存对齐"><a href="#结构体之内存对齐" class="headerlink" title="结构体之内存对齐"></a>结构体之内存对齐</h2><p>结构体的内存空间是属于 <code>内存对齐</code> 方面的知识，主要参考以下3点（3大规则）</p>
+<blockquote>
 <ol>
-<li>在递归过程中通过比较保存当前遍历过程中的最值；</li>
-<li>返回以当前节点为根的树的单边最值</li>
+<li><p>对于结构体的各个成员，第一个成员的偏移量是0，排列在后面的成员其当前偏移量必须是当前成员类型的整数倍</p>
+</li>
+<li><p>结构体内所有数据成员各自内存对齐后，结构体本身还要进行一次内存对齐，保证整个结构体占用内存大小是结构体内最大数据成员的最小整数倍</p>
+</li>
+<li><p>如程序中有#pragma pack(n)预编译指令，则所有成员对齐以n字节为准(即偏移量是n的整数倍)，不再考虑当前类型以及最大结构体内类型</p>
+</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = root -&gt; val;</span><br><span class="line">        maxSum(root, &amp;ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 类似于 687 做法</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span>* ans)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = maxSum(root -&gt; right, ans);</span><br><span class="line">        <span class="keyword">int</span> l = maxSum(root -&gt; left, ans);</span><br><span class="line">        <span class="keyword">int</span> rsum = r + root -&gt; val;</span><br><span class="line">        <span class="keyword">int</span> lsum = l + root -&gt; val;</span><br><span class="line">        <span class="comment">// 求以 root 为根的树单边产生的最值（左子树+root，root，右子树+root，左子树+root+右子树）</span></span><br><span class="line">        <span class="keyword">int</span> m = ThreeMax(rsum, lsum ,root -&gt; val);</span><br><span class="line">        *ans = ThreeMax(*ans, m, l + r + root -&gt; val);</span><br><span class="line">        <span class="comment">// 返回单边树的最值</span></span><br><span class="line">        <span class="keyword">return</span> ThreeMax(l + root -&gt; val, r + root -&gt; val, root -&gt; val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ThreeMax</span><span class="params">(<span class="keyword">int</span> v1, <span class="keyword">int</span> v2, <span class="keyword">int</span> v3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(v1 &gt; v2) m = v1;</span><br><span class="line">        <span class="keyword">else</span> m = v2;</span><br><span class="line">        <span class="keyword">if</span>(v3 &gt; m) m = v3;</span><br><span class="line">        <span class="keyword">return</span> m;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>竟然在这道题上拿到了最少空间开销，超过了96.7%的时间，棒！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/C/CPP/leetcode/w1/P1145/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/14/C/CPP/leetcode/w1/P1145/" itemprop="url">Problem 1145</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T22:12:00+08:00">
-                2020-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
-                    <span itemprop="name">w1</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1145-Binary-Tree-Coloring-Game"><a href="#1145-Binary-Tree-Coloring-Game" class="headerlink" title="1145. Binary Tree Coloring Game"></a>1145. Binary Tree Coloring Game</h1><h2 id="1-查找子孙数目-error"><a href="#1-查找子孙数目-error" class="headerlink" title="1. 查找子孙数目[error]"></a>1. 查找子孙数目[error]</h2><p>直观的想法是找到 <code>x</code> 对应的子孙数目，当子孙数目超过一半时，返回 <code>false</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">btreeGameWinningMove</span><span class="params">(TreeNode* root, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 可以使用前序遍历访问子孙节点得到子孙的数目</span></span><br><span class="line">        <span class="comment">// 但这道题目可以使用数学公式计算得到</span></span><br><span class="line">        <span class="comment">// 当子孙节点的数目小于总节点数目的一半即可</span></span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        TreeNode* px;</span><br><span class="line">        px = levelTraversal(root, x);</span><br><span class="line">        frontOrder(px, num);</span><br><span class="line">        <span class="keyword">if</span> (num &lt; n) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 层次遍历找到对应的节点</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">levelTraversal</span><span class="params">(TreeNode* root, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        TreeNode* temp;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">            temp = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">if</span> (temp -&gt; val == x) <span class="keyword">return</span> temp;</span><br><span class="line">            <span class="keyword">if</span> (temp -&gt; left) q.push(temp -&gt; left);</span><br><span class="line">            <span class="keyword">if</span> (temp -&gt; right) q.push(temp -&gt; right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 前序遍历找子孙节点的数目</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">frontOrder</span><span class="params">(TreeNode* root, <span class="keyword">int</span>&amp; num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span>;</span><br><span class="line">        num++;</span><br><span class="line">        frontOrder(root -&gt; left, num);</span><br><span class="line">        frontOrder(root -&gt; right, num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>但是在 submit 时，发现一个测试用例并不通过，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3,4,5]</span><br><span class="line">5</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>采用了对于满二叉树的特定判定规则，能够判断这两种情况：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">case 1</span><br><span class="line">[1,2,3,4,5]</span><br><span class="line">5</span><br><span class="line">1</span><br><span class="line">case 2</span><br><span class="line">[1,2,3,4,5,6,7]</span><br><span class="line">7</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
-
-<p>但出现了新的测试 case 不通过的情况：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[6,3,null,7,4,null,null,null,2,null,1,null,5]</span><br><span class="line">7</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/C/CPP/leetcode/w1/P1305/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/14/C/CPP/leetcode/w1/P1305/" itemprop="url">Problem 1305</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T16:00:00+08:00">
-                2020-02-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
-                    <span itemprop="name">w1</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="1305-All-Elements-in-Two-Binary-Search-Trees"><a href="#1305-All-Elements-in-Two-Binary-Search-Trees" class="headerlink" title="1305. All Elements in Two Binary Search Trees"></a>1305. All Elements in Two Binary Search Trees</h1><h2 id="1-递归中序遍历-归并排序"><a href="#1-递归中序遍历-归并排序" class="headerlink" title="1. 递归中序遍历 + 归并排序"></a>1. 递归中序遍历 + 归并排序</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getAllElements(TreeNode* root1, TreeNode* root2) &#123;</span><br><span class="line">        <span class="comment">// 中序遍历 + 归并排序</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; l1, l2, l3;</span><br><span class="line">        middleOrder(root1, l1);</span><br><span class="line">        middleOrder(root2, l2);</span><br><span class="line">        <span class="comment">// 归并排序</span></span><br><span class="line">        <span class="keyword">int</span> n1 = l1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n2 = l2.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(p1 &lt; n1 || p2 &lt; n2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 &gt;= n1) &#123;</span><br><span class="line">                l3.push_back(l2[p2++]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p2 &gt;= n2) &#123;</span><br><span class="line">                l3.push_back(l1[p1++]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (l1[p1] &lt; l2[p2]) &#123;</span><br><span class="line">                l3.push_back(l1[p1++]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                l3.push_back(l2[p2++]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3;              </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">middleOrder</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; orderList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span>;</span><br><span class="line">        middleOrder(root -&gt; left, orderList);</span><br><span class="line">        orderList.push_back(root -&gt; val);</span><br><span class="line">        middleOrder(root -&gt; right, orderList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>优缺点：</p>
-<ul>
-<li>优点：递归进行中序遍历，代码简洁，耗时较短</li>
-<li>缺点：递归导致的函数栈空间的增大，内存消耗较多</li>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.bilibili.com/video/BV14s411E772?p=8" target="_blank" rel="noopener">C++面向对象高级编程-侯捷</a></li>
+<li><a href="https://paper.seebug.org/papers/Archive/refs/heap/glibc%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86ptmalloc%E6%BA%90%E4%BB%A3%E7%A0%81%E5%88%86%E6%9E%90.pdf" target="_blank" rel="noopener">ptmalloc内存管理剖析-华庭</a></li>
+<li><a href="https://yangrz.github.io/blog/2017/12/20/ptmalloc/" target="_blank" rel="noopener">聊聊glibc ptmalloc内存管理那些事儿</a></li>
+<li><a href="https://levphy.github.io/2017/03/23/memory-alignment.html" target="_blank" rel="noopener">内存对齐规则之我见</a></li>
 </ul>
 
           
@@ -841,7 +1392,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/C/CPP/leetcode/w1/P2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/30/Mathmatics/Numerical%20Analysis/experiment/MCMC/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -860,7 +1411,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/02/14/C/CPP/leetcode/w1/P2/" itemprop="url">Problem 2</a></h2>
+                <a class="post-title-link" href="/2020/05/30/Mathmatics/Numerical%20Analysis/experiment/MCMC/README/" itemprop="url">Mathmatics/Numerical Analysis/experiment/MCMC/README</a></h2>
         
 
         <div class="post-meta">
@@ -872,8 +1423,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T14:00:00+08:00">
-                2020-02-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-30T15:31:28+08:00">
+                2020-05-30
               </time>
             
 
@@ -882,61 +1433,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
-                    <span itemprop="name">w1</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -967,870 +1463,11 @@
       
         
           
-            <h1 id="Pro2-Add-Two-Numbers"><a href="#Pro2-Add-Two-Numbers" class="headerlink" title="Pro2. Add Two Numbers"></a>Pro2. Add Two Numbers</h1><h2 id="1-直接想法-error"><a href="#1-直接想法-error" class="headerlink" title="1. 直接想法[error]"></a>1. 直接想法[error]</h2><p>将链表中的值复原成 <code>long</code> 型，直接相加得到的和，写入 <code>l1</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> v1 = <span class="number">0</span>, v2 = <span class="number">0</span>, i = <span class="number">0</span>, result;</span><br><span class="line">        ListNode* index;</span><br><span class="line">        index = l1;</span><br><span class="line">        <span class="keyword">while</span>(index) &#123;</span><br><span class="line">            v1 += <span class="built_in">pow</span>(<span class="number">10</span>, i) * index-&gt;val;</span><br><span class="line">            i++;</span><br><span class="line">            index = index -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        index = l2;</span><br><span class="line">        <span class="keyword">while</span>(index) &#123;</span><br><span class="line">            v2 += <span class="built_in">pow</span>(<span class="number">10</span>, i) * index-&gt;val;</span><br><span class="line">            i++;</span><br><span class="line">            index = index -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        result = v1 + v2;</span><br><span class="line">        index = l1;</span><br><span class="line">        <span class="keyword">while</span>(result) &#123;</span><br><span class="line">            index -&gt; val = result % <span class="number">10</span>;</span><br><span class="line">            result /= <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (result &amp;&amp; !index -&gt; next) &#123;</span><br><span class="line">                index -&gt; next = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            index = index -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>后来发现这种方法测试的时候有些边界案例测试不能通过，数字过大，因此选择采用第二种方法，使用加法运算规则。</p>
-<h2 id="2-加法运算规则"><a href="#2-加法运算规则" class="headerlink" title="2. 加法运算规则"></a>2. 加法运算规则</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        ListNode* l3;</span><br><span class="line">        ListNode *index1, *index2, *index3, *index3_pre;</span><br><span class="line">        <span class="keyword">char</span> v1, v2, v;</span><br><span class="line">        <span class="keyword">bool</span> ca = <span class="literal">false</span>;</span><br><span class="line">        index1 = l1;</span><br><span class="line">        index2 = l2;</span><br><span class="line">        </span><br><span class="line">        index3_pre = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        l3 = index3_pre;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index1 || index2 || ca) &#123;</span><br><span class="line">            v1 = index1 ? index1 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v2 = index2 ? index2 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v = ca ? v1 + v2 + <span class="number">1</span> : v1 + v2;</span><br><span class="line">            ca = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (v &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">                v = v % <span class="number">10</span>;</span><br><span class="line">                ca = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            index1 = index1 ? index1 -&gt; next : index1;</span><br><span class="line">            index2 = index2 ? index2 -&gt; next : index2;</span><br><span class="line">            index3 = <span class="keyword">new</span> ListNode(v);</span><br><span class="line">            index3_pre -&gt; next = index3;</span><br><span class="line">            index3_pre = index3;</span><br><span class="line">            index3 = index3 -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3 -&gt; next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-减少内存使用"><a href="#3-减少内存使用" class="headerlink" title="3. 减少内存使用"></a>3. 减少内存使用</h2><p>采用尽量减少 <code>new</code> 函数对内存空间的分配来减少内存空间的使用；</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        ListNode* l3;</span><br><span class="line">        ListNode *index1, *index2,  *index1_pre;</span><br><span class="line">        <span class="keyword">char</span> v1, v2, v;</span><br><span class="line">        <span class="keyword">bool</span> ca = <span class="literal">false</span>;</span><br><span class="line">        index1 = l1;</span><br><span class="line">        index2 = l2;</span><br><span class="line">        </span><br><span class="line">        index1_pre = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index1 || index2 || ca) &#123;</span><br><span class="line">            v1 = index1 ? index1 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v2 = index2 ? index2 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v = ca ? v1 + v2 + <span class="number">1</span> : v1 + v2;</span><br><span class="line">            ca = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (v &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">                v = v % <span class="number">10</span>;</span><br><span class="line">                ca = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (!index1) &#123;</span><br><span class="line">                index1 = <span class="keyword">new</span> ListNode(v);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                index1 -&gt; val = v; </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            index1_pre -&gt; next = index1;</span><br><span class="line">            index1_pre = index1;</span><br><span class="line">            </span><br><span class="line">            index1 = index1 ? index1 -&gt; next : index1;</span><br><span class="line">            index2 = index2 ? index2 -&gt; next : index2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Adapter/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Adapter/" itemprop="url">Adapter</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T00:06:00+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Handle-Body/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Handle-Body/" itemprop="url">Handle Body</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T00:06:00+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/OOP%E7%9A%84%E4%B8%89%E7%A7%8D%E5%85%B3%E7%B3%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/OOP%E7%9A%84%E4%B8%89%E7%A7%8D%E5%85%B3%E7%B3%BB/" itemprop="url">OOP 的三种关系</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T00:06:00+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="OOP的三种关系"><a href="#OOP的三种关系" class="headerlink" title="OOP的三种关系"></a>OOP的三种关系</h1><h2 id="Inheritance（继承）"><a href="#Inheritance（继承）" class="headerlink" title="Inheritance（继承）"></a><code>Inheritance（继承）</code></h2><h2 id="Composition（复合）"><a href="#Composition（复合）" class="headerlink" title="Composition（复合）"></a><code>Composition（复合）</code></h2><h2 id="Delegation（委托）"><a href="#Delegation（委托）" class="headerlink" title="Delegation（委托）"></a><code>Delegation（委托）</code></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Template-Method/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Template-Method/" itemprop="url">Template Method</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T00:06:00+08:00">
-                2020-02-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/C/CPP/CPP-by-hou-jie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/11/C/CPP/CPP-by-hou-jie/" itemprop="url">C++ 程序设计要点</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T22:50:00+08:00">
-                2020-02-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="C-程序设计要点"><a href="#C-程序设计要点" class="headerlink" title="C++ 程序设计要点"></a>C++ 程序设计要点</h1><h2 id="几个比较成熟的设计准则"><a href="#几个比较成熟的设计准则" class="headerlink" title="几个比较成熟的设计准则"></a>几个比较成熟的设计准则</h2><ul>
-<li>多使用 <code>initialization list</code></li>
+            <h1 id="MCMC（Markov-Chain-Monte-Carlo）"><a href="#MCMC（Markov-Chain-Monte-Carlo）" class="headerlink" title="MCMC（Markov Chain Monte Carlo）"></a>MCMC（Markov Chain Monte Carlo）</h1><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://blog.csdn.net/google19890102/article/details/51755242" target="_blank" rel="noopener">Metropolis</a></li>
+<li><a href="https://blog.csdn.net/google19890102/article/details/51785156" target="_blank" rel="noopener">Metropolis-Hastings</a></li>
+<li><a href="https://blog.csdn.net/google19890102/article/details/51755245" target="_blank" rel="noopener">Gibbs</a></li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">complex</span> (<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>)</span><br><span class="line">    : re(r), im(i)</span><br><span class="line">    &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>注意成员函数能否加上 <code>const</code></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><code>inline</code> 多写无害，编译器会根据函数的复杂程度自动决定是否应该 <code>inline</code>；函数若在 class body 内定义完成，便自动成为 inline 候选人</p>
-</li>
-<li><p>尽量使用 <code>pass by reference</code>，少使用 <code>pass by value</code>，同时还要注意 <code>const</code> 是否加入</p>
-</li>
-<li><p>同理，尽量使用 <code>return by reference</code>, 少使用 <code>return by value</code></p>
-</li>
-<li><p>function 尽量 public, data 尽量 private</p>
-</li>
-<li><p>当 <code>static</code> 用在成员函数中时，没有 <code>this</code> 指针，因此只能修改 <code>static variable</code>，不能修改 <code>object variable</code></p>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>类模板（class template）与函数模板（function template）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="keyword">complex</span> (T r= <span class="number">0</span>, T i = <span class="number">0</span>)</span><br><span class="line">            : re (r), im (i)</span><br><span class="line">            &#123;&#125;</span><br><span class="line">        ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class">// <span class="title">template</span>&lt;typename T&gt;</span></span><br><span class="line"><span class="class"><span class="title">inline</span></span></span><br><span class="line"><span class="class"><span class="title">const</span> <span class="title">T</span>&amp; <span class="title">min</span>(<span class="title">const</span> <span class="title">T</span>&amp; <span class="title">a</span>, <span class="title">const</span> <span class="title">T</span>&amp; <span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">return</span> b &lt; a ? b : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// 类模板需要声明变量的类型：double</span></span><br><span class="line"><span class="keyword">complex</span>&lt;<span class="keyword">double</span>&gt; c1(<span class="number">2.5</span>, <span class="number">1.5</span>);</span><br><span class="line"><span class="comment">// 函数模板不需要声明变量类型：编译器自动推导</span></span><br><span class="line">stone r1(2,3), r2(3,3), r3;</span><br><span class="line">r3 = <span class="built_in">min</span>(r1, r2);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>相同 class 的各个 objects 互为 friends（友元）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span></span><br><span class="line"><span class="keyword">String</span>::<span class="keyword">String</span>(<span class="keyword">const</span> <span class="keyword">String</span>&amp; str)</span><br><span class="line">&#123;</span><br><span class="line">    m_data = <span class="keyword">new</span> <span class="keyword">char</span>[ <span class="built_in">strlen</span>(str.m_data) + <span class="number">1</span> ];</span><br><span class="line">    <span class="built_in">strcpy</span>(m_data, str.m_data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>new</code> 与 <code>delete</code>：<code>array new</code> – <code>array delete</code></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span></span><br><span class="line"><span class="keyword">String</span>::~<span class="keyword">String</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span>[] m_data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>临时对象（temporary object）的声明与定义</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">complex</span>();</span><br><span class="line"><span class="keyword">complex</span>(<span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// 当程序执行到这一行的时候前面两个对象的生命周期结束</span></span><br></pre></td></tr></table></figure>
-
-<p>Class 的两种经典分类：</p>
-<ul>
-<li>Class without pointer member(s)</li>
-<li>Class with pointer member(s)</li>
-</ul>
-<p>对于 <code>Class with pointer members</code>，要显式定义三大函数<code>Big Three</code>：拷贝构造函数、拷贝赋值函数、析构函数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 拷贝构造函数</span></span><br><span class="line"><span class="keyword">String</span>(<span class="keyword">const</span> <span class="keyword">String</span>&amp; str);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝赋值函数</span></span><br><span class="line"><span class="keyword">String</span>&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> <span class="keyword">String</span>&amp; str);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 析构函数</span></span><br><span class="line">~<span class="keyword">String</span>();</span><br></pre></td></tr></table></figure>
-
-<p>显式地定义三大函数的原因是，编译器会自动为 class 添加默认的拷贝构造与拷贝赋值函数，两个函数的行为均为对 object 的逐个字节复制，这样会使 指针 指向同一个地址。析构函数是为了释放指针指向的地址空间，防止内存泄漏。（memory leak）</p>
 
           
         
@@ -1879,7 +1516,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/C/CPP/CPP_advanced_programming_oop/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/30/Git/how-to-use-git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1898,7 +1535,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/02/11/C/CPP/CPP_advanced_programming_oop/" itemprop="url">C++ 面向对象高级编程</a></h2>
+                <a class="post-title-link" href="/2020/05/30/Git/how-to-use-git/" itemprop="url">Git/how-to-use-git</a></h2>
         
 
         <div class="post-meta">
@@ -1910,8 +1547,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T22:50:00+08:00">
-                2020-02-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-30T15:31:28+08:00">
+                2020-05-30
               </time>
             
 
@@ -1920,39 +1557,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1983,150 +1587,477 @@
       
         
           
-            <h1 id="C-面向对象高级编程"><a href="#C-面向对象高级编程" class="headerlink" title="C++ 面向对象高级编程"></a>C++ 面向对象高级编程</h1><h2 id="几个比较成熟的设计准则"><a href="#几个比较成熟的设计准则" class="headerlink" title="几个比较成熟的设计准则"></a>几个比较成熟的设计准则</h2><ul>
-<li>多使用 <code>initialization list</code></li>
+            <hr>
+<p>title: How To Use Git<br>date: 2020/1/5 18:22<br>categories:</p>
+<ul>
+<li>Git<br>tags:</li>
+<li>Git</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">complex</span> (<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>)</span><br><span class="line">    : re(r), im(i)</span><br><span class="line">    &#123;&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>版本管理</li>
+</ul>
+<p>git 的版本管理主要靠<code>HEAD</code>指向的<code>commitId</code>来改变，是针对于一个<code>branch</code>而言，每个版本的内容除文件外还有日志<code>git log</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard  commitId      // 版本的切换</span><br><span class="line">git reflog                      // 可以查看向后的commitId</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>注意成员函数能否加上 <code>const</code></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">real</span> <span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> re; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="远程库与本地库"><a href="#远程库与本地库" class="headerlink" title="远程库与本地库"></a>远程库与本地库</h2><p>首先来一波本地库的操作<br><code>git init</code>来创建一个本地库 </p>
+<p><code>git remote add [name] git@github.com:username/xxxx.git</code></p>
+<p>来关联一个远程库</p>
+<p>然后，你可能在本地库里经过了一番骚操作:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m [message]</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><p><code>inline</code> 多写无害，编译器会根据函数的复杂程度自动决定是否应该 <code>inline</code>；函数若在 class body 内定义完成，便自动成为 inline 候选人</p>
-</li>
-<li><p>尽量使用 <code>pass by reference</code>，少使用 <code>pass by value</code>，同时还要注意 <code>const</code> 是否加入</p>
-</li>
-<li><p>同理，尽量使用 <code>return by reference</code>, 少使用 <code>return by value</code></p>
-</li>
-<li><p>function 尽量 public, data 尽量 private</p>
-</li>
-<li><p>当 <code>static</code> 用在成员函数中时，没有 <code>this</code> 指针，因此只能修改 <code>static variable</code>，不能修改 <code>object variable</code></p>
-</li>
-<li><p>兄弟之间互为友元，可以互相访问对方的 private data.</p>
-</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>然后 push <code>git push -u origin master</code>  嘻嘻，报错，报错信息类似这样</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">To https://github.com/USERNAME/REPOSITORY.git</span><br><span class="line"> ! [rejected]        master -&gt; master (non-fast-forward)</span><br><span class="line">error: failed to push some refs to &apos;https://github.com/USERNAME/REPOSITORY.git&apos;</span><br><span class="line">To prevent you from losing history, non-fast-forward updates were rejected</span><br><span class="line">Merge the remote changes (e.g. &apos;git pull&apos;) before pushing again.  See the</span><br><span class="line">&apos;Note about fast-forwards&apos; section of &apos;git push --help&apos; for details.</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li>类模板（class template）与函数模板（function template）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">complex</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="keyword">complex</span> (T r= <span class="number">0</span>, T i = <span class="number">0</span>)</span><br><span class="line">            : re (r), im (i)</span><br><span class="line">            &#123;&#125;</span><br><span class="line">        ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数模板</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt; // <span class="title">or</span> <span class="title">template</span>&lt;typename T&gt;</span></span><br><span class="line"><span class="class">// <span class="title">template</span>&lt;typename T&gt;</span></span><br><span class="line"><span class="class"><span class="title">inline</span></span></span><br><span class="line"><span class="class"><span class="title">const</span> <span class="title">T</span>&amp; <span class="title">min</span>(<span class="title">const</span> <span class="title">T</span>&amp; <span class="title">a</span>, <span class="title">const</span> <span class="title">T</span>&amp; <span class="title">b</span>)</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">return</span> b &lt; a ? b : a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="comment">// 类模板需要声明变量的类型：double</span></span><br><span class="line"><span class="keyword">complex</span>&lt;<span class="keyword">double</span>&gt; c1(<span class="number">2.5</span>, <span class="number">1.5</span>);</span><br><span class="line"><span class="comment">// 函数模板不需要声明变量类型：编译器自动推导</span></span><br><span class="line">stone r1(2,3), r2(3,3), r3;</span><br><span class="line">r3 = <span class="built_in">min</span>(r1, r2);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>相同 class 的各个 objects 互为 friends（友元）</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span></span><br><span class="line"><span class="keyword">String</span>::<span class="keyword">String</span>(<span class="keyword">const</span> <span class="keyword">String</span>&amp; str)</span><br><span class="line">&#123;</span><br><span class="line">    m_data = <span class="keyword">new</span> <span class="keyword">char</span>[ <span class="built_in">strlen</span>(str.m_data) + <span class="number">1</span> ];</span><br><span class="line">    <span class="built_in">strcpy</span>(m_data, str.m_data);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>new</code> 与 <code>delete</code>：<code>array new</code> – <code>array delete</code></li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">inline</span></span><br><span class="line"><span class="keyword">String</span>::~<span class="keyword">String</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span>[] m_data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>临时对象（temporary object）的声明与定义</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">complex</span>();</span><br><span class="line"><span class="keyword">complex</span>(<span class="number">4</span>, <span class="number">5</span>);</span><br><span class="line"><span class="comment">// 当程序执行到这一行的时候前面两个对象的生命周期结束</span></span><br></pre></td></tr></table></figure>
-
-<p>Class 的两种经典分类：</p>
-<ul>
-<li>Class without pointer member(s)</li>
-<li>Class with pointer member(s)</li>
-</ul>
-<p>对于 <code>Class with pointer members</code>，要显式定义三大函数<code>Big Three</code>：拷贝构造函数、拷贝赋值函数、析构函数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 拷贝构造函数</span></span><br><span class="line"><span class="keyword">String</span>(<span class="keyword">const</span> <span class="keyword">String</span>&amp; str);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拷贝赋值函数</span></span><br><span class="line"><span class="keyword">String</span>&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> <span class="keyword">String</span>&amp; str);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 析构函数</span></span><br><span class="line">~<span class="keyword">String</span>();</span><br></pre></td></tr></table></figure>
-
-<p>显式地定义三大函数的原因是，编译器会自动为 class 添加默认的拷贝构造与拷贝赋值函数，两个函数的行为均为对 object 的逐个字节复制，这样会使 指针 指向同一个地址。析构函数是为了释放指针指向的地址空间，防止内存泄漏。（memory leak）</p>
-<h2 id="Static内存布局"><a href="#Static内存布局" class="headerlink" title="Static内存布局"></a><code>Static</code>内存布局</h2><p>见 <a href="./CPP_advanced_programming_oop.md">CPP_advanced_programming_oop</a></p>
-<h3 id="namespace"><a href="#namespace" class="headerlink" title="namespace"></a>namespace</h3><ul>
-<li>using directive</li>
-</ul>
-<p><code>using namespace std;</code></p>
-<ul>
-<li>using declaration</li>
-</ul>
-<p><code>using std::cout;</code></p>
-<h3 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/cpp_to_be_continued.png" alt="C++ToBeContinued"></p>
-<h2 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h2><h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>reference 的背后是编译器通过 pointer 实现的，但为了语法规定，制造出了<em>object和其reference的大小相同，地址也相同</em> 的假象。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span>&amp; r = x;</span><br><span class="line"><span class="keyword">sizeof</span>(r) == <span class="keyword">sizeof</span>(x)</span><br><span class="line">&amp;x == &amp;r</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/reference_0.png" alt="reference"></p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/reference_1.png" alt="reference"></p>
-<h3 id="类和类之间的关系"><a href="#类和类之间的关系" class="headerlink" title="类和类之间的关系"></a>类和类之间的关系</h3><ul>
-<li>Inheritance（继承）</li>
-<li>Composition（复合）</li>
-<li>Delegation（委托）</li>
-</ul>
-<h3 id="Composition（复合）has-a"><a href="#Composition（复合）has-a" class="headerlink" title="Composition（复合）has-a"></a>Composition（复合）<code>has-a</code></h3><p>反映的是一种 <code>has-a</code> 的关系 &lt;–&gt; <code>Adapter</code> 模式</p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/cpp_composition_adapter.png" alt="adapter"></p>
-<ul>
-<li>composition下的构造与析构函数</li>
-<li>由内而外的构造：先调用 <code>component</code> 的构造函数，再调用 <code>container</code> 的构造函数</li>
-<li>由外而内的析构： 与构造顺序正好倒置</li>
-</ul>
-<h3 id="Delegation（委托）-Composition-By-Reference"><a href="#Delegation（委托）-Composition-By-Reference" class="headerlink" title="Delegation（委托）. Composition By Reference"></a>Delegation（委托）. Composition By Reference</h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/cpp_delegation.png" alt="c++_delegation"></p>
-<h3 id="Inheritance（继承）is-a"><a href="#Inheritance（继承）is-a" class="headerlink" title="Inheritance（继承）is-a"></a>Inheritance（继承）<code>is-a</code></h3><ul>
-<li><code>non-virtual</code>：不可以被重写（覆写）</li>
-<li><code>virtual</code>：可以被重写（<code>override</code>）注意：<code>override</code>仅发生在虚函数的过程中；</li>
-<li><code>pure-virtual</code>：一定需要被覆写</li>
-</ul>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/inheritance_template_method.png" alt="inheritance"></p>
-<h2 id="C-OOP-Advanced-Programming（Part-II）"><a href="#C-OOP-Advanced-Programming（Part-II）" class="headerlink" title="C++ OOP Advanced Programming（Part II）"></a>C++ OOP Advanced Programming（Part II）</h2><h3 id="explicit-keyword"><a href="#explicit-keyword" class="headerlink" title="explicit keyword"></a><code>explicit</code> keyword</h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/explicit.png" alt="explicit"></p>
-<h3 id="Conversion-Function（转换函数）"><a href="#Conversion-Function（转换函数）" class="headerlink" title="Conversion Function（转换函数）"></a>Conversion Function（转换函数）</h3><p>实话说，这部分我没看明白</p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/conversion-function.png" alt="conversion_function"></p>
-<h3 id="pointer-like-classes"><a href="#pointer-like-classes" class="headerlink" title="pointer-like classes"></a>pointer-like classes</h3><p><code>pointer-like</code> class 的主要特点是实现了对 <code>operator */-&gt;</code> 的重载</p>
-<ul>
-<li><p>智能指针</p>
-<p>  <img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/pointer_like_shared_ptr.png" alt="shared_ptr"></p>
-</li>
-<li><p>迭代器</p>
-<p>  <img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/pointer_like_iterator.png" alt="iterator"></p>
-<p>  <img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/pointer_like_iterator_detail_imple.png" alt="iterator_imple"></p>
-</li>
-</ul>
-<h3 id="function-like-classess"><a href="#function-like-classess" class="headerlink" title="function-like classess"></a>function-like classess</h3><p><code>function-like class</code>即实现了对 <code>operator ()</code> 的重载  </p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/functor.png" alt="functor"></p>
-<h2 id="template"><a href="#template" class="headerlink" title="template"></a>template</h2><h3 id="class-template"><a href="#class-template" class="headerlink" title="class template"></a>class template</h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/class_template.png" alt="class_template"></p>
-<h3 id="function-template"><a href="#function-template" class="headerlink" title="function template"></a>function template</h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/function_template.png" alt="function_template"></p>
-<h3 id="member-template"><a href="#member-template" class="headerlink" title="member template"></a>member template</h3><p><code>member template</code> 是一种对 <code>class</code> 的成员函数声明成 <code>template</code> 的方式，其实并不明白这种做法有什么用？？？</p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/member_template.png" alt="member_template"></p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/member_template2.png" alt="member_template"></p>
-<h2 id="specialization"><a href="#specialization" class="headerlink" title="specialization"></a>specialization</h2><p><code>template</code> 是一种对 <code>class</code> or <code>function</code> 泛化的过程，但这种泛化有时可能不是通用的，需要在针对某些特定的类型做特殊处理，这时就需要 <code>specialization</code>（特化）。 </p>
-<h3 id="specialization-1"><a href="#specialization-1" class="headerlink" title="specialization"></a>specialization</h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/specialization.png" alt="specialization"></p>
-<h3 id="partial-specialization（偏特化）"><a href="#partial-specialization（偏特化）" class="headerlink" title="partial specialization（偏特化）"></a>partial specialization（偏特化）</h3><p>分为两种：</p>
-<ul>
-<li>参数个数的偏：泛化参数的减少</li>
-</ul>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/partial_specialization.png" alt="partial_specialization"></p>
-<ul>
-<li>参数范围的偏：泛化参数的变化</li>
-</ul>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/range_type_partial_specialization.png" alt="partial_specialization"></p>
-<h3 id="模板模板参数"><a href="#模板模板参数" class="headerlink" title="模板模板参数"></a>模板模板参数</h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/template_template_parameter.png" alt="template_template_parameter"></p>
-<h2 id="Object-Model"><a href="#Object-Model" class="headerlink" title="Object Model"></a>Object Model</h2><h3 id="多态与虚函数的底层实现之-vptr-vtbl"><a href="#多态与虚函数的底层实现之-vptr-vtbl" class="headerlink" title="多态与虚函数的底层实现之 vptr, vtbl"></a>多态与虚函数的底层实现之 <code>vptr, vtbl</code></h3><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/cpp_vptr_vtbl.png" alt="cpp_vptr_vbtl"></p>
-<ul>
-<li>每个 Object 都会包含一个 <code>virtual pointer</code> -&gt; <code>virtual table</code>，里面包含 <code>virtual function</code> 的地址</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数的调用过程 `C` 风格：</span></span><br><span class="line">(*(p-&gt;vptr)[n])(p);</span><br><span class="line">(*p-&gt;vptr[n])(p);</span><br><span class="line"><span class="comment">// -&gt; [] 的优先级高于 * 哦</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="关于-Dynamic-Binding"><a href="#关于-Dynamic-Binding" class="headerlink" title="关于 Dynamic Binding"></a>关于 <code>Dynamic Binding</code></h3><p>Dynamic Binding的三个条件:</p>
+<p>为啥呢？因为远程库里有东西啊，想想也是，肯定不能随随便便    push    上去，那还版本管理啥啊，</p>
+<p>于是乎，三条建议：</p>
 <ol>
-<li>通过pointer/reference调用；</li>
-<li>函数为 virtual function；</li>
-<li>可以向上转型 upcast;</li>
+<li><code>git pull origin master</code></li>
 </ol>
-<h4 id="一个关于静态绑定的例子"><a href="#一个关于静态绑定的例子" class="headerlink" title="一个关于静态绑定的例子"></a>一个关于静态绑定的例子</h4><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/CPP_Static_Binding.png" alt="static binding"></p>
-<h4 id="动态绑定"><a href="#动态绑定" class="headerlink" title="动态绑定"></a>动态绑定</h4><p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/CPP_Dynamic_Binding.png" alt="Dynamic_binding"></p>
-<h3 id="关于-const"><a href="#关于-const" class="headerlink" title="关于 const"></a>关于 <code>const</code></h3><p>详见 <a href="./static_extern_const.md">const keyword</a></p>
-<h3 id="new-与-delete"><a href="#new-与-delete" class="headerlink" title="new 与  delete"></a><code>new</code> 与  <code>delete</code></h3><p>编译器如何编译 Object 的  <code>new</code> 与 <code>delete</code> 语句</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ctor  的执行过程</span></span><br><span class="line"><span class="keyword">String</span>*ps = <span class="keyword">new</span> <span class="keyword">String</span>(<span class="string">"Hello"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> * mem  =  <span class="keyword">operator</span> <span class="keyword">new</span>(<span class="keyword">sizeof</span>(<span class="keyword">String</span>));       <span class="comment">// 内部调用 malloc</span></span><br><span class="line">ps  = <span class="keyword">static_cast</span>&lt;<span class="keyword">String</span>*&gt;(mem);</span><br><span class="line">ps-&gt;<span class="keyword">String</span>::<span class="keyword">String</span>(<span class="string">"Hello"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// dtor  的执行过程</span></span><br><span class="line"><span class="keyword">delete</span> ps;</span><br><span class="line"></span><br><span class="line"><span class="keyword">String</span>::~<span class="keyword">String</span>(ps);</span><br><span class="line"><span class="function"><span class="keyword">operator</span> <span class="title">delete</span><span class="params">(ps)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>把远程库先<code>pull</code>下来然后再<code>push</code></p>
+<ol start="2">
+<li><code>git fetch origin</code>  <code>git merge origin master</code></li>
+</ol>
+<p>这种方法与 1 原理相同</p>
+<p>前面两种都属于 正规做法，还有下面的非主流做法：</p>
+<ol>
+<li><code>git push origin master -f</code></li>
+</ol>
+<p>强推！！！当然了这一推远程库就被更改地与你一致了。:)不建议</p>
+<h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h2><ol>
+<li><p><code>github.com</code> 的链接可以使用锚链接了！！ <code>https://github.com/python/cpython/blob/2.7/Python/bltinmodule.c#L1580</code> 指示在该 <code>.c</code> 文件的 1580 行</p>
+</li>
+<li><p>当出现 <code>Failed to connect to github.com port 443: Timed out</code> 的错误，是 http.proxy 的问题</p>
+</li>
+</ol>
+<ul>
+<li><code>git config --global http.proxy (127.0.0.1:1080)</code></li>
+<li><code>git config --get http.proxy</code></li>
+<li><code>git config --list</code></li>
+</ul>
+<ol start="3">
+<li><code>git status</code> 显示的中文为八进制字符，而不是中文</li>
+</ol>
+<ul>
+<li><code>git config --global core.quotepath false</code> 设置 <code>core.quotepath</code> 为 <code>false</code></li>
+</ul>
+<ol start="4">
+<li><p><code>git clone</code>之后拉取远程分支：</p>
+<ol>
+<li><code>git branch -a</code> 显示远程所有分支；<code>git checkout origin/branch</code> 切换至某一远程分支（此时并没有建立本地与之对应的分支）；<code>git checkout xxx_branch</code> 建立与远程分支对应的分支；</li>
+<li><code>git pull -all</code> 拉取所有分支到本地；</li>
+<li><code>git clone -b xxx_branch https://xxx</code> 克隆某一分支到本地；</li>
+</ol>
+</li>
+</ol>
+<h2 id="分支的管理"><a href="#分支的管理" class="headerlink" title="分支的管理"></a>分支的管理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">git branch YourBranch      //  创建分支MyBranch</span><br><span class="line">git branch -d YourBranch   //　删除分支MyBranch</span><br><span class="line">git checkout YourBranch    //  切换分支</span><br><span class="line">//  git checkout -b YourBranch    </span><br><span class="line">git merge  Branch          // 合并分支，需要解决冲突</span><br><span class="line">git diff branch1 branch2 --stat // 显示出所有有差异的文件列表</span><br><span class="line">git diff branch1 branch2    // 显示出差异文件的详细差异</span><br></pre></td></tr></table></figure>
 
-<h4 id="对-operator-new、operator-delete-的重载"><a href="#对-operator-new、operator-delete-的重载" class="headerlink" title="对 operator  new、operator  delete  的重载"></a>对 <code>operator  new</code>、<code>operator  delete</code>  的重载</h4><p><strong>对全局 <code>operator new</code> 与  <code>operator delete</code> 的重载</strong></p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/operator_new_delete.png" alt="operator new and delete"></p>
-<p><strong>对 <code>member operator new/delete</code> 的重载</strong></p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/operator_new_delete_overload.png" alt="operator_new_delete_overload"></p>
-<p><img src="/2020/02/11/C/CPP/CPP_advanced_programming_oop/operator_new_delete_array_overload.png" alt="operator_new_delete_array_overload"></p>
+<p><strong>注：</strong>　合并分支时可以 master-&gt;dev，也可以　dev-&gt;master　只需要解决冲突一次即可</p>
+<ul>
+<li>remote, local的管理</li>
+</ul>
+<p>查看远程库信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote -v</span><br></pre></td></tr></table></figure>
+
+<p>远程仓库的名字一般为：<code>origin</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https:url        //  将远程仓库克隆到本地，此时自动构建master分支与远程master分支关联</span><br><span class="line">git remote add origin git@github.com:xxxx/xxxx.git        //  关联远程仓库</span><br><span class="line">git push origin master        //  将本地master分支提交到远程仓库master分支</span><br></pre></td></tr></table></figure>
+
+<p>创建远程分支 dev 到本地</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b dev origin/dev</span><br></pre></td></tr></table></figure>
+
+<p>将本地分支与远程分支建立链接，以便 <code>git pull</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch --set-upstream-to=origin/dev dev</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>git stash</code>命令的使用</li>
+</ul>
+<p><code>git stash</code>会把当前暂存区与工作区的改动保存起来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">git stash</span><br><span class="line">git stash save &apos;message&apos; ...        // 保存当前进度并添加一些注释</span><br><span class="line"></span><br><span class="line">git stash list      // 显示保存进度的列表</span><br><span class="line"></span><br><span class="line">git stash pop       // 恢复进度至工作区</span><br><span class="line">git stash pop stash@&#123;1&#125;</span><br><span class="line"></span><br><span class="line">git stash drop [stash_id]   // 删除存储的进度</span><br><span class="line"></span><br><span class="line">git stash clear             // 删除所有存储的进度</span><br></pre></td></tr></table></figure>
+
+<p>ref: <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰的git教程</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/27/C/CPP/CPP%E4%B8%89%E5%A4%A7%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/27/C/CPP/CPP%E4%B8%89%E5%A4%A7%E5%87%BD%E6%95%B0/" itemprop="url">CPP 三大函数</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T23:52:00+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="C-中的三大函数"><a href="#C-中的三大函数" class="headerlink" title="C++ 中的三大函数"></a>C++ 中的三大函数</h1><p>当 Object with pointer member时，通常往往需要 override BigThree；当 Object without pointer member时，compiler 默认的 BigThree 已足够。注：除 BigThree 外，compiler 会为 Object 添加默认构造函数，且 compiler 添加的隐含函数往往执行效率较高。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">base</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    base()=<span class="keyword">default</span>;</span><br><span class="line">    base(<span class="keyword">const</span> <span class="built_in">string</span>&amp; a):name(a) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"const string&amp; a"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    base(<span class="keyword">const</span> base&amp; b) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"const base&amp; b"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    base&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> base&amp; b) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"operator =(const base&amp; b)"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ~base() &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"~base"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">string</span> name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="默认构造"><a href="#默认构造" class="headerlink" title="默认构造"></a>默认构造</h2><blockquote>
+<p>当类不包含任何构造函数时，编译器会自动生成无参数，函数体为空的默认构造函数；</p>
+<p>当类没有定义拷贝构造函数时，编译器会生成默认拷贝构造函数，此时属于浅拷贝</p>
+</blockquote>
+<p>当程序员自定义了任意一种构造函数时，<code>默认构造</code> 则不被 compiler 自动生成，需要程序员显式写出；如代码中：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">base()=<span class="keyword">default</span>;</span><br><span class="line">base(<span class="keyword">const</span> <span class="built_in">string</span>&amp; a):name(a) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"const string&amp; a"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但又出于性能方面及工作量方面的的考虑，<code>c++2.0</code> 引入 <code>Defaulted函数</code>即：<code>=default</code> 形仍旧使用 compiler 生成的默认构造函数。<br>注：</p>
+<ul>
+<li><code>const string&amp; a</code> 中的 <code>const</code> 要加上，否则 <code>base B = string(&quot;string&quot;);</code> 编译不通过；</li>
+<li>尽量使用 <code>name(a)</code></li>
+</ul>
+<h2 id="拷贝构造"><a href="#拷贝构造" class="headerlink" title="拷贝构造"></a>拷贝构造</h2><p>拷贝构造函数，发生在拷贝构造期间，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">base(<span class="keyword">const</span> base&amp; b) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"const base&amp; b"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">base(<span class="keyword">const</span> base&amp; b) = <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+
+<p>常见的调用形式为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">base A = B;         <span class="comment">// 注意这种声明时初始化属于 拷贝构造，不属于拷贝复制</span></span><br><span class="line"><span class="function">base <span class="title">A</span><span class="params">(B)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="拷贝复制"><a href="#拷贝复制" class="headerlink" title="拷贝复制"></a>拷贝复制</h2><p>拷贝复制发生在两个已声明 Object 之间的复制，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">base&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> base&amp; b) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"operator =(const base&amp; b)"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">base&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> base&amp; b) = <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+
+<p>常见的调用形式为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">base C;             <span class="comment">//  显式的默认构造</span></span><br><span class="line">C = A;              <span class="comment">//  拷贝复制</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="defaulted-函数"><a href="#defaulted-函数" class="headerlink" title="defaulted 函数"></a><code>defaulted 函数</code></h2><p><code>defaulted</code> 函数的几个限制：</p>
+<ul>
+<li>仅适用于类的特殊成员函数，且该类成员函数没有默认参数；</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base(<span class="keyword">const</span> <span class="built_in">string</span>&amp; a)=<span class="keyword">default</span>;      <span class="comment">// 错误</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>defaulted</code> 函数既可以 inline 定义，也可以 out-of-line 定义；</li>
+</ul>
+<h2 id="析构函数"><a href="#析构函数" class="headerlink" title="析构函数"></a>析构函数</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~base() &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"~base"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将虚构函数定义为非虚函数时，会存在内存泄漏的状况，代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Y</span>:</span> <span class="keyword">public</span> X &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"> <span class="keyword">int</span> y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> X* x = <span class="keyword">new</span> Y;</span><br><span class="line"> <span class="keyword">delete</span> x;          <span class="comment">// 仅销毁了 x 指向的派生类对象中的基类子对象，存在内存泄漏</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因此，常将基类的析构函数声明为虚函数，但由于存在程序员的工作量较大及函数执行效率较低的原因，使用 <code>=default</code>。</p>
+<h2 id="deleted-函数"><a href="#deleted-函数" class="headerlink" title="deleted 函数"></a><code>deleted</code> 函数</h2><h3 id="存在的意义"><a href="#存在的意义" class="headerlink" title="存在的意义"></a>存在的意义</h3><p>当我们在 <code>Singleton</code> 模式中想禁用掉：默认构造函数、拷贝构造函数、拷贝复制函数时，一个常用的方法是将这些函数声明在 <code>private</code> 关键字内；但这种方法存在：当友元类/成员函数还是可以访问这些函数</p>
+<p>可以使用 <code>=delete</code> 将这些函数禁用，</p>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><ul>
+<li>类的成员函数都可以通过 <code>=delete</code> 禁用掉，<code>=default</code> 仅限于类的特殊成员函数</li>
+<li>必须在函数第一次声明时将声明为 <code>=delete</code> 函数，即：<code>=delete</code> 成员函数必须是 <code>inline</code></li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.ibm.com/developerworks/cn/aix/library/1212_lufang_c11new/index.html" target="_blank" rel="noopener">C++11 标准新特性：Defaulted 和 Deleted 函数</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/27/C/CPP/%E9%87%8D%E8%BD%BD_%E8%A6%86%E7%9B%96_%E9%9A%90%E8%97%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/27/C/CPP/%E9%87%8D%E8%BD%BD_%E8%A6%86%E7%9B%96_%E9%9A%90%E8%97%8F/" itemprop="url">重载 覆盖 与 隐藏</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-05-27T22:07:00+08:00">
+                2020-05-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="重载、覆盖与隐藏"><a href="#重载、覆盖与隐藏" class="headerlink" title="重载、覆盖与隐藏"></a>重载、覆盖与隐藏</h1><p>这几个是涉及到父类与子类之间同名函数不同含义的问题，这里做一下总结：</p>
+<h2 id="overloading（重载）"><a href="#overloading（重载）" class="headerlink" title="overloading（重载）"></a>overloading（重载）</h2><p>函数重载虽然函数名相同，但其实是不同的函数，<code>overloading</code> 的关键区分点在于：<code>函数形参的设置</code>，即在编译器编译时不发生冲突/歧义即可。</p>
+<blockquote>
+<p>《高质量C++/C编程指南》已经清晰的列出了重载函数的特性：</p>
+<p>（1）相同的范围（在同一个类中）；</p>
+<p> （2）函数名字相同；</p>
+<p> （3）参数不同；</p>
+<p> （4）virtual关键字可有可无。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两个 complex 构造函数有歧义</span></span><br><span class="line"><span class="keyword">complex</span> (<span class="keyword">double</span> r = <span class="number">0</span>, <span class="keyword">double</span> i = <span class="number">0</span>)</span><br><span class="line">    : re (r), im(i)</span><br><span class="line">    &#123;&#125;</span><br><span class="line"><span class="keyword">complex</span> () : re(<span class="number">0</span>), im(<span class="number">0</span>) &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b )</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"This is first /n"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">(<span class="keyword">int</span> a)</span>     <span class="comment">// 同一函数中，函数名相同，参数不同</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"This is second/n"</span>); </span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	A a;</span><br><span class="line">	a.<span class="built_in">display</span>(<span class="number">5</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Override-（覆盖，重写）"><a href="#Override-（覆盖，重写）" class="headerlink" title="Override （覆盖，重写）"></a>Override （覆盖，重写）</h2><blockquote>
+<p> 派生类函数覆盖基类函数，只作用于派生类；</p>
+<p>（1）不同的范围（分别位于派生类与基类）； </p>
+<p>（2）函数名字相同；</p>
+<p>（3）参数相同；</p>
+<p>（4）基类函数必须有virtual关键字。</p>
+</blockquote>
+<h2 id="隐藏"><a href="#隐藏" class="headerlink" title="隐藏"></a>隐藏</h2><p>隐藏是指派生类函数将基类函数藏起来了，只作用于派生类函数</p>
+<blockquote>
+<p> 1）如果派生类的函数与基类的函数名相同，但是参数不同。此时，不论有无virtual关键字。此时，基类函数会被隐藏。</p>
+<p> 2）如果派生类的函数与基类的函数同名，并且参数也相同，但是基类函数没有virtual关键字。此时，基类的函数被隐藏。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fn</span><span class="params">()</span> </span>&#123; <span class="built_in">printf</span>(<span class="string">"fn in A\n"</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_fn</span><span class="params">()</span> </span>&#123; <span class="built_in">printf</span>(<span class="string">"virtual fn in A\n"</span>); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> :</span> <span class="keyword">public</span> A &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">fn</span><span class="params">()</span> </span>&#123; <span class="built_in">printf</span>(<span class="string">"fn in B\n"</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">v_fn</span><span class="params">()</span> </span>&#123; <span class="built_in">printf</span>(<span class="string">"virtual fn in B\n"</span>); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    A *a = <span class="keyword">new</span> B();</span><br><span class="line">    a-&gt;fn();</span><br><span class="line">    a-&gt;v_fn();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://blog.csdn.net/My_heart_/article/details/51730980" target="_blank" rel="noopener">https://blog.csdn.net/My_heart_/article/details/51730980</a></li>
+</ul>
 
           
         
@@ -2166,7 +2097,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/4/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/4/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2216,7 +2147,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2227,7 +2158,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2238,7 +2169,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

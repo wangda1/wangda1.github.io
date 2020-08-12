@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/MLDL/pytorch/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/RNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/MLDL/pytorch/" itemprop="url">pytorch</a></h2>
+                <a class="post-title-link" href="/2020/01/05/MLDL/RNN/" itemprop="url">RNN</a></h2>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T11:55:34+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:14:54+08:00">
+                2020-01-05
               </time>
             
 
@@ -387,265 +387,46 @@
       
         
           
-            <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<h1 id="PyTorch"><a href="#PyTorch" class="headerlink" title="PyTorch"></a>PyTorch</h1><p><em>参考：《深度学习入门之PyTorch》</em></p>
-<h2 id="0-基本数据类型"><a href="#0-基本数据类型" class="headerlink" title="0. 基本数据类型"></a>0. 基本数据类型</h2><h3 id="0-1-数据类型"><a href="#0-1-数据类型" class="headerlink" title="0.1 数据类型"></a>0.1 数据类型</h3><p><code>torch.Tensor</code> 默认是 <code>torch.FloatTensor</code></p>
-<table>
-<thead>
-<tr>
-<th>Data tyoe</th>
-<th>CPU tensor</th>
-<th>GPU tensor</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>32-bit floating point</td>
-<td>torch.FloatTensor</td>
-<td>torch.cuda.FloatTensor</td>
-</tr>
-<tr>
-<td>64-bit floating point</td>
-<td>torch.DoubleTensor</td>
-<td>torch.cuda.DoubleTensor</td>
-</tr>
-<tr>
-<td>16-bit floating point</td>
-<td>N/A</td>
-<td>torch.cuda.HalfTensor</td>
-</tr>
-<tr>
-<td>8-bit integer (unsigned)</td>
-<td>torch.ByteTensor</td>
-<td>torch.cuda.ByteTensor</td>
-</tr>
-<tr>
-<td>8-bit integer (signed)</td>
-<td>torch.CharTensor</td>
-<td>torch.cuda.CharTensor</td>
-</tr>
-<tr>
-<td>16-bit integer (signed)</td>
-<td>torch.ShortTensor</td>
-<td>torch.cuda.ShortTensor</td>
-</tr>
-<tr>
-<td>32-bit integer (signed)</td>
-<td>torch.IntTensor</td>
-<td>torch.cuda.IntTensor</td>
-</tr>
-<tr>
-<td>64-bit integer (signed)</td>
-<td>torch.LongTensor</td>
-<td>torch.cuda.LongTensor</td>
-</tr>
-</tbody></table>
-<h3 id="0-2-对-torch-Tensor-的操作方法"><a href="#0-2-对-torch-Tensor-的操作方法" class="headerlink" title="0.2 对 torch.Tensor 的操作方法"></a>0.2 对 <code>torch.Tensor</code> 的操作方法</h3><ul>
-<li><code>tensor</code>可以由python中的 <code>list</code> 或序列创建</li>
-<li>也可以用python中的切片与索引来修改 <code>tensor</code> 中的内容</li>
-<li>会改变 <code>tensor</code> 的函数操作会带有下划线表示，例如：<code>abs_()</code>等</li>
-</ul>
-<p><code>torch.max()</code> 函数用于选出 tensor 中的最大值，用法如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line">a = torch.randn(<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">torch.max(a)    <span class="comment"># 返回 a 中最大的元素</span></span><br><span class="line">torch.max(a)[<span class="number">1</span>] <span class="comment"># 返回 a 中最大的元素的索引</span></span><br><span class="line"></span><br><span class="line">torch.max(a, <span class="number">0</span>) <span class="comment"># 返回 a 中每一列最大的元素</span></span><br><span class="line">torch.max(a, <span class="number">0</span>)[<span class="number">1</span>] <span class="comment"># 返回 a 中每一列最大的元素的索引 index</span></span><br><span class="line"></span><br><span class="line">torch.max(a, <span class="number">1</span>) <span class="comment"># 返回 a 中每一行最大的元素</span></span><br><span class="line">torch.max(a, <span class="number">1</span>)[<span class="number">1</span>] <span class="comment"># 返回 a 中每一行最大的元素的索引 index</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="0-3-变换数据维度"><a href="#0-3-变换数据维度" class="headerlink" title="0.3 变换数据维度"></a>0.3 变换数据维度</h3><p>这里涉及到的总共有 3 种方法：</p>
-<p><em>参考：<a href="https://zhuanlan.zhihu.com/p/76583143" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/76583143</a></em></p>
+            <h1 id="RNN-循环神经网络"><a href="#RNN-循环神经网络" class="headerlink" title="RNN(循环神经网络)"></a>RNN(循环神经网络)</h1><p><em>参考：《深度学习入门之PyTorch》配套代码地址：<a href="https://github.com/L1aoXingyu/code-of-learn-deep-learning-with-pytorch" target="_blank" rel="noopener">https://github.com/L1aoXingyu/code-of-learn-deep-learning-with-pytorch</a></em></p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>卷积神经网络相当于人类的视觉，但是它没有记忆能力，只能处理一种特定的视觉任务，没办法根据以前的记忆来处理新的任务。</p>
+<p>循环神经网络的提出是基于记忆模型的想法，期望网络能够记住前面出现的特征，并依据特征推断后面的结果，并且整体的网络结构不断循环，因此得名循环神经网络。</p>
+<h2 id="2-网络结构"><a href="#2-网络结构" class="headerlink" title="2. 网络结构"></a>2. 网络结构</h2><p>使神经网络具有记忆性，一个很直观的做法是将隐藏层的信息进行保留作为下一个的输入，由此产生出的有以下几种网络结构：</p>
+<h3 id="2-1-基本-RNN"><a href="#2-1-基本-RNN" class="headerlink" title="2.1 基本 RNN"></a>2.1 基本 RNN</h3><p><img src="/2020/01/05/MLDL/RNN/base_rnn.png" alt="base_RNN"></p>
+<h3 id="2-2-双向-RNN（BiRNN"><a href="#2-2-双向-RNN（BiRNN" class="headerlink" title="2.2 双向 RNN（BiRNN)"></a>2.2 双向 RNN（BiRNN)</h3><p><img src="/2020/01/05/MLDL/RNN/BiRNN.png" alt="Bi_RNN"></p>
+<h3 id="2-3-深层-RNN"><a href="#2-3-深层-RNN" class="headerlink" title="2.3 深层 RNN"></a>2.3 深层 RNN</h3><p><img src="/2020/01/05/MLDL/RNN/deep_RNN.jpg" alt="Deep_RNN"></p>
+<p><em>以上图示均为按照时间线展开，实际只是网络的循环，故名循环神经网络</em></p>
+<h2 id="3-存在的问题"><a href="#3-存在的问题" class="headerlink" title="3. 存在的问题"></a>3. 存在的问题</h2><p>早期的循环神经网络具有特别好的记忆性，能够记住当前情景下的内容，但这种循环神经网络能够解决短时依赖问题，对于长时依赖问题，由于记忆的信息和预测位置之间的跨度太大，网络并不能记忆这么长时间的信息，而且随着时间跨度的增大，循环神经网络也越来越难学习这些信息。</p>
+<h2 id="4-循环神经网络的变式：LSTM-与-GRU"><a href="#4-循环神经网络的变式：LSTM-与-GRU" class="headerlink" title="4. 循环神经网络的变式：LSTM 与 GRU"></a>4. 循环神经网络的变式：LSTM 与 GRU</h2><h3 id="4-1-LSTM"><a href="#4-1-LSTM" class="headerlink" title="4.1 LSTM"></a>4.1 LSTM</h3><p>LSTM 是 Long Short Term Memory Networks的缩写，长短期记忆模型。LSTM 比基本的循环神经网络的网络结构内部要复杂。</p>
+<p>LSTM 的三个门：</p>
 <ul>
-<li><code>Tensor.permute(a, b, c...)</code> 可以直接对高纬度矩阵进行转置操作</li>
-<li><code>torch.transpose()</code> 与 <code>permute()</code>作用相同，但只能操作两个维度</li>
-<li><code>Tensor.view()</code>; <code>view()</code> 仅能作用在连续的内存中，即将连续的内存变换成所需要的维度，如果在调用了 <code>transpose()</code> 或 <code>permute()</code> 则可导致内存不连续，需要使用 <code>contiguous()</code>返回一个连续的内存拷贝；</li>
-<li><code>torch.reshape()</code> <em>version &gt;=0.4</em>, <code>== tensor.contiguous().view()</code></li>
+<li>输入门，输入门控制着网络的输入</li>
+<li>遗忘门，遗忘门控制着记忆单元</li>
+<li>输出门，输出门控制着网络的输出</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">a=np.array([[[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]]])</span><br><span class="line">unpermuted=torch.tensor(a)</span><br><span class="line">print(unpermuted.size())              <span class="comment">#  ——&gt;  torch.Size([1, 2, 3])</span></span><br><span class="line"></span><br><span class="line">permuted=unpermuted.permute(<span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">print(permuted.size())                <span class="comment">#  ——&gt;  torch.Size([3, 1, 2])</span></span><br><span class="line">print(permuted.is_contiguous())       <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line">view_test = unpermuted.view(<span class="number">1</span>,<span class="number">3</span>,<span class="number">2</span>)</span><br><span class="line">print(view_test.size())               <span class="comment">#  ——&gt;  torch.Size([1, 3, 2])</span></span><br><span class="line"></span><br><span class="line">view_test = view_test.view(<span class="number">-1</span>, <span class="number">2</span>)     <span class="comment">#  --&gt;  使用 -1 进行自动推导，包含两个维度</span></span><br><span class="line">view_test = view_test.view(<span class="number">-1</span>)        <span class="comment">#  --&gt;  只包含一个维度</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="0-4-数据拼接"><a href="#0-4-数据拼接" class="headerlink" title="0.4 数据拼接"></a>0.4 数据拼接</h3><ul>
-<li><code>torch.cat(tensors, dim=0, out=None) → Tensor</code>，在指定维度上进行数据的拼接，如当<code>dim=0</code>时，在第0维度进行扩展</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = torch.randn(<span class="number">2</span>, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">tensor([[ <span class="number">0.6580</span>, <span class="number">-1.0969</span>, <span class="number">-0.4614</span>],</span><br><span class="line">        [<span class="number">-0.1034</span>, <span class="number">-0.5790</span>,  <span class="number">0.1497</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.cat((x, x, x), <span class="number">0</span>)</span><br><span class="line">tensor([[ <span class="number">0.6580</span>, <span class="number">-1.0969</span>, <span class="number">-0.4614</span>],</span><br><span class="line">        [<span class="number">-0.1034</span>, <span class="number">-0.5790</span>,  <span class="number">0.1497</span>],</span><br><span class="line">        [ <span class="number">0.6580</span>, <span class="number">-1.0969</span>, <span class="number">-0.4614</span>],</span><br><span class="line">        [<span class="number">-0.1034</span>, <span class="number">-0.5790</span>,  <span class="number">0.1497</span>],</span><br><span class="line">        [ <span class="number">0.6580</span>, <span class="number">-1.0969</span>, <span class="number">-0.4614</span>],</span><br><span class="line">        [<span class="number">-0.1034</span>, <span class="number">-0.5790</span>,  <span class="number">0.1497</span>]])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.cat((x, x, x), <span class="number">1</span>)</span><br><span class="line">tensor([[ <span class="number">0.6580</span>, <span class="number">-1.0969</span>, <span class="number">-0.4614</span>,  <span class="number">0.6580</span>, <span class="number">-1.0969</span>, <span class="number">-0.4614</span>,  <span class="number">0.6580</span>,</span><br><span class="line">         <span class="number">-1.0969</span>, <span class="number">-0.4614</span>],</span><br><span class="line">        [<span class="number">-0.1034</span>, <span class="number">-0.5790</span>,  <span class="number">0.1497</span>, <span class="number">-0.1034</span>, <span class="number">-0.5790</span>,  <span class="number">0.1497</span>, <span class="number">-0.1034</span>,</span><br><span class="line">         <span class="number">-0.5790</span>,  <span class="number">0.1497</span>]])</span><br></pre></td></tr></table></figure>
-
-<h3 id="0-5-数据压栈"><a href="#0-5-数据压栈" class="headerlink" title="0.5 数据压栈"></a>0.5 数据压栈</h3><ul>
-<li><code>torch.stack(tensors, dim=0, out=None) → Tensor</code></li>
-</ul>
-<p><code>torch.stack()</code> 要求不同的 <code>tensor</code> 之间是相同的维度，它的作用与转置的作用类似，不同的是 <code>torch.stack()</code> 作用于不同的 <code>tensor</code>，通过指定 <code>dim</code> 去除相应维度的数据进行组合成新的维度，也就是 <code>stack</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = torch.IntTensor([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]])</span><br><span class="line">b = torch.IntTensor([[<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]])</span><br><span class="line"></span><br><span class="line">d0 = torch.stack([a, b], dim=<span class="number">0</span>)</span><br><span class="line">d1 = torch.stack([a, b], dim=<span class="number">1</span>)</span><br><span class="line">d2 = torch.stack([a, b], dim=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="0-6-数据压缩"><a href="#0-6-数据压缩" class="headerlink" title="0.6 数据压缩"></a>0.6 数据压缩</h3><ul>
-<li><code>tensor.squeeze()</code></li>
-<li><code>tensor.unsqueeze()</code></li>
-</ul>
-<p>压缩的维度为元素个数为 1 的维度，如：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = torch.randn(<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">a.size()                <span class="comment"># [2, 1]</span></span><br><span class="line">a.squeeze().size()      <span class="comment"># [2]</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="0-7-torch-上的一些数学运算：-torch-bmm-torch-mm-torch-matmul-torch-mul"><a href="#0-7-torch-上的一些数学运算：-torch-bmm-torch-mm-torch-matmul-torch-mul" class="headerlink" title="0.7 torch 上的一些数学运算： torch.bmm(),torch.mm(),torch.matmul(),torch.mul()"></a>0.7 <code>torch</code> 上的一些数学运算： <code>torch.bmm(),torch.mm(),torch.matmul(),torch.mul()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 矩阵之间的相乘，叉乘</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.mm(mat1, mat2, out=<span class="literal">None</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.matmul(mat1, mat2, out=<span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 矩阵的 batch 叉乘运算</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>batch1 = torch.randn(<span class="number">10</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>batch2 = torch.randn(<span class="number">10</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>res = torch.bmm(batch1, batch2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>res.size()</span><br><span class="line">torch.Size([<span class="number">10</span>, <span class="number">3</span>, <span class="number">5</span>])</span><br><span class="line"><span class="comment"># 矩阵各元素之间的相乘，是对应位之间的相乘</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.mul(mat1, mat2)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>torch.sum(input, dim, out=None)</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line">print(x.sum(<span class="number">0</span>)) <span class="comment">#按列求和</span></span><br><span class="line">print(x.sum(<span class="number">1</span>)) <span class="comment">#按行求和</span></span><br><span class="line">print(torch.sum(x))   <span class="comment">#按列求和</span></span><br><span class="line">print(torch.sum(x, <span class="number">0</span>))<span class="comment">#按列求和</span></span><br><span class="line">print(torch.sum(x, <span class="number">1</span>))<span class="comment">#按行求和</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="1-Variable-变量"><a href="#1-Variable-变量" class="headerlink" title="1. Variable(变量)"></a>1. Variable(变量)</h2><blockquote>
-<p>Variable 是神经网络计算图里的概念，提供了自动求导的功能。Variable 和 Tensor 本质上没有区别，不过 Variable 会被放入一个计算图中，然后进行前向传播、反向传播、自动求导。</p>
-</blockquote>
-<p>位置： <code>torch.autograd.Variable</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">x = Variable(torch.Tensor([<span class="number">1</span>]))</span><br><span class="line">w = Variable(torch.Tensor([<span class="number">2</span>]))</span><br><span class="line">b = Variable(torch.Tensor([<span class="number">3</span>]))</span><br><span class="line"></span><br><span class="line">y = w * x + b</span><br><span class="line"></span><br><span class="line">y.backward()</span><br><span class="line"></span><br><span class="line">pritn(x.grad)</span><br></pre></td></tr></table></figure>
-
-<h3 id="1-1-Parameters"><a href="#1-1-Parameters" class="headerlink" title="1.1 Parameters"></a>1.1 Parameters</h3><p><code>class torch.nn.Parameter()</code></p>
-<p><code>Variable</code> 的一种，常被用于模块参数 <code>module parameter</code></p>
-<p><code>Variable</code> 已经被废除了。</p>
-<p><code>parameter</code> 是类型转换函数，将不可训练的类型<code>Tensor</code>转换成可训练的类型<code>parameter</code>，并将这个<code>parameter</code>绑定到这个 <code>module</code> 里面。（<code>net.parameter()</code> 中就有这个绑定的 <code>parameter</code>，参数优化的时候是可以进行优化的）</p>
-<p><code>Variable</code> 与 <code>Parameter</code>  的不同：</p>
-<ul>
-<li><code>Parameters</code> 是 <code>Variable</code> 的子类。 当把 <code>Parameters</code> 赋值给 <code>Modules</code>的时候，会被自动加到 <code>Module</code> 的参数列表中（会出现在 <code>parameters()</code> 迭代器中）。将 <code>Variable</code> 赋值给 <code>Module</code> 属性则不会有这样的影响。</li>
-<li><code>Parameter</code> 不能被 <code>volatile</code>，且默认 <code>requires_grad=True</code>，<code>Variable</code>默认<code>requires_grad=False</code></li>
-</ul>
-<h2 id="2-Dataset-数据集"><a href="#2-Dataset-数据集" class="headerlink" title="2. Dataset(数据集)"></a>2. Dataset(数据集)</h2><h2 id="3-激励函数"><a href="#3-激励函数" class="headerlink" title="3. 激励函数"></a>3. 激励函数</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line">x = torch.linspace(<span class="number">-5</span>, <span class="number">5</span>, <span class="number">200</span>)</span><br><span class="line">y_relu = torch.relu(x)</span><br><span class="line">print(y_relu)</span><br><span class="line">y_sigmoid = torch.sigmoid(x)</span><br><span class="line">print(y_sigmoid)</span><br><span class="line">y_tanh = torch.tanh(x)</span><br><span class="line">print(y_tanh)</span><br><span class="line">y_softplus = F.softplus(x)</span><br><span class="line">print(y_softplus)</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-Commonly-used-function"><a href="#4-Commonly-used-function" class="headerlink" title="4. Commonly used function"></a>4. Commonly used function</h2><ul>
-<li><code>torch.view()</code> 类似于 <code>numpy.reshape()</code> 但不同的是，<code>view()</code> 函数并不进行变量内存的复制，而只是在原来的内存区域进行操作。</li>
-<li><code>torch.Tensor()</code></li>
-<li><code>torch.LongTensor()</code></li>
-<li><code>torch.optim.SGD()</code></li>
-</ul>
-<h2 id="5-Containers（容器）-torch-nn-Module"><a href="#5-Containers（容器）-torch-nn-Module" class="headerlink" title="5. Containers（容器） torch.nn Module"></a>5. Containers（容器） <code>torch.nn</code> Module</h2><h3 id="5-1-nn-Linear-in-features-out-features-bias-True"><a href="#5-1-nn-Linear-in-features-out-features-bias-True" class="headerlink" title="5.1 nn.Linear(in_features, out_features, bias=True)"></a>5.1 <code>nn.Linear(in_features, out_features, bias=True)</code></h3><p>$$y=xA^{T}+b$$</p>
-<h4 id="5-1-1-Parameters"><a href="#5-1-1-Parameters" class="headerlink" title="5.1.1 Parameters"></a>5.1.1 Parameters</h4><ul>
-<li><code>in_features</code> 每个输入样本的大小</li>
-<li><code>out_features</code> 每个输出样本的大小</li>
-</ul>
-<h4 id="5-1-2-Shape"><a href="#5-1-2-Shape" class="headerlink" title="5.1.2 Shape"></a>5.1.2 Shape</h4><ul>
-<li><p><code>input:</code><br>$$(N, *, H_{in}), 其中H_{in} = in_features$$</p>
-</li>
-<li><p><code>output:</code><br>$$(N, *, H_{out}), 其中H_{out} = out_features$$</p>
-</li>
-</ul>
-<h4 id="5-1-3-Example"><a href="#5-1-3-Example" class="headerlink" title="5.1.3 Example"></a>5.1.3 Example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>m = nn.Linear(<span class="number">20</span>, <span class="number">30</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn(<span class="number">128</span>, <span class="number">20</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>output = m(input)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(output.size())</span><br><span class="line">torch.Size([<span class="number">128</span>, <span class="number">30</span>])</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-2-nn-Dropout-p-0-5-inplace-False"><a href="#5-2-nn-Dropout-p-0-5-inplace-False" class="headerlink" title="5.2 nn.Dropout(p=0.5, inplace=False)"></a>5.2 <code>nn.Dropout(p=0.5, inplace=False)</code></h3><ul>
-<li><code>p</code> 将元素置0的概率</li>
-<li><code>inplace</code> 若设置为 True，会在原地进行操作</li>
-</ul>
-<h3 id="5-3-nn-ReLU-inplace-False"><a href="#5-3-nn-ReLU-inplace-False" class="headerlink" title="5.3 nn.ReLU(inplace=False)"></a>5.3 <code>nn.ReLU(inplace=False)</code></h3><p>$$<br>y=\begin{cases}<br>0, \quad x\leq0 \\<br>x, \quad x&gt;0<br>\end{cases}<br>$$</p>
-<h3 id="5-4-nn-Embedding-num-embeddings-embedding-dim-padding-idx-None-max-norm-None-norm-type-2-scale-grad-by-freq-False-sparse-False"><a href="#5-4-nn-Embedding-num-embeddings-embedding-dim-padding-idx-None-max-norm-None-norm-type-2-scale-grad-by-freq-False-sparse-False" class="headerlink" title="5.4 nn.Embedding(num_embeddings, embedding_dim, padding_idx=None, max_norm=None, norm_type=2, scale_grad_by_freq=False, sparse=False)"></a>5.4 <code>nn.Embedding(num_embeddings, embedding_dim, padding_idx=None, max_norm=None, norm_type=2, scale_grad_by_freq=False, sparse=False)</code></h3><p>保存了固定字典和大小的简单查找表，该模块保存，这里只是初始化的一些向量，后续还需要进行学习和修改</p>
-<ul>
-<li><code>num_embeddings</code> 嵌入字典的大小</li>
-<li><code>embeddings_dim</code> 每个嵌入向量的大小</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"></span><br><span class="line">word_to_idx = &#123;<span class="string">'hello'</span>: <span class="number">0</span> ,<span class="string">'world'</span>: <span class="number">1</span>&#125;</span><br><span class="line">embeds = nn.Embedding(<span class="number">2</span>, <span class="number">5</span>)</span><br><span class="line">hello_idx = torch.LongTensor([word_to_idx[<span class="string">'hello'</span>]])</span><br><span class="line">hello_variable = Variable(hello_idx)</span><br><span class="line">hello_embed = embeds(hello_variable)</span><br><span class="line">print(hello_embed)</span><br><span class="line"></span><br><span class="line">embeds.weight.data = torch.ones(<span class="number">2</span>, <span class="number">5</span>)   <span class="comment"># embeddings 的 weight 可以设置 </span></span><br><span class="line">print(embeds.weight)</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-5-nn-Sequential-args"><a href="#5-5-nn-Sequential-args" class="headerlink" title="5.5 nn.Sequential(*args)"></a>5.5 <code>nn.Sequential(*args)</code></h3><p>一个时序容器。 <code>Modules</code> 会以他们传入的顺序被添加到容器中。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Example of using Sequential</span></span><br><span class="line"></span><br><span class="line">model = nn.Sequential(</span><br><span class="line">          nn.Conv2d(<span class="number">1</span>,<span class="number">20</span>,<span class="number">5</span>),</span><br><span class="line">          nn.ReLU(),</span><br><span class="line">          nn.Conv2d(<span class="number">20</span>,<span class="number">64</span>,<span class="number">5</span>),</span><br><span class="line">          nn.ReLU()</span><br><span class="line">        )</span><br><span class="line"><span class="comment"># Example of using Sequential with OrderedDict</span></span><br><span class="line">model = nn.Sequential(OrderedDict([</span><br><span class="line">          (<span class="string">'conv1'</span>, nn.Conv2d(<span class="number">1</span>,<span class="number">20</span>,<span class="number">5</span>)),</span><br><span class="line">          (<span class="string">'relu1'</span>, nn.ReLU()),</span><br><span class="line">          (<span class="string">'conv2'</span>, nn.Conv2d(<span class="number">20</span>,<span class="number">64</span>,<span class="number">5</span>)),</span><br><span class="line">          (<span class="string">'relu2'</span>, nn.ReLU())</span><br><span class="line">        ]))</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-6-nn-CrossEntropyLoss"><a href="#5-6-nn-CrossEntropyLoss" class="headerlink" title="5.6 nn.CrossEntropyLoss"></a>5.6 <code>nn.CrossEntropyLoss</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.CrossEntropyLoss(weight=<span class="literal">None</span>, size_average=<span class="literal">None</span>, ignore_index=<span class="number">-100</span>, reduce=<span class="literal">None</span>, reduction=<span class="string">'mean'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>该函数相当于组合了 <code>nn.LogSoftmax()</code> 和 <code>nn.NLLLoss()</code></p>
-<p>$$loss(x,class) = -log{\frac{exp(x[class])}{\sum_{j}exp(x[j])}}$$</p>
-<p>等于（当 <code>weight</code> 参数非零时）</p>
-<p>$$loss(x,class) = weight[class]\left(-x[class] + log(\sum_{j}exp\left(x[j]\right)\right)$$</p>
-<p>通过以上公式求交叉熵，应用于多分类问题中的<code>loss function</code></p>
-<h4 id="5-6-1-Parameters"><a href="#5-6-1-Parameters" class="headerlink" title="5.6.1 Parameters"></a>5.6.1 Parameters</h4><ul>
-<li><code>weight</code>，结合上式，赋值给每个class 的 weight</li>
-<li><code>reduction</code> 默认为 <code>mean</code>，可以为 <code>none | mean | sum</code>，是对计算后的 output 值的整合</li>
-</ul>
-<h4 id="5-6-2-Shape"><a href="#5-6-2-Shape" class="headerlink" title="5.6.2 Shape"></a>5.6.2 Shape</h4><ul>
-<li>输入1：<code>Input:(N,C)</code> N 代表batch个数，C 代表 class 的个数；</li>
-<li>输入2：<code>Target:(N)</code> 代表对应的类别的序号</li>
-</ul>
-<h4 id="5-6-3-Example"><a href="#5-6-3-Example" class="headerlink" title="5.6.3 Example"></a>5.6.3 Example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>loss = nn.CrossEntropyLoss(reduction=<span class="string">'none'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn(<span class="number">3</span>, <span class="number">5</span>, requires_grad=<span class="literal">True</span>)  <span class="comment"># 输入 batch:3,class numbers: 5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>target = torch.empty(<span class="number">3</span>, dtype=torch.long).random_(<span class="number">5</span>) <span class="comment"># 输入 target:</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>output = loss(input, target)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>output.backward()</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-7-nn-RNN"><a href="#5-7-nn-RNN" class="headerlink" title="5.7 nn.RNN()"></a>5.7 <code>nn.RNN()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.RNN(*args, **kwargs)</span><br></pre></td></tr></table></figure>
-
-<p>可以构造多层的RNN，每一层的计算函数为：</p>
-<p>$$h_{t} = tanh\left( W_{ih}x_{t} + b_{ih} + W_{hh}h_{(t-1)} + b_{hh}\right)$$</p>
-<h4 id="5-7-1-Parameters"><a href="#5-7-1-Parameters" class="headerlink" title="5.7.1 Parameters"></a>5.7.1 Parameters</h4><ul>
-<li><code>input_size:</code> input 的 feature 数量</li>
-<li><code>hidden_size:</code> hidden layer 的feature 数量</li>
-<li><code>num_layers:</code> 循环RNN的数量，可以组成 stacked RNN</li>
-<li><code>nonlinearity:</code> 非线性函数，可以为 <code>tanh</code> 或 <code>relu</code>，默认为 <code>tanh</code></li>
-<li><code>bidirectional:</code> 设置为 <code>True</code>，则为 bidirectional RNN</li>
-</ul>
-<h4 id="5-7-2-Shape"><a href="#5-7-2-Shape" class="headerlink" title="5.7.2 Shape"></a>5.7.2 Shape</h4><ul>
-<li><p><code>input:</code> shape(seq_len, batch, input_size)，多少个sequence，每个sequence带有多少个batch，每个batch里的 input_size</p>
-</li>
-<li><p><code>h_0:</code>  shape(num_layers*num_directions, batch, hidden_size)，这里设置 hidden layer 的参数</p>
-</li>
-<li><p><code>output</code> shape(seq_len, batch, num_directions * hidden_size)，这里的 output 是最后一层 layer 的 output</p>
-</li>
-</ul>
-<h4 id="5-7-3-Example"><a href="#5-7-3-Example" class="headerlink" title="5.7.3 Example"></a>5.7.3 Example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>rnn = nn.RNN(<span class="number">10</span>, <span class="number">20</span>, <span class="number">2</span>)     <span class="comment"># input_size: 10; hidden_size: 20; num_layers: 2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn(<span class="number">5</span>, <span class="number">3</span>, <span class="number">10</span>) <span class="comment"># seq_len: 5; batch: 3; input_size: 10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>h0 = torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">20</span>) <span class="comment"># num_layers * num_directions: 2; batch: 3; hidden_size: 20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>output, hn = rnn(input, h0)</span><br></pre></td></tr></table></figure>
-
-<p><strong>Notation:</strong></p>
-<ol>
-<li><code>RNN</code> 的 output：是最后一层（the last hidden_layer）的每个 <code>batch</code> 每个 <code>time_step/seq_len</code> 的output</li>
-<li><code>RNN</code> 的 h_n 是每一个隐藏层（hidden_layer）的每个 <code>batch</code> 的 output</li>
-</ol>
-<h3 id="5-8-nn-LSTM"><a href="#5-8-nn-LSTM" class="headerlink" title="5.8 nn.LSTM()"></a>5.8 <code>nn.LSTM()</code></h3><p>$$<br>\begin{aligned}<br>i_{t} =&amp; \ \sigma\left(W_{ii}x_{t} + b_{ii} + W_{hi}h_{(t-1)} + b_{hi}\right) \<br>f_{t} =&amp; \ \sigma\left(W_{if}x_{t} + b_{if} + W_{hf}h_{(t-1)} + b_{hf}\right) \<br>g_{t} =&amp; \ tanh(W_{ig}x_{t} + b_{ig} + W_{hg}h_{(t-1)} + b_{hg}) \<br>o_{t} =&amp; \ \sigma(W_{io}x_{t} + b_{io} + W_{ho}h_{(t-1)} + b_{ho}) \<br>c_{t} =&amp; \ f_{t} * c_{(t-1)} + i_{t} * g_{t} \<br>h_{t} =&amp; \ o_{t} * tanh(c_{t})<br>\end{aligned}<br>$$</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.LSTM(*args, **kwargs)</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-8-1-Parameters"><a href="#5-8-1-Parameters" class="headerlink" title="5.8.1 Parameters"></a>5.8.1 Parameters</h4><ul>
-<li><code>input_size:</code> input 的 feature 数量</li>
-<li><code>hidden_size:</code> hidden layer 的feature 数量</li>
-<li><code>num_layers:</code> 循环RNN的数量，可以组成 stacked RNN</li>
-<li><code>bidirectional:</code> 设置为 <code>True</code>，则为 bidirectional LSTM</li>
-</ul>
-<h4 id="5-8-2-Shape"><a href="#5-8-2-Shape" class="headerlink" title="5.8.2 Shape"></a>5.8.2 Shape</h4><ul>
-<li><code>input:</code> shape(seq_len, batch, input_size)，多少个sequence，每个sequence带有多少个batch，每个batch里的 input_size</li>
-<li><code>h_0:</code>  shape(num_layers*num_directions, batch, hidden_size)，这里设置 hidden layer 的参数</li>
-<li><code>c_0:</code> shape(num_layers*num_directions, batch, hidden_size), 初始化的 cell state 每个 batch</li>
-</ul>
-<h4 id="5-8-3-Example"><a href="#5-8-3-Example" class="headerlink" title="5.8.3 Example"></a>5.8.3 Example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>rnn = nn.LSTM(<span class="number">10</span>, <span class="number">20</span>, <span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn(<span class="number">5</span>, <span class="number">3</span>, <span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>h0 = torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">20</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c0 = torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">20</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>output, (hn, cn) = rnn(input, (h0, c0))</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-9-nn-GRU"><a href="#5-9-nn-GRU" class="headerlink" title="5.9 nn.GRU()"></a>5.9 <code>nn.GRU()</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.nn.GRU(*args, **kwargs)</span><br></pre></td></tr></table></figure>
-
-<p>$$<br>\begin{aligned}<br>r_{t} =&amp; \ \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \<br>z_{t} =&amp; \ \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \<br>n_{t} =&amp; \ tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \<br>h_{t} =&amp; \ (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}<br>\end{aligned}<br>$$</p>
-<h4 id="5-9-1-Parameters"><a href="#5-9-1-Parameters" class="headerlink" title="5.9.1 Parameters"></a>5.9.1 Parameters</h4><ul>
-<li><code>input_size:</code> input 的 feature 数量</li>
-<li><code>hidden_size:</code> hidden layer 的feature 数量</li>
-<li><code>num_layers:</code> 循环RNN的数量，可以组成 stacked RNN</li>
-<li><code>bidirectional:</code> 设置为 <code>True</code>，则为 bidirectional LSTM</li>
-</ul>
-<h4 id="5-9-2-Shape"><a href="#5-9-2-Shape" class="headerlink" title="5.9.2 Shape"></a>5.9.2 Shape</h4><ul>
-<li><code>input:</code> shape(seq_len, batch, input_size)，多少个sequence，每个sequence带有多少个batch，每个batch里的 input_size</li>
-<li><code>h_0:</code>  shape(num_layers*num_directions, batch, hidden_size)，这里设置 hidden layer 的参数</li>
-</ul>
-<h4 id="5-9-3-Example"><a href="#5-9-3-Example" class="headerlink" title="5.9.3 Example"></a>5.9.3 Example</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>rnn = nn.GRU(<span class="number">10</span>, <span class="number">20</span>, <span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn(<span class="number">5</span>, <span class="number">3</span>, <span class="number">10</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>h0 = torch.randn(<span class="number">2</span>, <span class="number">3</span>, <span class="number">20</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>output, hn = rnn(input, h0)</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-torch-optim"><a href="#6-torch-optim" class="headerlink" title="6. torch.optim"></a>6. <code>torch.optim</code></h2><p><code>torch.optim</code> 是一个实现了各种优化算法的库。</p>
-<h3 id="6-1-如何使用-optimizer"><a href="#6-1-如何使用-optimizer" class="headerlink" title="6.1 如何使用 optimizer"></a>6.1 如何使用 <code>optimizer</code></h3><p>为了使用 <code>torch.optim</code>，你需要构建一个 optimizer 对象，这个对象能够保持当前参数状态并基于计算得到的梯度进行参数更新。</p>
-<ul>
-<li>构建</li>
-</ul>
-<p>为了构建一个 <code>optimizer</code>，需要传入一个包含优化参数（必须都是 <code>Variable</code> 对象）的 iterable，并设置 optimizer 的参数选项，如：学习率、权重衰减等。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">optimizer = optim.SGD(model.parameters(), lr=<span class="number">0.01</span>, )</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>进行单次优化</li>
-</ul>
-<p>采用的方法：</p>
-<p><code>optimizer.step()</code> 这个方法会更新所有的参数，所有的 optimizer 都实现了这个方法，一旦梯度被 <code>backward()</code> 之类的函数计算好后，就可以调用这个函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 单次优化的常用做法</span></span><br><span class="line"><span class="keyword">for</span> input, target <span class="keyword">in</span> dataset:</span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    output = model(input)</span><br><span class="line">    loss = loss_fn(output, target)</span><br><span class="line">    loss.backward()</span><br><span class="line">    optimizer.step()</span><br></pre></td></tr></table></figure>
-
-<h3 id="6-2-常用函数"><a href="#6-2-常用函数" class="headerlink" title="6.2 常用函数"></a>6.2 常用函数</h3><ul>
-<li><code>step(closure)</code> 进行单次优化</li>
-<li><code>zero_grad()</code> 清空所有被优化过的 Variable 的梯度</li>
-</ul>
-<h2 id="7-torch-utils"><a href="#7-torch-utils" class="headerlink" title="7. torch.utils"></a>7. <code>torch.utils</code></h2><h3 id="7-1-torch-utils-data-Dataloader"><a href="#7-1-torch-utils-data-Dataloader" class="headerlink" title="7.1 torch.utils.data.Dataloader"></a>7.1 <code>torch.utils.data.Dataloader</code></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DataLoader(dataset, batch_size=<span class="number">1</span>, shuffle=<span class="literal">False</span>, sampler=<span class="literal">None</span>,</span><br><span class="line">           batch_sampler=<span class="literal">None</span>, num_workers=<span class="number">0</span>, collate_fn=<span class="literal">None</span>,</span><br><span class="line">           pin_memory=<span class="literal">False</span>, drop_last=<span class="literal">False</span>, timeout=<span class="number">0</span>,</span><br><span class="line">           worker_init_fn=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-
-<p>主要的几个参数：</p>
-<ul>
-<li>dataset: 数据集来源，可以是 <code>map-style</code> or <code>iterable-style</code> dataset.</li>
-<li>batch_size: 每个 <code>batch</code> 有多少个 samples</li>
-<li>shuffle: 是否在每个 <code>epoch</code> 进行 reshuffle</li>
-</ul>
-<p>python 迭代器构造在数据集上。</p>
-<h2 id="8-模型的保存与加载"><a href="#8-模型的保存与加载" class="headerlink" title="8. 模型的保存与加载"></a>8. 模型的保存与加载</h2><p><em>参考：<a href="https://zhuanlan.zhihu.com/p/38056115" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38056115</a></em></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Approach 1</span></span><br><span class="line"><span class="comment"># 保存整个网络，保存的后缀可以为 .pt/.pth</span></span><br><span class="line">torch.save(net, PATH)</span><br><span class="line"></span><br><span class="line">model_dict = torch.load(PATH)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Approach 2</span></span><br><span class="line"><span class="comment"># 保存网络中的参数，</span></span><br><span class="line">torch.save(net.state_dict(), PATH)</span><br><span class="line">model = TheModelClass(*args, **kwargs)</span><br><span class="line"></span><br><span class="line">model_dict = model.load_state_dict(torch.load(PATH))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Approach 3: Save model to resume training later</span></span><br><span class="line"><span class="comment"># 用于恢复 training 的过程，除了保存 model， 还需要保存 the state of optimizer,epochs,score等。</span></span><br><span class="line">state = &#123;</span><br><span class="line">    <span class="string">'epoch'</span>: epoch,</span><br><span class="line">    <span class="string">'state_dict'</span>: model.state_dict(),</span><br><span class="line">    <span class="string">'optimizer'</span>: optimizer.state_dict(),</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">torch.save(state, filepath)</span><br><span class="line"></span><br><span class="line">model.load_state_dict(state[<span class="string">'state_dict'</span>])</span><br><span class="line">optimizer.load_state_dict(state[<span class="string">'optimizer'</span>])</span><br></pre></td></tr></table></figure>
-
-<p>对于 approach 2 存在的一些缺点：</p>
+<p><img src="/2020/01/05/MLDL/RNN/LSTM.png" alt="LSTM"></p>
+<p><img src="/2020/01/05/MLDL/RNN/LSTM_1.jpg" alt="LSTM"></p>
+<p><img src="/2020/01/05/MLDL/RNN/LSTM_2.jpg" alt="LSTM"></p>
+<p><img src="/2020/01/05/MLDL/RNN/LSTM_3.jpg" alt="LSTM"></p>
+<h3 id="4-2-GRU"><a href="#4-2-GRU" class="headerlink" title="4.2 GRU"></a>4.2 GRU</h3><p>GRU是 Gated Recurrent Unit的缩写，由 cho 在2014年提出。GRU 和 LSTM 最大的不同在于 GRU 将遗忘门和输入门合成了一个 “更新门”， 同时网络只进行传递和保存的状态是 <code>ht</code>.</p>
+<p><img src="/2020/01/05/MLDL/RNN/LSTM_4.jpg" alt="LSTM"></p>
+<h3 id="4-3-收敛性问题"><a href="#4-3-收敛性问题" class="headerlink" title="4.3 收敛性问题"></a>4.3 收敛性问题</h3><p>RNN 的误差曲面上存在很多陡峭的斜坡，斜坡上误差的变化率特别大，正是这个原因导致道路 loss 曲线在不断跳跃。</p>
 <blockquote>
-<p>However in this case, the serialized data is bound to the specific classes and the exact directory structure used, so it can break in various ways when used in other projects, or after some serious refactors.</p>
+<p>正是因为网络在训练过程中，梯度的变化范围很大，所以设置一个固定的学习率并不能有效收敛，同时梯度的变化并没有规律，所以设置衰减的学习率也不能满足条件。</p>
 </blockquote>
-<h2 id="9-参考"><a href="#9-参考" class="headerlink" title="9. 参考"></a>9. 参考</h2><ul>
-<li><a href="https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-optim/" target="_blank" rel="noopener">PyTorch-官方教程</a></li>
-<li><a href="https://pytorch.org/docs/stable/torch.html" target="_blank" rel="noopener">pytorch-文档</a>    </li>
+<p>可以采用的办法是： <strong>梯度裁剪</strong>，使用梯度裁剪能够将大的梯度裁，在一定程度上避免收敛不好的问题。</p>
+<h2 id="5-循环神经网络的-pytorch-实现"><a href="#5-循环神经网络的-pytorch-实现" class="headerlink" title="5. 循环神经网络的 pytorch 实现"></a>5. 循环神经网络的 pytorch 实现</h2><h3 id="5-1-PyTorch-的循环网络模块"><a href="#5-1-PyTorch-的循环网络模块" class="headerlink" title="5.1 PyTorch 的循环网络模块"></a>5.1 PyTorch 的循环网络模块</h3><h4 id="1-标准-RNN"><a href="#1-标准-RNN" class="headerlink" title="1. 标准 RNN"></a>1. 标准 RNN</h4><ul>
+<li><code>nn.RNN()</code></li>
+</ul>
+<p>关于参数设置：</p>
+<ul>
+<li><code>input_size</code> 表示输入 x 的特征维度</li>
+<li><code>hidden_size</code> 表示输出 h 的特征维度</li>
+<li><code>num_layers</code> 表示网络层数，默认是 1 层</li>
+<li><code>nonlinearity</code> 表示非线性激活函数的选择，默认是 <code>tanh</code>，可以选择 <code>relu</code></li>
+<li><code>bias</code> 表示是否使用偏置，默认是 <code>True</code></li>
+<li><code>batch_first</code> 决定网络输入的维度顺序，默认网络输入按照 <code>(seq, batch, feature)</code> ，解释为：序列长度、批量、特征维度；如果该参数设置为 <code>True</code>，则顺序变成 <code>(batch, seq, feature)</code></li>
+<li><code>dropout</code> 参数接收0-1的数值，会在网络中除了最后一层之外的其他输出层加上 <code>dropout</code> 层</li>
+<li><code>bidirectional</code> 默认参数是 False</li>
 </ul>
 
           
@@ -695,7 +476,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/MLDL/pytorch(2)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -714,7 +495,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/04/MLDL/pytorch(2)/" itemprop="url">pytorch(2)</a></h2>
+                <a class="post-title-link" href="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/" itemprop="url">Ch07</a></h2>
         
 
         <div class="post-meta">
@@ -726,8 +507,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T11:55:23+08:00">
-                2020-01-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:12:59+08:00">
+                2020-01-05
               </time>
             
 
@@ -751,1308 +532,6 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/MLDL/" itemprop="url" rel="index">
                     <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="pytorch-二"><a href="#pytorch-二" class="headerlink" title="pytorch (二)"></a>pytorch (二)</h1><h2 id="1-Variable-Tensor-numpy-之间的转换"><a href="#1-Variable-Tensor-numpy-之间的转换" class="headerlink" title="1. Variable Tensor numpy 之间的转换"></a>1. <code>Variable</code> <code>Tensor</code> <code>numpy</code> 之间的转换</h2><p><strong>Variable 已经被 depreciate 了！！！</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch</span><br><span class="line"></span><br><span class="line"><span class="comment"># numpy --&gt; tensor</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tensor_variable = torch.from_numpy(numpy_variable)</span><br><span class="line"></span><br><span class="line"><span class="comment"># tensor --&gt; numpy</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>numpy_variable = tensor_variable.numpy()</span><br><span class="line"></span><br><span class="line"><span class="comment"># numpy -- &gt; Tensor --&gt; Variavle</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>v = Variable(torch.from_numpy(numpy_variable))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Variable --&gt; numpy</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>numpy_variable = v.data.numpy()</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-tensor-new"><a href="#2-tensor-new" class="headerlink" title="2. tensor.new()"></a>2. <code>tensor.new()</code></h2><p><em><a href="https://pytorch.org/docs/0.3.1/tensors.html?highlight=new#torch.Tensor.new" target="_blank" rel="noopener">source</a></em></p>
-<p><code>new(*args, **kwargs)</code></p>
-<p>Constructs a new tensor of the same data type as self tensor.</p>
-<blockquote>
-<p>For CUDA tensors, this method will create new tensor on the same device as this tensor.</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = (input.data.new([word2ix[w]])).view(<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>h_0 = input.data.new(<span class="number">2</span>, batch_size, self.hidden_dim).fill_(<span class="number">0</span>).float()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c_0 = input.data.new(<span class="number">2</span>, batch_size, self.hidden_dim).fill_(<span class="number">0</span>).float()</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-cuda-上-tensor-的定义"><a href="#3-cuda-上-tensor-的定义" class="headerlink" title="3. cuda 上 tensor 的定义"></a>3. <code>cuda</code> 上 <code>tensor</code> 的定义</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a = torch.one(<span class="number">1000</span>, <span class="number">1000</span>, <span class="number">3</span>).cuda()     <span class="comment"># 在 cpu 上定义，将数据转移到 cuda 上</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.zeros().cuda()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在某一GPU设备上定义</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cuda1 = torch.deivce(<span class="string">'cuda:1'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = torch.randn((<span class="number">1000</span>, <span class="number">1000</span>, <span class="number">1000</span>), device=cuda1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 直接在 GPU上定义数据，减少cpu的损耗</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.cuda.FloatTensor(batch_size, self.hidden_dim, self.height, self.width).fill_(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/MLDL/Ipdb/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/MLDL/Ipdb/" itemprop="url">Ipdb</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T12:05:05+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="IPDB-Ipython-Debugger"><a href="#IPDB-Ipython-Debugger" class="headerlink" title="IPDB (Ipython Debugger)"></a>IPDB (Ipython Debugger)</h1><p>IPDB和GDB类似，是一款集成了<code>Ipython</code>的Python代码命令行调试工具。</p>
-<h2 id="1-集成到源代码中使用"><a href="#1-集成到源代码中使用" class="headerlink" title="1. 集成到源代码中使用"></a>1. 集成到源代码中使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> ipdb</span><br><span class="line"></span><br><span class="line">x = <span class="number">10</span></span><br><span class="line">ipdb.set_trace() <span class="comment"># 执行到此，程序停止，展开Ipython环境</span></span><br><span class="line">y = <span class="number">20</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="2-交互式使用"><a href="#2-交互式使用" class="headerlink" title="2. 交互式使用"></a>2. 交互式使用</h2><p><code>python -m ipdb code.py</code></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/MLDL/tqdm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/MLDL/tqdm/" itemprop="url">tqdm</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:59:38+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="tqdm"><a href="#tqdm" class="headerlink" title="tqdm"></a>tqdm</h1><p>tqdm 是快速，可扩展的 python 进度条，用户只需要封装任意的迭代器 <code>tqdm(iterator)</code></p>
-<h2 id="1-基本用法"><a href="#1-基本用法" class="headerlink" title="1. 基本用法"></a>1. 基本用法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> tqdm <span class="keyword">import</span> tqdm</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> tqdm(range(<span class="number">100</span>)):</span><br><span class="line">    time.sleep(<span class="number">0.01</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://blog.csdn.net/qq_33472765/article/details/82940843" target="_blank" rel="noopener">csdn</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/MLDL/torchnet/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/MLDL/torchnet/" itemprop="url">torchnet</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:41:37+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="torchnet"><a href="#torchnet" class="headerlink" title="torchnet"></a>torchnet</h1><h2 id="1-torchnet-dataset"><a href="#1-torchnet-dataset" class="headerlink" title="1. torchnet.dataset"></a>1. <code>torchnet.dataset</code></h2><h2 id="2-torchnet-engine"><a href="#2-torchnet-engine" class="headerlink" title="2. torchnet.engine"></a>2. <code>torchnet.engine</code></h2><h2 id="3-torchnet-meter"><a href="#3-torchnet-meter" class="headerlink" title="3. torchnet.meter"></a>3. <code>torchnet.meter</code></h2><h2 id="4-torchnet-utils"><a href="#4-torchnet-utils" class="headerlink" title="4. torchnet.utils"></a>4. <code>torchnet.utils</code></h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/Latex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/Something/Latex/" itemprop="url">Latex 入门</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:30:31+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Something/" itemprop="url" rel="index">
-                    <span itemprop="name">Something</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Latex"><a href="#Latex" class="headerlink" title="Latex"></a>Latex</h1><h2 id="线下环境"><a href="#线下环境" class="headerlink" title="线下环境"></a>线下环境</h2><ul>
-<li>TeXlive+TeXstuido</li>
-</ul>
-<h2 id="线上环境"><a href="#线上环境" class="headerlink" title="线上环境"></a>线上环境</h2><ul>
-<li><a href="https://www.overleaf.com/" target="_blank" rel="noopener">overleaf</a></li>
-</ul>
-<h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;document&#125;</span><br><span class="line">\section&#123;text&#125;</span><br><span class="line">\subsection&#123;text&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>斜体<code>\textit{text}</code></li>
-<li>加粗<code>\textbf{text}</code></li>
-<li>角标<code>\textsuperscript</code></li>
-<li>换行<code>\newline</code> 或 <code>\\</code></li>
-</ul>
-<h2 id="新建列表"><a href="#新建列表" class="headerlink" title="新建列表"></a>新建列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;itemize&#125;</span><br><span class="line">\item</span><br><span class="line">\item</span><br><span class="line">\end&#123;itemize&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[htbp]</span><br><span class="line">\caption&#123;spacy NER Accuracy Table\textsuperscript&#123;\cite&#123;b3&#125;&#125;&#125;</span><br><span class="line">\begin&#123;center&#125;</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;F&#125;&amp;\textbf&#123;P&#125;&amp;\textbf&#123;R&#125; \\</span><br><span class="line">\hline</span><br><span class="line">85.55&amp;85.89&amp;85.21  \\</span><br><span class="line">\hline</span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\label&#123;tab1&#125;</span><br><span class="line">\end&#123;center&#125;</span><br><span class="line">\end&#123;table&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">\includegraphics[scale=0.6]&#123;figure/entity_top5.png&#125;</span><br><span class="line">\caption&#123;Top 5 entities in multiple categories.&#125;</span><br><span class="line">\label&#123;fig&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>文本中的引用</p>
-<p><code>text\cite{bn}</code></p>
-<p>Reference 的列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;thebibliography&#125;&#123;00&#125;</span><br><span class="line">\bibitem&#123;b1&#125;</span><br><span class="line">\bibitem&#123;b2&#125;</span><br><span class="line">\bibitem&#123;b3&#125;</span><br><span class="line">\end&#123;thebibliography&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://www.jianshu.com/p/3e842d67ada2" target="_blank" rel="noopener">Latex环境配置</a></li>
-<li><a href="https://blog.csdn.net/JueChenYi/article/details/77116011" target="_blank" rel="noopener">latex插入表格</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/32925549" target="_blank" rel="noopener">latex插入图片</a></li>
-<li><a href="https://blog.csdn.net/Gentleman_Qin/article/details/79963396" target="_blank" rel="noopener">常用Latex参考</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/MarkDown/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/Something/MarkDown/" itemprop="url">MarkDown</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:30:31+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Something/" itemprop="url" rel="index">
-                    <span itemprop="name">Something</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Markdown语法"><a href="#Markdown语法" class="headerlink" title="Markdown语法"></a>Markdown语法</h1><h2 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h2><p><a href="http://www.jianshu.com/p/q81RER" target="_blank" rel="noopener">简书</a><br><a href="http://wowubuntu.com/markdown/#p" target="_blank" rel="noopener">Wow!Ubuntu</a>  感谢!</p>
-<h2 id="Markdown优点"><a href="#Markdown优点" class="headerlink" title="Markdown优点:"></a>Markdown优点:</h2><ul>
-<li>纯文本，兼容性强</li>
-<li>格式转换方便，可以轻松地转换为html,电子书等</li>
-<li>Markdown语法有极好的可读性</li>
-</ul>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><blockquote>
-<p># 一级标题<br>## 二级标题<br>### 三级标题  </p>
-</blockquote>
-<p>#可以有六级，表示六级标题</p>
-<h2 id="列表与引用"><a href="#列表与引用" class="headerlink" title="列表与引用"></a>列表与引用</h2><blockquote>
-<p>- 文本1<br>- 文本2<br>- 文本3</p>
-</blockquote>
-<p>或者显示1,2,3的情况，使用:</p>
-<blockquote>
-<p>1.文本1<br>2.文本2<br>3.文本3  </p>
-</blockquote>
-<p>注意：<strong>这些符号需在与后续文本之间加上一空格字符才能正确地显示</strong></p>
-<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2><blockquote>
-<ul>
-<li>当在一个文本块需要强制换行时，可以使用两个空格+换行符来强制换行，否则仅用一个换行符并不能起到换行的作用；</li>
-<li>恰当的使用空白行也能起到换行的作用；</li>
-</ul>
-</blockquote>
-<h2 id="粗体与斜体"><a href="#粗体与斜体" class="headerlink" title="粗体与斜体"></a>粗体与斜体</h2><blockquote>
-<ul>
-<li>粗体：用2个<em>包含的内容，例如**文本*\</em></li>
-<li>斜体：用1个<em>包含的内容，例如*文本\</em></li>
-</ul>
-</blockquote>
-<h2 id="反斜杠"><a href="#反斜杠" class="headerlink" title="反斜杠\"></a>反斜杠\</h2><blockquote>
-<p>为什么我上面在引用里使用了一些符号但是却以文本的形式显示出来的呢？这得靠\的帮助，当你在文本中需要#,&gt;,-<br>等这些普通意义的符号时就只用在前面加上\就OK了</p>
-</blockquote>
-<h2 id="链接与图片"><a href="#链接与图片" class="headerlink" title="链接与图片"></a>链接与图片</h2><blockquote>
-<ul>
-<li>插入链接：[显示文本](链接地址)  </li>
-<li>插入图片：![](图片链接地址)</li>
-</ul>
-</blockquote>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><blockquote>
-<ul>
-<li>用|表示竖列对齐  </li>
-<li>用---区分名称与数值  </li>
-<li>用:表示左，右，中间对齐</li>
-</ul>
-</blockquote>
-<p><em>例如:</em>  </p>
-<blockquote>
-<p>| Tables                     | Are           | Cool        |<br>| ------------- |:-----: | -----:|<br>| col 3 is                   | right-aligned | $1600       |<br>| col 2 is                   | centered      |   $12       |<br>| zebra stripes              | are neat      |    $1       |  </p>
-</blockquote>
-<p><em>显示效果：</em>  </p>
-<table>
-<thead>
-<tr>
-<th>Tables</th>
-<th align="center">Are</th>
-<th align="right">Cool</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>col 3 is</td>
-<td align="center">right-aligned</td>
-<td align="right">$1600</td>
-</tr>
-<tr>
-<td>col 2 is</td>
-<td align="center">centered</td>
-<td align="right">$12</td>
-</tr>
-<tr>
-<td>zebra stripes</td>
-<td align="center">are neat</td>
-<td align="right">$1</td>
-</tr>
-</tbody></table>
-<h2 id="代码引用"><a href="#代码引用" class="headerlink" title="代码引用"></a>代码引用</h2><blockquote>
-<ul>
-<li>单段代码引用：用  &#39;  包括整个代码段显示为一个代码段  </li>
-<li>多段代码引用：用  &#39;&#39;&#39;  置于代码段的首行与末行</li>
-</ul>
-</blockquote>
-<h2 id="编写数学公式"><a href="#编写数学公式" class="headerlink" title="编写数学公式"></a>编写数学公式</h2><p><em>参考：<a href="https://juejin.im/post/5a6721bd518825733201c4a2#heading-1" target="_blank" rel="noopener">https://juejin.im/post/5a6721bd518825733201c4a2#heading-1</a></em></p>
-<p>数学公式的编写类似于 Latex 中的用法，这里介绍一些常用的：</p>
-<ul>
-<li><code>$$\left(\sum_{k=\frac{1}{2}}^{N^2}\frac{1}{k}\right)$$</code></li>
-</ul>
-<p>$$\left(\sum_{k=\frac{1}{2}}^{N^2}\frac{1}{k}\right)$$</p>
-<ul>
-<li><code>$$\left(\int_a^b\sqrt{2x}dx\right)$$</code></li>
-</ul>
-<p>$$\left[\int_a^b\sqrt{2x}dx\right]$$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$\begin&#123;bmatrix&#125;</span><br><span class="line">    1 &amp; 2 \\\\</span><br><span class="line">    3 &amp; 4</span><br><span class="line">\end&#123;bmatrix&#125;$$</span><br></pre></td></tr></table></figure>
-
-<p>$$\begin{bmatrix}<br>    1 &amp; 2 \\<br>    3 &amp; 4<br>\end{bmatrix}$$</p>
-<ul>
-<li>数学公式中的空格</li>
-</ul>
-<p>markdown 中数学公式中的空格</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">没有空格 $ab$</span><br><span class="line">小空格 a\,b</span><br><span class="line">中等空格 a\;b</span><br><span class="line">大空格 a\ b</span><br><span class="line">quad空格 $a\quad b$</span><br><span class="line">qquad空格 $a\qquad b$</span><br></pre></td></tr></table></figure>
-
-<p>没有空格 $ab$<br>小空格 $a,b$<br>中等空格 $a;b$<br>大空格 $a\ b$<br>quad空格 $a\quad b$<br>qquad空格 $a\qquad b$</p>
-<ul>
-<li>数学公式的换行</li>
-</ul>
-<p>使用 <code>\\</code> 或 <code>\\</code> 进行数学公式的换行，使用在 <code>\begin \end</code> 块中，见以下示例。</p>
-<ul>
-<li>数学公式的对齐</li>
-</ul>
-<p>使用 <code>aligned</code> + <code>&amp;</code></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">r<span class="emphasis">_&#123;t&#125; =&amp; \sigma(W_</span>&#123;ir&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;ir&#125; + W<span class="emphasis">_&#123;hr&#125;h_</span>&#123;(t-1)&#125; + b_&#123;hr&#125;) \\</span><br><span class="line">z<span class="emphasis">_&#123;t&#125; =&amp; \sigma(W_</span>&#123;iz&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;iz&#125; + W<span class="emphasis">_&#123;hz&#125;h_</span>&#123;(t-1)&#125; + b_&#123;hz&#125;) \\</span><br><span class="line">n<span class="emphasis">_&#123;t&#125; =&amp; tanh(W_</span>&#123;in&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;in&#125; + r<span class="emphasis">_&#123;t&#125;*(W_</span>&#123;hn&#125;h<span class="emphasis">_&#123;(t-1)&#125; + b_</span>&#123;hn&#125;)) \\</span><br><span class="line">h<span class="emphasis">_&#123;t&#125; =&amp; (1-z_</span>&#123;t&#125;) <span class="emphasis">* n_&#123;t&#125; + z_&#123;t&#125; *</span> h_&#123;(t-1)&#125;        </span><br><span class="line">\end&#123;aligned&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-
-<p>$$<br>\begin{aligned}<br>r_{t} =&amp; \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \<br>z_{t} =&amp; \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \<br>n_{t} =&amp; tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \<br>h_{t} =&amp; (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}<br>\end{aligned}<br>$$</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/Visual_Studio_manual/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/02/Something/Visual_Studio_manual/" itemprop="url">Visual Studio 的使用</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:30:31+08:00">
-                2020-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Something/" itemprop="url" rel="index">
-                    <span itemprop="name">Something</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Visual-Studio-的使用"><a href="#Visual-Studio-的使用" class="headerlink" title="Visual Studio 的使用"></a>Visual Studio 的使用</h1><h2 id="解决方案（Solution）"><a href="#解决方案（Solution）" class="headerlink" title="解决方案（Solution）"></a>解决方案（Solution）</h2><h2 id="选项卡"><a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h2><h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p><code>选项</code>中可设置字体和行号</p>
-<h3 id="项目文件讲解"><a href="#项目文件讲解" class="headerlink" title="项目文件讲解"></a>项目文件讲解</h3><h3 id="扩展管理"><a href="#扩展管理" class="headerlink" title="扩展管理"></a>扩展管理</h3><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
-<li>编译缺失文件？</li>
-</ol>
-<ul>
-<li>添加include的目录，具体使在C盘查找文件目录，然后将其包含在VC++目录-》包含目录中。</li>
-<li>确认项目的Windows SDK版本是否正确。</li>
-<li>确认平台是否正确，是x86还是x64</li>
-<li>确认项目时debug版本，还是release版本。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/31/NLP/%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%A3%80%E6%B5%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/31/NLP/%E6%96%87%E6%9C%AC%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%A3%80%E6%B5%8B/" itemprop="url">文本相似度检测</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-31T19:22:54+08:00">
-                2019-12-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/28/BigDataSystem/Consistency/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/28/BigDataSystem/Consistency/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-28T20:59:51+08:00">
-                2019-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">BigDataSystem</span>
                   </a>
                 </span>
 
@@ -2062,8 +541,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigDataSystem/Consistency/" itemprop="url" rel="index">
-                    <span itemprop="name">Consistency</span>
+                  <a href="/categories/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">AndrewNG机器学习</span>
                   </a>
                 </span>
 
@@ -2101,8 +580,1433 @@
       
         
           
-            <h1 id="Consistency"><a href="#Consistency" class="headerlink" title="Consistency"></a>Consistency</h1><p>一致性问题，一致性问题是分布式系统中比较常见的问题。</p>
-<p>这里主要分析 <code>Paxo</code> 与 <code>Raft</code> 两种分布式一致性协议。</p>
+            <h1 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h1><h2 id="过拟合矛欠拟合问题的引入"><a href="#过拟合矛欠拟合问题的引入" class="headerlink" title="过拟合矛欠拟合问题的引入"></a>过拟合矛欠拟合问题的引入</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_01.png" alt="andrew_01"></p>
+<ul>
+<li>欠拟合（underffit）： 高偏置（high bias）</li>
+<li>过拟合（overfit）：   高方差（high variance）</li>
+</ul>
+<h2 id="代价函数的正则化"><a href="#代价函数的正则化" class="headerlink" title="代价函数的正则化"></a>代价函数的正则化</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_02.png" alt="andrew_02"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_03.png" alt="andrew_03"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_04.png" alt="andrew_04"></p>
+<p>解决正则化的两个思路：</p>
+<ul>
+<li>减少参数的数量</li>
+<li>保持参数的数量，但使用正则化参数控制参数的大小</li>
+</ul>
+<h2 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_05.png" alt="andrew_05"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_06.png" alt="andrew_06"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_07.png" alt="andrew_07"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_08.png" alt="andrew_08"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_09.png" alt="andrew_09"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_10.png" alt="andrew_10"></p>
+<p>求导的结果表明，加入正则化参数只是对参数乘上一个比1略小的因子。</p>
+<p>使用线性代数的思想来解释（讨论方阵是否可逆）：</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_11.png" alt="andrew_11"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_12.png" alt="andrew_12"></p>
+<h2 id="Logistic回归的正则化"><a href="#Logistic回归的正则化" class="headerlink" title="Logistic回归的正则化"></a>Logistic回归的正则化</h2><p>对Logistic求解算法的改进</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_13.png" alt="andrew_13"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_14.png" alt="andrew_14"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_15.png" alt="andrew_15"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_16.png" alt="andrew_16"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/" itemprop="url">Ch6_classify</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:12:09+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MLDL/" itemprop="url" rel="index">
+                    <span itemprop="name">MLDL</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">AndrewNG机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Classifier-分类器"><a href="#Classifier-分类器" class="headerlink" title="Classifier 分类器"></a>Classifier 分类器</h1><ul>
+<li>Linear Regression</li>
+<li>Logistic Regression ！！！</li>
+</ul>
+<h2 id="1-分类问题"><a href="#1-分类问题" class="headerlink" title="1. 分类问题"></a>1. 分类问题</h2><p><strong>以下考虑的均为二分类问题：<code>y=0/y=1</code></strong></p>
+<p>分类问题的引入，由最初的线性函数（<code>linear function</code>），得到的值往往存在于 0 与 1 之外，并且线性函数得出的值往往会受到样本的扰动比较大，因此考虑将线性函数的值再经过映射到0-1的空间内。</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_ch06_1.png" alt="classifier"></p>
+<h2 id="2-假设（Hypothesis）"><a href="#2-假设（Hypothesis）" class="headerlink" title="2. 假设（Hypothesis）"></a>2. 假设（Hypothesis）</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_ch06_2.png" alt="hypothesis"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_3.png" alt="hypothesis"></p>
+<h2 id="3-决策界限（Decision-Boundary）"><a href="#3-决策界限（Decision-Boundary）" class="headerlink" title="3. 决策界限（Decision Boundary）"></a>3. 决策界限（Decision Boundary）</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_4.png" alt="decision_boundary"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_5.png" alt="decision_boundary"></p>
+<h2 id="4-代价函数（Cost-Function）"><a href="#4-代价函数（Cost-Function）" class="headerlink" title="4. 代价函数（Cost Function）"></a>4. 代价函数（Cost Function）</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_6.png" alt="cost_function"></p>
+<p>在线性回归（<code>Linear Regression</code>）里，使用平方差函数作为损失函数是可以的，但是在逻辑回归（<code>Logistic Regression</code>）里，使用平方差函数作为损失函数，该函数并不是凸函数（<code>non-convex function</code>），就不能使用梯度下降 <code>gradient descent</code> 找到全局最小值（<code>global minimum</code>）</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_7.png" alt="cost_funciton"></p>
+<h2 id="5-简化代价函数与梯度下降"><a href="#5-简化代价函数与梯度下降" class="headerlink" title="5. 简化代价函数与梯度下降"></a>5. 简化代价函数与梯度下降</h2><p>对代价函数进行简化，写成一个整体，则成为下面的函数：</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_8.png" alt="gradient_descent"></p>
+<p>对代价函数进行求导：</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_9.png" alt="gradient_descent"></p>
+<h2 id="6-高级优化"><a href="#6-高级优化" class="headerlink" title="6. 高级优化"></a>6. 高级优化</h2><p>梯度下降是一个比较常用算法，但由于其在实际的比较大的问题中，速度较慢，因此往往使用比较快速的方法：</p>
+<ul>
+<li>Conjugate Descent （共轭梯度）</li>
+<li>BFGS</li>
+<li>L-BFGS</li>
+</ul>
+<p>这些算法的优点是不用手工设置学习率<code>α</code>，它们算法的内部往往包含一个内循环来自动设置这些学习率，并且每一步的学习率也比较不同，收敛速度较快。</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_10.png" alt="gradient_descent"></p>
+<p>Andrew NG 使用 Octave 演示的梯度下降的例子:</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_11.png" alt="gradient_descent"></p>
+<h2 id="7-多元分类（Multi-Class-Classification）"><a href="#7-多元分类（Multi-Class-Classification）" class="headerlink" title="7. 多元分类（Multi-Class Classification）"></a>7. 多元分类（Multi-Class Classification）</h2><p><code>one-vs-all</code> 的方法：思想很简单，即把多元分类的问题看成多个二元分类问题，来选取置信度最高的那一个；</p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_12.png" alt="one-vs-all"></p>
+<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_13.png" alt="one-vs-all"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Java/Maven/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/Java/Maven/" itemprop="url">Maven</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:09:10+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><h2 id="1-安装与配置"><a href="#1-安装与配置" class="headerlink" title="1. 安装与配置"></a>1. 安装与配置</h2><p><em>Maven3要求JDK1.7以上</em></p>
+<p>设置环境变量：</p>
+<ul>
+<li><code>M2_HOME=&quot;/usr/local/maven&quot;</code></li>
+<li><code>M2=/usr/local/maven/bin</code></li>
+<li><code>PATH</code></li>
+</ul>
+<h2 id="2-仓库的配置"><a href="#2-仓库的配置" class="headerlink" title="2. 仓库的配置"></a>2. 仓库的配置</h2><p>这些配置都位于 <code>maven/conf/setting.xml</code>　文件中</p>
+<h3 id="2-1-本地仓库的配置"><a href="#2-1-本地仓库的配置" class="headerlink" title="2.1 本地仓库的配置"></a>2.1 本地仓库的配置</h3><ul>
+<li><code>localRepository</code> 关键字中</li>
+</ul>
+<h3 id="2-2-中央仓库的配置"><a href="#2-2-中央仓库的配置" class="headerlink" title="2.2 中央仓库的配置"></a>2.2 中央仓库的配置</h3><p>maven 下载依赖包的执行流程：</p>
+<p><img src="/2020/01/05/Java/Maven/maven.jpg" alt="maven"></p>
+<p>修改默认中央仓库的位置（以阿里云为例）：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*,!jeecg,!jeecg-snapshots<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="3-项目的创建"><a href="#3-项目的创建" class="headerlink" title="3. 项目的创建"></a>3. 项目的创建</h2><h3 id="3-1-POM-Project-Object-Model-项目对象模型"><a href="#3-1-POM-Project-Object-Model-项目对象模型" class="headerlink" title="3.1 POM(Project Object Model)项目对象模型"></a>3.1 POM(Project Object Model)项目对象模型</h3><h3 id="3-2-坐标"><a href="#3-2-坐标" class="headerlink" title="3.2 坐标"></a>3.2 坐标</h3><ul>
+<li><code>groupId</code></li>
+<li><code>artifactId</code></li>
+<li><code>version</code></li>
+</ul>
+<h2 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4. 常用命令"></a>4. 常用命令</h2><h3 id="4-1-项目的创建"><a href="#4-1-项目的创建" class="headerlink" title="4.1 项目的创建"></a>4.1 项目的创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=packageName -DartifactId=projectName -DarchetypeArtifactId=maven-archetype-quickstart/maven-archetype-webapp -DinteractiveMode=false   # 普通　java 项目/Web项目</span><br><span class="line">mvn archetype:create</span><br><span class="line">-X                        # 可打印出构建的过程，方便debug</span><br><span class="line">-DarchetypeCatalog=local  # 读取本地catalog文件，不用从repo.maven下载</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>groupId</code> 会自动在<code>name/src/main/java/</code>目录下构建起 package == package name</li>
+<li><code>artifactId</code> 是项目文件夹的名字</li>
+<li>使用命令行生成maven工程不需要新建文件夹</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-DgroupId=com.sample</span><br><span class="line">-DartifactId=NaiveBayes             #</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-代码的编译"><a href="#4-2-代码的编译" class="headerlink" title="4.2 代码的编译"></a>4.2 代码的编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn compile         # 源代码的编译</span><br><span class="line">mvn test-compile    # 测试代码的编译</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-运行测试"><a href="#4-3-运行测试" class="headerlink" title="4.3 运行测试"></a>4.3 运行测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn test</span><br><span class="line">mvn test -Dtest=xxx.xxx.package_name    # 单个测试文件进行测试</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-打包"><a href="#4-4-打包" class="headerlink" title="4.4 打包"></a>4.4 打包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn package             #　打包</span><br><span class="line">mvn jar:jar             #  打jar包</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-生成其他项目"><a href="#4-5-生成其他项目" class="headerlink" title="4.5 生成其他项目"></a>4.5 生成其他项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn idea:idea           # 生成IDEA项目</span><br><span class="line">mvn eclipse:eclipse     # 生成eclipse项目</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-下载依赖包"><a href="#4-6-下载依赖包" class="headerlink" title="4.6 下载依赖包"></a>4.6 下载依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn dependency:sources  #　下载依赖的源码包</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-清理"><a href="#4-7-清理" class="headerlink" title="4.7 清理"></a>4.7 清理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean               #  清除　target 目录</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-参考"><a href="#5-参考" class="headerlink" title="5. 参考"></a>5. 参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/73444114" target="_blank" rel="noopener">知乎</a></li>
+<li><a href="https://www.iteye.com/blog/stevenfeng-987623" target="_blank" rel="noopener">https://www.iteye.com/blog/stevenfeng-987623</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/73444114" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/73444114</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Database/Database/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/Database/Database/" itemprop="url">Database</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:08:14+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h2 id="CAP原理"><a href="#CAP原理" class="headerlink" title="CAP原理"></a>CAP原理</h2><p><img src="/2020/01/05/Database/Database/multi-storage.png" alt="multi-storage"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Algorithm/dynamic_Programming1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/Algorithm/dynamic_Programming1/" itemprop="url">dynamic_Programming1</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:05:43+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Dynamic-Programming-（动态规划）"><a href="#Dynamic-Programming-（动态规划）" class="headerlink" title="Dynamic Programming （动态规划）"></a>Dynamic Programming （动态规划）</h1><h2 id="背包问题（0-1背包问题）"><a href="#背包问题（0-1背包问题）" class="headerlink" title="背包问题（0-1背包问题）"></a>背包问题（0-1背包问题）</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">小偷发现了n个商品，第i个商品重量为wi,价值为vi。小偷希望尽量拿走价值高的商品，但是他的背包只能容纳W重的商品。  </span><br><span class="line">求如何取舍这些商品？   </span><br><span class="line">由于对一个商品，要么被拿走要么不被拿走，所以被称为0-1背包问题</span><br></pre></td></tr></table></figure>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>最小子问题：拿到第i-1个商品是最优的，这个怎么考虑呢？（即在容量为<strong>w-vi</strong>的背包里，这里其实是错的），拿到第i-1个商品时，此时达到最优情况</li>
+<li>状态：由以上分析，状态参数应该至少有2个，g[i][v]代表在v的容量下，第i次是最优的，g当然代表v之和啦</li>
+<li><strong>第i次该如何选取呢？</strong>这个不像装配站问题，有前面确定的路可走，这里考虑<strong>拿与不拿</strong>,什么意思？拿，g[i-1][W-Wi]最优；不拿，g[i-1][W]最优；</li>
+<li>状态转换方程：<strong>g[i][v] = max{g[i-1][W],g[i-1][W-Wi]+vi}</strong> 为什么会有拿与不拿呢？当然是背包总容量限制啦</li>
+<li>边界条件：g[0][0] = 0 肯定是最优的</li>
+</ul>
+<h3 id="题目引用"><a href="#题目引用" class="headerlink" title="题目引用"></a>题目引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有编号分别为a,b,c,d,e的五件物品，它们的重量分别是2,2,6,5,4，它们的价值分别是6,3,5,4,6，现在给你个承重为10的背包，如何让背包里装入的物品具有最  </span><br><span class="line">的价值总和</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/05/Algorithm/dynamic_Programming1/package.png" alt=""></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const int w[6]=&#123;0,2,2,6,5,4&#125;;//商品重量 第一数值为0，为了方便编程</span><br><span class="line">const int v[6]=&#123;0,6,3,5,4,6&#125;;//商品价值 第一数值为0，为了方便编程</span><br><span class="line">const int W = 10; //背包容量</span><br><span class="line">int c[6][11] = &#123;0&#125;;//c[i][j]表示在商品1到i中，背包容量为j时，最大价值</span><br><span class="line">int l[6]=&#123;0&#125;;</span><br><span class="line"></span><br><span class="line">void dp_package() &#123;</span><br><span class="line">    for(int i=1;i&lt;=W;i++)               //i 代表此时背包容量</span><br><span class="line">        for(int j=1;j&lt;6;j++) &#123;          //j 代表第j个背包</span><br><span class="line">            if(i&gt;=w[j]) &#123;</span><br><span class="line">                if(c[j-1][i] &lt; c[j-1][i-w[j]] + v[j]) &#123;</span><br><span class="line">                    c[j][i] = c[j-1][i-w[j]] + v[j];        //此时为拿第i个商品的情况</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    c[j][i] = c[j-1][W];                    //此时为不拿第i个商品的情况</span><br><span class="line">    </span><br><span class="line">                &#125; </span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                c[j][i] = c[j-1][i];                         </span><br><span class="line">            &#125;           </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    dp_package();</span><br><span class="line">    cout&lt;&lt;c[5][10]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h3><p>第一遍看这个算法，没看明白！后来看到这个<a href="http://blog.csdn.net/mu399/article/details/7722810#reply" target="_blank" rel="noopener">http://blog.csdn.net/mu399/article/details/7722810#reply</a> 才有点头绪；  </p>
+<ul>
+<li>从容量为1-W递归考虑，这个是由于每次我们需要的是试探i-Wi时的最优情况，因此不得不从头考虑  </li>
+</ul>
+<h3 id="部分背包问题"><a href="#部分背包问题" class="headerlink" title="部分背包问题"></a>部分背包问题</h3><p>部分背包问题的意思是商品可以拿去部分，这样就可以用<strong>贪心算法</strong>做了，每次寻求<strong>商品价值/商品重量</strong>最大的加入到背包中</p>
+<h2 id="最大公共子序列问题-LCS-Longest-Common-Sequence"><a href="#最大公共子序列问题-LCS-Longest-Common-Sequence" class="headerlink" title="最大公共子序列问题(LCS:Longest Common Sequence)"></a>最大公共子序列问题(LCS:Longest Common Sequence)</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><ul>
+<li>公共子序列：两个序列中公共的子序列，如:”1A2C3D4B56”与”B1D23CA45B6A” 的公共子序列有 123456 或者其它</li>
+<li>最长公共子序列即最长的：上题中，LCS即”123456“与”12C4B6”</li>
+</ul>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个字符串str1和str2，返回两个字符串的最长公共子序列</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LCS的最优子结构定理：设X=&#123;x1，x2，……，xm&#125;和Y=&#123;y1，y2，……，yn&#125;为两个序列，并设Z=&#123;z1、z2、……，zk&#125;为X和Y的任意一个LCS，则：</span><br><span class="line">（1）如果xm=yn，那么zk=xm=yn，而且Zk-1是Xm-1和Yn-1的一个LCS。</span><br><span class="line">（2）如果xm≠yn，那么zk≠xm蕴含Z是是Xm-1和Yn的一个LCS。</span><br><span class="line">（3）如果xm≠yn，那么zk≠yn蕴含Z是是Xm和Yn-1的一个LCS。</span><br><span class="line">定理说明两个序列的一个LCS也包含两个序列的前缀的一个LCS，即LCS问题具有最优子结构性质。</span><br></pre></td></tr></table></figure>
+<p>状态转换方程与边界条件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">          |- 0; i,j=0</span><br><span class="line">c[i][j]-- |- c[i-1][j-1]+1; i,j&gt;0,Xi=Yj</span><br><span class="line">          |- max&#123;c[i-1][j],c[i][j-1]&#125;;i,j&gt;0,Xi!=Yj</span><br></pre></td></tr></table></figure>
+<p>如何求得该LCS呢？贴出一段伪码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PRINT_LCS(b,X,i,j)</span><br><span class="line">    if i==0 or j==0</span><br><span class="line">        then return</span><br><span class="line">    if b[i][j] == &apos;\&apos;</span><br><span class="line">        then PRINT_LCS(b,X,i-1,j-1)</span><br><span class="line">             print X[i]</span><br><span class="line">     else if b[i][j] == &apos;|&apos;</span><br><span class="line">                then PRINT_LCS(b,X,i-1,j)</span><br><span class="line">             else PRINT_LSC(b,X,i,j-1)</span><br></pre></td></tr></table></figure>
+<p>这里分析了一下思想就是在一路走来的路上留下痕迹，最后便于通过递归来寻迹，不过这样开销太大了</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Algorithm/optimization/DP/dynamic_Programming1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/Algorithm/optimization/DP/dynamic_Programming1/" itemprop="url">dynamic_Programming1</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:05:43+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/optimization/" itemprop="url" rel="index">
+                    <span itemprop="name">optimization</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/optimization/DP/" itemprop="url" rel="index">
+                    <span itemprop="name">DP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Dynamic-Programming-（动态规划）"><a href="#Dynamic-Programming-（动态规划）" class="headerlink" title="Dynamic Programming （动态规划）"></a>Dynamic Programming （动态规划）</h1><h2 id="背包问题（0-1背包问题）"><a href="#背包问题（0-1背包问题）" class="headerlink" title="背包问题（0-1背包问题）"></a>背包问题（0-1背包问题）</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">小偷发现了n个商品，第i个商品重量为wi,价值为vi。小偷希望尽量拿走价值高的商品，但是他的背包只能容纳W重的商品。  </span><br><span class="line">求如何取舍这些商品？   </span><br><span class="line">由于对一个商品，要么被拿走要么不被拿走，所以被称为0-1背包问题</span><br></pre></td></tr></table></figure>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>最小子问题：拿到第i-1个商品是最优的，这个怎么考虑呢？（即在容量为<strong>w-vi</strong>的背包里，这里其实是错的），拿到第i-1个商品时，此时达到最优情况</li>
+<li>状态：由以上分析，状态参数应该至少有2个，g[i][v]代表在v的容量下，第i次是最优的，g当然代表v之和啦</li>
+<li><strong>第i次该如何选取呢？</strong>这个不像装配站问题，有前面确定的路可走，这里考虑<strong>拿与不拿</strong>,什么意思？拿，g[i-1][W-Wi]最优；不拿，g[i-1][W]最优；</li>
+<li>状态转换方程：<strong>g[i][v] = max{g[i-1][W],g[i-1][W-Wi]+vi}</strong> 为什么会有拿与不拿呢？当然是背包总容量限制啦</li>
+<li>边界条件：g[0][0] = 0 肯定是最优的</li>
+</ul>
+<h3 id="题目引用"><a href="#题目引用" class="headerlink" title="题目引用"></a>题目引用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">有编号分别为a,b,c,d,e的五件物品，它们的重量分别是2,2,6,5,4，它们的价值分别是6,3,5,4,6，现在给你个承重为10的背包，如何让背包里装入的物品具有最  </span><br><span class="line">的价值总和</span><br></pre></td></tr></table></figure>
+<p><img src="/2020/01/05/Algorithm/optimization/DP/dynamic_Programming1/package.png" alt=""></p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">const int w[6]=&#123;0,2,2,6,5,4&#125;;//商品重量 第一数值为0，为了方便编程</span><br><span class="line">const int v[6]=&#123;0,6,3,5,4,6&#125;;//商品价值 第一数值为0，为了方便编程</span><br><span class="line">const int W = 10; //背包容量</span><br><span class="line">int c[6][11] = &#123;0&#125;;//c[i][j]表示在商品1到i中，背包容量为j时，最大价值</span><br><span class="line">int l[6]=&#123;0&#125;;</span><br><span class="line"></span><br><span class="line">void dp_package() &#123;</span><br><span class="line">    for(int i=1;i&lt;=W;i++)               //i 代表此时背包容量</span><br><span class="line">        for(int j=1;j&lt;6;j++) &#123;          //j 代表第j个背包</span><br><span class="line">            if(i&gt;=w[j]) &#123;</span><br><span class="line">                if(c[j-1][i] &lt; c[j-1][i-w[j]] + v[j]) &#123;</span><br><span class="line">                    c[j][i] = c[j-1][i-w[j]] + v[j];        //此时为拿第i个商品的情况</span><br><span class="line">                    </span><br><span class="line">                &#125;</span><br><span class="line">                else &#123;</span><br><span class="line">                    c[j][i] = c[j-1][W];                    //此时为不拿第i个商品的情况</span><br><span class="line">    </span><br><span class="line">                &#125; </span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                c[j][i] = c[j-1][i];                         </span><br><span class="line">            &#125;           </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main () &#123;</span><br><span class="line">    dp_package();</span><br><span class="line">    cout&lt;&lt;c[5][10]&lt;&lt;endl;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h3><p>第一遍看这个算法，没看明白！后来看到这个<a href="http://blog.csdn.net/mu399/article/details/7722810#reply" target="_blank" rel="noopener">http://blog.csdn.net/mu399/article/details/7722810#reply</a> 才有点头绪；  </p>
+<ul>
+<li>从容量为1-W递归考虑，这个是由于每次我们需要的是试探i-Wi时的最优情况，因此不得不从头考虑  </li>
+</ul>
+<h3 id="部分背包问题"><a href="#部分背包问题" class="headerlink" title="部分背包问题"></a>部分背包问题</h3><p>部分背包问题的意思是商品可以拿去部分，这样就可以用<strong>贪心算法</strong>做了，每次寻求<strong>商品价值/商品重量</strong>最大的加入到背包中</p>
+<h2 id="最大公共子序列问题-LCS-Longest-Common-Sequence"><a href="#最大公共子序列问题-LCS-Longest-Common-Sequence" class="headerlink" title="最大公共子序列问题(LCS:Longest Common Sequence)"></a>最大公共子序列问题(LCS:Longest Common Sequence)</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><ul>
+<li>公共子序列：两个序列中公共的子序列，如:”1A2C3D4B56”与”B1D23CA45B6A” 的公共子序列有 123456 或者其它</li>
+<li>最长公共子序列即最长的：上题中，LCS即”123456“与”12C4B6”</li>
+</ul>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>给定两个字符串str1和str2，返回两个字符串的最长公共子序列</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">LCS的最优子结构定理：设X=&#123;x1，x2，……，xm&#125;和Y=&#123;y1，y2，……，yn&#125;为两个序列，并设Z=&#123;z1、z2、……，zk&#125;为X和Y的任意一个LCS，则：</span><br><span class="line">（1）如果xm=yn，那么zk=xm=yn，而且Zk-1是Xm-1和Yn-1的一个LCS。</span><br><span class="line">（2）如果xm≠yn，那么zk≠xm蕴含Z是是Xm-1和Yn的一个LCS。</span><br><span class="line">（3）如果xm≠yn，那么zk≠yn蕴含Z是是Xm和Yn-1的一个LCS。</span><br><span class="line">定理说明两个序列的一个LCS也包含两个序列的前缀的一个LCS，即LCS问题具有最优子结构性质。</span><br></pre></td></tr></table></figure>
+<p>状态转换方程与边界条件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">          |- 0; i,j=0</span><br><span class="line">c[i][j]-- |- c[i-1][j-1]+1; i,j&gt;0,Xi=Yj</span><br><span class="line">          |- max&#123;c[i-1][j],c[i][j-1]&#125;;i,j&gt;0,Xi!=Yj</span><br></pre></td></tr></table></figure>
+<p>如何求得该LCS呢？贴出一段伪码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PRINT_LCS(b,X,i,j)</span><br><span class="line">    if i==0 or j==0</span><br><span class="line">        then return</span><br><span class="line">    if b[i][j] == &apos;\&apos;</span><br><span class="line">        then PRINT_LCS(b,X,i-1,j-1)</span><br><span class="line">             print X[i]</span><br><span class="line">     else if b[i][j] == &apos;|&apos;</span><br><span class="line">                then PRINT_LCS(b,X,i-1,j)</span><br><span class="line">             else PRINT_LSC(b,X,i,j-1)</span><br></pre></td></tr></table></figure>
+<p>这里分析了一下思想就是在一路走来的路上留下痕迹，最后便于通过递归来寻迹，不过这样开销太大了</p>
+<h3 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Algorithm/dynamic_Programming0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/Algorithm/dynamic_Programming0/" itemprop="url">dynamic_Programming0</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:05:27+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Dynamic-Programming-（动态规划）"><a href="#Dynamic-Programming-（动态规划）" class="headerlink" title="Dynamic Programming （动态规划）"></a>Dynamic Programming （动态规划）</h1><p>参考：</p>
+<p>博客园 <a href="http://www.cnblogs.com/Anker/archive/2013/03/15/2961725.html" target="_blank" rel="noopener">http://www.cnblogs.com/Anker/archive/2013/03/15/2961725.html</a></p>
+<p>适合于求解多阶段决策问题的最优解</p>
+<p>常见的有以下几类问题：</p>
+<ul>
+<li>装配站问题</li>
+<li>背包问题</li>
+<li>最长公共子序列问题</li>
+</ul>
+<h2 id="装配站问题"><a href="#装配站问题" class="headerlink" title="装配站问题"></a>装配站问题</h2><p>问题描述：</p>
+<p>　一个汽车公司在有2条装配线的工厂内生产汽车，每条装配线有n个装配站，不同装配线上对应的装配站执行的功能相同，<br>但是每个站执行的时间是不同的。在装配汽车时，为了提高速度，可以在这两天装配线上的装配站中做出选择，即可以将部<br>分完成的汽车在任何装配站上从一条装配线移到另一条装配线上。装配过程如下图所示：</p>
+<p><img src="/2020/01/05/Algorithm/dynamic_Programming0/dp_zp0.png" alt=""></p>
+<p>装配过程的时间包括：进入装配线时间e、每装配线上各个装配站执行时间a、从一条装配线移到另外一条装配线的时间t<br>离开最后一个装配站时间x。举个例子来说明，现在有2条装配线，每条装配线上有6个装配站，各个时间如下图所示：<br><img src="/2020/01/05/Algorithm/dynamic_Programming0/dp_zp1.png" alt="">  </p>
+<p>从图中可以看出按照红色箭头方向进行装配汽车最快，时间为38。分别现在装配线1上的装配站1、3和6，装配线2上装配站2、4和5。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>最小子问题与状态：求到第几个站的最短时间 f[0][i],f[1][i]</li>
+<li>状态转换方程：f[0][i] = min{f[0][i-1]+a[0][j],f[1][i-1]+t[1][i-1]+a[0][i]},f[2][i]同理</li>
+<li>边界条件：f[0][0],f[1][0]，这个可以根据状态转换方程加以确定</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">6</span>] = &#123;&#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">4</span>&#125;,&#123;<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> t[<span class="number">2</span>][<span class="number">5</span>] = &#123;&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> e[<span class="number">2</span>] = &#123;<span class="number">2</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> x[<span class="number">2</span>] = &#123;<span class="number">3</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">2</span>][<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> l[<span class="number">2</span>][<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> fs,ls;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>] = e[<span class="number">0</span>]+a[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    f[<span class="number">1</span>][<span class="number">0</span>] = e[<span class="number">1</span>]+a[<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;<span class="number">6</span>;j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(f[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j] &lt;= f[<span class="number">1</span>][j<span class="number">-1</span>] + t[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j]) &#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = f[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j];</span><br><span class="line">            l[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = f[<span class="number">1</span>][j<span class="number">-1</span>] + t[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j];</span><br><span class="line">            l[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(f[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j] &lt;= f[<span class="number">0</span>][j<span class="number">-1</span>] + t[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j]) &#123;</span><br><span class="line">            f[<span class="number">1</span>][j] = f[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j];</span><br><span class="line">            l[<span class="number">1</span>][j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            f[<span class="number">1</span>][j] = f[<span class="number">0</span>][j<span class="number">-1</span>] + t[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j];</span><br><span class="line">            l[<span class="number">1</span>][j] = <span class="number">0</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(f[<span class="number">0</span>][<span class="number">5</span>]+x[<span class="number">0</span>] &lt;= f[<span class="number">1</span>][<span class="number">5</span>]+x[<span class="number">1</span>]) &#123;</span><br><span class="line">        fs = f[<span class="number">0</span>][<span class="number">5</span>]+x[<span class="number">0</span>];</span><br><span class="line">        ls = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        fs = f[<span class="number">1</span>][<span class="number">5</span>]+x[<span class="number">1</span>];</span><br><span class="line">        ls =<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_station</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    r = l[r][i];</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;l[r][i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        print_station(r,i<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;r&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    dp();</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"最短时间为"</span>&lt;&lt;fs&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;ls&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    r = ls;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">5</span>;j&gt;<span class="number">0</span>;j--) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;l[r][j]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        r = l[r][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"reverse output!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    print_station(ls,<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;ls&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Algorithm/optimization/DP/dynamic_Programming0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/Algorithm/optimization/DP/dynamic_Programming0/" itemprop="url">dynamic_Programming0</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:05:27+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/optimization/" itemprop="url" rel="index">
+                    <span itemprop="name">optimization</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/optimization/DP/" itemprop="url" rel="index">
+                    <span itemprop="name">DP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Dynamic-Programming-（动态规划）"><a href="#Dynamic-Programming-（动态规划）" class="headerlink" title="Dynamic Programming （动态规划）"></a>Dynamic Programming （动态规划）</h1><p>参考：</p>
+<p>博客园 <a href="http://www.cnblogs.com/Anker/archive/2013/03/15/2961725.html" target="_blank" rel="noopener">http://www.cnblogs.com/Anker/archive/2013/03/15/2961725.html</a></p>
+<p>适合于求解多阶段决策问题的最优解</p>
+<p>常见的有以下几类问题：</p>
+<ul>
+<li>装配站问题</li>
+<li>背包问题</li>
+<li>最长公共子序列问题</li>
+</ul>
+<h2 id="装配站问题"><a href="#装配站问题" class="headerlink" title="装配站问题"></a>装配站问题</h2><p>问题描述：</p>
+<p>　一个汽车公司在有2条装配线的工厂内生产汽车，每条装配线有n个装配站，不同装配线上对应的装配站执行的功能相同，但是每个站执行的时间是不同的。在装配汽车时，为了提高速度，可以在这两天装配线上的装配站中做出选择，即可以将部分完成的汽车在任何装配站上从一条装配线移到另一条装配线上。装配过程如下图所示：</p>
+<p><img src="/2020/01/05/Algorithm/optimization/DP/dynamic_Programming0/dp_zp0.png" alt=""></p>
+<p>装配过程的时间包括：进入装配线时间e、每装配线上各个装配站执行时间a、从一条装配线移到另外一条装配线的时间t<br>离开最后一个装配站时间x。举个例子来说明，现在有2条装配线，每条装配线上有6个装配站，各个时间如下图所示：<br><img src="/2020/01/05/Algorithm/optimization/DP/dynamic_Programming0/dp_zp1.png" alt="">  </p>
+<p>从图中可以看出按照红色箭头方向进行装配汽车最快，时间为38。分别现在装配线1上的装配站1、3和6，装配线2上装配站2、4和5。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><ul>
+<li>最小子问题与状态：求到第几个站的最短时间 f[0][i],f[1][i]</li>
+<li>状态转换方程：f[0][i] = min{f[0][i-1]+a[0][j],f[1][i-1]+t[1][i-1]+a[0][i]},f[2][i]同理</li>
+<li>边界条件：f[0][0],f[1][0]，这个可以根据状态转换方程加以确定</li>
+</ul>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> a[<span class="number">2</span>][<span class="number">6</span>] = &#123;&#123;<span class="number">7</span>,<span class="number">9</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">8</span>,<span class="number">4</span>&#125;,&#123;<span class="number">8</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">7</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> t[<span class="number">2</span>][<span class="number">5</span>] = &#123;&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>&#125;,&#123;<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> e[<span class="number">2</span>] = &#123;<span class="number">2</span>,<span class="number">4</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> x[<span class="number">2</span>] = &#123;<span class="number">3</span>,<span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> f[<span class="number">2</span>][<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> l[<span class="number">2</span>][<span class="number">6</span>];</span><br><span class="line"><span class="keyword">int</span> fs,ls;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    f[<span class="number">0</span>][<span class="number">0</span>] = e[<span class="number">0</span>]+a[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">    f[<span class="number">1</span>][<span class="number">0</span>] = e[<span class="number">1</span>]+a[<span class="number">1</span>][<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;<span class="number">6</span>;j++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(f[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j] &lt;= f[<span class="number">1</span>][j<span class="number">-1</span>] + t[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j]) &#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = f[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j];</span><br><span class="line">            l[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            f[<span class="number">0</span>][j] = f[<span class="number">1</span>][j<span class="number">-1</span>] + t[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">0</span>][j];</span><br><span class="line">            l[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(f[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j] &lt;= f[<span class="number">0</span>][j<span class="number">-1</span>] + t[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j]) &#123;</span><br><span class="line">            f[<span class="number">1</span>][j] = f[<span class="number">1</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j];</span><br><span class="line">            l[<span class="number">1</span>][j] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            f[<span class="number">1</span>][j] = f[<span class="number">0</span>][j<span class="number">-1</span>] + t[<span class="number">0</span>][j<span class="number">-1</span>] + a[<span class="number">1</span>][j];</span><br><span class="line">            l[<span class="number">1</span>][j] = <span class="number">0</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(f[<span class="number">0</span>][<span class="number">5</span>]+x[<span class="number">0</span>] &lt;= f[<span class="number">1</span>][<span class="number">5</span>]+x[<span class="number">1</span>]) &#123;</span><br><span class="line">        fs = f[<span class="number">0</span>][<span class="number">5</span>]+x[<span class="number">0</span>];</span><br><span class="line">        ls = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        fs = f[<span class="number">1</span>][<span class="number">5</span>]+x[<span class="number">1</span>];</span><br><span class="line">        ls =<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_station</span><span class="params">(<span class="keyword">int</span> r,<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    r = l[r][i];</span><br><span class="line">    <span class="keyword">if</span>(i == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;l[r][i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        print_station(r,i<span class="number">-1</span>);</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;r&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    dp();</span><br><span class="line">    <span class="keyword">int</span> r;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"最短时间为"</span>&lt;&lt;fs&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;ls&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    r = ls;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">5</span>;j&gt;<span class="number">0</span>;j--) &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;l[r][j]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        r = l[r][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"reverse output!"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    print_station(ls,<span class="number">5</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"装配站："</span>&lt;&lt;ls&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/" itemprop="url">遗传算法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:03:25+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="优化问题（一）遗传算法"><a href="#优化问题（一）遗传算法" class="headerlink" title="优化问题（一）遗传算法"></a>优化问题（一）遗传算法</h1><blockquote>
+<p>遗传算法（Genetic Algorithm, GA）起源于对生物系统所进行的计算机模拟研究。它是模仿自然界生物进化机制发展起来的随机全局搜索和优化方法，借鉴了达尔文的进化论和孟德尔的遗传学说。其本质是一种高效、并行、全局搜索的方法，能在搜索过程中自动获取和积累有关搜索空间的知识，并自适应地控制搜索过程以求得最佳解。</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>遗传算法是以面为单位的搜索，比以点为单位的搜索，更能发现全局最优解。</strong></p>
+<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/genetic_algorithm_process.jpeg" alt="process"></p>
+<h2 id="验证函数"><a href="#验证函数" class="headerlink" title="验证函数"></a>验证函数</h2><p>$$f(x)=xsin(10\pi x)+2$$</p>
+<h2 id="遗传算法的几个重要步骤"><a href="#遗传算法的几个重要步骤" class="headerlink" title="遗传算法的几个重要步骤"></a>遗传算法的几个重要步骤</h2><h3 id="1-基因的编码"><a href="#1-基因的编码" class="headerlink" title="1. 基因的编码"></a>1. 基因的编码</h3><p>编码的主要目的是为后期的遗传变异建立基础。</p>
+<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/genetic_algorithm.png" alt="code"></p>
+<p>1.1 基因的编码方式</p>
+<ul>
+<li>二进制编码</li>
+<li>浮点数编码</li>
+</ul>
+<p>在我们常用的问题中，基因型–编码；表现型–坐标；我们只需要在相应的坐标精度下使用一种编码表方式将坐标编码出来。</p>
+<h3 id="2-适应性评价与选择函数"><a href="#2-适应性评价与选择函数" class="headerlink" title="2. 适应性评价与选择函数"></a>2. 适应性评价与选择函数</h3><p>这里是对个体的评价和选择的过程，也是对搜索空间的修剪。</p>
+<p>2.1 适应度函数（fitness function）— 目标函数</p>
+<p>适应度函数即是衡量该基因型的个体对环境的适应度评估标准。它是我们作为选择函数选择的依据。我们可以很明显地以<strong>目标函数</strong>作为我们的适应度函数</p>
+<p>2.2 选择函数（selection）</p>
+<p><em>为什么这里会出现选择函数而不是直接对适应度最高的函数进行选择呢？</em></p>
+<p>模拟生物界的遗传进化规律，并不是所有的优良个体都会被保存，也不是所有的劣势个体都会被淘汰。</p>
+<p>常用方法：</p>
+<ul>
+<li>轮盘赌（Roulette Wheel Selection）</li>
+</ul>
+<p><em>转盘游戏</em></p>
+<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/roulette_wheel_selection.png" alt="roulette_wheel"></p>
+<h3 id="3-基因重组与基因突变"><a href="#3-基因重组与基因突变" class="headerlink" title="3. 基因重组与基因突变"></a>3. 基因重组与基因突变</h3><p>这部分是对搜索空间的扩大，通过对个体进行变异从而得到更多基因型和表现型的个体，这部分会有大量的随机操作</p>
+<p>3.1 基因重组</p>
+<p>通过对两个基因的编码进行部分替换得到</p>
+<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/ga_ge_reconstruct.png" alt="ge_reconstruct"></p>
+<p>3.2 基因突变</p>
+<p>对单个个体的基因型进行改变</p>
+<ul>
+<li>二进制的编码： <code>0</code> 与 <code>1</code> 之间的互换</li>
+<li>浮点数的编码：对浮点数增加/减少一个随机数</li>
+</ul>
+<h3 id="4-遗传算子总结"><a href="#4-遗传算子总结" class="headerlink" title="4. 遗传算子总结"></a>4. 遗传算子总结</h3><p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/ga_operator.png" alt="ga_operator"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://blog.csdn.net/u010451580/article/details/51178225" target="_blank" rel="noopener">遗传算法详解</a></li>
+<li><a href="https://blog.csdn.net/zzzzjh/article/details/80633573" target="_blank" rel="noopener">遗传算法python实现</a></li>
+</ul>
 
           
         
@@ -2142,7 +2046,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/9/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/7/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/9/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2192,7 +2096,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2203,7 +2107,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2214,7 +2118,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

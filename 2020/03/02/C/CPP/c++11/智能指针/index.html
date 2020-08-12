@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="智能指针智能指针在手动管理 c++ 内存对象中起  到了一定的作用，使用了boost的智能指针方案，与 java python 等类型进行自动垃圾回收相比，使用该方式进行内存管理的行为更明确！！！ 智能指针主要有三种指针类型：  unique_ptr，独占指针对象，且指针对象的生命周期与其一致，即不能进行指针对象的复制； shared_ptr，指针对象可以共享，即可以通过复制将指针赋值给 shar">
+<meta name="description" content="智能指针智能指针在手动管理 c++ 内存对象中起  到了一定的作用，使用了boost的智能指针方案，与 java python 等类型进行自动垃圾回收相比，使用该方式进行内存管理的行为更明确！！！ 智能指针主要有三种指针类型，位于 memory头文件中  unique_ptr，独占指针对象，且指针对象的生命周期与其一致，即不能进行指针对象的复制，single owership； shared_pt">
 <meta name="keywords" content="C,CPP,c++11">
 <meta property="og:type" content="article">
 <meta property="og:title" content="智能指针">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;03&#x2F;02&#x2F;C&#x2F;CPP&#x2F;c++11&#x2F;%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88&#x2F;index.html">
 <meta property="og:site_name" content="笔记记录">
-<meta property="og:description" content="智能指针智能指针在手动管理 c++ 内存对象中起  到了一定的作用，使用了boost的智能指针方案，与 java python 等类型进行自动垃圾回收相比，使用该方式进行内存管理的行为更明确！！！ 智能指针主要有三种指针类型：  unique_ptr，独占指针对象，且指针对象的生命周期与其一致，即不能进行指针对象的复制； shared_ptr，指针对象可以共享，即可以通过复制将指针赋值给 shar">
+<meta property="og:description" content="智能指针智能指针在手动管理 c++ 内存对象中起  到了一定的作用，使用了boost的智能指针方案，与 java python 等类型进行自动垃圾回收相比，使用该方式进行内存管理的行为更明确！！！ 智能指针主要有三种指针类型，位于 memory头文件中  unique_ptr，独占指针对象，且指针对象的生命周期与其一致，即不能进行指针对象的复制，single owership； shared_pt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-30T16:01:16.528Z">
+<meta property="og:updated_time" content="2020-07-19T13:42:37.695Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -407,16 +407,49 @@
 
       
         <h1 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h1><p>智能指针在手动管理 c++ 内存对象中起  到了一定的作用，使用了boost的智能指针方案，与 <code>java</code> <code>python</code> 等类型进行自动垃圾回收相比，使用该方式进行内存管理的行为更明确！！！</p>
-<p>智能指针主要有三种指针类型：</p>
+<p>智能指针主要有三种指针类型，位于 <code>memory头文件中</code></p>
 <ul>
-<li>unique_ptr，独占指针对象，且指针对象的生命周期与其一致，即不能进行指针对象的复制；</li>
-<li>shared_ptr，指针对象可以共享，即可以通过复制将指针赋值给 shared_ptr，weak_ptr。当 shared_ptr 数目减少至0时，指针对象生命周期结束；</li>
-<li>weak_ptr，不能决定所指对象的生命周期，引用所指对象时，<strong>需要先 lock 成 shared_ptr 才能访问。</strong></li>
+<li>unique_ptr，独占指针对象，且指针对象的生命周期与其一致，即不能进行指针对象的复制，single owership；</li>
+<li>shared_ptr，指针对象可以共享，即可以通过复制将指针赋值给 shared_ptr，weak_ptr。当 shared_ptr 数目减少至0时，指针对象生命周期结束, shared owership；</li>
+<li>weak_ptr，不能决定所指对象的生命周期，引用所指对象时，<strong>需要先 lock 成 shared_ptr 才能访问。</strong>，np/shared ownership；</li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//文件 test-1.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up1(<span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">11</span>));</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up2 = up1;   <span class="comment">//! 编译时会出错 [1]</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up3 = <span class="built_in">move</span>(up1);  <span class="comment">//! [2]</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *up3 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span> (up1)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    up3.reset();  <span class="comment">//! [3]</span></span><br><span class="line">    up1.reset();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; sp1(make_shared&lt;<span class="built_in">string</span>&gt;(<span class="string">"Hello"</span>));</span><br><span class="line">    <span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; sp2 = sp1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp1:"</span> &lt;&lt; *sp1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp2:"</span> &lt;&lt; *sp2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    sp1.reset();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp2:"</span> &lt;&lt; *sp2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    weak_ptr&lt;<span class="built_in">string</span>&gt; wp = sp2; <span class="comment">//! [4]</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*wp.lock():"</span> &lt;&lt; *wp.lock() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    sp2.reset();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*wp.lock():"</span> &lt;&lt; *wp.lock() &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">//! 运行时会出错</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译命令： g++ -std=c++11 test-1.cpp</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//文件 test-1.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up1(<span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">11</span>));</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up2 = up1;   <span class="comment">//! 编译时会出错 [1]</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up3 = <span class="built_in">move</span>(up1);  <span class="comment">//! [2]</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *up3 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span> (up1)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// reset 使引用计数 -1</span></span><br><span class="line">    up3.reset();  <span class="comment">//! [3]</span></span><br><span class="line">    up1.reset();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; sp1(make_shared&lt;<span class="built_in">string</span>&gt;(<span class="string">"Hello"</span>));</span><br><span class="line">    <span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; sp2 = sp1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp1:"</span> &lt;&lt; *sp1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp2:"</span> &lt;&lt; *sp2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    sp1.reset();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp2:"</span> &lt;&lt; *sp2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    weak_ptr&lt;<span class="built_in">string</span>&gt; wp = sp2; <span class="comment">//! [4]</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*wp.lock():"</span> &lt;&lt; *wp.lock() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    sp2.reset();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*wp.lock():"</span> &lt;&lt; *wp.lock() &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">//! 运行时会出错</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译命令： g++ -std=c++11 test-1.cpp</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<h2 id="unique-ptr"><a href="#unique-ptr" class="headerlink" title="unique_ptr"></a><code>unique_ptr</code></h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up1(<span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">11</span>));</span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up2 = up1;   <span class="comment">//! 编译时会出错 [1]，不能使用 copy assignment</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up3 = <span class="built_in">move</span>(up1);  <span class="comment">//! [2]</span></span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; *up3 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">if</span> (up1)</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">up3.reset();  <span class="comment">//! [3]</span></span><br><span class="line">up1.reset();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li><code>std::unique_ptr&lt;Entity&gt; e1 = new Entity();</code>    // no-assignable</li>
+<li><code>std::unique_ptr&lt;Entity&gt; e1(new Entity());</code>     //  OK</li>
+<li><code>std::unique_ptr&lt;Entity&gt; e1 = std::make_unique&lt;Entity&gt;();</code>  // preferred</li>
+<li><code>auto e2 = std::make_unique&lt;Entity&gt;();</code>         // preferred</li>
+<li><code>std::unique_ptr&lt;Entity&gt; e2 = e1;</code>              // noon-copyable</li>
+<li><code>std::unique_ptr&lt;Entity&gt; e2 = std::move(e1);</code>   // movable, transfer ownership</li>
+</ul>
+</blockquote>
+<h2 id="shared-ptr"><a href="#shared-ptr" class="headerlink" title="shared_ptr"></a><code>shared_ptr</code></h2><blockquote>
+<ul>
+<li><code>std::shared_ptr&lt;Entity&gt; e1 = new Entity();</code>    // no-assignable</li>
+<li><code>std::shared_ptr&lt;Entity&gt; e1(new Entity());</code>     //  OK</li>
+<li><code>std::shared_ptr&lt;Entity&gt; e1 = std::make_shared&lt;Entity&gt;();</code>  // preferred</li>
+<li><code>auto e2 = std::make_unique&lt;Entity&gt;();</code>         // preferred</li>
+<li><code>std::unique_ptr&lt;Entity&gt; e2 = e1;</code>              // copyable, use_count + 1</li>
+<li><code>std::unique_ptr&lt;Entity&gt; e2 = std::move(e1);</code>   // movable, use_count remains</li>
+</ul>
+</blockquote>
+<h2 id="weak-ptr"><a href="#weak-ptr" class="headerlink" title="weak_ptr"></a><code>weak_ptr</code></h2><blockquote>
+<ul>
+<li>使用 <code>weak_ptr</code> 时，必须要有一个 <code>shared_ptr</code></li>
+</ul>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>尽量使用智能指针</li>
+<li>Prefer <code>std::unique_ptr</code> over <code>std::shared_ptr</code></li>
+<li>Move <code>std::shared_ptr</code> whenever possible</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://my.oschina.net/hevakelcj/blog/465978" target="_blank" rel="noopener">https://my.oschina.net/hevakelcj/blog/465978</a></li>
+<li><a href="https://www.bilibili.com/video/BV1fK411H7CA" target="_blank" rel="noopener">花花酱Leetcode</a></li>
 </ol>
 
       
@@ -574,7 +607,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -585,7 +618,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -596,7 +629,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -639,7 +672,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#智能指针"><span class="nav-number">1.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">2.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#智能指针"><span class="nav-number">1.</span> <span class="nav-text">智能指针</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#unique-ptr"><span class="nav-number">1.1.</span> <span class="nav-text">unique_ptr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shared-ptr"><span class="nav-number">1.2.</span> <span class="nav-text">shared_ptr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#weak-ptr"><span class="nav-number">1.3.</span> <span class="nav-text">weak_ptr</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.4.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>

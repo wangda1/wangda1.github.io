@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/10/NLP/nlp-from-0-to-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/C/CPP/c++11/auto/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/10/NLP/nlp-from-0-to-1/" itemprop="url">NLP From 0 To 1</a></h2>
+                <a class="post-title-link" href="/2020/03/02/C/CPP/c++11/auto/" itemprop="url">auto 关键字</a></h2>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-10T17:21:00+08:00">
-                2020-01-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T22:48:00+08:00">
+                2020-03-02
               </time>
             
 
@@ -348,8 +348,30 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
+                    <span itemprop="name">c++11</span>
                   </a>
                 </span>
 
@@ -387,878 +409,24 @@
       
         
           
-            <h1 id="NLP-从零到一（实战入门）"><a href="#NLP-从零到一（实战入门）" class="headerlink" title="NLP 从零到一（实战入门）"></a>NLP 从零到一（实战入门）</h1><h2 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h2><h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><h2 id="3-Bert-Model"><a href="#3-Bert-Model" class="headerlink" title="3. Bert Model"></a>3. Bert Model</h2><ol>
-<li>Tutorial </li>
+            <h1 id="auto-关键字的使用"><a href="#auto-关键字的使用" class="headerlink" title="auto 关键字的使用"></a>auto 关键字的使用</h1><p><code>auto</code> 关键字是 c++ 11 引入的自动推导关键字，主要用途有：</p>
+<ol>
+<li>声明变量时根据初始化表达式自动推断该变量的类型；</li>
+<li>声明函数时，函数返回值的占位符</li>
 </ol>
-<ul>
-<li><a href="https://towardsdatascience.com/bert-for-dummies-step-by-step-tutorial-fb90890ffe03" target="_blank" rel="noopener">BERT for dummies — Step by Step Tutorial</a>，对应的 <a href="https://colab.research.google.com/drive/1ywsvwO6thOVOrfagjjfuxEf6xVRxbUNO" target="_blank" rel="noopener">Jupyter notebook</a></li>
-</ul>
+<p><strong>auto的类型推导实际上在编译过程中由编译器自动推导完成，实际上是个语法糖，但是很实用！</strong></p>
+<p><code>auto</code> 关键字适用于类型冗长复杂时，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vect;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = vect.<span class="built_in">begin</span>(); it != vect.<span class="built_in">end</span>(); ++it)</span><br><span class="line">&#123;  <span class="comment">//it的类型是std::vector&lt;int&gt;::iterator</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; *it;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
+<p>或者保存 lambda 表达式的变量声明：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> ptr = [](<span class="keyword">double</span> x)&#123;<span class="keyword">return</span> x*x;&#125;;<span class="comment">//类型为std::function&lt;double(double)&gt;函数对象`</span></span><br></pre></td></tr></table></figure>
 
-    
+<h1 id="auto-与-decltype-区别"><a href="#auto-与-decltype-区别" class="headerlink" title="auto 与 decltype 区别"></a><code>auto</code> 与 <code>decltype</code> 区别</h1><p><code>auto</code> 进行编译器自动类型推导的时候需要指定初始值，但使用 <code>decltype</code> 可以进行不进行初始化进行类型声明。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">decltype</span>(i) a; <span class="comment">// double</span></span><br><span class="line">    <span class="keyword">decltype</span>(add()) b; <span class="comment">//int 注意括号。不带括号就是函数指针了。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/BigDataSystem/Batch/hadoop-IO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/06/BigDataSystem/Batch/hadoop-IO/" itemprop="url">Hadoop IO 操作</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-06T18:55:00+08:00">
-                2020-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">BigDataSystem</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigDataSystem/Batch/" itemprop="url" rel="index">
-                    <span itemprop="name">Batch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Hadoop-IO-的常见操作"><a href="#Hadoop-IO-的常见操作" class="headerlink" title="Hadoop IO 的常见操作"></a>Hadoop IO 的常见操作</h1><h2 id="1-一种比较common的文件打开方式"><a href="#1-一种比较common的文件打开方式" class="headerlink" title="1. 一种比较common的文件打开方式"></a>1. 一种比较common的文件打开方式</h2><p>注：这里并不使用 <code>java.io.File</code>　打开文件，因为这种方式只能打开本地文件，对于HDFS文件不支持打开；</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.URI;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FSDataInputStream;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</span><br><span class="line"></span><br><span class="line">StringBuffer buffer = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">FSDataInputStream fsr = <span class="keyword">null</span>;</span><br><span class="line">BufferedReader bufferedReader = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">FileSystem fs = FileSystem.get(URI.create(txtFilePath),conf);</span><br><span class="line">fsr = fs.open(<span class="keyword">new</span> Path(txtFilePath));</span><br><span class="line">bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(fsr));</span><br><span class="line"><span class="keyword">while</span> ((lineTxt = bufferedReader.readLine()) != <span class="keyword">null</span>) ...</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-列出HDFS文件目录下的所有文件"><a href="#2-列出HDFS文件目录下的所有文件" class="headerlink" title="2. 列出HDFS文件目录下的所有文件"></a>2. 列出HDFS文件目录下的所有文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> FileSystem fs;</span><br><span class="line">fs = FileSystem.get(URI.create(args[<span class="number">0</span>]), conf);</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> ArrayList&lt;Path&gt; <span class="title">GetPaths</span><span class="params">(String path)</span> <span class="keyword">throws</span> IOException, FileNotFoundException </span>&#123;</span><br><span class="line">	<span class="comment">// 获取path路径下所有子文件夹路径</span></span><br><span class="line">	ArrayList&lt;Path&gt; paths = <span class="keyword">new</span> ArrayList&lt;Path&gt;();</span><br><span class="line"><span class="comment">//	File file = new File(path);</span></span><br><span class="line">	FileStatus file = fs.getFileStatus(<span class="keyword">new</span> Path(path));</span><br><span class="line">	<span class="comment">// 如果这个路径是文件夹</span></span><br><span class="line">	<span class="keyword">if</span> (file.isDirectory()) &#123;</span><br><span class="line">		<span class="comment">// 获取路径下的所有文件</span></span><br><span class="line"><span class="comment">//		File[] files = file.listFiles();</span></span><br><span class="line">		FileStatus[] files = fs.listStatus(file.getPath());</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;files.length; i++) &#123;</span><br><span class="line">			<span class="comment">// 如果还是文件夹</span></span><br><span class="line">			<span class="keyword">if</span> (files[i].isDirectory()) &#123;</span><br><span class="line">				<span class="comment">// 将其加入路径列表</span></span><br><span class="line">				paths.add(files[i].getPath());</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;<span class="keyword">continue</span>;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> paths;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/06/BigDataSystem/Batch/hadoop-monitor/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/06/BigDataSystem/Batch/hadoop-monitor/" itemprop="url">Hadoop 监控</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-06T10:51:00+08:00">
-                2020-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">BigDataSystem</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigDataSystem/Batch/" itemprop="url" rel="index">
-                    <span itemprop="name">Batch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Hadoop-监控"><a href="#Hadoop-监控" class="headerlink" title="Hadoop 监控"></a>Hadoop 监控</h1><h2 id="1-网页查看集群的状态"><a href="#1-网页查看集群的状态" class="headerlink" title="1. 网页查看集群的状态"></a>1. 网页查看集群的状态</h2><h3 id="1-1-hdfs的集群状态"><a href="#1-1-hdfs的集群状态" class="headerlink" title="1.1 hdfs的集群状态"></a>1.1 <code>hdfs</code>的集群状态</h3><ul>
-<li>配置： <code>hdfs-site.xml--dfs.namenode.http-address</code></li>
-<li>访问地址： <code>http://namenode-ip:50070</code></li>
-</ul>
-<h3 id="1-2-secondary-namenode-的集群状态"><a href="#1-2-secondary-namenode-的集群状态" class="headerlink" title="1.2 secondary namenode　的集群状态"></a>1.2 <code>secondary namenode</code>　的集群状态</h3><ul>
-<li>配置： <code>hdfs-site.xml--dfs.namenode.secondary.http-address</code></li>
-<li>访问地址： <code>http://namenode-ip:50090</code></li>
-</ul>
-<h3 id="1-3-yarn的集群状态"><a href="#1-3-yarn的集群状态" class="headerlink" title="1.3 yarn的集群状态"></a>1.3 <code>yarn</code>的集群状态</h3><ul>
-<li>配置： <code>yarn-site.xml--yarn.resourcemanager.webapp.address</code></li>
-<li>访问地址： <code>http://resource-manager-ip:8088</code></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/SQL/SqlInjection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/05/SQL/SqlInjection/" itemprop="url">SqlInjection</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T17:27:58+08:00">
-                2020-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SQL/" itemprop="url" rel="index">
-                    <span itemprop="name">SQL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Sql注入的基本类型"><a href="#Sql注入的基本类型" class="headerlink" title="Sql注入的基本类型"></a>Sql注入的基本类型</h2><blockquote>
-<ul>
-<li>数字型与字符类型  </li>
-<li>基于错误，基于响应时间的盲注，基于响应的注入</li>
-</ul>
-</blockquote>
-<h3 id="字符型"><a href="#字符型" class="headerlink" title="字符型"></a>字符型</h3><p>常基于以下SQL:<br><code>SELECT * FROM student_info WHERE id = &#39;$id&#39; and name = &#39;$name&#39;;</code></p>
-<h3 id="数字型"><a href="#数字型" class="headerlink" title="数字型"></a>数字型</h3><p>常基于以下SQL:<br><code>SELECT * FROM student_info WHERE id = $id;</code></p>
-<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><h3 id="猜解数据库"><a href="#猜解数据库" class="headerlink" title="猜解数据库"></a>猜解数据库</h3><p>1.报错信息</p>
-<p>2.联合查询 union</p>
-<p><code>1&#39; union select user,password from users#</code> 构造成 </p>
-<p><code>SELECT first_name, last_name FROM users WHERE user_id = &#39;1&#39; union select user,password from users#</code>;`</p>
-<p><code>select table_name,table_schema from information_schema.tables where table_schema= &#39;dvwa&#39;#</code>;`<br>从 information_schema 数据库里查询 </p>
-<p>可查询的数据库信息有：  </p>
-<ul>
-<li>version()  查询当前数据库版本  </li>
-<li>@@version_compile_os 获取当前操作系统</li>
-<li>database() 当前数据库</li>
-<li>user() 用户</li>
-</ul>
-<h3 id="绕过验证"><a href="#绕过验证" class="headerlink" title="绕过验证"></a>绕过验证</h3><ul>
-<li>常用方式</li>
-</ul>
-<p>1.注释符与永真判别式 </p>
-<p>注释符用于注释掉后续内容；  </p>
-<p>如：（字符型）<br><code>SELECT * FROM student_info WHERE id = &#39;$id&#39; and name = &#39;$name&#39;;</code></p>
-<p>构造  <code>1&#39; or 1=1 #</code> 成为 <code>SELECT * FROM student_info WHERE id = &#39;1&#39; or 1=1 # and name = &#39;$name&#39;;</code></p>
-<p>如：（数字型）<br><code>SELECT * FROM student_info WHERE id = $id;</code></p>
-<p>构造 <code>1 or 1=1 #</code> 成为 <code>SELECT * FROM student_info WHERE id = 1 or 1=1 #;</code></p>
-<h2 id="识别Sql注入"><a href="#识别Sql注入" class="headerlink" title="识别Sql注入"></a>识别Sql注入</h2><h3 id="判断注入点"><a href="#判断注入点" class="headerlink" title="判断注入点"></a>判断注入点</h3><p>最简单的方式是<br><strong>1’</strong>  单引号判别，出错则说明有注入点</p>
-<p>1.永真和永假表达式 or 1=1–<br>2.报错信息<br>3.特定数据库的连接符  SQL SERVER —</p>
-<h2 id="常用其它"><a href="#常用其它" class="headerlink" title="常用其它"></a>常用其它</h2><p>sql注入常用技术有段还包括：</p>
-<ul>
-<li><p>采用非主流通道技术</p>
-</li>
-<li><p>避开输入过滤技术</p>
-</li>
-<li><p>使用特殊的字符</p>
-</li>
-<li><p>强制产生错误</p>
-</li>
-<li><p>使用条件语句</p>
-</li>
-<li><p>利用存储过程</p>
-</li>
-<li><p>推断技术<br>……..</p>
-</li>
-<li><p>宽字节注入</p>
-</li>
-<li><p>urldecode二次注入</p>
-</li>
-<li><p>sql注入防御</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/OperatingSystem/SystemCall/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/05/OperatingSystem/SystemCall/" itemprop="url">SystemCall</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:18:03+08:00">
-                2020-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OperatingSystem/" itemprop="url" rel="index">
-                    <span itemprop="name">OperatingSystem</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="system-call（系统调用）"><a href="#system-call（系统调用）" class="headerlink" title="system call（系统调用）"></a>system call（系统调用）</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>系统调用往往是对一些内核函数的封装，函数实现在内核态，往往由C/C++编写，当涉及到对硬件进行操作时由汇编语言编写；<br>系统调用在内核实现，在C/C++函数库里进行封装成API，当然用户程序也可以直接调用系统调用。  </p>
-<p>关于系统调用，API，内核函数，库函数的关系:<br><img src="/2020/01/05/OperatingSystem/SystemCall/systemcall1.png" alt="关系图"></p>
-<h2 id="系统调用类别："><a href="#系统调用类别：" class="headerlink" title="系统调用类别："></a>系统调用类别：</h2><ul>
-<li>进程控制：对进程的一些操作；</li>
-<li>文件管理：对文件的一些操作；</li>
-<li>设备管理：对设备的一些操作；</li>
-<li>信息维护：读取一些系统数据，进程信息，时间等信息；</li>
-<li>通信：进程间通信的实现，如Soket。</li>
-</ul>
-<h2 id="系统调用的实现机制"><a href="#系统调用的实现机制" class="headerlink" title="系统调用的实现机制"></a>系统调用的实现机制</h2><h3 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h3><p>1.中断/异常机制：支持系统调用服务的实现<br>2.选择一条特殊指令：陷入指令（访管指令）：引发异常，用户态–&gt;内核态切换<br>3.系统调用号和参数：每个系统调用都事先给定一个编号（功能号）<br>4.系统调用表：存放系统调用服务例程的入口地址   </p>
-<h3 id="参数传递问题"><a href="#参数传递问题" class="headerlink" title="参数传递问题"></a>参数传递问题</h3><p><strong>用户态如何实现传递参数到内核态？</strong>   </p>
-<ul>
-<li>由陷入指令自带参数  </li>
-<li>通过通用寄存器传递参数  </li>
-<li>在内存中开辟专用堆栈区（带有共享内存的意味）<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><img src="/2020/01/05/OperatingSystem/SystemCall/systemcall2.png" alt=""></li>
-</ul>
-<h2 id="系统调用的执行过程"><a href="#系统调用的执行过程" class="headerlink" title="系统调用的执行过程"></a>系统调用的执行过程</h2><p><img src="/2020/01/05/OperatingSystem/SystemCall/systemcall3.png" alt=""></p>
-<p><img src="/2020/01/05/OperatingSystem/SystemCall/systemcall4.png" alt=""></p>
-<p>（图片为看mooc时截屏照片，仅供学习，侵即删）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/CUDA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/05/MLDL/CUDA/" itemprop="url">CUDA</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:15:39+08:00">
-                2020-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>暑假实习的是关于一个 GPU 开发库的Python版本项目，该项目 C++ 版本与 Python 版本进行同步开发，Python版本使用 <code>swig</code> 进行 C++ interface 的 wrap，这些 GPU 编程库往往都有很多相似的地方，当时借鉴了很多 CUDA 的相关资料，这里进行记录</p>
-<h3 id="1-2-高效的-GPU-任务具备条件"><a href="#1-2-高效的-GPU-任务具备条件" class="headerlink" title="1.2 高效的 GPU 任务具备条件"></a>1.2 高效的 GPU 任务具备条件</h3><ol>
-<li>具有成千上万的独立工作<ul>
-<li>尽量利用大量的 ALU 单元</li>
-<li>大量的片元切换隐延迟</li>
-</ul>
-</li>
-<li>可以共享指令流<ul>
-<li>适用于 SIMD 处理</li>
-</ul>
-</li>
-<li>最好是计算密集型任务<ul>
-<li>通信和计算开销比例适合</li>
-<li>不要受制于访存带宽</li>
-</ul>
-</li>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://blog.csdn.net/xiaoquantouer/article/details/51647865" target="_blank" rel="noopener">https://blog.csdn.net/xiaoquantouer/article/details/51647865</a></li>
 </ol>
-<p><strong>CUDA这一部分应该掌握GPU软硬件之间的对应关系</strong></p>
-<h2 id="2-GPU的体系结构"><a href="#2-GPU的体系结构" class="headerlink" title="2. GPU的体系结构"></a>2. GPU的体系结构</h2><h3 id="2-1-硬件"><a href="#2-1-硬件" class="headerlink" title="2.1 硬件"></a>2.1 硬件</h3><ul>
-<li>SP（Streaming Processor），亦称 CUDA core，指令和任务的实际执行者</li>
-<li>SM（Streaming Multiprocessor），GPu大核，拥有除SP外的其它资源如： wrap scheduler、register、shared memory等。</li>
-</ul>
-<p>展示GPU的一个SM的示意图（绿色部分为 SP）：</p>
-<p><img src="/2020/01/05/MLDL/CUDA/cuda_sm.png" alt="cuda_sm"></p>
-<p>GPU 中的内存按照访存速度划分：</p>
-<ul>
-<li>Register</li>
-<li>shared memory (block)</li>
-<li>local memory</li>
-<li>global memory (device)</li>
-<li>constant memory (device)</li>
-<li>texture memory</li>
-<li>instruction memory (invisible)</li>
-</ul>
-<h3 id="2-2-软件"><a href="#2-2-软件" class="headerlink" title="2.2 软件"></a>2.2 软件</h3><p>软件的三级结构： </p>
-<ul>
-<li>thread</li>
-<li>block</li>
-<li>grid</li>
-</ul>
-<p><img src="/2020/01/05/MLDL/CUDA/cuda_sw.png" alt="cuda_sw"></p>
-<h3 id="2-3-软硬件之间的对应关系"><a href="#2-3-软硬件之间的对应关系" class="headerlink" title="2.3 软硬件之间的对应关系"></a>2.3 软硬件之间的对应关系</h3><p><img src="/2020/01/05/MLDL/CUDA/cuda_sw_hw.png" alt="cuda_sw_hw"></p>
-<h2 id="3-CUDA的编程模型"><a href="#3-CUDA的编程模型" class="headerlink" title="3. CUDA的编程模型"></a>3. CUDA的编程模型</h2><h3 id="3-1-CUDA-的算法框架"><a href="#3-1-CUDA-的算法框架" class="headerlink" title="3.1 CUDA 的算法框架"></a>3.1 CUDA 的算法框架</h3><p>1) 在 GPU 上分配显存，拷贝数据 host to device<br>2) kernel invocation code<br>3) 运算结束后，输出数据拷贝 device to host</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li>[Introduction-to-GPUs.pdf](/2020/01/05/MLDL/CUDA/Introduction-to-GPUs.pdf</li>
-<li><a href="https://blog.csdn.net/junparadox/article/details/50540602" target="_blank" rel="noopener">CUDA编程</a></li>
-<li><a href="https://www.bilibili.com/video/av10436982?from=search&seid=450076380525809673" target="_blank" rel="noopener">《CUDA编程教程》 B站视频</a></li>
-<li>《CUDA并行程序设计 GPU编程指南》</li>
-<li><a href="https://www.easyhpc.net/lab/detail/22/" target="_blank" rel="noopener">超算课堂-CUDA编程实训</a></li>
-<li><a href="https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/" target="_blank" rel="noopener">Nvidia-introductoion-of-cuda-c-and-c</a></li>
-</ul>
 
           
         
@@ -1307,7 +475,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/RNN/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/C/CPP/c++11/lambda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1326,7 +494,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/05/MLDL/RNN/" itemprop="url">RNN</a></h2>
+                <a class="post-title-link" href="/2020/03/02/C/CPP/c++11/lambda/" itemprop="url">C++ 11 之 Lambda 表达式</a></h2>
         
 
         <div class="post-meta">
@@ -1338,8 +506,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:14:54+08:00">
-                2020-01-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T14:03:00+08:00">
+                2020-03-02
               </time>
             
 
@@ -1361,190 +529,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="RNN-循环神经网络"><a href="#RNN-循环神经网络" class="headerlink" title="RNN(循环神经网络)"></a>RNN(循环神经网络)</h1><p><em>参考：《深度学习入门之PyTorch》配套代码地址：<a href="https://github.com/L1aoXingyu/code-of-learn-deep-learning-with-pytorch" target="_blank" rel="noopener">https://github.com/L1aoXingyu/code-of-learn-deep-learning-with-pytorch</a></em></p>
-<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>卷积神经网络相当于人类的视觉，但是它没有记忆能力，只能处理一种特定的视觉任务，没办法根据以前的记忆来处理新的任务。</p>
-<p>循环神经网络的提出是基于记忆模型的想法，期望网络能够记住前面出现的特征，并依据特征推断后面的结果，并且整体的网络结构不断循环，因此得名循环神经网络。</p>
-<h2 id="2-网络结构"><a href="#2-网络结构" class="headerlink" title="2. 网络结构"></a>2. 网络结构</h2><p>使神经网络具有记忆性，一个很直观的做法是将隐藏层的信息进行保留作为下一个的输入，由此产生出的有以下几种网络结构：</p>
-<h3 id="2-1-基本-RNN"><a href="#2-1-基本-RNN" class="headerlink" title="2.1 基本 RNN"></a>2.1 基本 RNN</h3><p><img src="/2020/01/05/MLDL/RNN/base_rnn.png" alt="base_RNN"></p>
-<h3 id="2-2-双向-RNN（BiRNN"><a href="#2-2-双向-RNN（BiRNN" class="headerlink" title="2.2 双向 RNN（BiRNN)"></a>2.2 双向 RNN（BiRNN)</h3><p><img src="/2020/01/05/MLDL/RNN/BiRNN.png" alt="Bi_RNN"></p>
-<h3 id="2-3-深层-RNN"><a href="#2-3-深层-RNN" class="headerlink" title="2.3 深层 RNN"></a>2.3 深层 RNN</h3><p><img src="/2020/01/05/MLDL/RNN/deep_RNN.jpg" alt="Deep_RNN"></p>
-<p><em>以上图示均为按照时间线展开，实际只是网络的循环，故名循环神经网络</em></p>
-<h2 id="3-存在的问题"><a href="#3-存在的问题" class="headerlink" title="3. 存在的问题"></a>3. 存在的问题</h2><p>早期的循环神经网络具有特别好的记忆性，能够记住当前情景下的内容，但这种循环神经网络能够解决短时依赖问题，对于长时依赖问题，由于记忆的信息和预测位置之间的跨度太大，网络并不能记忆这么长时间的信息，而且随着时间跨度的增大，循环神经网络也越来越难学习这些信息。</p>
-<h2 id="4-循环神经网络的变式：LSTM-与-GRU"><a href="#4-循环神经网络的变式：LSTM-与-GRU" class="headerlink" title="4. 循环神经网络的变式：LSTM 与 GRU"></a>4. 循环神经网络的变式：LSTM 与 GRU</h2><h3 id="4-1-LSTM"><a href="#4-1-LSTM" class="headerlink" title="4.1 LSTM"></a>4.1 LSTM</h3><p>LSTM 是 Long Short Term Memory Networks的缩写，长短期记忆模型。LSTM 比基本的循环神经网络的网络结构内部要复杂。</p>
-<p>LSTM 的三个门：</p>
-<ul>
-<li>输入门，输入门控制着网络的输入</li>
-<li>遗忘门，遗忘门控制着记忆单元</li>
-<li>输出门，输出门控制着网络的输出</li>
-</ul>
-<p><img src="/2020/01/05/MLDL/RNN/LSTM.png" alt="LSTM"></p>
-<p><img src="/2020/01/05/MLDL/RNN/LSTM_1.jpg" alt="LSTM"></p>
-<p><img src="/2020/01/05/MLDL/RNN/LSTM_2.jpg" alt="LSTM"></p>
-<p><img src="/2020/01/05/MLDL/RNN/LSTM_3.jpg" alt="LSTM"></p>
-<h3 id="4-2-GRU"><a href="#4-2-GRU" class="headerlink" title="4.2 GRU"></a>4.2 GRU</h3><p>GRU是 Gated Recurrent Unit的缩写，由 cho 在2014年提出。GRU 和 LSTM 最大的不同在于 GRU 将遗忘门和输入门合成了一个 “更新门”， 同时网络只进行传递和保存的状态是 <code>ht</code>.</p>
-<p><img src="/2020/01/05/MLDL/RNN/LSTM_4.jpg" alt="LSTM"></p>
-<h3 id="4-3-收敛性问题"><a href="#4-3-收敛性问题" class="headerlink" title="4.3 收敛性问题"></a>4.3 收敛性问题</h3><p>RNN 的误差曲面上存在很多陡峭的斜坡，斜坡上误差的变化率特别大，正是这个原因导致道路 loss 曲线在不断跳跃。</p>
-<blockquote>
-<p>正是因为网络在训练过程中，梯度的变化范围很大，所以设置一个固定的学习率并不能有效收敛，同时梯度的变化并没有规律，所以设置衰减的学习率也不能满足条件。</p>
-</blockquote>
-<p>可以采用的办法是： <strong>梯度裁剪</strong>，使用梯度裁剪能够将大的梯度裁，在一定程度上避免收敛不好的问题。</p>
-<h2 id="5-循环神经网络的-pytorch-实现"><a href="#5-循环神经网络的-pytorch-实现" class="headerlink" title="5. 循环神经网络的 pytorch 实现"></a>5. 循环神经网络的 pytorch 实现</h2><h3 id="5-1-PyTorch-的循环网络模块"><a href="#5-1-PyTorch-的循环网络模块" class="headerlink" title="5.1 PyTorch 的循环网络模块"></a>5.1 PyTorch 的循环网络模块</h3><h4 id="1-标准-RNN"><a href="#1-标准-RNN" class="headerlink" title="1. 标准 RNN"></a>1. 标准 RNN</h4><ul>
-<li><code>nn.RNN()</code></li>
-</ul>
-<p>关于参数设置：</p>
-<ul>
-<li><code>input_size</code> 表示输入 x 的特征维度</li>
-<li><code>hidden_size</code> 表示输出 h 的特征维度</li>
-<li><code>num_layers</code> 表示网络层数，默认是 1 层</li>
-<li><code>nonlinearity</code> 表示非线性激活函数的选择，默认是 <code>tanh</code>，可以选择 <code>relu</code></li>
-<li><code>bias</code> 表示是否使用偏置，默认是 <code>True</code></li>
-<li><code>batch_first</code> 决定网络输入的维度顺序，默认网络输入按照 <code>(seq, batch, feature)</code> ，解释为：序列长度、批量、特征维度；如果该参数设置为 <code>True</code>，则顺序变成 <code>(batch, seq, feature)</code></li>
-<li><code>dropout</code> 参数接收0-1的数值，会在网络中除了最后一层之外的其他输出层加上 <code>dropout</code> 层</li>
-<li><code>bidirectional</code> 默认参数是 False</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/" itemprop="url">Ch07</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:12:59+08:00">
-                2020-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
                   </a>
                 </span>
 
@@ -1554,177 +540,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">AndrewNG机器学习</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h1><h2 id="过拟合矛欠拟合问题的引入"><a href="#过拟合矛欠拟合问题的引入" class="headerlink" title="过拟合矛欠拟合问题的引入"></a>过拟合矛欠拟合问题的引入</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_01.png" alt="andrew_01"></p>
-<ul>
-<li>欠拟合（underffit）： 高偏置（high bias）</li>
-<li>过拟合（overfit）：   高方差（high variance）</li>
-</ul>
-<h2 id="代价函数的正则化"><a href="#代价函数的正则化" class="headerlink" title="代价函数的正则化"></a>代价函数的正则化</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_02.png" alt="andrew_02"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_03.png" alt="andrew_03"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_04.png" alt="andrew_04"></p>
-<p>解决正则化的两个思路：</p>
-<ul>
-<li>减少参数的数量</li>
-<li>保持参数的数量，但使用正则化参数控制参数的大小</li>
-</ul>
-<h2 id="线性回归的正则化"><a href="#线性回归的正则化" class="headerlink" title="线性回归的正则化"></a>线性回归的正则化</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_05.png" alt="andrew_05"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_06.png" alt="andrew_06"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_07.png" alt="andrew_07"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_08.png" alt="andrew_08"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_09.png" alt="andrew_09"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_10.png" alt="andrew_10"></p>
-<p>求导的结果表明，加入正则化参数只是对参数乘上一个比1略小的因子。</p>
-<p>使用线性代数的思想来解释（讨论方阵是否可逆）：</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_11.png" alt="andrew_11"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_12.png" alt="andrew_12"></p>
-<h2 id="Logistic回归的正则化"><a href="#Logistic回归的正则化" class="headerlink" title="Logistic回归的正则化"></a>Logistic回归的正则化</h2><p>对Logistic求解算法的改进</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_13.png" alt="andrew_13"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_14.png" alt="andrew_14"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_15.png" alt="andrew_15"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch07/Andrew_16.png" alt="andrew_16"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/" itemprop="url">Ch6_classify</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:12:09+08:00">
-                2020-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
                   </a>
                 </span>
 
@@ -1734,8 +551,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
-                    <span itemprop="name">AndrewNG机器学习</span>
+                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
+                    <span itemprop="name">c++11</span>
                   </a>
                 </span>
 
@@ -1773,37 +590,39 @@
       
         
           
-            <h1 id="Classifier-分类器"><a href="#Classifier-分类器" class="headerlink" title="Classifier 分类器"></a>Classifier 分类器</h1><ul>
-<li>Linear Regression</li>
-<li>Logistic Regression ！！！</li>
-</ul>
-<h2 id="1-分类问题"><a href="#1-分类问题" class="headerlink" title="1. 分类问题"></a>1. 分类问题</h2><p><strong>以下考虑的均为二分类问题：<code>y=0/y=1</code></strong></p>
-<p>分类问题的引入，由最初的线性函数（<code>linear function</code>），得到的值往往存在于 0 与 1 之外，并且线性函数得出的值往往会受到样本的扰动比较大，因此考虑将线性函数的值再经过映射到0-1的空间内。</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_ch06_1.png" alt="classifier"></p>
-<h2 id="2-假设（Hypothesis）"><a href="#2-假设（Hypothesis）" class="headerlink" title="2. 假设（Hypothesis）"></a>2. 假设（Hypothesis）</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_ch06_2.png" alt="hypothesis"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_3.png" alt="hypothesis"></p>
-<h2 id="3-决策界限（Decision-Boundary）"><a href="#3-决策界限（Decision-Boundary）" class="headerlink" title="3. 决策界限（Decision Boundary）"></a>3. 决策界限（Decision Boundary）</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_4.png" alt="decision_boundary"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_5.png" alt="decision_boundary"></p>
-<h2 id="4-代价函数（Cost-Function）"><a href="#4-代价函数（Cost-Function）" class="headerlink" title="4. 代价函数（Cost Function）"></a>4. 代价函数（Cost Function）</h2><p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_6.png" alt="cost_function"></p>
-<p>在线性回归（<code>Linear Regression</code>）里，使用平方差函数作为损失函数是可以的，但是在逻辑回归（<code>Logistic Regression</code>）里，使用平方差函数作为损失函数，该函数并不是凸函数（<code>non-convex function</code>），就不能使用梯度下降 <code>gradient descent</code> 找到全局最小值（<code>global minimum</code>）</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_7.png" alt="cost_funciton"></p>
-<h2 id="5-简化代价函数与梯度下降"><a href="#5-简化代价函数与梯度下降" class="headerlink" title="5. 简化代价函数与梯度下降"></a>5. 简化代价函数与梯度下降</h2><p>对代价函数进行简化，写成一个整体，则成为下面的函数：</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_8.png" alt="gradient_descent"></p>
-<p>对代价函数进行求导：</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_9.png" alt="gradient_descent"></p>
-<h2 id="6-高级优化"><a href="#6-高级优化" class="headerlink" title="6. 高级优化"></a>6. 高级优化</h2><p>梯度下降是一个比较常用算法，但由于其在实际的比较大的问题中，速度较慢，因此往往使用比较快速的方法：</p>
+            <h1 id="lambda-表达式"><a href="#lambda-表达式" class="headerlink" title="lambda 表达式"></a>lambda 表达式</h1><p>lambda 表达式是 c++ 11 引入的新特性，c++中 lambda 表达式的声明：</p>
+<p><code>[capture list] (params list) mutable exception-&gt; return type { function body }</code></p>
 <ul>
-<li>Conjugate Descent （共轭梯度）</li>
-<li>BFGS</li>
-<li>L-BFGS</li>
+<li><code>capture list</code> 为外部捕获参数列表</li>
+<li><code>params list</code> 为形参列表</li>
+<li><code>mutable</code> 用来修饰是否修改捕获的外部变量</li>
+<li><code>exception</code> 异常设定</li>
+<li><strong>可以省略参数列表（省略为空）和返回类型（lambda自动推断返回类型），但必须永远包含捕获列表和函数体</strong></li>
 </ul>
-<p>这些算法的优点是不用手工设置学习率<code>α</code>，它们算法的内部往往包含一个内循环来自动设置这些学习率，并且每一步的学习率也比较不同，收敛速度较快。</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_10.png" alt="gradient_descent"></p>
-<p>Andrew NG 使用 Octave 演示的梯度下降的例子:</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_11.png" alt="gradient_descent"></p>
-<h2 id="7-多元分类（Multi-Class-Classification）"><a href="#7-多元分类（Multi-Class-Classification）" class="headerlink" title="7. 多元分类（Multi-Class Classification）"></a>7. 多元分类（Multi-Class Classification）</h2><p><code>one-vs-all</code> 的方法：思想很简单，即把多元分类的问题看成多个二元分类问题，来选取置信度最高的那一个；</p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_12.png" alt="one-vs-all"></p>
-<p><img src="/2020/01/05/MLDL/AndrewNG%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/Ch6_classify/Andrew_Ch06_13.png" alt="one-vs-all"></p>
+<p>常用的几种 lambda 表达式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用了返回类型后置的新特性</span></span><br><span class="line">[capture <span class="built_in">list</span>] (params <span class="built_in">list</span>) -&gt; <span class="keyword">return</span> type &#123; function body &#125;</span><br><span class="line">[capture <span class="built_in">list</span>] (params <span class="built_in">list</span>) &#123; function body &#125;</span><br><span class="line">[capture <span class="built_in">list</span>] &#123; function body &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于外部变量的捕获方式"><a href="#关于外部变量的捕获方式" class="headerlink" title="关于外部变量的捕获方式"></a>关于外部变量的捕获方式</h2><ul>
+<li>捕获列表仅适用于局部非static变量，lambda可以直接使用局部static变量和在它函数之外声明的名字</li>
+<li>与参数不同，被捕获的变量的值是在lambda创建时拷贝，而不是调用时拷贝；创建！！！！</li>
+</ul>
+<h3 id="1-值捕获"><a href="#1-值捕获" class="headerlink" title="1. 值捕获"></a>1. 值捕获</h3><p>值捕获的方式不能修改传入的 value，如果修改需要加上 <code>mutable</code> 关键字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [a] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    a = <span class="number">321</span>;</span><br><span class="line">    f(); <span class="comment">// 输出：123</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-引用捕获"><a href="#2-引用捕获" class="headerlink" title="2. 引用捕获"></a>2. 引用捕获</h3><p>引用捕获的方式可以修改传入的引用参数，不用加上 <code>mutable</code> 关键字；</p>
+<p><img src="/2020/03/02/C/CPP/c++11/lambda/value_catch.png" alt="引用捕获"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [&amp;a] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    a = <span class="number">321</span>;</span><br><span class="line">    f(); <span class="comment">// 输出：321</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-隐式捕获"><a href="#3-隐式捕获" class="headerlink" title="3. 隐式捕获"></a>3. 隐式捕获</h3><p>不在捕获列表中显式写明需要捕获的变量，使用编译器自动推导，既可以是隐式值捕获，也可以是隐式引用捕获，还可以是混合捕获方式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 隐式值捕获</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [=] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    f(); <span class="comment">// 输出：123</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 隐式引用捕获</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [&amp;] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    a = <span class="number">321</span>;</span><br><span class="line">    f(); <span class="comment">// 输出：321</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 混合捕获方式，见下</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="built_in">string</span> b = <span class="string">"abc"</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [&amp;, b] &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"capture by reference "</span>&lt;&lt;a&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;<span class="string">"capture by value "</span>&lt;&lt;b&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    f();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-混合方式"><a href="#4-混合方式" class="headerlink" title="4. 混合方式"></a>4. 混合方式</h3><p>混合方式是对于既有值捕获又有引用捕获的方式，<br><img src="/2020/03/02/C/CPP/c++11/lambda/mixed_mode.png" alt="混合方式"></p>
+<h2 id="返回类型"><a href="#返回类型" class="headerlink" title="返回类型"></a>返回类型</h2><p>当lambda只包含单一的return语句时，不用指定返回类型。默认情况下，如果一个lambda包含return之外的任何语句，编译器就不能自动 infer，只能假定返回类型为 <code>void</code>，但 <code>void</code> 往往不是我们需要的，因此需要我们手动指定返回类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OK</span></span><br><span class="line">transform(vi.<span class="built_in">begin</span>(), vi.<span class="built_in">end</span>(), vi.<span class="built_in">begin</span>(), [](<span class="keyword">int</span> i) &#123;<span class="keyword">return</span> i &lt; <span class="number">0</span> ? -i : i;&#125;)</span><br><span class="line"><span class="comment">// compile error, can not infer return type</span></span><br><span class="line">transform(vi.<span class="built_in">begin</span>(), vi.<span class="built_in">end</span>(), vi.<span class="built_in">begin</span>(), [](<span class="keyword">int</span> i) &#123;<span class="keyword">if</span> (i &lt; <span class="number">0</span>) <span class="keyword">return</span> -i; <span class="keyword">else</span> <span class="keyword">return</span> i;&#125;)</span><br><span class="line"><span class="comment">// manualy specify the return type</span></span><br><span class="line">transform(vi.<span class="built_in">begin</span>(), vi.<span class="built_in">end</span>(), vi.<span class="built_in">begin</span>(), [](<span class="keyword">int</span> i) -&gt; <span class="keyword">int</span> &#123;<span class="keyword">if</span> (i &lt; <span class="number">0</span>) <span class="keyword">return</span> -i; <span class="keyword">else</span> <span class="keyword">return</span> i;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a href="https://www.cnblogs.com/DswCnblog/p/5629165.html" target="_blank" rel="noopener">https://www.cnblogs.com/DswCnblog/p/5629165.html</a></li>
+</ol>
 
           
         
@@ -1852,7 +671,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Java/Maven/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/C/CPP/leetcode/w1/P297/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1871,7 +690,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/05/Java/Maven/" itemprop="url">Maven</a></h2>
+                <a class="post-title-link" href="/2020/02/20/C/CPP/leetcode/w1/P297/" itemprop="url">Problem 297</a></h2>
         
 
         <div class="post-meta">
@@ -1883,8 +702,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:09:10+08:00">
-                2020-01-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T21:51:00+08:00">
+                2020-02-20
               </time>
             
 
@@ -1906,8 +725,41 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
+                    <span itemprop="name">w1</span>
                   </a>
                 </span>
 
@@ -1945,54 +797,1247 @@
       
         
           
-            <h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><h2 id="1-安装与配置"><a href="#1-安装与配置" class="headerlink" title="1. 安装与配置"></a>1. 安装与配置</h2><p><em>Maven3要求JDK1.7以上</em></p>
-<p>设置环境变量：</p>
+            <h1 id="Serialize-and-Deserialize-Binary-Tree"><a href="#Serialize-and-Deserialize-Binary-Tree" class="headerlink" title="Serialize and Deserialize Binary Tree"></a>Serialize and Deserialize Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>对二叉树进行 <code>srialize</code> 与 <code>deserialize</code> 操作实现</p>
+<h2 id="解法-1"><a href="#解法-1" class="headerlink" title="解法 1"></a>解法 1</h2><p>主要思想是使用两次遍历得到的序列，进行序列化与反序列化操作</p>
+<p>出现的反例是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">1       1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">## 解法 <span class="number">2</span></span><br><span class="line"></span><br><span class="line">加入位置记录，如：</span><br></pre></td></tr></table></figure>
+<pre><code>1</code></pre><p>1       1<br>序列化成： 1,1,1,2,1,3</p>
+<pre><code>    1
+2       3
+     6      7</code></pre><p>序列化成：1,1,2,2,3,3,6,6,7,7<br>```</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/C/CPP/leetcode/w1/P98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/20/C/CPP/leetcode/w1/P98/" itemprop="url">Problem 98</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T21:43:00+08:00">
+                2020-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
+                    <span itemprop="name">w1</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Validate-Binary-Search-Tree"><a href="#Validate-Binary-Search-Tree" class="headerlink" title="Validate Binary Search Tree"></a>Validate Binary Search Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>判断平衡二叉搜索树（Binary Search Tree）</p>
+<h2 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h2><p>使用中序遍历得到一个有序数组，当该数组为升序时即为BST</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> isBST = <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; orderList;</span><br><span class="line">        middleOrder(root, orderList);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span> ; i &lt; orderList.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(orderList[i] &lt;= orderList[i<span class="number">-1</span>]) isBST = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> isBST;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 中序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">middleOrder</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; orderList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span>;</span><br><span class="line">        middleOrder(root -&gt; left, orderList);</span><br><span class="line">        orderList.push_back(root -&gt; val);</span><br><span class="line">        middleOrder(root -&gt; right, orderList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/C/CPP/leetcode/w1/P124/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/20/C/CPP/leetcode/w1/P124/" itemprop="url">Problem 124</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T21:30:00+08:00">
+                2020-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
+                    <span itemprop="name">w1</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Binary-Tree-Maximum-Path-Sum"><a href="#Binary-Tree-Maximum-Path-Sum" class="headerlink" title="Binary Tree Maximum Path Sum"></a>Binary Tree Maximum Path Sum</h1><h2 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h2><p>这道题与 <code>P.687</code> 有点异曲同工的意味，使用递归解法，关键在于</p>
+<ol>
+<li>在递归过程中通过比较保存当前遍历过程中的最值；</li>
+<li>返回以当前节点为根的树的单边最值</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxPathSum</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = root -&gt; val;</span><br><span class="line">        maxSum(root, &amp;ans);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 类似于 687 做法</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maxSum</span><span class="params">(TreeNode* root, <span class="keyword">int</span>* ans)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> r = maxSum(root -&gt; right, ans);</span><br><span class="line">        <span class="keyword">int</span> l = maxSum(root -&gt; left, ans);</span><br><span class="line">        <span class="keyword">int</span> rsum = r + root -&gt; val;</span><br><span class="line">        <span class="keyword">int</span> lsum = l + root -&gt; val;</span><br><span class="line">        <span class="comment">// 求以 root 为根的树单边产生的最值（左子树+root，root，右子树+root，左子树+root+右子树）</span></span><br><span class="line">        <span class="keyword">int</span> m = ThreeMax(rsum, lsum ,root -&gt; val);</span><br><span class="line">        *ans = ThreeMax(*ans, m, l + r + root -&gt; val);</span><br><span class="line">        <span class="comment">// 返回单边树的最值</span></span><br><span class="line">        <span class="keyword">return</span> ThreeMax(l + root -&gt; val, r + root -&gt; val, root -&gt; val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">ThreeMax</span><span class="params">(<span class="keyword">int</span> v1, <span class="keyword">int</span> v2, <span class="keyword">int</span> v3)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(v1 &gt; v2) m = v1;</span><br><span class="line">        <span class="keyword">else</span> m = v2;</span><br><span class="line">        <span class="keyword">if</span>(v3 &gt; m) m = v3;</span><br><span class="line">        <span class="keyword">return</span> m;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>竟然在这道题上拿到了最少空间开销，超过了96.7%的时间，棒！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/C/CPP/leetcode/w1/P1145/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/14/C/CPP/leetcode/w1/P1145/" itemprop="url">Problem 1145</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T22:12:00+08:00">
+                2020-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
+                    <span itemprop="name">w1</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1145-Binary-Tree-Coloring-Game"><a href="#1145-Binary-Tree-Coloring-Game" class="headerlink" title="1145. Binary Tree Coloring Game"></a>1145. Binary Tree Coloring Game</h1><h2 id="1-查找子孙数目-error"><a href="#1-查找子孙数目-error" class="headerlink" title="1. 查找子孙数目[error]"></a>1. 查找子孙数目[error]</h2><p>直观的想法是找到 <code>x</code> 对应的子孙数目，当子孙数目超过一半时，返回 <code>false</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">btreeGameWinningMove</span><span class="params">(TreeNode* root, <span class="keyword">int</span> n, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 可以使用前序遍历访问子孙节点得到子孙的数目</span></span><br><span class="line">        <span class="comment">// 但这道题目可以使用数学公式计算得到</span></span><br><span class="line">        <span class="comment">// 当子孙节点的数目小于总节点数目的一半即可</span></span><br><span class="line">        <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">        TreeNode* px;</span><br><span class="line">        px = levelTraversal(root, x);</span><br><span class="line">        frontOrder(px, num);</span><br><span class="line">        <span class="keyword">if</span> (num &lt; n) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 层次遍历找到对应的节点</span></span><br><span class="line">    <span class="function">TreeNode* <span class="title">levelTraversal</span><span class="params">(TreeNode* root, <span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">queue</span>&lt;TreeNode*&gt; q;</span><br><span class="line">        TreeNode* temp;</span><br><span class="line">        q.push(root);</span><br><span class="line">        <span class="keyword">while</span>(!q.empty()) &#123;</span><br><span class="line">            temp = q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">if</span> (temp -&gt; val == x) <span class="keyword">return</span> temp;</span><br><span class="line">            <span class="keyword">if</span> (temp -&gt; left) q.push(temp -&gt; left);</span><br><span class="line">            <span class="keyword">if</span> (temp -&gt; right) q.push(temp -&gt; right);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 前序遍历找子孙节点的数目</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">frontOrder</span><span class="params">(TreeNode* root, <span class="keyword">int</span>&amp; num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!root) <span class="keyword">return</span>;</span><br><span class="line">        num++;</span><br><span class="line">        frontOrder(root -&gt; left, num);</span><br><span class="line">        frontOrder(root -&gt; right, num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>但是在 submit 时，发现一个测试用例并不通过，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[1,2,3,4,5]</span><br><span class="line">5</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>采用了对于满二叉树的特定判定规则，能够判断这两种情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">case 1</span><br><span class="line">[1,2,3,4,5]</span><br><span class="line">5</span><br><span class="line">1</span><br><span class="line">case 2</span><br><span class="line">[1,2,3,4,5,6,7]</span><br><span class="line">7</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>但出现了新的测试 case 不通过的情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[6,3,null,7,4,null,null,null,2,null,1,null,5]</span><br><span class="line">7</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/C/CPP/leetcode/w1/P1305/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/14/C/CPP/leetcode/w1/P1305/" itemprop="url">Problem 1305</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T16:00:00+08:00">
+                2020-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
+                    <span itemprop="name">w1</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1305-All-Elements-in-Two-Binary-Search-Trees"><a href="#1305-All-Elements-in-Two-Binary-Search-Trees" class="headerlink" title="1305. All Elements in Two Binary Search Trees"></a>1305. All Elements in Two Binary Search Trees</h1><h2 id="1-递归中序遍历-归并排序"><a href="#1-递归中序遍历-归并排序" class="headerlink" title="1. 递归中序遍历 + 归并排序"></a>1. 递归中序遍历 + 归并排序</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getAllElements(TreeNode* root1, TreeNode* root2) &#123;</span><br><span class="line">        <span class="comment">// 中序遍历 + 归并排序</span></span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; l1, l2, l3;</span><br><span class="line">        middleOrder(root1, l1);</span><br><span class="line">        middleOrder(root2, l2);</span><br><span class="line">        <span class="comment">// 归并排序</span></span><br><span class="line">        <span class="keyword">int</span> n1 = l1.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n2 = l2.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(p1 &lt; n1 || p2 &lt; n2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1 &gt;= n1) &#123;</span><br><span class="line">                l3.push_back(l2[p2++]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p2 &gt;= n2) &#123;</span><br><span class="line">                l3.push_back(l1[p1++]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (l1[p1] &lt; l2[p2]) &#123;</span><br><span class="line">                l3.push_back(l1[p1++]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                l3.push_back(l2[p2++]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3;              </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">middleOrder</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; orderList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span>;</span><br><span class="line">        middleOrder(root -&gt; left, orderList);</span><br><span class="line">        orderList.push_back(root -&gt; val);</span><br><span class="line">        middleOrder(root -&gt; right, orderList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>优缺点：</p>
 <ul>
-<li><code>M2_HOME=&quot;/usr/local/maven&quot;</code></li>
-<li><code>M2=/usr/local/maven/bin</code></li>
-<li><code>PATH</code></li>
-</ul>
-<h2 id="2-仓库的配置"><a href="#2-仓库的配置" class="headerlink" title="2. 仓库的配置"></a>2. 仓库的配置</h2><p>这些配置都位于 <code>maven/conf/setting.xml</code>　文件中</p>
-<h3 id="2-1-本地仓库的配置"><a href="#2-1-本地仓库的配置" class="headerlink" title="2.1 本地仓库的配置"></a>2.1 本地仓库的配置</h3><ul>
-<li><code>localRepository</code> 关键字中</li>
-</ul>
-<h3 id="2-2-中央仓库的配置"><a href="#2-2-中央仓库的配置" class="headerlink" title="2.2 中央仓库的配置"></a>2.2 中央仓库的配置</h3><p>maven 下载依赖包的执行流程：</p>
-<p><img src="/2020/01/05/Java/Maven/maven.jpg" alt="maven"></p>
-<p>修改默认中央仓库的位置（以阿里云为例）：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*,!jeecg,!jeecg-snapshots<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="3-项目的创建"><a href="#3-项目的创建" class="headerlink" title="3. 项目的创建"></a>3. 项目的创建</h2><h3 id="3-1-POM-Project-Object-Model-项目对象模型"><a href="#3-1-POM-Project-Object-Model-项目对象模型" class="headerlink" title="3.1 POM(Project Object Model)项目对象模型"></a>3.1 POM(Project Object Model)项目对象模型</h3><h3 id="3-2-坐标"><a href="#3-2-坐标" class="headerlink" title="3.2 坐标"></a>3.2 坐标</h3><ul>
-<li><code>groupId</code></li>
-<li><code>artifactId</code></li>
-<li><code>version</code></li>
-</ul>
-<h2 id="4-常用命令"><a href="#4-常用命令" class="headerlink" title="4. 常用命令"></a>4. 常用命令</h2><h3 id="4-1-项目的创建"><a href="#4-1-项目的创建" class="headerlink" title="4.1 项目的创建"></a>4.1 项目的创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mvn archetype:generate -DgroupId=packageName -DartifactId=projectName -DarchetypeArtifactId=maven-archetype-quickstart/maven-archetype-webapp -DinteractiveMode=false   # 普通　java 项目/Web项目</span><br><span class="line">mvn archetype:create</span><br><span class="line">-X                        # 可打印出构建的过程，方便debug</span><br><span class="line">-DarchetypeCatalog=local  # 读取本地catalog文件，不用从repo.maven下载</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>groupId</code> 会自动在<code>name/src/main/java/</code>目录下构建起 package == package name</li>
-<li><code>artifactId</code> 是项目文件夹的名字</li>
-<li>使用命令行生成maven工程不需要新建文件夹</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-DgroupId=com.sample</span><br><span class="line">-DartifactId=NaiveBayes             #</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-2-代码的编译"><a href="#4-2-代码的编译" class="headerlink" title="4.2 代码的编译"></a>4.2 代码的编译</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn compile         # 源代码的编译</span><br><span class="line">mvn test-compile    # 测试代码的编译</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-3-运行测试"><a href="#4-3-运行测试" class="headerlink" title="4.3 运行测试"></a>4.3 运行测试</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn test</span><br><span class="line">mvn test -Dtest=xxx.xxx.package_name    # 单个测试文件进行测试</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-4-打包"><a href="#4-4-打包" class="headerlink" title="4.4 打包"></a>4.4 打包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn package             #　打包</span><br><span class="line">mvn jar:jar             #  打jar包</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-5-生成其他项目"><a href="#4-5-生成其他项目" class="headerlink" title="4.5 生成其他项目"></a>4.5 生成其他项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mvn idea:idea           # 生成IDEA项目</span><br><span class="line">mvn eclipse:eclipse     # 生成eclipse项目</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-6-下载依赖包"><a href="#4-6-下载依赖包" class="headerlink" title="4.6 下载依赖包"></a>4.6 下载依赖包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn dependency:sources  #　下载依赖的源码包</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-7-清理"><a href="#4-7-清理" class="headerlink" title="4.7 清理"></a>4.7 清理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean               #  清除　target 目录</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-参考"><a href="#5-参考" class="headerlink" title="5. 参考"></a>5. 参考</h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/73444114" target="_blank" rel="noopener">知乎</a></li>
-<li><a href="https://www.iteye.com/blog/stevenfeng-987623" target="_blank" rel="noopener">https://www.iteye.com/blog/stevenfeng-987623</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/73444114" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/73444114</a></li>
+<li>优点：递归进行中序遍历，代码简洁，耗时较短</li>
+<li>缺点：递归导致的函数栈空间的增大，内存消耗较多</li>
 </ul>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/14/C/CPP/leetcode/w1/P2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/14/C/CPP/leetcode/w1/P2/" itemprop="url">Problem 2</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-14T14:00:00+08:00">
+                2020-02-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
+                    <span itemprop="name">w1</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Pro2-Add-Two-Numbers"><a href="#Pro2-Add-Two-Numbers" class="headerlink" title="Pro2. Add Two Numbers"></a>Pro2. Add Two Numbers</h1><h2 id="1-直接想法-error"><a href="#1-直接想法-error" class="headerlink" title="1. 直接想法[error]"></a>1. 直接想法[error]</h2><p>将链表中的值复原成 <code>long</code> 型，直接相加得到的和，写入 <code>l1</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> v1 = <span class="number">0</span>, v2 = <span class="number">0</span>, i = <span class="number">0</span>, result;</span><br><span class="line">        ListNode* index;</span><br><span class="line">        index = l1;</span><br><span class="line">        <span class="keyword">while</span>(index) &#123;</span><br><span class="line">            v1 += <span class="built_in">pow</span>(<span class="number">10</span>, i) * index-&gt;val;</span><br><span class="line">            i++;</span><br><span class="line">            index = index -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">        index = l2;</span><br><span class="line">        <span class="keyword">while</span>(index) &#123;</span><br><span class="line">            v2 += <span class="built_in">pow</span>(<span class="number">10</span>, i) * index-&gt;val;</span><br><span class="line">            i++;</span><br><span class="line">            index = index -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        result = v1 + v2;</span><br><span class="line">        index = l1;</span><br><span class="line">        <span class="keyword">while</span>(result) &#123;</span><br><span class="line">            index -&gt; val = result % <span class="number">10</span>;</span><br><span class="line">            result /= <span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span> (result &amp;&amp; !index -&gt; next) &#123;</span><br><span class="line">                index -&gt; next = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            index = index -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>后来发现这种方法测试的时候有些边界案例测试不能通过，数字过大，因此选择采用第二种方法，使用加法运算规则。</p>
+<h2 id="2-加法运算规则"><a href="#2-加法运算规则" class="headerlink" title="2. 加法运算规则"></a>2. 加法运算规则</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        ListNode* l3;</span><br><span class="line">        ListNode *index1, *index2, *index3, *index3_pre;</span><br><span class="line">        <span class="keyword">char</span> v1, v2, v;</span><br><span class="line">        <span class="keyword">bool</span> ca = <span class="literal">false</span>;</span><br><span class="line">        index1 = l1;</span><br><span class="line">        index2 = l2;</span><br><span class="line">        </span><br><span class="line">        index3_pre = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        l3 = index3_pre;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index1 || index2 || ca) &#123;</span><br><span class="line">            v1 = index1 ? index1 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v2 = index2 ? index2 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v = ca ? v1 + v2 + <span class="number">1</span> : v1 + v2;</span><br><span class="line">            ca = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (v &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">                v = v % <span class="number">10</span>;</span><br><span class="line">                ca = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            index1 = index1 ? index1 -&gt; next : index1;</span><br><span class="line">            index2 = index2 ? index2 -&gt; next : index2;</span><br><span class="line">            index3 = <span class="keyword">new</span> ListNode(v);</span><br><span class="line">            index3_pre -&gt; next = index3;</span><br><span class="line">            index3_pre = index3;</span><br><span class="line">            index3 = index3 -&gt; next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l3 -&gt; next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-减少内存使用"><a href="#3-减少内存使用" class="headerlink" title="3. 减少内存使用"></a>3. 减少内存使用</h2><p>采用尽量减少 <code>new</code> 函数对内存空间的分配来减少内存空间的使用；</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">addTwoNumbers</span><span class="params">(ListNode* l1, ListNode* l2)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        ListNode* l3;</span><br><span class="line">        ListNode *index1, *index2,  *index1_pre;</span><br><span class="line">        <span class="keyword">char</span> v1, v2, v;</span><br><span class="line">        <span class="keyword">bool</span> ca = <span class="literal">false</span>;</span><br><span class="line">        index1 = l1;</span><br><span class="line">        index2 = l2;</span><br><span class="line">        </span><br><span class="line">        index1_pre = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(index1 || index2 || ca) &#123;</span><br><span class="line">            v1 = index1 ? index1 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v2 = index2 ? index2 -&gt; val : <span class="number">0</span>;</span><br><span class="line">            v = ca ? v1 + v2 + <span class="number">1</span> : v1 + v2;</span><br><span class="line">            ca = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (v &gt;= <span class="number">10</span>) &#123;</span><br><span class="line">                v = v % <span class="number">10</span>;</span><br><span class="line">                ca = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (!index1) &#123;</span><br><span class="line">                index1 = <span class="keyword">new</span> ListNode(v);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                index1 -&gt; val = v; </span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            index1_pre -&gt; next = index1;</span><br><span class="line">            index1_pre = index1;</span><br><span class="line">            </span><br><span class="line">            index1 = index1 ? index1 -&gt; next : index1;</span><br><span class="line">            index2 = index2 ? index2 -&gt; next : index2;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> l1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Adapter/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Adapter/" itemprop="url">Adapter</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T00:06:00+08:00">
+                2020-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Adapter"><a href="#Adapter" class="headerlink" title="Adapter"></a>Adapter</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Handle-Body/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/12/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/Handle-Body/" itemprop="url">Handle Body</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-12T00:06:00+08:00">
+                2020-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
           
         
       
@@ -2031,7 +2076,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/6/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/6/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2081,7 +2126,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2092,7 +2137,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2103,7 +2148,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

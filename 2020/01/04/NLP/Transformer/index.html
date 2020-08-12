@@ -93,6 +93,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer4.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer5.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer6.png">
+<meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;parallel_compute_transformer.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer7.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer8.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer9.png">
@@ -100,7 +101,7 @@
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;tranformer11.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer12.png">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer13.png">
-<meta property="og:updated_time" content="2020-01-05T09:29:49.437Z">
+<meta property="og:updated_time" content="2020-07-15T01:00:44.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;04&#x2F;NLP&#x2F;Transformer&#x2F;transformer1.png">
 
@@ -405,14 +406,20 @@
 <p><img src="/2020/01/04/NLP/Transformer/transformer2.png" alt="RNN&amp;CNN"></p>
 <h3 id="2-Self-attention"><a href="#2-Self-attention" class="headerlink" title="2. Self-attention"></a>2. Self-attention</h3><p><img src="/2020/01/04/NLP/Transformer/transformer3.png" alt="self-attention"></p>
 <p><strong>Attention is all you need!</strong></p>
-<p>不需要 RNN/CNN，所需的仅为 attention，输入为 seq 输出为 seq</p>
+<p><strong>不需要 RNN/CNN，所需的仅为 attention，输入为 seq 输出为 seq</strong></p>
 <p><img src="/2020/01/04/NLP/Transformer/transformer4.png" alt="attention"></p>
 <p><img src="/2020/01/04/NLP/Transformer/transformer5.png" alt="attention"></p>
 <p><img src="/2020/01/04/NLP/Transformer/transformer6.png" alt="atttention"></p>
-<p>q 代表的是查询的 weight；k 代表的是被匹配的 weight</p>
-<h3 id="3-multi-head-self-attention"><a href="#3-multi-head-self-attention" class="headerlink" title="3. multi-head self-attention"></a>3. multi-head self-attention</h3><p>多抽头的 self-attention：</p>
+<p>q 代表的是查询的 weight；k 代表的是被匹配的 weight，v 代表的当前位置的表示向量</p>
+<p>从矩阵的并行运算来考虑整个运算过程是这样的：</p>
+<p><img src="/2020/01/04/NLP/Transformer/parallel_compute_transformer.png" alt="parallel_compute_transformer"></p>
+<h3 id="3-multi-head-self-attention"><a href="#3-multi-head-self-attention" class="headerlink" title="3. multi-head self-attention"></a>3. multi-head self-attention</h3><p>为什么会引入 <code>multihead self-attention</code>：</p>
+<p>不同的 head 可关注不同层面的信息，以<code>2-head-self-attention</code>为例，1-head可能更关注 local 层面的信息，2-head 可能更关注 global 层面的信息。</p>
+<p>多抽头的 self-attention：</p>
+<p>这里对每个 a 得到多个 b_i_n 可以通过一个矩阵 transform 进行降维。</p>
 <p><img src="/2020/01/04/NLP/Transformer/transformer7.png" alt="atttention"></p>
-<p>考虑进位置信息的 self-attention</p>
+<p>从上述可以看出，上述的 seq2seq 结构并没有考虑位置信息，有点像 BOW 一样，所以针对其进行改进，考虑进位置信息 <code>self-attention</code></p>
+<p>在 a_i 中加入 e_i（并不是从 data 中学习得到，人为设置）；<br>关于为何是把 e_i 直接相加，而不是 concatenate：将 e_i concatenate 上 a_i，乘上 W，经过矩阵分解运算，可以发现最终和直接加上一个vector的效果是一样的。</p>
 <p><img src="/2020/01/04/NLP/Transformer/transformer8.png" alt="attention"></p>
 <p>将 RNN 替换为 self-attention之后的 seq2seq model:</p>
 <p><img src="/2020/01/04/NLP/Transformer/transformer9.png" alt="attention"></p>
@@ -579,7 +586,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -590,7 +597,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -601,7 +608,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/Git/gitignore/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/14/Mathmatics/sympy/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/27/Git/gitignore/" itemprop="url">gitignore</a></h2>
+                <a class="post-title-link" href="/2019/12/14/Mathmatics/sympy/README/" itemprop="url">README</a></h2>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-27T11:50:35+08:00">
-                2019-11-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-14T16:56:08+08:00">
+                2019-12-14
               </time>
             
 
@@ -348,8 +348,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
+                  <a href="/categories/Mathmatics/" itemprop="url" rel="index">
+                    <span itemprop="name">Mathmatics</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mathmatics/sympy/" itemprop="url" rel="index">
+                    <span itemprop="name">sympy</span>
                   </a>
                 </span>
 
@@ -387,21 +398,10 @@
       
         
           
-            <p><code>.gitignore</code> 文件常用于在 git 中忽略一些文件或目录</p>
-<h2 id="语法规范"><a href="#语法规范" class="headerlink" title="语法规范"></a>语法规范</h2><ul>
-<li>空行或是以#开头的行即注释行将被忽略。</li>
-<li>可以在前面添加正斜杠/来避免递归,下面的例子中可以很明白的看出来与下一条的区别。</li>
-<li>可以在后面添加正斜杠/来忽略文件夹，例如build/即忽略build文件夹。</li>
-<li>可以使用!来否定忽略，即比如在前面用了*.apk，然后使用!a.apk，则这个a.apk不会被忽略。</li>
-<li>*用来匹配零个或多个字符，如*.[oa]忽略所有以”.o”或”.a”结尾，*<del>忽略所有以</del>结尾的文件（这- 种文件通常被许多编辑器标记为临时文件）；[]用来匹配括号内的任一字符，如[abc]，也可以在括号内加连接符，如[0-9]匹配0至9的数；?用来匹配单个字符。<br>看了这么多，还是应该来个栗子：</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 忽略 .a 文件</span></span><br><span class="line">*.a</span><br><span class="line"><span class="comment"># 但否定忽略 lib.a, 尽管已经在前面忽略了 .a 文件</span></span><br><span class="line">!lib.a</span><br><span class="line"><span class="comment"># 仅在当前目录下忽略 TODO 文件， 但不包括子目录下的 subdir/TODO</span></span><br><span class="line">/TODO</span><br><span class="line"><span class="comment"># 忽略 build/ 文件夹下的所有文件</span></span><br><span class="line">build/</span><br><span class="line"><span class="comment"># 忽略 doc/notes.txt, 不包括 doc/server/arch.txt</span></span><br><span class="line">doc/*.txt</span><br><span class="line"><span class="comment"># 忽略所有的 .pdf 文件 在 doc/ directory 下的</span></span><br><span class="line">doc/**/*.pdf</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><p>在文件夹前使用 <code>/</code> 可以用来避免递归如：</p>
-<ul>
-<li><code>*.txt</code> 表示忽略当前文件夹及子文件夹下的 <code>.txt</code> 文件</li>
-<li><code>/*.txt</code> 表示仅忽略当前文件夹下的 <code>*.txt</code> 文件</li>
-</ul>
+            <h1 id="Sympy"><a href="#Sympy" class="headerlink" title="Sympy"></a>Sympy</h1><blockquote>
+<p>SymPy is a Python library for symbolic mathematics. If you are new to SymPy, start with the Tutorial.<br>This is the central page for all of SymPy’s documentation.</p>
+</blockquote>
+<p><em>source: <a href="https://docs.sympy.org/1.4/index.html" target="_blank" rel="noopener">https://docs.sympy.org/1.4/index.html</a></em></p>
 
           
         
@@ -450,7 +450,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/26/MLDL/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/Python/%E5%BA%8F%E5%88%97%E5%8C%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -469,7 +469,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/26/MLDL/%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2/" itemprop="url">环境部署</a></h2>
+                <a class="post-title-link" href="/2019/12/13/Python/%E5%BA%8F%E5%88%97%E5%8C%96/" itemprop="url">序列化</a></h2>
         
 
         <div class="post-meta">
@@ -481,8 +481,292 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-26T16:58:09+08:00">
-                2019-11-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T14:49:33+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="序列化-Serialize"><a href="#序列化-Serialize" class="headerlink" title="序列化 Serialize"></a>序列化 Serialize</h1><h2 id="json操作"><a href="#json操作" class="headerlink" title="json操作"></a><code>json</code>操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">json.loads()        <span class="comment"># 加载json数据</span></span><br><span class="line">json.dumps(nlp_res, sort_keys=<span class="literal">True</span>, indent=<span class="number">4</span>, separators=(<span class="string">', '</span>, <span class="string">': '</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(os.path.join(output_file_dir, <span class="string">'openie.json'</span>), <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(openie_data, f, indent=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/Python/IO/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/13/Python/IO/" itemprop="url">IO</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T14:46:17+08:00">
+                2019-12-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="python中的IO"><a href="#python中的IO" class="headerlink" title="python中的IO"></a>python中的IO</h1><h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'file.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.read()  <span class="comment"># 一次性读取所有内容</span></span><br><span class="line">    f.readline()        <span class="comment"># 逐行读取内容</span></span><br><span class="line">    f.readlines()       <span class="comment"># 一次进行逐行读取,返回 list</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文件操作-os-path"><a href="#文件操作-os-path" class="headerlink" title="文件操作 os.path"></a>文件操作 <code>os.path</code></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_files</span><span class="params">()</span>:</span></span><br><span class="line">    news_file_list = []</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> os.listdir(data_dir_path):</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(os.path.join(data_dir_path, d)):</span><br><span class="line">            news_file_list.append(os.path.join(data_dir_path, d, <span class="string">'news.txt'</span>))</span><br><span class="line">    <span class="keyword">return</span> news_file_list</span><br><span class="line"></span><br><span class="line">os.path.dirname()   <span class="comment"># 返回所在的文件夹名称</span></span><br><span class="line">os.path.exists()    <span class="comment"># 判断路径是否存在</span></span><br><span class="line">os.path.abspath()   <span class="comment"># 返回绝对路径</span></span><br><span class="line">os.path.isdir()     <span class="comment"># 判断是否为目录，注：要输入绝对路径</span></span><br><span class="line">os.path.isfile()    <span class="comment"># 判断是否为文件</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/12/MLDL/conda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/12/MLDL/conda/" itemprop="url">conda</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-12T21:58:02+08:00">
+                2019-12-12
               </time>
             
 
@@ -543,77 +827,432 @@
       
         
           
-            <h1 id="深度学习环境的部署"><a href="#深度学习环境的部署" class="headerlink" title="深度学习环境的部署"></a>深度学习环境的部署</h1><h2 id="0-查看GPU环境"><a href="#0-查看GPU环境" class="headerlink" title="0. 查看GPU环境"></a>0. 查看GPU环境</h2><ul>
-<li>查看 GPU 型号： <code>lspci | grep -i nvidia</code></li>
-<li>查看 GPU 驱动版本： <code>sudo dpkg --list | grep nvidia-*</code></li>
+            <h1 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看已创建的 python 环境</span></span><br><span class="line">conda info --env</span><br><span class="line"><span class="comment"># 查看conda下的所有基本配置</span></span><br><span class="line">conda config --show</span><br><span class="line"><span class="comment"># 删除conda的channel</span></span><br><span class="line">conda config --remove channels <span class="string">'default'</span></span><br><span class="line"><span class="comment"># 添加conda的channel</span></span><br><span class="line">conda config --add channels https://xxx</span><br><span class="line"><span class="comment"># 配置清华PyPI镜像（如无法运行，将pip版本升级到&gt;=10.0.0）</span></span><br><span class="line">pip config set <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 创建环境</span></span><br><span class="line">conda create --name envname python=<span class="number">3.6</span></span><br><span class="line"><span class="comment"># 激活环境</span></span><br><span class="line">conda activate envname</span><br><span class="line"><span class="comment"># 获取当前环境中已经安装的包</span></span><br><span class="line">conda list</span><br><span class="line"><span class="comment"># 获取某个环境中安装的包</span></span><br><span class="line">conda list -n envname</span><br><span class="line"><span class="comment"># 退出环境</span></span><br><span class="line">conda deactivate</span><br><span class="line"><span class="comment"># 删除环境</span></span><br><span class="line">conda remove -n envname --all</span><br><span class="line"><span class="comment"># 导出环境</span></span><br><span class="line">conda env export &gt; environment.yml</span><br><span class="line"><span class="comment"># 根据 .yml 文件创建环境</span></span><br><span class="line">conda env create -f environment.yml</span><br></pre></td></tr></table></figure>
+
+<h2 id="pip-源"><a href="#pip-源" class="headerlink" title="pip 源"></a>pip 源</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt <span class="comment"># pip 清华源</span></span><br><span class="line">pip install -i http://pypi.douban.com/simple/ -r requirements.txt           <span class="comment"># pip 豆瓣源</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/57287956" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/57287956</a></li>
+<li></li>
 </ul>
-<h2 id="1-CUDA-环境的配置"><a href="#1-CUDA-环境的配置" class="headerlink" title="1. CUDA 环境的配置"></a>1. CUDA 环境的配置</h2><p>refer:<br>    1. <a href="https://www.cnblogs.com/yhjoker/p/10972795.html" target="_blank" rel="noopener">https://www.cnblogs.com/yhjoker/p/10972795.html</a><br>    2. <a href="https://blog.csdn.net/wanzhen4330/article/details/81699769#cudnn%E7%9A%84%E5%AE%89%E8%A3%85" target="_blank" rel="noopener">https://blog.csdn.net/wanzhen4330/article/details/81699769#cudnn%E7%9A%84%E5%AE%89%E8%A3%85</a></p>
-<ul>
-<li>如何更改 <code>cuda</code> 版本</li>
-</ul>
-<p>先来看下 pytorch 如何找到 cuda（以下过程为顺序进行，满足条件即停止）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/11/NLP/StanfordNLP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/11/NLP/StanfordNLP/" itemprop="url">StanfordNLP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-11T11:38:34+08:00">
+                2019-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Stanford-CoreNLP"><a href="#Stanford-CoreNLP" class="headerlink" title="Stanford CoreNLP"></a>Stanford CoreNLP</h1><p><strong>Not stanfordnlp!!</strong></p>
 <ol>
-<li>先查看环境变量 <code>CUDA_HOME</code> 或 <code>CUDA_PATH</code></li>
-<li>检查系统固定路径 <code>/usr/local/cuda</code>，寻找该软链接文件</li>
-<li><code>which nvcc</code> 查看 <code>nvcc</code> 所在的 cuda 安装目录，并将其作为运行时的 cuda 版本</li>
+<li><code>stanford-corenlp</code>的gitpage主页：<a href="https://stanfordnlp.github.io/CoreNLP/" target="_blank" rel="noopener">https://stanfordnlp.github.io/CoreNLP/</a></li>
+<li><code>stanford-corenlp</code>的github仓库地址：<a href="https://github.com/stanfordnlp/CoreNLP" target="_blank" rel="noopener">https://github.com/stanfordnlp/CoreNLP</a></li>
+<li><code>stanford-corenlp</code>的软件组件介绍：<a href="https://nlp.stanford.edu/software/" target="_blank" rel="noopener">https://nlp.stanford.edu/software/</a></li>
 </ol>
-<p>通过以上可以确定更改 <code>cuda</code> 的方法：</p>
+<p>我们从上述链接可以发现stanfordnlp的主要组成部分：<code>Core</code>、<code>Projects</code>、<code>Archive</code><br>这些软件基本组合进<code>stanford-corenlp</code>，成为其组成部分，使用方法也比较多，大的区分为：</p>
 <ol>
-<li>对于非 <code>root</code> 账户，可以使用环境变量的方法：指定 <code>CUDA_HOME</code> 与 <code>PATH</code></li>
-<li>对于 <code>root</code> 账户，可以在 <code>/usr/local/cuda</code> 修改该软链接文件</li>
+<li>直接使用对应组件的package，写java代码进行调用</li>
+<li>以<code>stanford-corenlp</code>服务的方式进行调用</li>
 </ol>
 <ul>
-<li>如何查看 <code>cuda</code> 及 <code>cudnn</code> 版本</li>
+<li><code>Command line usage</code> 通过命令行使用</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.version.cuda   <span class="comment"># 该命令查看的是编译 pytorch 使用的 cuda 版本，并不一定是运行的时候的版本</span></span><br></pre></td></tr></table></figure>
+<p><em><a href="https://stanfordnlp.github.io/CoreNLP/cmdline.html" target="_blank" rel="noopener">source</a></em></p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -mx1g -cp "*" edu.stanford.nlp.naturalli.OpenIE    # 从标准输入获取输入，输出到标准输出</span><br><span class="line">java -mx1g -cp "*" edu.stanford.nlp.naturalli.OpenIE  /<span class="built_in">path</span>/to/file1  /<span class="built_in">path</span>/to/file2    # 指定输入与输出路径</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch.utils</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> torch.utils.cpp_extension</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>torch.utils.cpp_extension.CUDA_HOME <span class="comment"># 此为查看运行时的 cuda 版本的方法</span></span><br></pre></td></tr></table></figure>
-
-<p>或者通过查看 <code>/usr/local/cuda</code> 目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cuda 版本</span></span><br><span class="line">cat /usr/local/cuda/version.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> cudnn 版本</span></span><br><span class="line">cat /usr/local/cuda/include/cudnn.h | grep CUDNN_MAJOR -A 2</span><br><span class="line">nvcc --version</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-cudnn-的安装"><a href="#2-cudnn-的安装" class="headerlink" title="2. cudnn 的安装"></a>2. cudnn 的安装</h2><p>cudnn 是用于深度神经网络加速的GPU加速库，可以集成到更高级别的机器学习框架中，如 caffe。相比于标准的 cuda，它在一些常用的神经网络操作上进行了性能的优化。</p>
-<p>它的安装只需要将 package 下载下来，解压到 CUDA_HOME 中的 <code>include</code>、<code>lib</code>、<code>bin</code> 目录下即可。</p>
 <ul>
-<li><p><code>cudnn</code> 版本的查看</p>
-<p>  <code>cat $CUDA_HOME/include/cudnn.h | grep CUDNN_MAJOR -A 2</code></p>
-</li>
+<li><code>Stanford CoreNLP API</code> 通过<code>java programmatic API</code></li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> !/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> Install CUDA Toolkit v8.0 and cudnn v6.0 on ubuntu 16.04</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> instructions from https://developer.nvidia.com/cuda-downloads (linux -&gt; x86_64 -&gt; Ubuntu -&gt; 16.04 -&gt; deb (network))</span></span><br><span class="line">CUDA_REPO_PKG="cuda-repo-ubuntu1604_8.0.61-1_amd64.deb"</span><br><span class="line">wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/$&#123;CUDA_REPO_PKG&#125;</span><br><span class="line">sudo dpkg -i $&#123;CUDA_REPO_PKG&#125;</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get -y install cuda</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> install cuDNN v6.0</span></span><br><span class="line">CUDNN_TAR_FILE="cudnn-8.0-linux-x64-v6.0.tgz"</span><br><span class="line">wget http://developer.download.nvidia.com/compute/redist/cudnn/v6.0/$&#123;CUDNN_TAR_FILE&#125;</span><br><span class="line">tar -xzvf $&#123;CUDNN_TAR_FILE&#125;</span><br><span class="line">sudo cp -P cuda/include/cudnn.h /usr/local/cuda-8.0/include</span><br><span class="line">sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda-8.0/lib64/</span><br><span class="line">sudo chmod a+r /usr/local/cuda-8.0/include/cudnn.h /usr/local/cuda-8.0/lib64/libcudnn*</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> <span class="built_in">set</span> environment variables</span></span><br><span class="line">export PATH=/usr/local/cuda-8.0/bin$&#123;PATH:+:$&#123;PATH&#125;&#125;</span><br><span class="line">export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64\$&#123;LD_LIBRARY_PATH:+:$&#123;LD_LIBRARY_PATH&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><em><a href="https://stanfordnlp.github.io/CoreNLP/api.html" target="_blank" rel="noopener">source</a></em></p>
+<blockquote>
+<p>The backbone of the CoreNLP package is formed by two classes: Annotation and Annotator. Annotations are the data structure which hold the results of annotators. Annotations are basically maps, from keys to bits of the annotation, such as the parse, the part-of-speech tags, or named entity tags. Annotators are a lot like functions, except that they operate over Annotations instead of Objects. They do things like tokenize, parse, or NER tag sentences. Annotators and Annotations are integrated by AnnotationPipelines, which create sequences of generic Annotators. Stanford CoreNLP inherits from the AnnotationPipeline class, and is customized with NLP Annotators.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> edu.stanford.nlp.pipeline.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BasicPipelineExample</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// creates a StanfordCoreNLP object, with POS tagging, lemmatization, NER, parsing, and coreference resolution</span></span><br><span class="line">        Properties props = <span class="keyword">new</span> Properties();</span><br><span class="line">        props.setProperty(<span class="string">"annotators"</span>, <span class="string">"tokenize, ssplit, pos, lemma, ner, parse, dcoref"</span>);</span><br><span class="line">        StanfordCoreNLP pipeline = <span class="keyword">new</span> StanfordCoreNLP(props);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// read some text in the text variable</span></span><br><span class="line">        String text = <span class="string">"..."</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// create an empty Annotation just with the given text</span></span><br><span class="line">        Annotation document = <span class="keyword">new</span> Annotation(text);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// run all Annotators on this text</span></span><br><span class="line">        pipeline.annotate(document);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-pytorch-中查看GPU信息"><a href="#3-pytorch-中查看GPU信息" class="headerlink" title="3. pytorch 中查看GPU信息"></a>3. pytorch 中查看GPU信息</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cuda 是否可用</span></span><br><span class="line">torch.cuda.is_available()</span><br><span class="line"><span class="comment"># 返回 GPU 数量</span></span><br><span class="line">torch.cuda.device_count()</span><br><span class="line"><span class="comment"># 返回 GPu 的名字，设备索引默认从 0 开始</span></span><br><span class="line">torch.cuda.get_device_name(<span class="number">0</span>)</span><br><span class="line"><span class="comment"># 返回当前设备索引</span></span><br><span class="line">torch.cuda.current_device()</span><br><span class="line"><span class="comment"># 返回 torch 的版本</span></span><br><span class="line">torch.__version__</span><br><span class="line"><span class="comment"># 返回 cuda 的版本</span></span><br><span class="line">torch.version.cuda()</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-tensorflow-环境配置"><a href="#4-tensorflow-环境配置" class="headerlink" title="4. tensorflow 环境配置"></a>4. tensorflow 环境配置</h2><p><code>tensorflow</code> 与 <code>cuda</code>、<code>cudnn</code> 之间的适配关系参考：<a href="https://blog.csdn.net/oMoDao1/article/details/83241074" target="_blank" rel="noopener">https://blog.csdn.net/oMoDao1/article/details/83241074</a></p>
-<h3 id="4-1-安装-tensorflow-gpu"><a href="#4-1-安装-tensorflow-gpu" class="headerlink" title="4.1 安装 tensorflow-gpu"></a>4.1 安装 tensorflow-gpu</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 GPU 版本的 tensorflow</span></span><br><span class="line">pip install tensorflow-gpu</span><br><span class="line"><span class="comment"># 安装 CPU 版本的 tensorflow</span></span><br><span class="line">pip install tensorflow</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意： tensorflow的安装版本应该参考官方发布，与 cuda 的版本保持一致</strong></p>
-<h3 id="4-2-安装参考"><a href="#4-2-安装参考" class="headerlink" title="4.2 安装参考"></a>4.2 安装参考</h3><ul>
-<li><code>tensorflow:</code> <a href="https://www.tensorflow.org/install#requirements_to_run_tensorflow_with_gpu_support" target="_blank" rel="noopener">https://www.tensorflow.org/install#requirements_to_run_tensorflow_with_gpu_support</a></li>
-<li><code>CUDA:</code> <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank" rel="noopener">https://developer.nvidia.com/cuda-toolkit-archive</a></li>
-</ul>
-<h3 id="4-3-查看信息"><a href="#4-3-查看信息" class="headerlink" title="4.3 查看信息"></a>4.3 查看信息</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line">print(tf.__version__)   <span class="comment"># tensorflow version</span></span><br><span class="line">print(tf.__path__)      <span class="comment"># tensorflow install path</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-Tips"><a href="#5-Tips" class="headerlink" title="5. Tips"></a>5. Tips</h2><h3 id="5-1-查看-GPU-的使用情况"><a href="#5-1-查看-GPU-的使用情况" class="headerlink" title="5.1 查看 GPU 的使用情况"></a>5.1 查看 GPU 的使用情况</h3><p><code>nvidia-smi</code> 得到的信息比较少，这里使用 <code>gpustat</code></p>
-<p>详见 <a href="https://github.com/wookayin/gpustat" target="_blank" rel="noopener">gpustat</a></p>
-<h3 id="5-2-tmux-的使用"><a href="#5-2-tmux-的使用" class="headerlink" title="5.2 tmux 的使用"></a>5.2 <code>tmux</code> 的使用</h3><p>项目地址 <a href="https://github.com/tmux/tmux" target="_blank" rel="noopener">tmux</a>，终端复用工具.<br>命令参考：<a href="https://www.cnblogs.com/kaiye/p/6275207.html" target="_blank" rel="noopener">https://www.cnblogs.com/kaiye/p/6275207.html</a></p>
-<p>tmux 中有几个比较重要的概念：</p>
 <ul>
-<li>session: 建立一个工作区会话</li>
-<li>window: 容纳多个窗格</li>
-<li>pane: 可以在窗格中分成多个窗格</li>
-<li><code>ctrl + B</code> 基本指令，使用该指令之后，输入的下一个指令解释为 <code>tmux</code> 命令</li>
+<li><code>CoreNLP server</code> 通过web service运行<code>stanford-corenlp</code>（<code>python</code> or other）</li>
 </ul>
-<ol>
-<li><p>新建 session</p>
-<p> <code>tmux new -s name_xxx</code> name_xxx 为 session name</p>
-</li>
-<li><p>一个 session 中新建 window</p>
-<p> <code>ctrl+B</code> -&gt; <code>c</code></p>
-<p> sesssion 中 window 之间的切换：<br>  <code>ctrl+B</code> -&gt; <code>n</code> 切换 next wiindow；<br>  <code>ctrl+B</code> -&gt; <code>p</code> 切换 previous window</p>
-</li>
-<li><p>一个 window 里新建 pane</p>
-<p> 左右切分 pane: <code>ctrl+B</code> -&gt; <code>%</code>；<br> 上下切分 pane: <code>ctrl+B</code> -&gt; <code>&quot;</code>；<br> pane 之间的切换使用 <code>ctrl+B</code> -&gt; 上下左右；<br> 关闭 pane: <code>ctrl+B</code> -&gt; <code>x</code></p>
-</li>
+<p><em>这种一般以服务的方式运行，通过其他语言的wrapper调用<a href="https://stanfordnlp.github.io/CoreNLP/other-languages.html" target="_blank" rel="noopener">source</a></em></p>
+<p>启动<br><em><a href="https://stanfordnlp.github.io/CoreNLP/corenlp-server.html" target="_blank" rel="noopener">source</a></em></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Run the server using all jars <span class="keyword">in</span> the current directory (e.g., the CoreNLP home directory)</span></span><br><span class="line">java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000 -timeout 15000</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python wrapper：https://github.com/Lynten/stanford-corenlp/blob/master/stanfordcorenlp/corenlp.py</span></span><br><span class="line"><span class="comment"># Simple usage</span></span><br><span class="line"><span class="keyword">from</span> stanfordcorenlp <span class="keyword">import</span> StanfordCoreNLP</span><br><span class="line"></span><br><span class="line">nlp = StanfordCoreNLP(<span class="string">r'G:\JavaLibraries\stanford-corenlp-full-2018-02-27'</span>)</span><br><span class="line"></span><br><span class="line">sentence = <span class="string">'Guangdong University of Foreign Studies is located in Guangzhou.'</span></span><br><span class="line"><span class="keyword">print</span> <span class="string">'Tokenize:'</span>, nlp.word_tokenize(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Part of Speech:'</span>, nlp.pos_tag(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Named Entities:'</span>, nlp.ner(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Constituency Parsing:'</span>, nlp.parse(sentence)</span><br><span class="line"><span class="keyword">print</span> <span class="string">'Dependency Parsing:'</span>, nlp.dependency_parse(sentence)</span><br><span class="line"></span><br><span class="line">nlp.close() <span class="comment"># Do not forget to close! The backend server will consume a lot memery.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-Stanford-Named-Entity-Recognizer-NER"><a href="#1-Stanford-Named-Entity-Recognizer-NER" class="headerlink" title="1. Stanford Named Entity Recognizer (NER)"></a>1. Stanford Named Entity Recognizer (NER)</h2><p>参考：<a href="https://nlp.stanford.edu/software/CRF-NER.html" target="_blank" rel="noopener">https://nlp.stanford.edu/software/CRF-NER.html</a></p>
+<blockquote>
+<p>Stanford NER is also known as CRFClassifier. The software provides a general implementation of (arbitrary order) linear chain Conditional Random Field (CRF) sequence models. That is, by training your own models on labeled data, you can actually use this code to build sequence models for NER or any other task. (CRF models were pioneered by <a href="http://www.cis.upenn.edu/~pereira/papers/crf.pdf" target="_blank" rel="noopener">Lafferty, McCallum, and Pereira (2001)</a>; see <a href="http://people.cs.umass.edu/~mccallum/papers/crf-tutorial.pdf" target="_blank" rel="noopener">Sutton and McCallum (2006)</a> or <a href="http://arxiv.org/pdf/1011.4088v1" target="_blank" rel="noopener">Sutton and McCallum (2010)</a> for more comprehensible introductions.)</p>
+</blockquote>
+<h2 id="2-Stanford-OpenIE"><a href="#2-Stanford-OpenIE" class="headerlink" title="2. Stanford OpenIE"></a>2. Stanford OpenIE</h2><p>参考：<a href="https://nlp.stanford.edu/software/openie.html" target="_blank" rel="noopener">https://nlp.stanford.edu/software/openie.html</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//https://github.com/stanfordnlp/CoreNLP/blob/master/src/edu/stanford/nlp/naturalli/OpenIEDemo.java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">// Create the Stanford CoreNLP pipeline</span></span><br><span class="line">    Properties props = PropertiesUtils.asProperties(</span><br><span class="line">            <span class="string">"annotators"</span>, <span class="string">"tokenize,ssplit,pos,lemma,depparse,natlog,openie"</span></span><br><span class="line">    );</span><br><span class="line">    StanfordCoreNLP pipeline = <span class="keyword">new</span> StanfordCoreNLP(props);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Annotate an example document.</span></span><br><span class="line">    String text;</span><br><span class="line">    <span class="keyword">if</span> (args.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      text = IOUtils.slurpFile(args[<span class="number">0</span>]);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      text = <span class="string">"Obama was born in Hawaii. He is our president."</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Annotation doc = <span class="keyword">new</span> Annotation(text);</span><br><span class="line">    pipeline.annotate(doc);</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="学习参考"><a href="#学习参考" class="headerlink" title="学习参考"></a>学习参考</h2><ul>
+<li>Python中使用Stanford CoreNLP：<a href="https://blog.csdn.net/qq_35203425/article/details/80451243" target="_blank" rel="noopener">https://blog.csdn.net/qq_35203425/article/details/80451243</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/NLP/%E5%B8%B8%E7%94%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/10/NLP/%E5%B8%B8%E7%94%A8%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7%E5%8C%85/" itemprop="url">常用自然语言处理工具包</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T20:12:32+08:00">
+                2019-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="常用自然语言处理工具包"><a href="#常用自然语言处理工具包" class="headerlink" title="常用自然语言处理工具包"></a>常用自然语言处理工具包</h1><h2 id="stanford-corenlp"><a href="#stanford-corenlp" class="headerlink" title="stanford corenlp"></a>stanford corenlp</h2><p>由 stanford nlp 小组开发，包括多种工具集：</p>
+<h3 id="function"><a href="#function" class="headerlink" title="function"></a>function</h3><ul>
+<li>the part-of-speech tagger(POS)</li>
+<li>the named entity recognizer(NER)</li>
+<li>the parser</li>
+<li>the coreference resolution system</li>
+<li>sentiment analysis</li>
+<li>bootstrapped pattern learning</li>
+<li>open information extraction</li>
+</ul>
+<h3 id="language"><a href="#language" class="headerlink" title="language"></a>language</h3><ul>
+<li>English</li>
+<li>Arabic</li>
+<li>Chinese</li>
+</ul>
+<h3 id="code-language"><a href="#code-language" class="headerlink" title="code language"></a>code language</h3><ul>
+<li>dev language: <code>java</code></li>
+<li>available language: <code>java</code> <code>python</code></li>
+</ul>
+<h3 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h3><ol>
+<li>主页：<a href="https://stanfordnlp.github.io/CoreNLP/" target="_blank" rel="noopener">https://stanfordnlp.github.io/CoreNLP/</a></li>
+<li>demo online: <a href="http://corenlp.run/" target="_blank" rel="noopener">http://corenlp.run/</a></li>
+<li>详细模块：<a href="https://nlp.stanford.edu/software/" target="_blank" rel="noopener">https://nlp.stanford.edu/software/</a></li>
+</ol>
+<h2 id="Jieba-分词"><a href="#Jieba-分词" class="headerlink" title="Jieba 分词"></a>Jieba 分词</h2><h2 id="NLTK"><a href="#NLTK" class="headerlink" title="NLTK"></a>NLTK</h2><h2 id="Hanlp"><a href="#Hanlp" class="headerlink" title="Hanlp"></a>Hanlp</h2><h3 id="function-1"><a href="#function-1" class="headerlink" title="function"></a>function</h3><ul>
+<li>中文分词</li>
+<li>词性标注</li>
+<li>命名实体识别</li>
+<li>关键词提取</li>
+<li>依存句法分析</li>
+<li>自动摘要</li>
+<li>文本聚类</li>
+<li>情感分析</li>
+</ul>
+<h3 id="language-1"><a href="#language-1" class="headerlink" title="language"></a>language</h3><p>中文</p>
+<h3 id="code-language-1"><a href="#code-language-1" class="headerlink" title="code language"></a>code language</h3><ul>
+<li>dev language: <code>java</code></li>
+<li>available language: <code>java</code> <code>python</code></li>
+</ul>
+<h3 id="reference-1"><a href="#reference-1" class="headerlink" title="reference"></a>reference</h3><ol>
+<li>git repo: <a href="https://github.com/hankcs/HanLP" target="_blank" rel="noopener">https://github.com/hankcs/HanLP</a></li>
+<li>配套书籍：《自然语言处理入门》</li>
+</ol>
+<h2 id="LTP-Language-Technology-Platform-哈工大"><a href="#LTP-Language-Technology-Platform-哈工大" class="headerlink" title="LTP(Language Technology Platform)哈工大"></a>LTP(Language Technology Platform)哈工大</h2><h3 id="funtion"><a href="#funtion" class="headerlink" title="funtion"></a>funtion</h3><ul>
+<li>中文分词</li>
+<li>词性标注</li>
+<li>命名实体识别</li>
+<li>依存句法分析</li>
+<li>语义角色标注</li>
+</ul>
+<h3 id="language-2"><a href="#language-2" class="headerlink" title="language"></a>language</h3><p>中文</p>
+<h3 id="code-language-2"><a href="#code-language-2" class="headerlink" title="code language"></a>code language</h3><ul>
+<li>dev language: <code>C++</code></li>
+<li>available language: <code>C++</code> <code>java</code> <code>python</code></li>
+</ul>
+<h3 id="reference-2"><a href="#reference-2" class="headerlink" title="reference"></a>reference</h3><ol>
+<li>git repo: <a href="https://github.com/HIT-SCIR/ltp" target="_blank" rel="noopener">https://github.com/HIT-SCIR/ltp</a></li>
+<li>主页：<a href="http://ltp.ai/" target="_blank" rel="noopener">http://ltp.ai/</a></li>
+</ol>
+<h2 id="复旦NLP-FNLP-–-gt-fastNLP"><a href="#复旦NLP-FNLP-–-gt-fastNLP" class="headerlink" title="复旦NLP(FNLP) –&gt; fastNLP"></a>复旦NLP(FNLP) –&gt; fastNLP</h2><h3 id="function-2"><a href="#function-2" class="headerlink" title="function"></a>function</h3><ul>
+<li>中文分词</li>
+<li>词性标注</li>
+<li>命名实体识别</li>
+<li>依存句法分析</li>
+<li>文本聚类</li>
+</ul>
+<h3 id="language-3"><a href="#language-3" class="headerlink" title="language"></a>language</h3><p>中文</p>
+<h3 id="code-language-3"><a href="#code-language-3" class="headerlink" title="code language"></a>code language</h3><ul>
+<li>dev language: <code>java</code></li>
+<li>available language: <code>java</code> </li>
+</ul>
+<h3 id="reference-3"><a href="#reference-3" class="headerlink" title="reference"></a>reference</h3><ol>
+<li>git repo: <a href="https://github.com/FudanNLP/fnlp" target="_blank" rel="noopener">https://github.com/FudanNLP/fnlp</a></li>
+<li>fastnlp: <a href="https://github.com/fastnlp/fastNLP" target="_blank" rel="noopener">https://github.com/fastnlp/fastNLP</a></li>
+</ol>
+<h2 id="清华（ThuLAC）"><a href="#清华（ThuLAC）" class="headerlink" title="清华（ThuLAC）"></a>清华（ThuLAC）</h2><h3 id="function-3"><a href="#function-3" class="headerlink" title="function"></a>function</h3><ul>
+<li>中文分词</li>
+<li>词性标注</li>
+</ul>
+<h3 id="language-4"><a href="#language-4" class="headerlink" title="language"></a>language</h3><p>中文</p>
+<h3 id="code-language-4"><a href="#code-language-4" class="headerlink" title="code language"></a>code language</h3><ul>
+<li>dev language: <code>C++</code></li>
+<li>available language: <code>C++</code> <code>java</code> <code>python</code></li>
+</ul>
+<h3 id="reference-4"><a href="#reference-4" class="headerlink" title="reference"></a>reference</h3><ol>
+<li>git repo: <a href="https://github.com/thunlp/THULAC" target="_blank" rel="noopener">https://github.com/thunlp/THULAC</a></li>
+</ol>
+<h2 id="中科院（NLPIR）原ICTCLAS"><a href="#中科院（NLPIR）原ICTCLAS" class="headerlink" title="中科院（NLPIR）原ICTCLAS"></a>中科院（NLPIR）原ICTCLAS</h2><h3 id="function-4"><a href="#function-4" class="headerlink" title="function"></a>function</h3><h3 id="language-5"><a href="#language-5" class="headerlink" title="language"></a>language</h3><h3 id="code-language-5"><a href="#code-language-5" class="headerlink" title="code language"></a>code language</h3><h3 id="reference-5"><a href="#reference-5" class="headerlink" title="reference"></a>reference</h3><ol>
+<li>git repo: <a href="https://github.com/NLPIR-team/NLPIR" target="_blank" rel="noopener">https://github.com/NLPIR-team/NLPIR</a></li>
+<li>主页：<a href="http://ictclas.nlpir.org/" target="_blank" rel="noopener">http://ictclas.nlpir.org/</a></li>
 </ol>
 
           
@@ -663,7 +1302,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/24/Something/Dcoker/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/NLP/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -682,7 +1321,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/24/Something/Dcoker/" itemprop="url">Dcoker</a></h2>
+                <a class="post-title-link" href="/2019/12/10/NLP/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/" itemprop="url">事件抽取</a></h2>
         
 
         <div class="post-meta">
@@ -694,8 +1333,556 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T20:28:31+08:00">
-                2019-11-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T18:14:17+08:00">
+                2019-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
+                    <span itemprop="name">事件抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="事件抽取综述"><a href="#事件抽取综述" class="headerlink" title="事件抽取综述"></a>事件抽取综述</h2><p><em>参考：</em></p>
+<ul>
+<li><a href="http://topin27.github.io/papers/NLP.html#todo-joint-event-extraction-via-recurrent-neural-networks" target="_blank" rel="noopener">topin27的github：关于时间抽取的论文综述</a><h3 id="1-事件"><a href="#1-事件" class="headerlink" title="1. 事件"></a>1. 事件</h3></li>
+</ul>
+<h4 id="1-1-定义"><a href="#1-1-定义" class="headerlink" title="1.1 定义"></a>1.1 定义</h4><blockquote>
+<p>在TDT（Topic Detection Tracking）中，事件是指关于某一具体主题的一组相关描述，这个主题可以是由分类或聚类完成的</p>
+</blockquote>
+<h4 id="1-2-组成元素"><a href="#1-2-组成元素" class="headerlink" title="1.2 组成元素"></a>1.2 组成元素</h4><p>组成事件的各元素包括：触发词、事件类型、论元及论元角色</p>
+<ul>
+<li>事件触发词：表示事件发生的核心词，多为动词和名词；</li>
+<li>事件类型：ACE2005定义了8种事件类型和33种子类型</li>
+<li>事件论元：事件的参与者，主要由实体、值和时间构成。值时一种非实体的参与者，例如：工作岗位等</li>
+<li>论元角色：事件论元在事件中充当的角色。</li>
+</ul>
+<p>ACE2005定义了8种事件类型和33种子类型，35类角色类型。将事件抽取任务转化为基于这些模板的多元分类任务。</p>
+<h3 id="2-事件抽取技术"><a href="#2-事件抽取技术" class="headerlink" title="2. 事件抽取技术"></a>2. 事件抽取技术</h3><p>目前的事件抽取任务多为分类任务：可分解为4个子任务：触发词识别、事件类型分类、论元识别和角色分类。</p>
+<ul>
+<li>事件识别任务： 触发词识别和事件类型分类</li>
+<li>论元角色识别： 论元识别和角色分类</li>
+</ul>
+<p>目前原事件抽取的技术主要有：模式匹配和机器学习两个大类</p>
+<h4 id="2-1-模式匹配"><a href="#2-1-模式匹配" class="headerlink" title="2.1 模式匹配"></a>2.1 模式匹配</h4><p>模式匹配是在一些模式的指导下进行事件的抽取和识别。抽取时只要通过各种模式匹配算法找出符合模式约束条件信息即可。其核心是抽取模式的构建。但其限定于特定领域在其中拥有较好的效果，并且模式的创建费时费力。典型的基于模式匹配的事件抽取系统有：ExDisco、GenPAM 等。</p>
+<h4 id="2-2-机器学习"><a href="#2-2-机器学习" class="headerlink" title="2.2 机器学习"></a>2.2 机器学习</h4><p>使用机器学习的方法进行事件抽取作为一种多元分类的任务，事件抽取方法包括 特征选择 和 分类模型</p>
+<ul>
+<li>特征选择：根据所使用特征的方法分为：句子级的事件抽取和篇章级的事件抽取</li>
+<li>学习方式：分为基于流水线模型的事件抽取方法和基于联合模型的事件抽取方法</li>
+</ul>
+<h4 id="2-3-评价指标"><a href="#2-3-评价指标" class="headerlink" title="2.3 评价指标"></a>2.3 评价指标</h4><p>对于事件提取的结果的评测一般采用MUC会议的评测标准，包括三个指标：正确率P、召回率R和F值：</p>
+<blockquote>
+<p>正确率：提取出的正确信息条数 / 提取出的信息条数<br>召回率：提取出的正确信息条数 / 样本的信息条数<br>F-Measure：是Precision和Recall的加权调和平均</p>
+</blockquote>
+<h3 id="3-相关博客阅读"><a href="#3-相关博客阅读" class="headerlink" title="3. 相关博客阅读"></a>3. 相关博客阅读</h3><h4 id="3-1-Natural-Language-Processing-—-Event-Extraction-Extracting-events-from-news-articles"><a href="#3-1-Natural-Language-Processing-—-Event-Extraction-Extracting-events-from-news-articles" class="headerlink" title="3.1 Natural Language Processing — Event Extraction (Extracting events from news articles)"></a>3.1 Natural Language Processing — Event Extraction (Extracting events from news articles)</h4><p>原文链接：<a href="https://towardsdatascience.com/natural-language-processing-event-extraction-f20d634661d3" target="_blank" rel="noopener">https://towardsdatascience.com/natural-language-processing-event-extraction-f20d634661d3</a></p>
+<ul>
+<li>数据源：从 newsapi 调用获得</li>
+<li>表示：使用了 SpaCy 预训练模型，SpaCy 也是 BoW 模型（这篇文章还介绍了 Sent2Vec， SkipThoughts等）</li>
+<li>聚类算法：DBSCAN 不需要设置 cluster 的数量</li>
+<li>选取 cluster 最中心的作为代表性语句（时间线根据新闻发布时间为时间线）</li>
+</ul>
+<p>最后，作者提出的一些改进思路为：合适地进行数据预处理、包括词性标注、NER等应用较好的向量模型等</p>
+<h3 id="4-相关软件包"><a href="#4-相关软件包" class="headerlink" title="4. 相关软件包"></a>4. 相关软件包</h3><p>Stanford CoreNLP 是 Stanford 大学自然语言处理小组用 Java 实现的，提供了 Server方式进行交互，使用 <code>Stanford CoreNLP server</code>的 packages 有：</p>
+<ul>
+<li><p><code>stanfordcorenlp</code>. A python wrapper to Stanford CoreNLP server.</p>
+<p>  使用该方式需要下载 Java version Stanford CoreNLP package，并通过该 Python wrapper 调用它</p>
+</li>
+</ul>
+<p>Stanford官方发布了Python版本的NLP处理工具，该工具不再依赖于Java</p>
+<ul>
+<li><code>stanfordnlp</code></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ol>
+<li><a href="https://blog.csdn.net/qq_35203425/article/details/80451243" target="_blank" rel="noopener">https://blog.csdn.net/qq_35203425/article/details/80451243</a></li>
+<li><a href="http://www.shuang0420.com/2018/10/15/%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96-%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96/" target="_blank" rel="noopener">徐阿衡</a></li>
+<li></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/NLP/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/10/NLP/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url">句法分析</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T18:12:09+08:00">
+                2019-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E5%8F%A5%E6%B3%95%E5%88%86%E6%9E%90/" itemprop="url" rel="index">
+                    <span itemprop="name">句法分析</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="句法分析"><a href="#句法分析" class="headerlink" title="句法分析"></a>句法分析</h1><p>句法分析，亦称语法分析（Syntactic parsing）是自然语言处理中的一个重要任务，目标是分析句子的语法结构并将其表示为容易理解的结构（通常为树形结构）。</p>
+<h2 id="语法形式"><a href="#语法形式" class="headerlink" title="语法形式"></a>语法形式</h2><ul>
+<li>短语结构树</li>
+<li>依存句法树</li>
+</ul>
+<h2 id="短语结构树"><a href="#短语结构树" class="headerlink" title="短语结构树"></a>短语结构树</h2><p>短语结构树，其实是上下文无关文法（Context-Free Grammar，CFG），主要基于语言学中的推导规则进行句子的推导，主要的组件有：</p>
+<ul>
+<li>终结符（terminal symbol）</li>
+<li>非终结符（nonterminal symbol）</li>
+<li>推导规则</li>
+</ul>
+<h2 id="依存句法树"><a href="#依存句法树" class="headerlink" title="依存句法树"></a>依存句法树</h2><p>依存句法树关注的是句子中的词语之间的语法联系，并且将其约束为<strong>树形结构</strong>。依存关系（dependency relation）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/BigDataSystem/Batch/InputFormat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/10/BigDataSystem/Batch/InputFormat/" itemprop="url">InputFormat</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:34:55+08:00">
+                2019-12-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/" itemprop="url" rel="index">
+                    <span itemprop="name">BigDataSystem</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/BigDataSystem/Batch/" itemprop="url" rel="index">
+                    <span itemprop="name">Batch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Hadoop-InputFormat"><a href="#Hadoop-InputFormat" class="headerlink" title="Hadoop InputFormat"></a>Hadoop InputFormat</h1><h2 id="What-is-Hadoop-InputFormat"><a href="#What-is-Hadoop-InputFormat" class="headerlink" title="What is Hadoop InputFormat?"></a>What is Hadoop InputFormat?</h2><blockquote>
+<p>Hadoop InputFormat describes the input-specification for execution of the Map-Reduce job.</p>
+</blockquote>
+<blockquote>
+<p>InputFormat describes how to split up and read input files. In MapReduce job execution, InputFormat is the first step. It is also responsible for creating the input splits and dividing them into records.</p>
+</blockquote>
+<blockquote>
+<p>Input files store the data for MapReduce job. Input files reside in HDFS. Although these files format is arbitrary, we can also use line-based log files and binary format. Hence, In MapReduce, InputFormat class is one of the fundamental classes which provides below functionality:</p>
+</blockquote>
+<ul>
+<li>InputFormat selects the files or other objects for input.</li>
+<li>It also defines the Data splits. It defines both the size of individual Map tasks and its potential execution server.</li>
+<li>Hadoop InputFormat defines the RecordReader. It is also responsible for reading actual records from the input files.</li>
+</ul>
+<h2 id="Types-of-InputFormat-in-MapReduce"><a href="#Types-of-InputFormat-in-MapReduce" class="headerlink" title="Types of InputFormat in MapReduce"></a>Types of InputFormat in MapReduce</h2><ul>
+<li><code>FileInputFormat</code></li>
+<li><code>TextInputFormat</code></li>
+<li><code>KeyValueTextInputFormat</code></li>
+<li><code>SequenceFileAsTextInputFormat</code></li>
+<li><code>SequenceFileAsBinaryInputFormat</code></li>
+<li><code>NlineInputFormat</code></li>
+<li><code>DBInputFormat</code></li>
+</ul>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><blockquote>
+<p>Hence, InputFormat defines how to read data from a file into the Mapper instances. In this tutorial, we have learned many types of InputFormat like FileInputFormat, TextInputFormat etc. The default input format is TextInputFormat. If you have any query related to MapReduce InputFormat, so feel free to share with us. Hope we will solve them.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/Something/VSCode/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/10/Something/VSCode/" itemprop="url">VSCode</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T10:25:16+08:00">
+                2019-12-10
               </time>
             
 
@@ -756,1215 +1943,19 @@
       
         
           
-            <h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h2 id="常用操作"><a href="#常用操作" class="headerlink" title="常用操作"></a>常用操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看帮助</span></span><br><span class="line">docker xxx --help</span><br><span class="line"><span class="comment"># 拉取镜像</span></span><br><span class="line">sudo docker pull image</span><br><span class="line"><span class="comment"># 创建容器</span></span><br><span class="line">docker run image</span><br><span class="line"><span class="comment"># 列出当前运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 列出所有的容器，包括运行的和不运行的</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment"># 删除容器</span></span><br><span class="line">docker rm container-id</span><br><span class="line"><span class="comment"># 容器的启动、进入、退出</span></span><br><span class="line">docker start [-i] container-id</span><br><span class="line"><span class="comment"># 容器的停止、重启</span></span><br><span class="line">docker stop container-id</span><br><span class="line">docker restart container-id</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/64493662" target="_blank" rel="noopener">Docker,深度学习的环境配置</a></li>
-<li><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">Docker 官方文档</a></li>
+            <h1 id="VSCode"><a href="#VSCode" class="headerlink" title="VSCode"></a>VSCode</h1><p>神器驾驭指南</p>
+<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><h2 id="2-插件安装"><a href="#2-插件安装" class="headerlink" title="2. 插件安装"></a>2. 插件安装</h2><h2 id="3-快捷键"><a href="#3-快捷键" class="headerlink" title="3. 快捷键"></a>3. 快捷键</h2><ul>
+<li><code>F1</code> / <code>Ctrl+shift+P</code> 打开命令面板，可以执行VSCode的任何命令</li>
 </ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/24/Mathmatics/Probability_and_Statistic/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/24/Mathmatics/Probability_and_Statistic/%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/" itemprop="url">假设检验</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T20:28:31+08:00">
-                2019-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/" itemprop="url" rel="index">
-                    <span itemprop="name">Mathmatics</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/Probability-and-Statistic/" itemprop="url" rel="index">
-                    <span itemprop="name">Probability and Statistic</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="假设检验"><a href="#假设检验" class="headerlink" title="假设检验"></a>假设检验</h1><h2 id="小概率原理"><a href="#小概率原理" class="headerlink" title="小概率原理"></a>小概率原理</h2><blockquote>
-<p>发生概率很小的随机事件，在一次实验中是几乎不会发生</p>
-</blockquote>
-<p>如果发生，我们就有理由拒绝原假设</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/24/MLDL/torchtext/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/24/MLDL/torchtext/" itemprop="url">torchtext</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-24T16:35:54+08:00">
-                2019-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="torchtext"><a href="#torchtext" class="headerlink" title="torchtext"></a>torchtext</h1>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/NLP/Gensim/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/NLP/Gensim/" itemprop="url">Gensim</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T22:02:40+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="学习参考"><a href="#学习参考" class="headerlink" title="学习参考"></a>学习参考</h2><ul>
-<li>英语wiki LDA、LSA：<a href="http://www.alwa.info/2017/03/20/Gensim%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_blank" rel="noopener">http://www.alwa.info/2017/03/20/Gensim%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</a></li>
-<li><a href="https://radimrehurek.com/gensim/auto_examples/core/run_topics_and_transformations.html#sphx-glr-auto-examples-core-run-topics-and-transformations-py" target="_blank" rel="noopener">https://radimrehurek.com/gensim/auto_examples/core/run_topics_and_transformations.html#sphx-glr-auto-examples-core-run-topics-and-transformations-py</a></li>
-<li><a href="http://www.alwa.info/2017/03/20/Gensim%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" target="_blank" rel="noopener">http://www.alwa.info/2017/03/20/Gensim%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/37175253" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/37175253</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/TODO/week12/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/TODO/week12/" itemprop="url">week12</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T22:02:40+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/TODO/" itemprop="url" rel="index">
-                    <span itemprop="name">TODO</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="第十二周"><a href="#第十二周" class="headerlink" title="第十二周"></a>第十二周</h1><h2 id="Course"><a href="#Course" class="headerlink" title="Course"></a>Course</h2><ol>
-<li>《数值分析》 陈研：</li>
-</ol>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h3 id="3-1-在Java中不能导入第三方的库，出现-xxx-unresolve-的问题"><a href="#3-1-在Java中不能导入第三方的库，出现-xxx-unresolve-的问题" class="headerlink" title="3.1 在Java中不能导入第三方的库，出现　xxx unresolve　的问题"></a>3.1 在<code>Java</code>中不能导入第三方的库，出现　<code>xxx unresolve</code>　的问题</h3><p><em>ref: <a href="https://stackoverflow.com/a/57249227" target="_blank" rel="noopener">https://stackoverflow.com/a/57249227</a></em></p>
+<p>这种情况下有两种解决方法：</p>
 <ul>
-<li>函数逼近 6 讲</li>
-<li>数值积分 5 讲</li>
-<li>常微分方程 7 讲</li>
-<li>偏微分方程 8 讲</li>
+<li>使用　<code>maven</code>　或　<code>gradle</code>　引入 <code>Jar</code></li>
+<li>按照以下步骤进行： a. 在工程目录下创建　<code>lib</code>　文件夹，放入<code>.jar</code> 文件 　b. 新建 <code>.classpath</code> 在其中　<code>&lt;classpathentry kind=&quot;lib&quot; path=&quot;lib/xxxx.jar&quot;/&gt;</code></li>
+<li>以上均不能解决问题，则　<code>F1</code> - input <code>Clean</code> - <code>clean workspace</code></li>
 </ul>
-<ol start="2">
-<li><p>《大数据技术》报告</p>
-</li>
-<li><p>《HadoopMapreduce》</p>
-</li>
-</ol>
-<h3 id="cs224n"><a href="#cs224n" class="headerlink" title="cs224n"></a>cs224n</h3><p>课程主页：<a href="http://web.stanford.edu/class/cs224n/index.html#schedule" target="_blank" rel="noopener">http://web.stanford.edu/class/cs224n/index.html#schedule</a><br>视频地址：<a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PLoROMvodv4rOhcuXMZkNm7j3fVwBBY42z</a></p>
-<ol>
-<li>Introduction and Word Vectors, Gensim word vectors example:</li>
-<li>Word Vectors 2 and Word Senses</li>
-<li>Python review session</li>
-<li>Word Window Classification, Neural Networks, and Matrix Calculus</li>
-<li>Backpropagation and Computation Graphs</li>
-<li>Linguistic Structure: Dependency Parsing</li>
-<li>The probability of a sentence? Recurrent Neural Networks and Language Models</li>
-<li>Vanishing Gradients and Fancy RNNs</li>
-<li>Machine Translation, Seq2Seq and Attention</li>
-<li>Practical Tips for Final Projects</li>
-<li>Question Answering and the Default Final Project</li>
-<li>ConvNets for NLP</li>
-<li>Information from parts of words: Subword Models</li>
-<li>Modeling contexts of use: Contextual Representations and Pretraining</li>
-<li>Transformers and Self-Attention For Generative Models</li>
-<li>Natural Language Generation</li>
-<li>Reference in Language and Coreference Resolution</li>
-<li>Multitask Learning: A general model for NLP?</li>
-<li>Constituency Parsing and Tree Recursive Neural Networks</li>
-<li>Safety, Bias, and Fairness</li>
-<li>Future of NLP + Deep Learning</li>
-</ol>
-<h3 id="Machine-Learning-李宏毅"><a href="#Machine-Learning-李宏毅" class="headerlink" title="Machine Learning 李宏毅"></a>Machine Learning 李宏毅</h3><p>视频地址： <a href="https://www.youtube.com/watch?v=CXgbekl66jc&amp;list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49" target="_blank" rel="noopener">https://www.youtube.com/watch?v=CXgbekl66jc&amp;list=PLJV_el3uVTsPy9oCRY30oBPNLCo89yu49</a></p>
-<h3 id="Task："><a href="#Task：" class="headerlink" title="Task："></a>Task：</h3><ol>
-<li>《数值分析》每天2-3讲</li>
-<li>《cs224n》 每天1讲</li>
-</ol>
-<h2 id="Laborary"><a href="#Laborary" class="headerlink" title="Laborary"></a>Laborary</h2><ol>
-<li><p>学习 <code>pytorch</code> 的使用，能基本理解神经网络的搭建步骤，看懂代码的大致流程，并跑一段 RNN 的示例</p>
-</li>
-<li><p>研读至少3篇事件抽取综述和最新进展的论文，并做好笔记，记录发展历程</p>
-</li>
-<li><p>尝试阅读事件抽取的 code，并做一些尝试</p>
-</li>
-</ol>
-<h2 id="保持作息，注意运动，劳逸结合"><a href="#保持作息，注意运动，劳逸结合" class="headerlink" title="保持作息，注意运动，劳逸结合"></a>保持作息，注意运动，劳逸结合</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/NLP/jieba/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/NLP/jieba/" itemprop="url">jieba</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T21:49:28+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Jieba简介"><a href="#Jieba简介" class="headerlink" title="Jieba简介"></a>Jieba简介</h2><p>jieba是一款中文分词工具</p>
-<h2 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h2><p><code>jieba.cut(self, sentence, cut_all=False, HMM=True)</code></p>
-<ul>
-<li>sentence：输入文本</li>
-<li>cut_all：是否全模式分词</li>
-<li>HMM：是否开启 HMM，默认模式开启HMM，对中文歧义有较好的分词效果</li>
-</ul>
-<p><code>jieba.cut_for_search(self, sentence, cut_all=False, HMM=True)</code></p>
-<ul>
-<li>搜索引擎模式？？</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import jieba.posseg as pseg</span><br><span class="line"></span><br><span class="line">result = pseg.cut(test_sent)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用 <code>pseg.cut</code> 分词，并显示词性</li>
-</ul>
-<h2 id="中文歧义与去除停用词"><a href="#中文歧义与去除停用词" class="headerlink" title="中文歧义与去除停用词"></a>中文歧义与去除停用词</h2><p>中文歧义，中文由于对词语缺乏明显的区分标识，因此在分词方面往往存在一定的歧义，Jieba 使用 HMM（隐马尔科夫模型）仍取得了不错的效果；</p>
-<p>去除停用词，即通过中文停用词表，来对分词后的词语比对，去除常用的停用词。</p>
-<h2 id="分词更准确的-trick"><a href="#分词更准确的-trick" class="headerlink" title="分词更准确的 trick"></a>分词更准确的 trick</h2><ul>
-<li>在 jieba 中加入一些不常见的中文词语： <code>jieba.add_word(&#39;xxx&#39;)</code></li>
-<li>添加自定义词库： <code>jieba.loca_userdict(&quot;xxx.txt&quot;)</code></li>
-<li></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/NLP/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/NLP/%E6%96%87%E6%9C%AC%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/" itemprop="url">文本数据预处理</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T21:49:09+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>文本数据的预处理根据语种而有些不同，如：</p>
-<ul>
-<li>中文数据的文本预处理过程：分词、去停用词 …</li>
-<li>英文数据的文本预处理过程：分词、去停用词、<strong>提取词干</strong> …</li>
-</ul>
-<h2 id="1-中文数据的预处理"><a href="#1-中文数据的预处理" class="headerlink" title="1. 中文数据的预处理"></a>1. 中文数据的预处理</h2><p>1.1 统计词频的几种方法：</p>
-<h2 id="sklearn-feature-extraction-text"><a href="#sklearn-feature-extraction-text" class="headerlink" title="sklearn.feature_extraction.text"></a>sklearn.feature_extraction.text</h2><p>使用 <code>sklearn</code> 的包有两种统计词频的方法，第一种方法使用 wordcount，第二种方法则使用 TF-IDF方法</p>
-<ul>
-<li><code>CountVectorizer</code></li>
-</ul>
-<p><code>CountVectorizer</code> 统计词频后会将其表示成二维矩阵的形式，（i, j）代表 j 列所代表的的词在 i 文档中的词频，使用方式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vectorizer = CountVectorizer()</span><br><span class="line">X = vectorizer.fit_transform(corpus)            <span class="comment"># 输出形式：（i，j） count</span></span><br><span class="line">feature_name = vectorizer.get_feature_name()    <span class="comment"># 输出形式为 词列表</span></span><br><span class="line">X.toarray()                                     <span class="comment"># 输出形式为 矩阵</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>TfidfTransformer</code></li>
-</ul>
-<p><code>TfidfTransformer</code> 可对 <code>CountVectorizer</code> 向量化后的数据进行 TF-IDF 的计算，给出 TF-IDF 值，使用方式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">transformer = TfidfTransformer()</span><br><span class="line">tfidf = transformer.fit_transform(vectorizer.fit_transform(corpus))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>TfidfVectorizer</code></li>
-</ul>
-<p><code>TfidfVectorizer</code> = <code>CountVectorizer</code> + <code>TfidfTransformer</code>， 使用方式为：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tfidf2 = TfidfVectorizer()</span><br><span class="line">re = tfidf2.fit_transform(corpus)</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-英文数据的预处理"><a href="#2-英文数据的预处理" class="headerlink" title="2. 英文数据的预处理"></a>2. 英文数据的预处理</h2><h3 id="2-1-Sentence-Tokenization"><a href="#2-1-Sentence-Tokenization" class="headerlink" title="2.1 Sentence Tokenization"></a>2.1 Sentence Tokenization</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">text = <span class="string">"Backgammon is one of the oldest known board games. Its history can be traced back nearly 5,000 years to archeological discoveries in the Middle East. It is a two player game where each player has fifteen checkers which move between twenty-four points according to the roll of two dice."</span></span><br><span class="line">sentences = nltk.sent_tokenize(text)</span><br><span class="line"><span class="keyword">for</span> sentence <span class="keyword">in</span> sentences:</span><br><span class="line">    print(sentence)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<p>Backgammon is one of the oldest known board games.</p>
-<p>Its history can be traced back nearly 5,000 years to archeological discoveries in the Middle East.</p>
-<p>It is a two player game where each player has fifteen checkers which move between twenty-four points according to the roll of two dice.</p>
-<h3 id="2-2-Word-Tokenization"><a href="#2-2-Word-Tokenization" class="headerlink" title="2.2 Word Tokenization"></a>2.2 Word Tokenization</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> sentence <span class="keyword">in</span> sentences:</span><br><span class="line">    words = nltk.word_tokenize(sentence)</span><br><span class="line">    print(words)</span><br><span class="line">    print()</span><br></pre></td></tr></table></figure>
-
-<p>Output:</p>
-<p>[‘Backgammon’, ‘is’, ‘one’, ‘of’, ‘the’, ‘oldest’, ‘known’, ‘board’, ‘games’, ‘.’]</p>
-<p>[‘Its’, ‘history’, ‘can’, ‘be’, ‘traced’, ‘back’, ‘nearly’, ‘5,000’, ‘years’, ‘to’, ‘archeological’, ‘discoveries’, ‘in’, ‘the’, ‘Middle’, ‘East’, ‘.’]</p>
-<p>[‘It’, ‘is’, ‘a’, ‘two’, ‘player’, ‘game’, ‘where’, ‘each’, ‘player’, ‘has’, ‘fifteen’, ‘checkers’, ‘which’, ‘move’, ‘between’, ‘twenty-four’, ‘points’, ‘according’, ‘to’, ‘the’, ‘roll’, ‘of’, ‘two’, ‘dice’, ‘.’]</p>
-<h3 id="2-3-Text-Lemmatization-and-Stemming"><a href="#2-3-Text-Lemmatization-and-Stemming" class="headerlink" title="2.3 Text Lemmatization and Stemming"></a>2.3 Text Lemmatization and Stemming</h3><p>For grammatical reasons, documents can contain different forms of a word such as drive, drives, driving. Also, sometimes we have related words with a similar meaning, such as nation, national, nationality.</p>
-<p><strong>The goal of both stemming and lemmatization is to reduce inflectional forms and sometimes derivationally related forms of a word to a common base form.</strong></p>
-<p>Source: <a href="https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html" target="_blank" rel="noopener">https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html</a></p>
-<p>Examples:</p>
-<ul>
-<li>am, are, is =&gt; be</li>
-<li>dog, dogs, dog’s, dogs’ =&gt; dog</li>
-</ul>
-<p>The result of this mapping applied on a text will be something like that:<br><em>the boy’s dogs are different sizes =&gt; the boy dog be differ size</em><br>Stemming and lemmatization are special cases of normalization. However, they are different from each other.</p>
-<blockquote>
-<p>Stemming usually refers to a crude heuristic process that chops off the ends of words in the hope of achieving this goal correctly most of the time, and often includes the removal of derivational affixes.<br>Lemmatization usually refers to doing things properly with the use of a vocabulary and morphological analysis of words, normally aiming to remove inflectional endings only and to return the base or dictionary form of a word, which is known as the lemma.</p>
-</blockquote>
-<p>Source: <a href="https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html" target="_blank" rel="noopener">https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html</a></p>
-<p>The difference is that a stemmer operates <strong>without knowledge of the context</strong>, and therefore cannot understand the difference between words which have different meaning depending on part of speech. But the stemmers also have some advantages, they are easier to implement and usually run faster. Also, the reduced “accuracy” may not matter for some applications.</p>
-<p>Examples:</p>
-<ol>
-<li>The word “better” has “good” as its lemma. This link is missed by stemming, as it requires a dictionary look-up.</li>
-<li>The word “play” is the base form for the word “playing”, and hence this is matched in both stemming and lemmatization.</li>
-<li>The word “meeting” can be either the base form of a noun or a form of a verb (“to meet”) depending on the context; e.g., “in our last meeting” or “We are meeting again tomorrow”. Unlike stemming, lemmatization attempts to select the correct lemma depending on the context.</li>
-</ol>
-<p>After we know what’s the difference, let’s see some examples using the NLTK tool.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.stem <span class="keyword">import</span> PorterStemmer, WordNetLemmatizer</span><br><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> wordnet</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compare_stemmer_and_lemmatizer</span><span class="params">(stemmer, lemmatizer, word, pos)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Print the results of stemmind and lemmitization using the passed stemmer, lemmatizer, word and pos (part of speech)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    print(<span class="string">"Stemmer:"</span>, stemmer.stem(word))</span><br><span class="line">    print(<span class="string">"Lemmatizer:"</span>, lemmatizer.lemmatize(word, pos))</span><br><span class="line">    print()</span><br><span class="line"></span><br><span class="line">lemmatizer = WordNetLemmatizer()</span><br><span class="line">stemmer = PorterStemmer()</span><br><span class="line">compare_stemmer_and_lemmatizer(stemmer, lemmatizer, word = <span class="string">"seen"</span>, pos = wordnet.VERB)</span><br><span class="line">compare_stemmer_and_lemmatizer(stemmer, lemmatizer, word = <span class="string">"drove"</span>, pos = wordnet.VERB)</span><br></pre></td></tr></table></figure>
-<p>Output:  </p>
-<p>Stemmer: seen<br>Lemmatizer: see</p>
-<p>Stemmer: drove<br>Lemmatizer: drive  </p>
-<h3 id="2-4-Stop-words"><a href="#2-4-Stop-words" class="headerlink" title="2.4 Stop words"></a>2.4 Stop words</h3><p>The NLTK tool has a predefined list of stopwords that refers to the most common words. If you use it for your first time, you need to download the stop words using this code: <code>nltk.download(“stopwords”)</code>. Once we complete the downloading, we can load the stopwords package from the nltk.corpus and use it to load the stop words.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> stopwords</span><br><span class="line">print(stopwords.words(<span class="string">"english"</span>))</span><br></pre></td></tr></table></figure>
-
-<p>outputs:<br>…</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">stop_words = set(stopwords.words(<span class="string">"english"</span>))</span><br><span class="line">sentence = <span class="string">"Backgammon is one of the oldest known board games."</span></span><br><span class="line"></span><br><span class="line">words = nltk.word_tokenize(sentence)</span><br><span class="line">without_stop_words = [word <span class="keyword">for</span> word <span class="keyword">in</span> words <span class="keyword">if</span> <span class="keyword">not</span> word <span class="keyword">in</span> stop_words]</span><br><span class="line">print(without_stop_words)</span><br></pre></td></tr></table></figure>
-
-<p>outputs:</p>
-<p>[‘Backgammon’, ‘one’, ‘oldest’, ‘known’, ‘board’, ‘games’, ‘.’]</p>
-<h3 id="2-5-Bag-of-words"><a href="#2-5-Bag-of-words" class="headerlink" title="2.5 Bag-of-words"></a>2.5 Bag-of-words</h3><h3 id="2-6-Tools"><a href="#2-6-Tools" class="headerlink" title="2.6 Tools"></a>2.6 Tools</h3><ul>
-<li><p><code>nltk</code> for pre-processing texts</p>
-</li>
-<li><p><code>sklearn</code> for bag-of-words models</p>
-</li>
-</ul>
-<h2 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h2><ul>
-<li>无论采用何种对非结构化文档向量化的 BoW 方法，均是通过 <code>dictionary</code> 与 <code>Sparse Matrix</code>两者结合的方式来展示，<code>Sparse Matrix</code> = <code>Sparse dictionary index matrix</code></li>
-</ul>
-<h2 id="4-学习参考"><a href="#4-学习参考" class="headerlink" title="4. 学习参考"></a>4. 学习参考</h2><ul>
-<li><a href="https://machinelearningmastery.com/clean-text-machine-learning-python/" target="_blank" rel="noopener">https://machinelearningmastery.com/clean-text-machine-learning-python/</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/21/NLP/NLTK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/21/NLP/NLTK/" itemprop="url">NLTK</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-21T17:47:01+08:00">
-                2019-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h2><p>NLTK 是最为知名的Python自然语言处理工具之一，全程：Natural Language ToolKit， 诞生于宾夕法尼亚大学，主要面向英文。但其很多模型或者模块都与语种无关，因此当实现了Tokenization 和分词之后，NLTK的很多工具包是可以复用的。</p>
-<p>在NLTK中使用Stanford文本分析工具包也是一个常用的手段，如何在NLTK中调用Stanford中文工具包：</p>
-<ul>
-<li><a href="http://www.zmonster.me/2016/06/08/use-stanford-nlp-package-in-nltk.html" target="_blank" rel="noopener">http://www.zmonster.me/2016/06/08/use-stanford-nlp-package-in-nltk.html</a></li>
-<li><a href="http://www.cnblogs.com/baiboy/p/nltk1.html" target="_blank" rel="noopener">http://www.cnblogs.com/baiboy/p/nltk1.html</a></li>
-</ul>
-<h2 id="官方资料学习-https-www-nltk-org-book"><a href="#官方资料学习-https-www-nltk-org-book" class="headerlink" title="官方资料学习 https://www.nltk.org/book/"></a>官方资料学习 <a href="https://www.nltk.org/book/" target="_blank" rel="noopener">https://www.nltk.org/book/</a></h2><h3 id="5-Categorizing-and-Tagging-words"><a href="#5-Categorizing-and-Tagging-words" class="headerlink" title="5. Categorizing and Tagging words"></a>5. Categorizing and Tagging words</h3><h4 id="5-1-tag-sets-词性标注集"><a href="#5-1-tag-sets-词性标注集" class="headerlink" title="5.1 tag sets 词性标注集"></a>5.1 tag sets 词性标注集</h4><ul>
-<li><code>nltk.help.upenn(&#39;NN&#39;)</code> 可查询词性标注集的具体含义，如：</li>
-</ul>
-<ol>
-<li><code>NN</code> noun, common, singular or mass</li>
-<li><code>VB</code> verb, base form</li>
-<li><code>JJ</code> adjective or numeral, ordinal</li>
-<li><code>IN</code> preposition or conjunction, subordinating</li>
-<li><code>DT</code> determiner</li>
-<li><code>PRP</code> pronoun, personal</li>
-</ol>
-<h3 id="7-Extracting-Information-from-Text"><a href="#7-Extracting-Information-from-Text" class="headerlink" title="7. Extracting Information from Text"></a>7. Extracting Information from Text</h3><p>参考：<a href="https://www.nltk.org/book/ch07.html" target="_blank" rel="noopener">https://www.nltk.org/book/ch07.html</a></p>
-<h4 id="7-2-Chunking-分块-—-命名实体识别技术之一"><a href="#7-2-Chunking-分块-—-命名实体识别技术之一" class="headerlink" title="7.2 Chunking 分块 — 命名实体识别技术之一"></a>7.2 Chunking 分块 — 命名实体识别技术之一</h4><p>NLTK主要采用 chunk 技术来识别命名实体，这是一种基于规则的方法，如：</p>
-<ul>
-<li>Tag Patterns 标记模式</li>
-<li>Regular Expressions 正则表达式</li>
-<li>Classifier-Based Chunkers 基于分类器的分块器，主要加入不仅仅考虑 POS，还考虑 words 的内容</li>
-</ul>
-<p>人工标记的 tag patterns 用来对 POS 进行匹配和识别，因此 Part-of-Speech 词性标注是其前提；</p>
-<p>识别出的 chunk 的表示方法：  </p>
-<ul>
-<li>IOB标记（如 B-NP、I-NP等）</li>
-<li>树状图标记 （将 词性标注后的 token 表示成树的叶子节点</li>
-</ul>
-<h4 id="7-5-Named-Entity-Recognition"><a href="#7-5-Named-Entity-Recognition" class="headerlink" title="7.5 Named Entity Recognition"></a>7.5 Named Entity Recognition</h4><p>对命名实体识别中的一些词语进行解释：</p>
-<ul>
-<li><code>Facility</code> : human-made artifacts in the domains of architecture and civil engineering</li>
-<li><code>GPE</code> : geo-political entities such as city, state/province, and country</li>
-</ul>
-<h2 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h2><ul>
-<li>NLTK 官方在线书籍：<a href="https://www.nltk.org/book/" target="_blank" rel="noopener">https://www.nltk.org/book/</a></li>
-<li>基于 NLTK 官方书籍的翻译版：《Python自然语言处理》 陈涛译</li>
-<li>52nlp: <a href="http://textminingonline.com/dive-into-nltk-part-i-getting-started-with-nltk" target="_blank" rel="noopener">http://textminingonline.com/dive-into-nltk-part-i-getting-started-with-nltk</a></li>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><ul>
+<li><a href="https://nshen.net/article/2015-11-20/vscode/" target="_blank" rel="noopener">https://nshen.net/article/2015-11-20/vscode/</a></li>
 </ul>
 
           
@@ -2005,7 +1996,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/11/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/13/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/11/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/13/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2055,7 +2046,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2066,7 +2057,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2077,7 +2068,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

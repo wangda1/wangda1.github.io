@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/Python/closure-decorator/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/Algorithm/List/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/24/Python/closure-decorator/" itemprop="url">闭包 与 装饰器</a></h2>
+                <a class="post-title-link" href="/2020/06/24/Algorithm/List/" itemprop="url">list（链表） 相关问题</a></h2>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-04-24T17:34:00+08:00">
-                2020-04-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-24T11:21:00+08:00">
+                2020-06-24
               </time>
             
 
@@ -348,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -387,189 +387,187 @@
       
         
           
-            <h1 id="闭包（Closure）"><a href="#闭包（Closure）" class="headerlink" title="闭包（Closure）"></a>闭包（Closure）</h1><h1 id="装饰器-（Decorator）"><a href="#装饰器-（Decorator）" class="headerlink" title="装饰器 （Decorator）"></a>装饰器 （Decorator）</h1><p>装饰器的主要依据是<strong>python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数</strong></p>
-<h2 id="不带参数的装饰器"><a href="#不带参数的装饰器" class="headerlink" title="不带参数的装饰器"></a>不带参数的装饰器</h2><h2 id="带参数的装饰器"><a href="#带参数的装饰器" class="headerlink" title="带参数的装饰器"></a>带参数的装饰器</h2><h2 id="调用序列"><a href="#调用序列" class="headerlink" title="调用序列"></a>调用序列</h2><p>关于接受参数的包装器的调用序列，看到 ptython-cookbook 上的，对于理解 装饰器很有帮助；</p>
-<blockquote>
-<p>定义一个接受参数的包装器看上去比较复杂主要是因为底层的调用序列。特别的，如果你有下面这个代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@decorator(x, y, z)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>装饰器处理过程跟下面的调用是等效的;</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a, b)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
-<p>func = decorator(x, y, z)(func)<br>decorator(x, y, z) 的返回结果必须是一个可调用对象，它接受一个函数作为参数并包装它</p>
+            <h1 id="list"><a href="#list" class="headerlink" title="list"></a>list</h1><h2 id="list的构造与增删改查"><a href="#list的构造与增删改查" class="headerlink" title="list的构造与增删改查"></a>list的构造与增删改查</h2><h2 id="leetcode题目"><a href="#leetcode题目" class="headerlink" title="leetcode题目"></a>leetcode题目</h2><ol>
+<li>141 Linked List Cycle</li>
+<li>142</li>
+</ol>
+<p>#get all .c files<br>SrcFiles=$(wildcard *.c)<br>#all .c files –&gt; .o files<br>ObjFiles=$(patsubst %.c,%.o,$(SrcFiles))</p>
+<p>all:app</p>
+<p>app:$(ObjFiles)<br>    gcc -o $@ -I./include $(ObjFiles)<br>#模式匹配规则，$@，$&lt; 这样的变量，只能在规则中推导<br>%.o:%.c<br>    gcc -c $&lt; -I ./include</p>
+<p>test:<br>    @echo $(SrcFiles)<br>    @echo $(ObjFiles)</p>
+<p>#定义伪目标，防止有歧义<br>.PHONY:clean all<br>clean:<br>    -@rm -f *.o<br>    -@rm -f app</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/23/OpenGL/vertexDataObject/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/23/OpenGL/vertexDataObject/" itemprop="url">OpenGL之顶点数据对象</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-23T04:16:00+08:00">
+                2020-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="OpenGL之数顶点数据对象"><a href="#OpenGL之数顶点数据对象" class="headerlink" title="OpenGL之数顶点数据对象"></a>OpenGL之数顶点数据对象</h1><h2 id="顶点数据的保存与解析"><a href="#顶点数据的保存与解析" class="headerlink" title="顶点数据的保存与解析"></a>顶点数据的保存与解析</h2><h3 id="Vertex-Buffer-Object"><a href="#Vertex-Buffer-Object" class="headerlink" title="Vertex Buffer Object"></a><code>Vertex Buffer Object</code></h3><blockquote>
+<p>我们通过<code>顶点缓冲对象(Vertex Buffer Objects, VBO)</code>管理这个内存，它会在GPU内存（通常被称为显存）中储存大量顶点。使用这些缓冲对象的好处是我们可以一次性的发送一大批数据到显卡上，而不是每个顶点发送一次。从CPU把数据发送到显卡相对较慢，所以只要可能我们都要尝试尽量一次性发送尽可能多的数据。当数据发送至显卡的内存中后，顶点着色器几乎能立即访问顶点，这是个非常快的过程。</p>
 </blockquote>
-<p>举个栗子：</p>
-<p>如何查看函数被调用了多少次？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CallingCounter</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span> <span class="params">(self, func)</span>:</span></span><br><span class="line">        self.func = func</span><br><span class="line">        self.count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span> <span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        self.count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.func(*args, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_func</span><span class="params">(func)</span>:</span></span><br><span class="line">    num = [<span class="number">0</span>]   <span class="comment"># 闭包中外函数中的变量指向的引用不可变</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call_func</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        num[<span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">        print(<span class="string">"执行次数"</span>,num[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> call_func</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「宁致乐水」的原创文章，遵循CC <span class="number">4.0</span> BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/qq_31603575/article/details/<span class="number">80011287</span></span><br></pre></td></tr></table></figure>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/22229197" target="_blank" rel="noopener">深入浅出python闭包</a></li>
-<li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584" target="_blank" rel="noopener">廖雪峰的官方网站</a></li>
-<li><a href="https://python3-cookbook.readthedocs.io/zh_CN/latest/c09/p04_define_decorator_that_takes_arguments.html" target="_blank" rel="noopener">python3-cookbook</a></li>
-</ul>
+<p><code>VBO</code> 通过 <code>glVertexAttribPointer</code> 函数告诉 OpenGL 如何解析顶点数据，链接顶点属性供顶点着色器用作 <code>in</code>。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> VBO;</span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;VBO);</span><br><span class="line"><span class="comment">// OpenGL有很多缓冲对象类型，顶点缓冲对象类型是 GL_ARRAY_BUFFER，OpenGL允许同时绑定多个缓冲，只要他们是不同的缓冲类型</span></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, VBO);</span><br><span class="line"><span class="comment">// 从这一刻起，我们使用的任何（在GL_ARRAY_BUFFER目标上的）缓冲调用都会用来配置当前绑定的缓冲(VBO)。</span></span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line"><span class="comment">// GL_STATIC_DRAW ：数据不会或几乎不会改变。</span></span><br><span class="line"><span class="comment">// GL_DYNAMIC_DRAW：数据会被改变很多。</span></span><br><span class="line"><span class="comment">// GL_STREAM_DRAW ：数据每次绘制时都会改变。</span></span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/Linux/MISC(1)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/22/Linux/MISC(1)/" itemprop="url">Linux 命令杂谈</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-22T16:22:00+08:00">
-                2020-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Linux-命令杂谈"><a href="#Linux-命令杂谈" class="headerlink" title="Linux 命令杂谈"></a>Linux 命令杂谈</h1><h2 id="进程查看命令"><a href="#进程查看命令" class="headerlink" title="进程查看命令"></a>进程查看命令</h2><ul>
-<li><code>ps -aux</code> 与 <code>ps aux</code> 与 <code>ps -ef</code></li>
-</ul>
-<p>输出都是一样的，是当前终端机下的所有进程，至于几个的主要区别：<br><code>ps -aux</code> 等价于 <code>ps aux</code>，但可能会截断 COMMAND 列的输出，不适用于 <code>grep</code> 搭配，而 <code>ps -ef</code> 不存在这种情况，可与 <code>grep</code> 进行搭配使用。</p>
-<h2 id="nohup-xxx-amp"><a href="#nohup-xxx-amp" class="headerlink" title="nohup xxx &amp;"></a><code>nohup xxx &amp;</code></h2><p>后台不挂断运行</p>
+<h3 id="Vertex-Array-Object"><a href="#Vertex-Array-Object" class="headerlink" title="Vertex Array Object"></a><code>Vertex Array Object</code></h3><p><em>上述存在什么问题？</em></p>
+<p>每当我们绘制物体的时候都必须重复上述的过程，但如果当有超过5个顶点属性，上百个物体，绑定正确的缓冲对象，为每个物体配置所有顶点属性很快就变成一件麻烦事，因此考虑将这些所有状态都保存到一个对象中，状态的切换都通过这个对象进行，实现一劳永逸的效果。</p>
+<blockquote>
+<p>顶点数组对象(Vertex Array Object, VAO)可以像顶点缓冲对象那样被绑定，任何随后的顶点属性调用都会储存在这个VAO中。这样的好处就是，当配置顶点属性指针时，你只需要将那些调用执行一次，之后再绘制物体的时候只需要绑定相应的VAO就行了。这使在不同顶点数据和属性配置之间切换变得非常简单，只需要绑定不同的VAO就行了</p>
+</blockquote>
+<p>一个顶点数组对象会储存以下这些内容：</p>
 <ul>
-<li><code>nohup</code> （no hang up）程序不挂断的运行，即无论终端是否断开，都会一直运行，但没有后台运行的功能；</li>
-<li><code>&amp;</code> 后台运行，但没有不可挂断执行的功能；</li>
+<li><code>glEnableVertexAttribArray</code>和<code>glDisableVertexAttribArray</code>的调用。</li>
+<li>通过<code>glVertexAttribPointer</code>设置的顶点属性配置。</li>
+<li>通过<code>glVertexAttribPointer</code>调用与顶点属性关联的顶点缓冲对象。</li>
 </ul>
-<p>因此常将两者结合使用用于不可挂断的后台执行。</p>
-<p>如何查看？</p>
-<p>如果终端没有关闭，<code>jobs</code> 可以查看当前终端下的进程</p>
-<h2 id="查看内核及操作系统版本"><a href="#查看内核及操作系统版本" class="headerlink" title="查看内核及操作系统版本"></a>查看内核及操作系统版本</h2><h3 id="查看内核版本"><a href="#查看内核版本" class="headerlink" title="查看内核版本"></a>查看内核版本</h3><ul>
-<li><code>uname -a</code></li>
-<li><code>uname -r</code></li>
-</ul>
-<p>关于 Linux 内核版本号的格式：</p>
-<p>major.minor.patch-build.desc</p>
-<h3 id="查看操作系统版本"><a href="#查看操作系统版本" class="headerlink" title="查看操作系统版本"></a>查看操作系统版本</h3><ul>
-<li><code>cat /proc/version</code></li>
-<li><code>cat /etc/issue</code></li>
-<li><code>lsb_release -a</code> 适用于 Ubuntu/Debian</li>
-</ul>
-<h2 id="wget-下载工具"><a href="#wget-下载工具" class="headerlink" title="wget 下载工具"></a><code>wget</code> 下载工具</h2><ul>
-<li><code>wget -b xxx_url</code> 下载 <code>xxx_url</code> 对应的内容并后台下载</li>
+<p><code>VAO</code> 的使用</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> VAO;</span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;VAO);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ..:: 初始化代码（只运行一次 (除非你的物体频繁改变)） :: ..</span></span><br><span class="line"><span class="comment">// 1. 绑定VAO</span></span><br><span class="line">glBindVertexArray(VAO);</span><br><span class="line"><span class="comment">// 2. 把顶点数组复制到缓冲中供OpenGL使用</span></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, VBO);</span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line"><span class="comment">// 3. 设置顶点属性指针</span></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)<span class="number">0</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line"><span class="comment">// ..:: 绘制代码（渲染循环中） :: ..</span></span><br><span class="line"><span class="comment">// 4. 绘制物体</span></span><br><span class="line">glUseProgram(shaderProgram);</span><br><span class="line">glBindVertexArray(VAO);</span><br><span class="line">someOpenGLFunctionThatDrawsOurTriangle();</span><br></pre></td></tr></table></figure>
+
+<h3 id="Element-Buffer-Object"><a href="#Element-Buffer-Object" class="headerlink" title="Element Buffer Object"></a><code>Element Buffer Object</code></h3><p><em>还存在哪些问题？</em></p>
+<p>当使用上述三角形绘制的方法绘制一个矩形（两个三角形），需要保存这样的数据：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">float</span> vertices[] = &#123;</span><br><span class="line">    <span class="comment">// 第一个三角形</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>,   <span class="comment">// 右上角</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 左上角</span></span><br><span class="line">    <span class="comment">// 第二个三角形</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>, <span class="comment">// 左下角</span></span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>   <span class="comment">// 左上角</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>当模型较多时，顶点数据的大量重复绘产生大量的浪费，因此考虑使用<code>索引绘制（Indexed Drawing）</code>的解决方案。</p>
+<p>使用方法与 <code>VBO</code> 类似：生成 <code>glGenBuffers</code>、绑定 <code>glBindBuffer</code>、复制数据 <code>glBufferData</code>、使用 <code>glDrawElements</code> 绘制。</p>
+<p>这里我们知道与每次渲染相关的顶点数据对象有：<code>VBO</code> 和 <code>EBO</code>，既然 <code>VBO</code> 可以被 <code>VAO</code> 管理状态，同样的，<code>EBO</code> 也实现为可以被 <code>VAO</code> 管理状态。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ..:: 初始化代码 :: ..</span></span><br><span class="line"><span class="comment">// 1. 绑定顶点数组对象</span></span><br><span class="line">glBindVertexArray(VAO);</span><br><span class="line"><span class="comment">// 2. 把我们的顶点数组复制到一个顶点缓冲中，供OpenGL使用</span></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, VBO);</span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);</span><br><span class="line"><span class="comment">// 3. 复制我们的索引数组到一个索引缓冲中，供OpenGL使用</span></span><br><span class="line">glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);</span><br><span class="line">glBufferData(GL_ELEMENT_ARRAY_BUFFER, <span class="keyword">sizeof</span>(indices), indices, GL_STATIC_DRAW);</span><br><span class="line"><span class="comment">// 4. 设定顶点属性指针</span></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE, <span class="number">3</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)<span class="number">0</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">[...]</span><br><span class="line"></span><br><span class="line"><span class="comment">// ..:: 绘制代码（渲染循环中） :: ..</span></span><br><span class="line">glUseProgram(shaderProgram);</span><br><span class="line">glBindVertexArray(VAO);</span><br><span class="line">glDrawElements(GL_TRIANGLES, <span class="number">6</span>, GL_UNSIGNED_INT, <span class="number">0</span>)</span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h3><p><img src="/2020/06/23/OpenGL/vertexDataObject/VBO_VAO_EBO.png" alt="relationship"></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/" target="_blank" rel="noopener">learnOpenGL</a></li>
 </ul>
 
           
@@ -619,7 +617,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/Linux/VIM/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/OpenGL/%E7%9D%80%E8%89%B2%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -638,7 +636,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/03/22/Linux/VIM/" itemprop="url">Vim 使用</a></h2>
+                <a class="post-title-link" href="/2020/06/22/OpenGL/%E7%9D%80%E8%89%B2%E5%99%A8/" itemprop="url">OpenGL之着色器</a></h2>
         
 
         <div class="post-meta">
@@ -650,8 +648,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-22T16:22:00+08:00">
-                2020-03-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-22T15:28:00+08:00">
+                2020-06-22
               </time>
             
 
@@ -673,8 +671,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
                   </a>
                 </span>
 
@@ -712,871 +710,442 @@
       
         
           
-            <h1 id="查找关键字"><a href="#查找关键字" class="headerlink" title="查找关键字"></a>查找关键字</h1><p>在 <strong>命令模式</strong> 下敲入 <code>/</code> 输入要查找的关键字，回车即可进行查找对应的关键字：<code>n</code> 代表下一个 match，<code>N</code> 代表上一个 match</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/20/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/NER%E5%B7%A5%E5%85%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/20/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/NER%E5%B7%A5%E5%85%B7/" itemprop="url">NER工具</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-20T00:22:00+08:00">
-                2020-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">NLP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
-                    <span itemprop="name">实体与关系抽取</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="NER工具"><a href="#NER工具" class="headerlink" title="NER工具"></a>NER工具</h1><h2 id="NLTK"><a href="#NLTK" class="headerlink" title="NLTK"></a>NLTK</h2><h2 id="spacy"><a href="#spacy" class="headerlink" title="spacy"></a>spacy</h2><h3 id="支持的语言"><a href="#支持的语言" class="headerlink" title="支持的语言"></a>支持的语言</h3><p><img src="/2020/03/20/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/NER%E5%B7%A5%E5%85%B7/spacy%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B.png" alt="spacy语言模型"></p>
-<h3 id="语言模型的安装"><a href="#语言模型的安装" class="headerlink" title="语言模型的安装"></a>语言模型的安装</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#命令行</span></span><br><span class="line">python -m spacy download xx <span class="comment">#xx表示上面表格中的的NAME</span></span><br><span class="line"><span class="comment">#pip</span></span><br><span class="line">pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_md<span class="number">-1.2</span><span class="number">.0</span>/en_core_web_md<span class="number">-1.2</span><span class="number">.0</span>.tar.gz</span><br><span class="line"><span class="comment">#本地文件</span></span><br><span class="line">pip install /Users/you/en_core_web_md<span class="number">-1.2</span><span class="number">.0</span>.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h3 id="实体抽取的类型"><a href="#实体抽取的类型" class="headerlink" title="实体抽取的类型"></a>实体抽取的类型</h3><p><img src="/2020/03/20/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/NER%E5%B7%A5%E5%85%B7/spacy%E5%AE%9E%E4%BD%93%E6%8A%BD%E5%8F%96.png" alt="entity_recognition"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"><span class="comment"># reference： https://towardsdatascience.com/named-entity-recognition-with-nltk-and-spacy-8c4a7d88e7da</span></span><br><span class="line"><span class="keyword">import</span> spacy</span><br><span class="line"><span class="keyword">from</span> spacy <span class="keyword">import</span> displacy</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> Counter</span><br><span class="line"><span class="keyword">import</span> pprint</span><br><span class="line"><span class="keyword">import</span> en_core_web_sm</span><br><span class="line"></span><br><span class="line"><span class="comment"># nlp = spacy.load('en_core_web_sm')</span></span><br><span class="line">nlp = en_core_web_sm.load()</span><br><span class="line">text = <span class="string">'''</span></span><br><span class="line"><span class="string">BEIJING • The seafood market in Wuhan may not be the only source of the novel coronavirus (2019-nCoV) outbreak, according to a Chinese pulmonary disease specialist. </span></span><br><span class="line"><span class="string"> Dr Huang Chaolin, vice-director of Wuhan Jinyintan Hospital, revealed in a recent interview with business magazine Caixin that there might be multiple places where the virus was first transmitted to humans. </span></span><br><span class="line"><span class="string"> Wuhan Jinyintan Hospital is one of the city's designated hospitals to admit patients infected with the new virus. </span></span><br><span class="line"><span class="string"> Dr Huang and his team re-cently published a paper in The Lancet, the world's leading general medical journal, about some early findings from the clinical data of the first 41 novel coronavirus cases. </span></span><br><span class="line"><span class="string"> The first patient, who was admitted to Dr Huang's hospital on Dec 1 last year, had no direct exposure to Wuhan's Huanan Seafood Wholesale Market, which was previously considered the source of the epidemic, and his family had no fever or respiratory symptoms, according to the paper. </span></span><br><span class="line"><span class="string"> Among the subsequent three patients who were admitted on Dec 10, two had no exposure to the seafood market. In total, only 27 of the 41 cases had exposure to the marketplace. </span></span><br><span class="line"><span class="string"> "Judging from the whole situation, the seafood market may not be the only source. (The origin of the novel coronavirus) might be multi-source," Dr Huang said. </span></span><br><span class="line"><span class="string"> But no clues about other sources have been discovered. </span></span><br><span class="line"><span class="string"> The Huanan seafood market is located in the downtown area of Wuhan city's Jianghan district, less than 1km away from the Hankou railway station in Hubei province. </span></span><br><span class="line"><span class="string"> Besides seafood, poultry and game meat were also sold in the market before it was shut down on Jan 1. </span></span><br><span class="line"><span class="string"> Experts at the Chinese Centre for Disease Control and Prevention had previously isolated the novel coronavirus successfully in the environmental samples collected from the market. Thirty-three of 585 samples from the market were found to contain the nucleic acid of the virus. </span></span><br><span class="line"><span class="string"> XINHUA'''</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># doc = nlp('European authorities fined Google a record $5.1 billion on Wednesday for abusing its power in the mobile phone market and ordered the company to alter its practices')</span></span><br><span class="line">doc = nlp(text)</span><br><span class="line">pprint.pprint([(X.text, X.label_) <span class="keyword">for</span> X <span class="keyword">in</span> doc.ents])</span><br><span class="line"></span><br><span class="line">pprint.pprint([(X, X.ent_iob_, X.ent_type_) <span class="keyword">for</span> X <span class="keyword">in</span> doc])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 词性标注</span></span><br><span class="line">doc = nlp(<span class="string">u'Apple is looking at buying U.K. startup for $1 billion'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> token <span class="keyword">in</span> doc:</span><br><span class="line">    print(token.text, token.lemma_, token.pos_, token.tag_, token.dep_,</span><br><span class="line">          token.shape_, token.is_alpha, token.is_stop)</span><br><span class="line"><span class="comment"># 依存树</span></span><br><span class="line">doc = nlp(<span class="string">u'Autonomous cars shift insurance liability toward manufacturers'</span>)</span><br><span class="line"><span class="keyword">for</span> token <span class="keyword">in</span> doc:</span><br><span class="line">    print(token.text, token.dep_, token.head.text, token.head.pos_,</span><br><span class="line">          [child <span class="keyword">for</span> child <span class="keyword">in</span> token.children])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 命名实体识别</span></span><br><span class="line">doc = nlp(<span class="string">u'Apple is looking at buying U.K. startup for $1 billion'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ent <span class="keyword">in</span> doc.ents:</span><br><span class="line">    print(ent.text, ent.start_char, ent.end_char, ent.label_)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标签化</span></span><br><span class="line"><span class="keyword">for</span> token <span class="keyword">in</span> doc:</span><br><span class="line">    print(token.text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># displacy.serve(doc, style="ent")</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Crawl the article</span></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">url_to_string</span><span class="params">(url)</span>:</span></span><br><span class="line">    res = requests.get(url)</span><br><span class="line">    html = res.text</span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">'html5lib'</span>)</span><br><span class="line">    <span class="keyword">for</span> script <span class="keyword">in</span> soup([<span class="string">"script"</span>, <span class="string">"style"</span>, <span class="string">'aside'</span>]):</span><br><span class="line">        script.extract()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">" "</span>.join(re.split(<span class="string">r'[\n\t]+'</span>, soup.get_text()))</span><br><span class="line">ny_bb = url_to_string(<span class="string">'https://www.nytimes.com/2018/08/13/us/politics/peter-strzok-fired-fbi.html?hp&amp;action=click&amp;pgtype=Homepage&amp;clickSource=story-heading&amp;module=first-column-region&amp;region=top-news&amp;WT.nav=top-news'</span>)</span><br><span class="line">article = nlp(ny_bb)</span><br><span class="line">len(article.ents)</span><br><span class="line"></span><br><span class="line">labels = [x.label_ <span class="keyword">for</span> x <span class="keyword">in</span> article.ents]</span><br><span class="line">Counter(labels)</span><br><span class="line"></span><br><span class="line">items = [x.text <span class="keyword">for</span> x <span class="keyword">in</span> article.ents]</span><br><span class="line">Counter(items).most_common(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">sentences = [x <span class="keyword">for</span> x <span class="keyword">in</span> article.sents]</span><br><span class="line">print(sentences[<span class="number">20</span>])</span><br><span class="line"></span><br><span class="line">displacy.render(nlp(str(sentences[<span class="number">20</span>])), jupyter=<span class="literal">True</span>, style=<span class="string">'ent'</span>)</span><br><span class="line"></span><br><span class="line">displacy.render(nlp(str(sentences[<span class="number">20</span>])), style=<span class="string">'dep'</span>, jupyter = <span class="literal">True</span>, options = &#123;<span class="string">'distance'</span>: <span class="number">120</span>&#125;)</span><br><span class="line"></span><br><span class="line">[(x.orth_,x.pos_, x.lemma_) <span class="keyword">for</span> x <span class="keyword">in</span> [y</span><br><span class="line">                                      <span class="keyword">for</span> y</span><br><span class="line">                                      <span class="keyword">in</span> nlp(str(sentences[<span class="number">20</span>]))</span><br><span class="line">                                      <span class="keyword">if</span> <span class="keyword">not</span> y.is_stop <span class="keyword">and</span> y.pos_ != <span class="string">'PUNCT'</span>]]</span><br><span class="line"></span><br><span class="line">dict([(str(x), x.label_) <span class="keyword">for</span> x <span class="keyword">in</span> nlp(str(sentences[<span class="number">20</span>])).ents])</span><br><span class="line"></span><br><span class="line">print([(x, x.ent_iob_, x.ent_type_) <span class="keyword">for</span> x <span class="keyword">in</span> sentences[<span class="number">20</span>]])</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/C/CPP/c++11/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/02/C/CPP/c++11/README/" itemprop="url">C++ 11 新特性总结</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T23:57:00+08:00">
-                2020-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
-                    <span itemprop="name">c++11</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="c-11-新特性总结"><a href="#c-11-新特性总结" class="headerlink" title="c++ 11 新特性总结"></a>c++ 11 新特性总结</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://zhuanlan.zhihu.com/p/21930436" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/21930436</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/C/CPP/c++11/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/02/C/CPP/c++11/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" itemprop="url">智能指针</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T23:43:00+08:00">
-                2020-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
-                    <span itemprop="name">c++11</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h1><p>智能指针在手动管理 c++ 内存对象中起  到了一定的作用，使用了boost的智能指针方案，与 <code>java</code> <code>python</code> 等类型进行自动垃圾回收相比，使用该方式进行内存管理的行为更明确！！！</p>
-<p>智能指针主要有三种指针类型：</p>
+            <h1 id="着色器（Shader）"><a href="#着色器（Shader）" class="headerlink" title="着色器（Shader）"></a>着色器（Shader）</h1><blockquote>
+<p>在OpenGL中，任何事物都在3D空间中，而屏幕和窗口却是2D像素数组，这导致OpenGL的大部分工作都是关于把3D坐标转变为适应你屏幕的2D像素。3D坐标转为2D坐标的处理过程是由OpenGL的图形渲染管线（Graphics Pipeline，大多译为管线，实际上指的是一堆原始图形数据途经一个输送管道，期间经过各种变化处理最终出现在屏幕的过程）管理的。图形渲染管线可以被划分为两个主要部分：第一部分把你的3D坐标转换为2D坐标，第二部分是把2D坐标转变为实际的有颜色的像素。</p>
+<p>图形渲染管线接受一组3D坐标，然后把它们转变为你屏幕上的有色2D像素输出。图形渲染管线可以被划分为几个阶段，每个阶段将会把前一个阶段的输出作为输入。所有这些阶段都是高度专门化的（它们都有一个特定的函数），并且很容易并行执行。正是由于它们具有并行执行的特性，当今大多数显卡都有成千上万的小处理核心，它们在GPU上为每一个（渲染管线）阶段运行各自的小程序，从而在图形渲染管线中快速处理你的数据。这些小程序叫做着色器(Shader)。</p>
+</blockquote>
 <ul>
-<li>unique_ptr，独占指针对象，且指针对象的生命周期与其一致，即不能进行指针对象的复制；</li>
-<li>shared_ptr，指针对象可以共享，即可以通过复制将指针赋值给 shared_ptr，weak_ptr。当 shared_ptr 数目减少至0时，指针对象生命周期结束；</li>
-<li>weak_ptr，不能决定所指对象的生命周期，引用所指对象时，<strong>需要先 lock 成 shared_ptr 才能访问。</strong></li>
+<li>OpenGL着色器使用的是 <code>OpenGL着色器语言（OpenGL Shading Language,GLSL）</code></li>
 </ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//文件 test-1.cpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;memory&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up1(<span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">11</span>));</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up2 = up1;   <span class="comment">//! 编译时会出错 [1]</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">unique_ptr</span>&lt;<span class="keyword">int</span>&gt; up3 = <span class="built_in">move</span>(up1);  <span class="comment">//! [2]</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; *up3 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">if</span> (up1)</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; *up1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    up3.reset();  <span class="comment">//! [3]</span></span><br><span class="line">    up1.reset();</span><br><span class="line"></span><br><span class="line">    <span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; sp1(make_shared&lt;<span class="built_in">string</span>&gt;(<span class="string">"Hello"</span>));</span><br><span class="line">    <span class="built_in">shared_ptr</span>&lt;<span class="built_in">string</span>&gt; sp2 = sp1;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp1:"</span> &lt;&lt; *sp1 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp2:"</span> &lt;&lt; *sp2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    sp1.reset();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*sp2:"</span> &lt;&lt; *sp2 &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    weak_ptr&lt;<span class="built_in">string</span>&gt; wp = sp2; <span class="comment">//! [4]</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*wp.lock():"</span> &lt;&lt; *wp.lock() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    sp2.reset();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"*wp.lock():"</span> &lt;&lt; *wp.lock() &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">//! 运行时会出错</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//编译命令： g++ -std=c++11 test-1.cpp</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://my.oschina.net/hevakelcj/blog/465978" target="_blank" rel="noopener">https://my.oschina.net/hevakelcj/blog/465978</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/C/CPP/c++11/auto/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/02/C/CPP/c++11/auto/" itemprop="url">auto 关键字</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T22:48:00+08:00">
-                2020-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
-                    <span itemprop="name">c++11</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="auto-关键字的使用"><a href="#auto-关键字的使用" class="headerlink" title="auto 关键字的使用"></a>auto 关键字的使用</h1><p><code>auto</code> 关键字是 c++ 11 引入的自动推导关键字，主要用途有：</p>
-<ol>
-<li>声明变量时根据初始化表达式自动推断该变量的类型；</li>
-<li>声明函数时，函数返回值的占位符</li>
-</ol>
-<p><strong>auto的类型推导实际上在编译过程中由编译器自动推导完成，实际上是个语法糖，但是很实用！</strong></p>
-<p><code>auto</code> 关键字适用于类型冗长复杂时，如：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vect;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> it = vect.<span class="built_in">begin</span>(); it != vect.<span class="built_in">end</span>(); ++it)</span><br><span class="line">&#123;  <span class="comment">//it的类型是std::vector&lt;int&gt;::iterator</span></span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cin</span> &gt;&gt; *it;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>或者保存 lambda 表达式的变量声明：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">auto</span> ptr = [](<span class="keyword">double</span> x)&#123;<span class="keyword">return</span> x*x;&#125;;<span class="comment">//类型为std::function&lt;double(double)&gt;函数对象`</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="auto-与-decltype-区别"><a href="#auto-与-decltype-区别" class="headerlink" title="auto 与 decltype 区别"></a><code>auto</code> 与 <code>decltype</code> 区别</h1><p><code>auto</code> 进行编译器自动类型推导的时候需要指定初始值，但使用 <code>decltype</code> 可以进行不进行初始化进行类型声明。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">decltype</span>(i) a; <span class="comment">// double</span></span><br><span class="line">    <span class="keyword">decltype</span>(add()) b; <span class="comment">//int 注意括号。不带括号就是函数指针了。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://blog.csdn.net/xiaoquantouer/article/details/51647865" target="_blank" rel="noopener">https://blog.csdn.net/xiaoquantouer/article/details/51647865</a></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/02/C/CPP/c++11/lambda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/02/C/CPP/c++11/lambda/" itemprop="url">C++ 11 之 Lambda 表达式</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-02T14:03:00+08:00">
-                2020-03-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/c-11/" itemprop="url" rel="index">
-                    <span itemprop="name">c++11</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="lambda-表达式"><a href="#lambda-表达式" class="headerlink" title="lambda 表达式"></a>lambda 表达式</h1><p>lambda 表达式是 c++ 11 引入的新特性，c++中 lambda 表达式的声明：</p>
-<p><code>[capture list] (params list) mutable exception-&gt; return type { function body }</code></p>
+<h2 id="Graphics-Pipeline"><a href="#Graphics-Pipeline" class="headerlink" title="Graphics Pipeline"></a>Graphics Pipeline</h2><p><img src="./summary/shader.png" alt="Graphics Pipeline"></p>
 <ul>
-<li><code>capture list</code> 为外部捕获参数列表</li>
-<li><code>params list</code> 为形参列表</li>
-<li><code>mutable</code> 用来修饰是否修改捕获的外部变量</li>
-<li><code>exception</code> 异常设定</li>
+<li>顶点着色器（Vertex Shader）</li>
 </ul>
-<p>常用的几种 lambda 表达式</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用了返回类型后置的新特性</span></span><br><span class="line">[capture <span class="built_in">list</span>] (params <span class="built_in">list</span>) -&gt; <span class="keyword">return</span> type &#123; function body &#125;</span><br><span class="line">[capture <span class="built_in">list</span>] (params <span class="built_in">list</span>) &#123; function body &#125;</span><br><span class="line">[capture <span class="built_in">list</span>] &#123; function body &#125;</span><br></pre></td></tr></table></figure>
+<p>顶点着色器主要的目的是把3D坐标转为另一种3D坐标（后面会解释），同时顶点着色器允许我们对顶点属性进行一些基本处理。</p>
+<ul>
+<li>图元装配（Shape Assembly）</li>
+</ul>
+<p>将顶点着色器输出的所有顶点作为输入（如果是GL_POINTS，那么就是一个顶点），并所有的点装配成指定图元的形状；本节例子中是一个三角形。</p>
+<ul>
+<li>几何着色器（Geometry Shader）</li>
+</ul>
+<p>几何着色器把图元形式的一系列顶点的集合作为输入，它可以通过产生新顶点构造出新的（或是其它的）图元来生成其他形状。例子中，它生成了另一个三角形。</p>
+<ul>
+<li>光栅化（Rasterization）</li>
+</ul>
+<p>这里它会把图元映射为最终屏幕上相应的像素，生成供片段着色器(Fragment Shader)使用的片段(Fragment)。在片段着色器运行之前会执行裁切(Clipping)。裁切会丢弃超出你的视图以外的所有像素，用来提升执行效率</p>
+<ul>
+<li>片段着色器（Fragment Shader）</li>
+</ul>
+<p>主要目的是计算一个像素的最终颜色，这也是所有OpenGL高级效果产生的地方。通常，片段着色器包含3D场景的数据（比如光照、阴影、光的颜色等等），这些数据可以被用来计算最终像素的颜色。</p>
+<ul>
+<li>测试与混合（Tests and Blending）</li>
+</ul>
+<p>Alpha测试和混合(Blending)阶段。该阶段主要检测片段的深度，即该像素是位于其它物体的前面还是后面，同时也会检查alpha值（即透明度）并对物体进行混合。</p>
+<p>对于大多数场景，只需要配置顶点和片段着色器即可，几何着色器是可选的，在现代 OpenGL中你必须至少定义一个顶点着色器和一个片段着色器。</p>
+<h2 id="顶点着色器"><a href="#顶点着色器" class="headerlink" title="顶点着色器"></a>顶点着色器</h2><p><strong>创建着色器的一般步骤</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 将着色器源码存入字符串</span><br><span class="line">2. 创建着色器对象</span><br><span class="line">3. 将源码字符串赋予着色器对象</span><br><span class="line">4. 编译着色器</span><br><span class="line">5. 创建着色器程序对象</span><br><span class="line">6. 将编译好的着色器附加到程序对象上</span><br><span class="line">7. 链接生成程序</span><br></pre></td></tr></table></figure>
 
-<h2 id="关于外部变量的捕获方式"><a href="#关于外部变量的捕获方式" class="headerlink" title="关于外部变量的捕获方式"></a>关于外部变量的捕获方式</h2><h3 id="1-值捕获"><a href="#1-值捕获" class="headerlink" title="1. 值捕获"></a>1. 值捕获</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [a] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    a = <span class="number">321</span>;</span><br><span class="line">    f(); <span class="comment">// 输出：123</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="片段着色器"><a href="#片段着色器" class="headerlink" title="片段着色器"></a>片段着色器</h2><h2 id="着色器之间的数据传输"><a href="#着色器之间的数据传输" class="headerlink" title="着色器之间的数据传输"></a>着色器之间的数据传输</h2><p>使用 <code>in</code>、<code>out</code>进行传输，GPU内部的数据传输<br>使用 <code>uniform</code> 可以用来在 CPU 与 GPU之间数据传输</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#version version_number</span><br><span class="line">in type in_variable_name</span><br><span class="line">out type out_variable_name</span><br><span class="line">uniform type uniform_name</span><br><span class="line"></span><br><span class="line">void main() &#123;</span><br><span class="line">    // 处理输入并进行一些图像操作</span><br><span class="line">    ...</span><br><span class="line">    // 输出处理过的结果到输出变量</span><br><span class="line">    out_variable_name = weird_stuff_we_processed;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
 
-<h3 id="2-引用捕获"><a href="#2-引用捕获" class="headerlink" title="2. 引用捕获"></a>2. 引用捕获</h3><p><img src="/2020/03/02/C/CPP/c++11/lambda/value_catch.png" alt="引用捕获"></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [&amp;a] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    a = <span class="number">321</span>;</span><br><span class="line">    f(); <span class="comment">// 输出：321</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
 
-<h3 id="3-隐式捕获"><a href="#3-隐式捕获" class="headerlink" title="3. 隐式捕获"></a>3. 隐式捕获</h3><p>不在捕获列表中显式写明需要捕获的变量，使用编译器自动推导</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 隐式值捕获</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [=] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    f(); <span class="comment">// 输出：123</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 隐式引用捕获</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">123</span>;</span><br><span class="line">    <span class="keyword">auto</span> f = [&amp;] &#123; <span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="built_in">endl</span>; &#125;;</span><br><span class="line">    a = <span class="number">321</span>;</span><br><span class="line">    f(); <span class="comment">// 输出：321</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
 
-<h3 id="4-混合方式"><a href="#4-混合方式" class="headerlink" title="4. 混合方式"></a>4. 混合方式</h3><p>混合方式是对于既有值捕获又有引用捕获的方式，<br><img src="/2020/03/02/C/CPP/c++11/lambda/mixed_mode.png" alt="混合方式"></p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
-<li><a href="https://www.cnblogs.com/DswCnblog/p/5629165.html" target="_blank" rel="noopener">https://www.cnblogs.com/DswCnblog/p/5629165.html</a></li>
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/OpenGL/Summary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/18/OpenGL/Summary/" itemprop="url">OpenGL 综述</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-18T22:15:00+08:00">
+                2020-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OpenGL/" itemprop="url" rel="index">
+                    <span itemprop="name">OpenGL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="OpenGL"><a href="#OpenGL" class="headerlink" title="OpenGL"></a>OpenGL</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><h3 id="状态机"><a href="#状态机" class="headerlink" title="状态机"></a>状态机</h3><p>OpenGL 本质上是个大状态机</p>
+<h3 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h3><p>在 OpenGL 中一个对象是指一些选项的集合，它代表OpenGL状态的子集。</p>
+<h3 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a>GLFW</h3><blockquote>
+<p>GLFW is an Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan development on the desktop. It provides a simple API for creating windows, contexts and surfaces, receiving input and events.</p>
+<p>主要 生成窗口，支持OpenGL上下文，是API库函数</p>
+</blockquote>
+<h3 id="GLAD"><a href="#GLAD" class="headerlink" title="GLAD"></a>GLAD</h3><blockquote>
+<p>基于官方规格的多语言GL / GLES / EGL / GLX / WGL装载机 - 生成器。<br>一般结合GLFW使用。主要用于不同的硬件环境。是与硬件相关的驱动函数。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两者头文件的顺序</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="GLEW"><a href="#GLEW" class="headerlink" title="GLEW"></a>GLEW</h3><blockquote>
+<p>因为OpenGL只是一个标准/规范，具体的实现是由驱动开发商针对特定显卡实现的。由于OpenGL驱动版本众多，它大多数函数的位置都无法在编译时确定下来，需要在运行时查询。任务就落在了开发者身上，开发者需要在运行时获取函数地址并将其保存在一个函数指针中供以后使用。取得地址的方法因平台而异。</p>
+</blockquote>
+<p>GLEW是OpenGL Extension Wrangler Library的缩写。</p>
+<h3 id="SOIL"><a href="#SOIL" class="headerlink" title="SOIL"></a>SOIL</h3><p>存在的背景：</p>
+<blockquote>
+<p>纹理图像可能被储存为各种各样的格式，每种都有自己的数据结构和排列，所以我们如何才能把这些图像加载到应用中呢？一个解决方案是选一个需要的文件格式，比如.PNG，然后自己写一个图像加载器，把图像转化为字节序列。写自己的图像加载器虽然不难，但仍然挺麻烦的，而且如果要支持更多文件格式呢？你就不得不为每种你希望支持的格式写加载器了。</p>
+</blockquote>
+<p>SOIL是简易OpenGL图像库(Simple OpenGL Image Library)的缩写，它支持大多数流行的图像格式，使用起来也很简单。</p>
+<h3 id="std-image-h"><a href="#std-image-h" class="headerlink" title="std_image.h"></a><code>std_image.h</code></h3><p>和前面叙述的 <code>SOIL</code> 是一样的功能。</p>
+<blockquote>
+<p>GLM是OpenGL Mathematics的缩写，它是一个只有头文件的库，也就是说我们只需包含对应的头文件就行了，不用链接和编译。GLM可以在它们的网站上下载。把头文件的根目录复制到你的includes文件夹，然后你就可以使用这个库了。</p>
+</blockquote>
+<h3 id="GLM"><a href="#GLM" class="headerlink" title="GLM"></a><code>GLM</code></h3><blockquote>
+<p>GLM是OpenGL Mathematics的缩写，它是一个只有头文件的库，也就是说我们只需包含对应的头文件就行了，不用链接和编译。GLM可以在它们的网站上下载。把头文件的根目录复制到你的includes文件夹，然后你就可以使用这个库了。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.cnblogs.com/MakeView660/p/10488306.html" target="_blank" rel="noopener">opengl库区分</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/Algorithm/DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/18/Algorithm/DP/" itemprop="url">DP 相关问题</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-18T20:39:00+08:00">
+                2020-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="DP相关问题"><a href="#DP相关问题" class="headerlink" title="DP相关问题"></a>DP相关问题</h1><h2 id="题号"><a href="#题号" class="headerlink" title="题号"></a>题号</h2><ol>
+<li>LC32 Longest Valid Parentheses</li>
 </ol>
+<ul>
+<li>采用栈和DP，栈用来保存当前已经匹配的index</li>
+<li>注意：input: <code>()(())</code> output: 6 </li>
+</ul>
+<ol start="2">
+<li>LC53 Maximum Subarray</li>
+</ol>
+<ul>
+<li>Transition function: <code>dp[i]=max{dp[i-1]+nums[i], nums[i]}</code>, <code>dp[i]</code> 代表 <code>nums[i]</code>参与的当前subarray的最大值</li>
+</ul>
+<ol start="3">
+<li>LC95 Unique Binary Search Trees II</li>
+</ol>
+<ul>
+<li><code>DP</code> Transition function: <code>dp[i]=dp[0]*dp[i-1]+...+dp[i-1]*dp[0]</code></li>
+<li>主要思想是遍历0-n-1，取其中任意一个当做root的情况的总和</li>
+</ul>
+<ol start="4">
+<li><p>LC131 Palindrome Partitioning</p>
+</li>
+<li><p>LC132 Palindrome Partitioning II</p>
+</li>
+<li><p>LC1278 Palindrome Partitioning III</p>
+</li>
+<li><p>LC139 Word Break</p>
+</li>
+<li><p>LC140 Word Break II</p>
+</li>
+<li><p>LC121</p>
+</li>
+<li><p>LC122</p>
+</li>
+<li><p>LC123</p>
+</li>
+<li><p>LC188</p>
+</li>
+<li><p>LC643</p>
+</li>
+<li><p>LC644</p>
+</li>
+<li><p>LC1335</p>
+</li>
+<li><p>LC1326</p>
+</li>
+<li><p>LC42</p>
+</li>
+<li><p>LC1320 Minimum Distance to Type a Word Using Two Fingers</p>
+</li>
+<li><p>LC1310 XOR Queries of a Subarray</p>
+</li>
+<li><p>LC1312  Minimum Insertion Steps to Make a String Palindrome</p>
+</li>
+</ol>
+<ul>
+<li>普通DP？</li>
+</ul>
+<ol start="21">
+<li>LC5 Longest Palindromic Substring</li>
+</ol>
+<ul>
+<li><code>Brute Force</code>带来较多的重复比较（判断 Palindromic 的时候）</li>
+<li>采用 <code>(l,r)是Palindromic &amp;&amp; s[l-1]==s[r+1]</code>遍历选取中心点 i，得到最大的 <code>len</code></li>
+</ul>
+<ol start="22">
+<li>LC1143 Longest Common Subsequence</li>
+</ol>
+<ul>
+<li>状态：<code>f[i][j]</code> <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(text1[i<span class="number">-1</span>] == text2[j<span class="number">-1</span>])</span><br><span class="line">    f[i][j] = <span class="built_in">max</span>(&#123;f[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>, f[i<span class="number">-1</span>][j], f[i][j<span class="number">-1</span>]&#125;);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    f[i][j] = <span class="built_in">max</span>(f[i<span class="number">-1</span>][j], f[i][j<span class="number">-1</span>]);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><h3 id="两个问题"><a href="#两个问题" class="headerlink" title="两个问题"></a>两个问题</h3><ul>
+<li>状态</li>
+<li>转移</li>
+</ul>
+<h3 id="记忆化递归与DP"><a href="#记忆化递归与DP" class="headerlink" title="记忆化递归与DP"></a>记忆化递归与DP</h3><p>记忆化递归与DP其实是一回事儿，主要是通过利用前面计算的结果加速当前计算。</p>
+<ul>
+<li>递归</li>
+<li>记忆化递归是 <code>Top-Down</code></li>
+<li>DP是 <code>Bottom-Up</code><br>单纯直接思考 <code>DP</code> 的做法有些弯路，可以按照 <code>递归-&gt;记忆化递归-&gt;Dynamic Programming</code> 的方式</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://zhuanlan.zhihu.com/p/35707293" target="_blank" rel="noopener">动态规划相关题目汇总</a></li>
+</ul>
 
           
         
@@ -1625,7 +1194,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/C/CPP/leetcode/w1/P297/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/Algorithm/Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1644,7 +1213,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/02/20/C/CPP/leetcode/w1/P297/" itemprop="url">Problem 297</a></h2>
+                <a class="post-title-link" href="/2020/06/18/Algorithm/Tree/" itemprop="url">Tree 相关问题</a></h2>
         
 
         <div class="post-meta">
@@ -1656,8 +1225,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T21:51:00+08:00">
-                2020-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-18T17:41:00+08:00">
+                2020-06-18
               </time>
             
 
@@ -1679,41 +1248,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
-                    <span itemprop="name">CPP</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
-                    <span itemprop="name">w1</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -1751,16 +1287,80 @@
       
         
           
-            <h1 id="Serialize-and-Deserialize-Binary-Tree"><a href="#Serialize-and-Deserialize-Binary-Tree" class="headerlink" title="Serialize and Deserialize Binary Tree"></a>Serialize and Deserialize Binary Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>对二叉树进行 <code>srialize</code> 与 <code>deserialize</code> 操作实现</p>
-<h2 id="解法-1"><a href="#解法-1" class="headerlink" title="解法 1"></a>解法 1</h2><p>主要思想是使用两次遍历得到的序列，进行序列化与反序列化操作</p>
-<p>出现的反例是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">    1</span><br><span class="line">1       1</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">```</span><br><span class="line"></span><br><span class="line">## 解法 <span class="number">2</span></span><br><span class="line"></span><br><span class="line">加入位置记录，如：</span><br></pre></td></tr></table></figure>
-<pre><code>1</code></pre><p>1       1<br>序列化成： 1,1,1,2,1,3</p>
-<pre><code>    1
-2       3
-     6      7</code></pre><p>序列化成：1,1,2,2,3,3,6,6,7,7<br>```</p>
+            <h1 id="Tree-相关问题"><a href="#Tree-相关问题" class="headerlink" title="Tree 相关问题"></a>Tree 相关问题</h1><ol>
+<li><p>lc144 二叉树的前序遍历</p>
+</li>
+<li><p>lc94 二叉树的中序遍历</p>
+</li>
+<li><p>lc145 二叉树的后序遍历</p>
+</li>
+<li><p>lc102 二叉树的层次遍历</p>
+</li>
+</ol>
+<ul>
+<li>二叉树的层次遍历可以采用 <code>queue</code> + <code>queue.size()</code> 进行逐层遍历</li>
+<li>也可以采用 <code>DFS</code> + <code>level</code> 进行层次遍历</li>
+</ul>
+<ol start="5">
+<li><p>lc104 二叉树的最大深度</p>
+</li>
+<li><p><strong>lc111</strong> 二叉树的最小深度</p>
+</li>
+</ol>
+<ul>
+<li>注意二叉树最小深度的定义：单叉树的最小深度不为1！！</li>
+</ul>
+<ol start="7">
+<li>lc110 是否为平衡二叉树（Balanced Tree</li>
+</ol>
+<ul>
+<li>递归判断树的深度</li>
+</ul>
+<ol start="8">
+<li><strong>lc101</strong> 是否为对称二叉树（Symmetric Tree）</li>
+</ol>
+<ul>
+<li>规则：左子树的左孩子 == 右子树的右孩子 &amp;&amp; 左子树的右孩子 == 右子树的左孩子</li>
+</ul>
+<ol start="9">
+<li><p>lc226 反转二叉树</p>
+</li>
+<li><p>lc109 给定单链表（值有序）转化成平衡二叉查找树</p>
+</li>
+</ol>
+<ul>
+<li>采用 <code>二分搜索</code> 的思想创建 node</li>
+</ul>
+<ol start="11">
+<li><strong>House Rober III</strong></li>
+</ol>
+<ul>
+<li>采用递归，主要思想在于：每一层节点的max = 包含当前节点和第三层节点的max 或  第二层节点的 value</li>
+</ul>
+<ol start="12">
+<li>lc112 判断二叉树 路径和是否存在</li>
+</ol>
+<ul>
+<li>递归即可</li>
+</ul>
+<ol start="13">
+<li><strong>lc98</strong>  判断是否是二叉查找树（BST）</li>
+</ol>
+<ul>
+<li>可采用中序遍历判断是否为有序</li>
+<li><em>利用 二叉查找树的 性质进行递归</em></li>
+</ul>
+<ol start="14">
+<li>lc513 找出二叉树最后一层最左边的值</li>
+</ol>
+<ul>
+<li>层次遍历，<code>queue</code>中先插入 <code>root-&gt;right</code></li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>二叉树相关问题常用 <strong>递归</strong> 的方式求解</li>
+<li><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2></li>
+<li><a href="https://learnku.com/articles/29219" target="_blank" rel="noopener">leetcode二叉树题目集合</a></li>
+</ul>
 
           
         
@@ -1809,7 +1409,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/20/C/CPP/leetcode/w1/P98/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/17/Algorithm/overflow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1828,7 +1428,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/02/20/C/CPP/leetcode/w1/P98/" itemprop="url">Problem 98</a></h2>
+                <a class="post-title-link" href="/2020/06/17/Algorithm/overflow/" itemprop="url">c++ 数据溢出的问题</a></h2>
         
 
         <div class="post-meta">
@@ -1840,8 +1440,322 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-20T21:43:00+08:00">
-                2020-02-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-17T22:20:00+08:00">
+                2020-06-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数据溢出"><a href="#数据溢出" class="headerlink" title="数据溢出"></a>数据溢出</h1><p>以前在做题的时候，没有考虑过数据溢出的问题，在做 <a href="https://leetcode.com/problems/divide-two-integers/" target="_blank" rel="noopener">leetcode29</a> 题目的时候，发现边缘情况是这道题的难点之一</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> dividend, <span class="keyword">int</span> divisor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!divisor || (dividend == INT_MIN &amp;&amp; divisor == <span class="number">-1</span>)) <span class="keyword">return</span> INT_MAX;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> temp, td;</span><br><span class="line">        <span class="keyword">bool</span> neg = (dividend &lt; <span class="number">0</span>) ^ (divisor &lt;  <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> dividend_abs = dividend &lt;  <span class="number">0</span> ?  -((<span class="keyword">unsigned</span> <span class="keyword">int</span>)(dividend)) : +((<span class="keyword">unsigned</span> <span class="keyword">int</span>)(dividend));</span><br><span class="line">        divisor = <span class="built_in">abs</span>(divisor);</span><br><span class="line">        <span class="keyword">while</span>(dividend_abs &gt;=  divisor) &#123;</span><br><span class="line">            td = divisor;</span><br><span class="line">            temp = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(dividend_abs &gt;= td) &#123;</span><br><span class="line">                td &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">                temp &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            res += temp&gt;&gt;<span class="number">1</span>;</span><br><span class="line">            dividend_abs -= td&gt;&gt;<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> neg ? -res : res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>主要几个测试用例：</p>
+<ul>
+<li><code>INT_MIN</code> 为 -2147483648，使用 <code>abs()/labs()</code> 取绝对值的时候，得到的结果均为 <code>-2147483648</code>，因此取绝对值的代码为：</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unsigned</span> <span class="keyword">int</span> dividend_abs = dividend &lt;  <span class="number">0</span> ?  -((<span class="keyword">unsigned</span> <span class="keyword">int</span>)(dividend)) : +((<span class="keyword">unsigned</span> <span class="keyword">int</span>)(dividend));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">-2147483648</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="comment">// -2147483648</span></span><br><span class="line"></span><br><span class="line"><span class="number">-2147483648</span></span><br><span class="line"><span class="number">-1</span></span><br><span class="line"><span class="comment">// 2147483647</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>在C/C++语言中，不能够直接使用-2147483648来代替最小负数，因为这不是一个数字，而是一个表达式。表达式的意思是对整数21473648取负，但是2147483648已经溢出了int的上限，所以定义为（-INT_MAX -1）。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/16/Algorithm/search/vjudgeA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/16/Algorithm/search/vjudgeA/" itemprop="url">搜索与排序</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-16T20:16:00+08:00">
+                2020-06-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Algorithm/search/" itemprop="url" rel="index">
+                    <span itemprop="name">search</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="VjudgeA"><a href="#VjudgeA" class="headerlink" title="VjudgeA"></a>VjudgeA</h1><ul>
+<li><a href="https://vjudge.net/contest/204422#problem/A" target="_blank" rel="noopener">vjudgeA</a></li>
+</ul>
+<p>这是一道比较常规的搜索题目，主要在于排序之后选取的搜索算法，这里采用二分查找，但由于要找到第一个值的index，所以进行了相应的改进。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Created by wangc on 2020/6/16.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 二分查找</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">binary_search</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; searchv, <span class="keyword">const</span> <span class="keyword">int</span>&amp; k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> e = searchv.<span class="built_in">size</span>() <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">int</span> mid;</span><br><span class="line">    <span class="keyword">while</span>(b &lt;= e) &#123;</span><br><span class="line">        mid = (b + e)/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (k &lt;= searchv[mid])</span><br><span class="line">            e = mid;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            b = mid + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (b == e) &#123;</span><br><span class="line">            <span class="keyword">if</span> (searchv[b] == k)</span><br><span class="line">                <span class="keyword">return</span> b;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> N, Q;</span><br><span class="line">    <span class="built_in">cin</span>&gt;&gt;N&gt;&gt;Q;</span><br><span class="line">    <span class="keyword">int</span> marbel_number, query_number;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; marblev;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;marbel_number;</span><br><span class="line">        marblev.push_back(marbel_number);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(marblev.<span class="built_in">begin</span>(), marblev.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; Q; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cin</span>&gt;&gt;query_number;</span><br><span class="line">        <span class="keyword">int</span> index = binary_search(marblev, query_number);</span><br><span class="line">        <span class="keyword">if</span> (index == <span class="number">-1</span>)</span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;query_number&lt;&lt;<span class="string">" not found"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">cout</span>&lt;&lt;query_number&lt;&lt;<span class="string">" found at "</span>&lt;&lt;index+<span class="number">1</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但最终是 wrong answer 不知道为什么</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/C/CPP/STL/algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/13/C/CPP/STL/algorithm/" itemprop="url">STL algorithm 总结</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T22:36:00+08:00">
+                2020-06-13
               </time>
             
 
@@ -1885,19 +1799,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/CPP/leetcode/w1/" itemprop="url" rel="index">
-                    <span itemprop="name">w1</span>
+                  <a href="/categories/C/CPP/STL/" itemprop="url" rel="index">
+                    <span itemprop="name">STL</span>
                   </a>
                 </span>
 
@@ -1935,9 +1838,188 @@
       
         
           
-            <h1 id="Validate-Binary-Search-Tree"><a href="#Validate-Binary-Search-Tree" class="headerlink" title="Validate Binary Search Tree"></a>Validate Binary Search Tree</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>判断平衡二叉搜索树（Binary Search Tree）</p>
-<h2 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h2><p>使用中序遍历得到一个有序数组，当该数组为升序时即为BST</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isValidBST</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> isBST = <span class="literal">true</span>;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; orderList;</span><br><span class="line">        middleOrder(root, orderList);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i =<span class="number">1</span> ; i &lt; orderList.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(orderList[i] &lt;= orderList[i<span class="number">-1</span>]) isBST = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> isBST;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 中序遍历</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">middleOrder</span><span class="params">(TreeNode* root, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; orderList)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!root) <span class="keyword">return</span>;</span><br><span class="line">        middleOrder(root -&gt; left, orderList);</span><br><span class="line">        orderList.push_back(root -&gt; val);</span><br><span class="line">        middleOrder(root -&gt; right, orderList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            <h1 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h1><h2 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h2><p><code>find_if(words.begin(), words.end(), [sz](const string&amp; a, const string&amp; b) { return a.size() &lt; b.size()});</code></p>
+<ul>
+<li>获取一个迭代器</li>
+</ul>
+<p><code>for_each(wc, words.end(), [](const string&amp; s){cout&lt;&lt;s&lt;&lt;&quot; &quot;;});</code></p>
+<p><code>stable_sort(words.begin(), words.end(), [](const string&amp; a, const string&amp; b) { return a.size() &lt; b.size(); });</code></p>
+<p><code>transform(vi.begin(), vi.end(), vi.begin(), [](int i) { return i &lt; 0? -i : i;})</code></p>
+<ul>
+<li><code>transform接受三个迭代器和一个可调用对象。前两个迭代器表示输入序列，第三个迭代器表示目的位置。算法对输入序列中的每个元素调用可调用对象。</code></li>
+</ul>
+<p><code>count_if(words.begin(), words.end(), [](int i) {return i%2==1;});</code></p>
+<ul>
+<li>Returns the number of elements in the range [first,last) for which pred is true.</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/C/CPP/STL/string/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/13/C/CPP/STL/string/" itemprop="url">STL string 总结</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-13T22:36:00+08:00">
+                2020-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index">
+                    <span itemprop="name">C</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/" itemprop="url" rel="index">
+                    <span itemprop="name">CPP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/CPP/STL/" itemprop="url" rel="index">
+                    <span itemprop="name">STL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="string"><a href="#string" class="headerlink" title="string"></a>string</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p><code>substr(pos, n);</code></p>
+<ul>
+<li>取得子串：pos代表起始位置，默认为0，n代表取得子串的长度</li>
+</ul>
+
           
         
       
@@ -1976,7 +2058,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/3/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/3/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2026,7 +2108,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2037,7 +2119,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2048,7 +2130,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

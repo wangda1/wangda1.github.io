@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/Mathmatics/Numerical%20Analysis/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Something/use-hexo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/25/Mathmatics/Numerical%20Analysis/README/" itemprop="url">README</a></h2>
+                <a class="post-title-link" href="/2020/01/05/Something/use-hexo/" itemprop="url">use-hexo</a></h2>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T20:32:48+08:00">
-                2019-12-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T12:20:12+08:00">
+                2020-01-05
               </time>
             
 
@@ -348,19 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/" itemprop="url" rel="index">
-                    <span itemprop="name">Mathmatics</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/Numerical-Analysis/" itemprop="url" rel="index">
-                    <span itemprop="name">Numerical Analysis</span>
+                  <a href="/categories/Something/" itemprop="url" rel="index">
+                    <span itemprop="name">Something</span>
                   </a>
                 </span>
 
@@ -398,24 +387,160 @@
       
         
           
-            <h1 id="数值分析"><a href="#数值分析" class="headerlink" title="数值分析"></a>数值分析</h1><p>数值分析是从计算机的角度解决数学中常见的运算问题。</p>
-<p>这里为了能记得比较清晰一些，找了在<code>python</code>上的实验进行实验，加深印象。</p>
-<p>推荐视频</p>
-<ul>
-<li><a href="https://www.bilibili.com/video/av27803928?from=search&seid=1984628040516151416" target="_blank" rel="noopener">陈妍-中国农大-数值计算方法</a></li>
-<li>配套讲义-百度云</li>
+            <h1 id="USE-HEXO"><a href="#USE-HEXO" class="headerlink" title="USE-HEXO"></a>USE-HEXO</h1><p>本篇记录将 Blogs 使用 hexo + Next 主题的过程。</p>
+<h2 id="1-HEXO"><a href="#1-HEXO" class="headerlink" title="1. HEXO"></a>1. HEXO</h2><blockquote>
+<p>Hexo 是高效的静态站点生成框架，基于 Node.js.</p>
+</blockquote>
+<h3 id="1-1-安装"><a href="#1-1-安装" class="headerlink" title="1.1 安装"></a>1.1 安装</h3><p><code>npm i hexo-cli -g</code></p>
+<p>配置 github，文件：<code>_config.yml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/godweiyang/godweiyang.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-常用命令"><a href="#1-2-常用命令" class="headerlink" title="1.2 常用命令"></a>1.2 常用命令</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 初始化文件夹</span></span><br><span class="line">hexo init</span><br><span class="line"><span class="comment"># 生成静态网页</span></span><br><span class="line">hexo g</span><br><span class="line"><span class="comment"># 打开本地服务器</span></span><br><span class="line">hexo s</span><br><span class="line">hexo s --debug</span><br><span class="line"><span class="comment"># 新建文章</span></span><br><span class="line">hexo new post <span class="string">"article title"</span></span><br><span class="line"><span class="comment"># 新建页面</span></span><br><span class="line">hexo new page <span class="string">"page title"</span></span><br><span class="line"><span class="comment"># 新建草稿</span></span><br><span class="line">hexo new draft <span class="string">"draft title"</span></span><br><span class="line"><span class="comment"># 部署到github</span></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-集成主题-next"><a href="#1-3-集成主题-next" class="headerlink" title="1.3 集成主题 next"></a>1.3 集成主题 <code>next</code></h3><ul>
+<li>关于 Next 主题的配置可以参考官方文档 <a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT</a></li>
 </ul>
-<p>推荐书籍</p>
+<p>本站的配置内容（<code>blog-hexo\themes\next\themes\next</code>）：</p>
 <ul>
-<li>Burden的《Numerical Analysis》</li>
+<li>menu</li>
+<li>scheme</li>
+<li>social</li>
+<li>tencent_analytics</li>
+<li>Reward</li>
+<li>since</li>
 </ul>
-<p>编程书籍</p>
-<ul>
-<li>《MATLAB 数值计算》（2013修订版） Cleve Moler 《Numerical Computation with MATLAB》2008/2013 修订版</li>
-</ul>
+<h3 id="1-4-文章模板"><a href="#1-4-文章模板" class="headerlink" title="1.4 文章模板"></a>1.4 文章模板</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"># 文章标题中的空格替换为-</span><br><span class="line">title: &#123;&#123; title &#125;&#125;</span><br><span class="line"># hexo 支持多个并列 tag</span><br><span class="line">tags:</span><br><span class="line">- A</span><br><span class="line">- B</span><br><span class="line"># hexo 不支持多个并列 category，以下为顺序父子关系</span><br><span class="line">categories:</span><br><span class="line">- A</span><br><span class="line">- B</span><br><span class="line">description:</span><br><span class="line">date: &#123;&#123; date &#125;&#125;</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-5-写文章注意事项"><a href="#1-5-写文章注意事项" class="headerlink" title="1.5 写文章注意事项"></a>1.5 写文章注意事项</h3><p><code>next</code> 能自动识别不同级别的标题</p>
+<h2 id="2-本站文章的更新"><a href="#2-本站文章的更新" class="headerlink" title="2. 本站文章的更新"></a>2. 本站文章的更新</h2><p>本站文章的更新采取了 Blog 源文件目录与 hexo 生成的目录分别放置的方式，每次站点的更新需要：</p>
+<ol>
+<li>将所有的 blog 文件复制到 <code>blog-hexo/source/_posts</code> 目录下；</li>
+<li><code>hexo s -g</code> 提前预览更新，或直接 <code>hexo g</code> 生成静态文件目录；</li>
+<li>将 <code>blog-hexo/public</code> 目录中的所有内容粘贴至 git 目录中，<code>add-&gt;commit-&gt;push</code> 即可；（这里<code>git push -f</code>）</li>
+<li>将 github 中的 <code>Custom domain</code> 设置为自身的域名 <code>laoxiangchun.cn</code></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/about/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/about/" itemprop="url">about</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T11:07:10+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>title: about<br>date: 2020-01-05 11:07:10<br>tags:</p>
 <hr>
-<p>2019/12/25 update</p>
-<p>加入搜集到的一些经典算法的实现</p>
 
           
         
@@ -464,7 +589,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/25/Mathmatics/LinearAlgebra/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Bert_ELMO_GPT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -483,7 +608,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/25/Mathmatics/LinearAlgebra/README/" itemprop="url">README</a></h2>
+                <a class="post-title-link" href="/2020/01/04/NLP/Bert_ELMO_GPT/" itemprop="url">Bert_ELMO_GPT</a></h2>
         
 
         <div class="post-meta">
@@ -495,8 +620,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-25T20:31:49+08:00">
-                2019-12-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:57:35+08:00">
+                2020-01-04
               </time>
             
 
@@ -518,19 +643,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/" itemprop="url" rel="index">
-                    <span itemprop="name">Mathmatics</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/LinearAlgebra/" itemprop="url" rel="index">
-                    <span itemprop="name">LinearAlgebra</span>
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
                   </a>
                 </span>
 
@@ -568,15 +682,162 @@
       
         
           
-            <h1 id="Linear-Algebra"><a href="#Linear-Algebra" class="headerlink" title="Linear Algebra"></a>Linear Algebra</h1><p>?????????</p>
-<h2 id="Resources"><a href="#Resources" class="headerlink" title="Resources"></a>Resources</h2><h3 id="mit-18-06sc"><a href="#mit-18-06sc" class="headerlink" title="mit 18.06sc"></a>mit 18.06sc</h3><p><em>Instructor: Prof. Gilbert Strang</em></p>
-<p>????</p>
-<ul>
-<li><a href="https://ocw.mit.edu/courses/mathematics/18-06sc-linear-algebra-fall-2011/" target="_blank" rel="noopener">course home</a></li>
+            <h1 id="Introduction-of-Bert-ELMO-GPT"><a href="#Introduction-of-Bert-ELMO-GPT" class="headerlink" title="Introduction of Bert, ELMO, GPT"></a>Introduction of Bert, ELMO, GPT</h1><h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
+<li>传统的 encoding 方式</li>
+<li>现在的 word embedding 的几种方式</li>
 </ul>
-<p>????</p>
+<h2 id="1-传统的-encoding-方式"><a href="#1-传统的-encoding-方式" class="headerlink" title="1. 传统的 encoding 方式"></a>1. 传统的 encoding 方式</h2><ul>
+<li><p>1-of-N encoding</p>
+<p>  one hot 的方式，但缺乏词汇之间的语义相似度</p>
+</li>
+<li><p>word embedding</p>
+<p>  refer: <a href="https://www.youtube.com/watch?v=X7PH3NuYW0Q" target="_blank" rel="noopener">https://www.youtube.com/watch?v=X7PH3NuYW0Q</a></p>
+</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_1.png" alt="word2com"></p>
+<p><em>In the typical embedding, the same type hase the same embedding.</em></p>
+<p><strong>首先明确：下图中的 word， 属于相同的 type，但是不同的 token</strong></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_2.png" alt="word2com"></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_3.png" alt="word2com"></p>
+<p><em>Motivaton:</em> 那怎么做才能让language 在不同的 context 中，根据不同的 token拥有不同的 word embedding 呢？，一下介绍几种常见的 model</p>
+<h2 id="2-ELMO"><a href="#2-ELMO" class="headerlink" title="2. ELMO"></a>2. ELMO</h2><p>Embeddings from Language Model (ELMO)</p>
+<h3 id="2-1-RNN-based-ELMO"><a href="#2-1-RNN-based-ELMO" class="headerlink" title="2.1 RNN-based ELMO"></a>2.1 RNN-based ELMO</h3><ul>
+<li>RNN-based language model</li>
+<li>不需要标注数据，直接 trainning</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_4.png" alt="elmo"></p>
+<p>对于每个 input 的 hidden ，都可以代表该 token 在 context 中的 embedding，因为在不同的语境中，虽然是相同的 type， 但 token 的不同能产生不同的 embedding</p>
+<h3 id="2-2-LSTM-based-ELMO"><a href="#2-2-LSTM-based-ELMO" class="headerlink" title="2.2 LSTM-based ELMO"></a>2.2 LSTM-based ELMO</h3><ul>
+<li>考虑进正向及反向的 contex 信息</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_5.png" alt="elmo"></p>
 <ul>
-<li>MIT 18.06C????????</li>
+<li>how to choose hidden layer?</li>
+</ul>
+<p>当深度的 LSTM 进行训练的时候，train 得到的有很多 layer 的 hidden ，如何选取不同的 hidden layer作为 output 呢？？</p>
+<p>ELMO says, utilize all!</p>
+<ul>
+<li>how to train ?</li>
+</ul>
+<p>进行 weight sum，这里的 weight 是 α1，α2，α3…，表示出 deep RNN中 hidden layer 的 weight，这里把 α1，α2…当做 parameter 与 down stream 的 task 接起来一起 train！！</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_6.png" alt="elmo"></p>
+<p>在上图中可以看出，down stream 的 tasks 的不同， train 出来的不同 hidden layer 的 weight 也不同，是与 down stream tasks 紧密相关的。</p>
+<ul>
+<li>SRL: Semantic Role Labelling</li>
+<li>Coref: co-reference …</li>
+</ul>
+<h2 id="3-BERT"><a href="#3-BERT" class="headerlink" title="3. BERT"></a>3. BERT</h2><p><strong>Encoder of Transformer</strong></p>
+<p>BERT 是 transformer 的 encoder，相比于前面的 transformer 需要大量的 annotation text， <em>Bert 不需要 annotation text</em>，train 之后的 model，输入 word 输出 embedding. Bert 的内部并不是 RNN，而是 self-attention 的 transformer 的 encoder.</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/word2com_7.png" alt="bert"></p>
+<p><em>在中文中，也许使用 character 更为有效，因为中文中的词（word）是无穷无尽的，字（character）是有限的</em></p>
+<h3 id="3-1-Training-of-Bert"><a href="#3-1-Training-of-Bert" class="headerlink" title="3.1 Training of Bert"></a>3.1 Training of Bert</h3><p><strong>How to train Bert network?</strong></p>
+<ul>
+<li>Approach 1: Masked LM</li>
+</ul>
+<ol>
+<li>input 的 word 会有 15% 被替换为一个特殊的 token，即 mask；</li>
+<li>Bert 的 train goal 是把 mask 的 token 补充回来</li>
+</ol>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert2.png" alt="bert_2"></p>
+<p>当使用 Linear Multi-class Classifier做分类任务时，可能需要很多层的 Bert 用来 representation. 并且由此也可以看出当两个 word 填到一个 mask ，没有违和感则说明两个 word 有相似的 semantic</p>
+<ul>
+<li>Approach 2: Next Sentence Prediction</li>
+</ul>
+<p><em>Train goal:</em> next sentence prediction.</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_3.png" alt="bert_3"></p>
+<ul>
+<li>SEP: 代表了两个句子的分界点</li>
+<li>CLS：代表了 Bert 的分类结果输出点，当 Bert 判断两个句子应当相接，CLS 输出 yes，否则输出 no.</li>
+</ul>
+<blockquote>
+<p>当 Bert 同时使用者两个 tasks 进行 train 的的时候，learn 的效果最好！！</p>
+</blockquote>
+<h3 id="3-2-How-to-use-Bert"><a href="#3-2-How-to-use-Bert" class="headerlink" title="3.2 How to use Bert"></a>3.2 How to use Bert</h3><p>最直接的想法是用 Bert 当作抽 feature 的工具，利用 Bert 输出的 word embedding进行 down stream tasks 的 训练。一下所有 tasks 的训练不同于上述中 Bert 的训练，下面的 task 属于 down streeam tasks of Bert，需要 labelled data.</p>
+<ul>
+<li>把 bert 的训练和下游的任务放在一起进行 train</li>
+</ul>
+<h4 id="case1-Sequence-gt-class-分类任务"><a href="#case1-Sequence-gt-class-分类任务" class="headerlink" title="case1: Sequence -&gt; class 分类任务"></a>case1: Sequence -&gt; class 分类任务</h4><p>在开头的地方给一个分类的符号，再通过 接一个 linear classifier 进行分类，</p>
+<p>Model:</p>
+<ul>
+<li>Bert + Linear Classifier for CLS position</li>
+<li>Input: single sentence</li>
+<li>Output: class</li>
+<li>Example: Sentiment Analysis …</li>
+</ul>
+<p>Train：</p>
+<ul>
+<li>Linear Classifier: Trained from scratch</li>
+<li>Bert: fine-tune</li>
+<li>model 需要学习到的参数的数量还是比较少的</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_4.png" alt="bert4"></p>
+<h4 id="case2-sentences’-word-slot"><a href="#case2-sentences’-word-slot" class="headerlink" title="case2: sentences’ word slot"></a>case2: sentences’ word slot</h4><p>句子的词分类问题，将句子中的每个词填入一个class slot</p>
+<p>Model:</p>
+<ul>
+<li>Bert + Linear Classifier for each embedding position</li>
+<li>Input: single sentence</li>
+<li>Output: class of each word</li>
+<li>Example: Slot filling</li>
+</ul>
+<p>Train:</p>
+<ul>
+<li>同上</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_5.png" alt="bert_case_2"></p>
+<h4 id="case3-premise-gt-判断-hypothesis"><a href="#case3-premise-gt-判断-hypothesis" class="headerlink" title="case3: premise -&gt; 判断 hypothesis"></a>case3: premise -&gt; 判断 hypothesis</h4><p>输入两个句子，一个作为 premise，一个作为 hypothesis，判断是否正确：T/F/unknown</p>
+<p>Model:</p>
+<ul>
+<li>Bert + Linear Classifier for CLS position</li>
+<li>Input: two sentences</li>
+<li>Output: class</li>
+<li>Example: Natural Language Inference</li>
+</ul>
+<p>Train:</p>
+<ul>
+<li>同上</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_6.png" alt="bert_case_3"></p>
+<h4 id="case4-Extraction-based-QA"><a href="#case4-Extraction-based-QA" class="headerlink" title="case4: Extraction-based QA"></a>case4: Extraction-based QA</h4><p>主要的任务是给 model 一篇文章和几个问题，model 能够正确地回答问题（Extraction-based Question Answering(QA) E.g. SQuAD）</p>
+<p>Model:</p>
+<ul>
+<li>Bert + s-vector + e-vector，通过 s-vector, e-vector 与 word embedding做 dot product — softmax 得到分数；</li>
+<li>Input: questions + documents</li>
+<li>Output: integers: s, e</li>
+<li>Example: Extraction-based Question Answering(QA) E.g. SQuAD</li>
+</ul>
+<p>Train:</p>
+<ul>
+<li>同上</li>
+</ul>
+<p>对这种任务进行解释：这种是 Extraction-style，只能在原文中找答案</p>
+<ul>
+<li>输入：Document D = {d1, d2, … dn}，Query Q = {q1, q2, q3 …}</li>
+<li>输出：two integers（s, e), 两个 position 的标记， Answer: A = {ds,…,de}</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_7.png" alt="bert_case_4"></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_8.png" alt="bert_case_4"></p>
+<h3 id="3-3-中文版本的-bert-–-Erine"><a href="#3-3-中文版本的-bert-–-Erine" class="headerlink" title="3.3 中文版本的 bert – Erine"></a>3.3 中文版本的 bert – Erine</h3><p>这里在对 Bert 进行训练的时候不同于 以上 Bert mask LM 方法中对 character 进行 mask，这里是对 word 进行 mask。</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/erine.png" alt="erine"></p>
+<h3 id="3-4-What-bert-learns"><a href="#3-4-What-bert-learns" class="headerlink" title="3.4 What bert learns?"></a>3.4 What bert learns?</h3><p>研究者通过将 bert 24层的 embedding 输出对比（这个过程是类似于 ELMO 的 weigt sum 方式，抽出 Bert 的 24 层的 hidden layer， 进行 weight sum 并与 down stream task 一起 train 发现， bert 的24层从低到高学习到了 NLP 的大部分过程：<code>one Bert = 文法-&gt;句法-&gt;语义</code></p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_9.png" alt="bert_9"></p>
+<blockquote>
+<p>图中横坐标代表 Bert 的24层的 representations，颜色越深代表该 task 利用该部分的 representation 越大。</p>
+</blockquote>
+<h3 id="3-5-Multilingual-Bert"><a href="#3-5-Multilingual-Bert" class="headerlink" title="3.5 Multilingual Bert"></a>3.5 Multilingual Bert</h3><p>多语言的 bert，google 的研究者爬取104种语言的 wiki进行训练 多语言版本的 bert</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/bert_10.png" alt="bert_10"></p>
+<h2 id="4-GPT"><a href="#4-GPT" class="headerlink" title="4. GPT"></a>4. GPT</h2><p><strong>Generative Pre-Training</strong><br>特别大特别大的一个预训练模型</p>
+<p><em>GPT 是 transformer 的 decoder</em>，由 openAI 制作</p>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/gpt_1.png" alt="GPT"></p>
+<p>GPT-2 model 特别巨大，能够在<strong>没有训练资料</strong>的情况下，做：</p>
+<ul>
+<li>Reading Comprehension</li>
+<li>Summarization</li>
+<li>Translation</li>
+</ul>
+<p><img src="/2020/01/04/NLP/Bert_ELMO_GPT/gtp_2.png" alt="gpt_2"></p>
+<p>GPT-2 OpenAI 最大的model 拥有的参数有 1542M，但考虑到到多种问题并没有被 release，release 的 model 的版本与 bert 差不多.</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><ul>
+<li><a href="https://talktotransformer.com/" target="_blank" rel="noopener">https://talktotransformer.com/</a></li>
 </ul>
 
           
@@ -626,7 +887,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/22/HAM/antenna/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Transformer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -645,7 +906,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/22/HAM/antenna/" itemprop="url">antenna</a></h2>
+                <a class="post-title-link" href="/2020/01/04/NLP/Transformer/" itemprop="url">Transformer</a></h2>
         
 
         <div class="post-meta">
@@ -657,8 +918,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-22T22:26:55+08:00">
-                2019-12-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:55:12+08:00">
+                2020-01-04
               </time>
             
 
@@ -680,8 +941,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HAM/" itemprop="url" rel="index">
-                    <span itemprop="name">HAM</span>
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
                   </a>
                 </span>
 
@@ -719,12 +980,41 @@
       
         
           
-            <h1 id="天线的基本知识"><a href="#天线的基本知识" class="headerlink" title="天线的基本知识"></a>天线的基本知识</h1><h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p><em>天线的工作原理以前上电磁波课的时候一直不明白，看了这个视频茅塞顿开</em></p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=ZaXm6wau-jc" target="_blank" rel="noopener">video</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/51098683" target="_blank" rel="noopener">知乎-看完这个，你就是半个天线专家</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/28552572" target="_blank" rel="noopener">无线电频谱划分及相关基础知识</a></li>
+            <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>reference: <a href="https://www.youtube.com/watch?v=ugWDIIOHtPA" target="_blank" rel="noopener">https://www.youtube.com/watch?v=ugWDIIOHtPA</a></p>
+<p>Seq2Seq model with self-attention</p>
+<h2 id="Backgroud"><a href="#Backgroud" class="headerlink" title="Backgroud"></a>Backgroud</h2><p>RNN: Hard to parallel,  </p>
+<h3 id="1-Use-CNN-to-replace-RNN"><a href="#1-Use-CNN-to-replace-RNN" class="headerlink" title="1. Use CNN to replace RNN"></a>1. Use CNN to replace RNN</h3><p><img src="/2020/01/04/NLP/Transformer/transformer1.png" alt="RNN&amp;CNN"></p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer2.png" alt="RNN&amp;CNN"></p>
+<h3 id="2-Self-attention"><a href="#2-Self-attention" class="headerlink" title="2. Self-attention"></a>2. Self-attention</h3><p><img src="/2020/01/04/NLP/Transformer/transformer3.png" alt="self-attention"></p>
+<p><strong>Attention is all you need!</strong></p>
+<p><strong>不需要 RNN/CNN，所需的仅为 attention，输入为 seq 输出为 seq</strong></p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer4.png" alt="attention"></p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer5.png" alt="attention"></p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer6.png" alt="atttention"></p>
+<p>q 代表的是查询的 weight；k 代表的是被匹配的 weight，v 代表的当前位置的表示向量</p>
+<p>从矩阵的并行运算来考虑整个运算过程是这样的：</p>
+<p><img src="/2020/01/04/NLP/Transformer/parallel_compute_transformer.png" alt="parallel_compute_transformer"></p>
+<h3 id="3-multi-head-self-attention"><a href="#3-multi-head-self-attention" class="headerlink" title="3. multi-head self-attention"></a>3. multi-head self-attention</h3><p>为什么会引入 <code>multihead self-attention</code>：</p>
+<p>不同的 head 可关注不同层面的信息，以<code>2-head-self-attention</code>为例，1-head可能更关注 local 层面的信息，2-head 可能更关注 global 层面的信息。</p>
+<p>多抽头的 self-attention：</p>
+<p>这里对每个 a 得到多个 b_i_n 可以通过一个矩阵 transform 进行降维。</p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer7.png" alt="atttention"></p>
+<p>从上述可以看出，上述的 seq2seq 结构并没有考虑位置信息，有点像 BOW 一样，所以针对其进行改进，考虑进位置信息 <code>self-attention</code></p>
+<p>在 a_i 中加入 e_i（并不是从 data 中学习得到，人为设置）；<br>关于为何是把 e_i 直接相加，而不是 concatenate：将 e_i concatenate 上 a_i，乘上 W，经过矩阵分解运算，可以发现最终和直接加上一个vector的效果是一样的。</p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer8.png" alt="attention"></p>
+<p>将 RNN 替换为 self-attention之后的 seq2seq model:</p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer9.png" alt="attention"></p>
+<h3 id="4-transformer-–-Google-AI-Blog"><a href="#4-transformer-–-Google-AI-Blog" class="headerlink" title="4. transformer – Google AI Blog"></a>4. transformer – Google AI Blog</h3><ul>
+<li><a href="https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html" target="_blank" rel="noopener">https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html</a></li>
 </ul>
+<h3 id="5-常见的-translation-seq2seq-model"><a href="#5-常见的-translation-seq2seq-model" class="headerlink" title="5. 常见的 translation seq2seq model"></a>5. 常见的 translation seq2seq model</h3><p><img src="/2020/01/04/NLP/Transformer/transformer10.png" alt="seq2seq"></p>
+<p>self-attention transformer encoder会将 input data 的信息看完，在 decoder 中，会看 input data 的 layer及前一个产生的 token .</p>
+<p><img src="/2020/01/04/NLP/Transformer/tranformer11.png" alt="seq2seq"></p>
+<h3 id="6-transformer-的常见应用"><a href="#6-transformer-的常见应用" class="headerlink" title="6. transformer 的常见应用"></a>6. transformer 的常见应用</h3><p>将传统 RNN 不能处理长的 sequence，应用到 transeformer，使其输入文章生成 wikepedia 型的sequence。</p>
+<p>-reference: <a href="https://arxiv.org/pdf/1801.10198.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1801.10198.pdf</a></p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer12.png" alt="app"></p>
+<h3 id="7-Universal-Transformer"><a href="#7-Universal-Transformer" class="headerlink" title="7. Universal Transformer"></a>7. Universal Transformer</h3><p>将 original tansformer 在时间上做 RNN，重复利用</p>
+<p><img src="/2020/01/04/NLP/Transformer/transformer13.png" alt="universal"></p>
 
           
         
@@ -773,7 +1063,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/18/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/word_embedding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -792,7 +1082,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/18/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url">关系抽取</a></h2>
+                <a class="post-title-link" href="/2020/01/04/NLP/word_embedding/" itemprop="url">word_embedding</a></h2>
         
 
         <div class="post-meta">
@@ -804,8 +1094,186 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-18T19:38:18+08:00">
-                2019-12-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:53:51+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Word-Embedding"><a href="#Word-Embedding" class="headerlink" title="Word Embedding"></a>Word Embedding</h1><h2 id="1-of-N-Encoding"><a href="#1-of-N-Encoding" class="headerlink" title="1-of-N Encoding"></a>1-of-N Encoding</h2><h2 id="2-Word-Embeddding"><a href="#2-Word-Embeddding" class="headerlink" title="2. Word Embeddding"></a>2. Word Embeddding</h2><ul>
+<li><code>unsupervised learning</code></li>
+<li><code>dimension reduction</code> wword embedding 的维度要比 1-of-N encoding 低很多</li>
+</ul>
+<h2 id="3-Training-的两种方法"><a href="#3-Training-的两种方法" class="headerlink" title="3. Training 的两种方法"></a>3. Training 的两种方法</h2><h3 id="3-1-Count-based"><a href="#3-1-Count-based" class="headerlink" title="3.1 Count-based"></a>3.1 Count-based</h3><p>通过计算 co-occurence frequency，并计算两个 vector 的 dot product，使其与 frequency 相似</p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_1.png" alt="word_embedding"></p>
+<h3 id="3-2-Count-based-的代表"><a href="#3-2-Count-based-的代表" class="headerlink" title="3.2 Count-based 的代表"></a>3.2 Count-based 的代表</h3><h4 id="3-2-1-LSA-Latent-Semantic-Analysis"><a href="#3-2-1-LSA-Latent-Semantic-Analysis" class="headerlink" title="3.2.1 LSA(Latent Semantic Analysis)"></a>3.2.1 LSA(Latent Semantic Analysis)</h4><h4 id="3-2-2-word2vec"><a href="#3-2-2-word2vec" class="headerlink" title="3.2.2 word2vec"></a>3.2.2 word2vec</h4><h4 id="3-2-3-GloVe-Global-Vectors-for-word-representation"><a href="#3-2-3-GloVe-Global-Vectors-for-word-representation" class="headerlink" title="3.2.3 GloVe(Global Vectors for word representation)"></a>3.2.3 GloVe(Global Vectors for word representation)</h4><p><em>参考：<a href="http://www.fanyeong.com/2018/02/19/glove-in-detail/" target="_blank" rel="noopener">http://www.fanyeong.com/2018/02/19/glove-in-detail/</a></em></p>
+<blockquote>
+<p>它是一个基于 <code>全局词频统计</code> 的词表征（word representation）工具，它可以把一个单词表达成一个由实数组成的向量，这些向量捕捉到了单词之间的语义特性，比如：相似性（similarity）、类比性（analogy）等。我们通过对向量的运算，比如欧式距离或cosine相似度，可以计算出两个单词之间的语义相似性。</p>
+</blockquote>
+<h3 id="3-2-Prediction-based"><a href="#3-2-Prediction-based" class="headerlink" title="3.2 Prediction-based"></a>3.2 Prediction-based</h3><p>基于 prediction 的方法，通过学习上下文的信息来预测下一个输出，来保证下一个输出相同的输入具有相似的 input vector</p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_2.png" alt="word_embedding"></p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_3.png" alt="word_embedding"></p>
+<p>上述只是考虑到了前一个词汇的 vector 输入，当输入扩展到 n 的时候，采取的方法是将 weight metrix 强制相等</p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_4.png" alt="word_embedding"></p>
+<ul>
+<li>如何保证 weight metrix 是相等的呢？</li>
+</ul>
+<p>保证每次 weight update 的时候减去相同的分量</p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_5.png" alt="word_embedding"></p>
+<h3 id="3-3-Prediction-based-–-Various-Architecture"><a href="#3-3-Prediction-based-–-Various-Architecture" class="headerlink" title="3.3 Prediction-based – Various Architecture"></a>3.3 Prediction-based – Various Architecture</h3><ul>
+<li>CBOW(Continuous bag of word)</li>
+<li>Skip-gram</li>
+</ul>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_6.png" alt="word_embedding"></p>
+<h3 id="3-4-Word-Embedding-的-hidden-layer-为什么不是-deep-的"><a href="#3-4-Word-Embedding-的-hidden-layer-为什么不是-deep-的" class="headerlink" title="3.4 Word Embedding 的 hidden layer 为什么不是 deep 的"></a>3.4 Word Embedding 的 hidden layer 为什么不是 deep 的</h3><p>Tomas Mikolov</p>
+<blockquote>
+<p>word embeeding是个很早的概念，以前也是 deep 的做法，但是效果并不太好，Tomas 使用很多 trick ，并采用单个 hidden layer 的做法将效果训练的很好</p>
+</blockquote>
+<h3 id="3-5-word-vector的一些有趣的东西"><a href="#3-5-word-vector的一些有趣的东西" class="headerlink" title="3.5 word vector的一些有趣的东西"></a>3.5 word vector的一些有趣的东西</h3><p><img src="/2020/01/04/NLP/word_embedding/word_emb_7.png" alt="word_embedding"></p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_8.png" alt="word_embedding"></p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_9.png" alt="word_embedding"></p>
+<h3 id="3-Document-embedding"><a href="#3-Document-embedding" class="headerlink" title="3. Document embedding"></a>3. Document embedding</h3><p><img src="/2020/01/04/NLP/word_embedding/word_emb_11.png" alt="document-embedding"></p>
+<p>一种直观的想法是使用 Bag-of-word 的思路，将 word ebedding 组成 document 的 semantic，word 的位置信息也很重要</p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_12.png" alt="word_embedding"></p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_13.png" alt="word_embedding"></p>
+<p><img src="/2020/01/04/NLP/word_embedding/word_emb_14.png" alt="word_embedding"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E8%AF%8D%E6%80%A7%E6%A0%87%E6%B3%A8%E4%B8%8E%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E7%9A%84%E8%AF%86%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/04/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E8%AF%8D%E6%80%A7%E6%A0%87%E6%B3%A8%E4%B8%8E%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E7%9A%84%E8%AF%86%E5%88%AB/" itemprop="url">词性标注与命名实体的识别</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:51:03+08:00">
+                2020-01-04
               </time>
             
 
@@ -877,45 +1345,38 @@
       
         
           
-            <h1 id="关系抽取"><a href="#关系抽取" class="headerlink" title="关系抽取"></a>关系抽取</h1><p><em>这里我所理解的关系抽取是相对于事件抽取而言少了触发词检测和事件类别识别的工作，侧重于在对实体与实体之间的修饰关系的抽取，而不同于实体与动作之间关系的抽取</em></p>
-<h2 id="Paper"><a href="#Paper" class="headerlink" title="Paper"></a>Paper</h2><h3 id="Survey"><a href="#Survey" class="headerlink" title="Survey"></a>Survey</h3><ol>
-<li><em>A Survey of Deep Learning Methods for Relation Extraction.Shantanu Kumar. 2017.</em></li>
-<li><em>Relation Extraction : A Survey.Sachin Pawara,b, Girish K. Palshikara, Pushpak</em></li>
-</ol>
-<h2 id="Project"><a href="#Project" class="headerlink" title="Project"></a>Project</h2><ol>
-<li>project on github: <a href="https://github.com/topics/relation-extraction?l=python" target="_blank" rel="noopener">https://github.com/topics/relation-extraction?l=python</a></li>
-</ol>
-<p><strong>Star project</strong></p>
+            <h3 id="1-词性标注"><a href="#1-词性标注" class="headerlink" title="1.词性标注"></a>1.词性标注</h3><p>词性标注完成的任务是对词性进行标注如动词、名词、形容词等，为下游的任务如句法分析提供预处理步骤，将数量极大的词标注到数百种的词性上。</p>
+<p>目前采用的词性标注方法采用的往往和分词方法相同的一些序列标注模型，在中文词性标注中常用到的模型有：</p>
 <ul>
-<li><a href="https://github.com/thunlp/OpenNRE" target="_blank" rel="noopener">OpenNRE</a></li>
+<li>基于隐马尔科夫模型的词性标注（Hidden Markov Model）</li>
+<li>基于感知机的词性标注</li>
+<li>基于条件随机场的词性标注（Conditional Random Field）</li>
 </ul>
-<blockquote>
-<p><a href="https://magi.com/" target="_blank" rel="noopener">Magi</a> is not a supervised system, which means it is open domain relation extraction, this is not included in OpenNRE. If you have an English application, <a href="https://stanfordnlp.github.io/CoreNLP/openie.html" target="_blank" rel="noopener">OpenIE</a>, <a href="http://reverb.cs.washington.edu/" target="_blank" rel="noopener">ReVerb</a> or other open relation extraction tools are worth to have a try.</p>
-</blockquote>
+<h3 id="2-命名实体的识别（Named-Entity-Recognization）"><a href="#2-命名实体的识别（Named-Entity-Recognization）" class="headerlink" title="2.命名实体的识别（Named Entity Recognization）"></a>2.命名实体的识别（Named Entity Recognization）</h3><p>命名实体的识别，是为了识别语料中的人命、地名、机构名等命名实体，往往也可采用基于规则和基于统计的模型，类似于序列标注模型</p>
+<h4 id="2-1-NER的相关模型和方法"><a href="#2-1-NER的相关模型和方法" class="headerlink" title="2.1 NER的相关模型和方法"></a>2.1 NER的相关模型和方法</h4><p><img src="%E8%AF%8D%E6%80%A7%E6%A0%87%E6%B3%A8%E4%B8%8E%E5%91%BD%E5%90%8D%E5%AE%9E%E4%BD%93%E8%AF%86%E5%88%AB/NER.png" alt="NER模型"></p>
+<h4 id="2-2-常用的技术"><a href="#2-2-常用的技术" class="headerlink" title="2.2 常用的技术"></a>2.2 常用的技术</h4><p>基于规则的方法</p>
 <ul>
-<li><a href="https://stanfordnlp.github.io/CoreNLP/openie.html#simple-corenlp-api" target="_blank" rel="noopener">OpenIE</a>(stanford open information extraction)</li>
+<li>语言专家手工构造规则模板</li>
 </ul>
-<h2 id="预定义的关系抽取"><a href="#预定义的关系抽取" class="headerlink" title="预定义的关系抽取"></a>预定义的关系抽取</h2><p>抽取的关系类别是定义好的，给定的语料的结构也是比较单一的，是预定义的关系抽取。是个有监督的关系抽取技术，例如：<code>OpenNRE</code>，常见的语料有：<code>ACE</code>、<code>SemEval</code>、<code>TAC-KBP</code></p>
-<h2 id="开放域的关系抽取"><a href="#开放域的关系抽取" class="headerlink" title="开放域的关系抽取"></a>开放域的关系抽取</h2><p><em>来源：<a href="https://zhuanlan.zhihu.com/p/41207156" target="_blank" rel="noopener">中科院赵军：开放域事件抽取|CCF-GAIR 2018</a></em></p>
-<p><code>Freebase</code> 4000多万实体，上万个属性关系，24亿个事实三元组。依靠人工标注的训练集在这方面肯定是行不通的，必须考虑一些自动的或者弱监督的、半监督的方法来做开放域的关系抽取。通常在开放域的关系抽取抽出的关系字段是链接两个实体的文本。</p>
-<blockquote>
-<p>Typically the relation name is just the text linking two arguments. For example, Barack Obama was born in Hawaii would create a triple (Barack Obama; was born in; Hawaii), corresponding to the open domain relation was-born-in(Barack-Obama, Hawaii). </p>
-</blockquote>
-<h3 id="如何获取训练语料"><a href="#如何获取训练语料" class="headerlink" title="如何获取训练语料"></a>如何获取训练语料</h3><ul>
-<li>基于句法的方法，通过句法分析器，对句子找出同样表达的三元结构，放在一起就是我们需要的知识</li>
-<li>基于知识监督的方法</li>
+<p>基于统计的方法</p>
+<ul>
+<li>隐马尔科夫模型（HMM）</li>
+<li>最大熵（ME)</li>
+<li>支持向量机（SVM）</li>
+<li>条件随机场（CRF)</li>
 </ul>
-<blockquote>
-<p>2007 年 CIKM 的论文最早提出这样的思想，在 Wikipedia 中可以分成两个区域，一个区域是结构化部分，我们叫做 Infobox，另一个区域是自然语言表达的部分，这两部分描述的信息有重叠，比如描述清华大学和建校时间的知识，在 Infobox 和自然语言里面有重叠的描述，如果把这两部分对应起来，就可以对应两边区域的知识，一边是它的训练集。这是一个非常简单的思想。如果用 Infobox 的结构化信息在 wikipedia 条目的自然语言文本中进行回标，可以自动产生训练语料。</p>
-</blockquote>
-<h3 id="thunlp-在关系抽取方面的成果"><a href="#thunlp-在关系抽取方面的成果" class="headerlink" title="thunlp 在关系抽取方面的成果"></a>thunlp 在关系抽取方面的成果</h3><p><a href="https://www.jiqizhixin.com/articles/2019-11-18-2" target="_blank" rel="noopener">机器之心-知识图谱从哪里来：实体关系抽取的现状与未来</a></p>
-<h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ol>
-<li>thunlp 资料整理：<a href="https://github.com/thunlp/NREPapers" target="_blank" rel="noopener">https://github.com/thunlp/NREPapers</a></li>
-<li>知乎用户整理：<a href="https://zhuanlan.zhihu.com/p/73857023" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/73857023</a></li>
-<li>一个比较好的网站：<a href="http://nlpprogress.com/english/relationship_extraction.html" target="_blank" rel="noopener">http://nlpprogress.com/english/relationship_extraction.html</a></li>
-<li><a href="http://www.shuang0420.com/2018/09/15/%E7%9F%A5%E8%AF%86%E6%8A%BD%E5%8F%96-%E5%AE%9E%E4%BD%93%E5%8F%8A%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" target="_blank" rel="noopener">徐阿衡的博客</a></li>
-<li><a href="https://yam.gift/2019/12/11/KG/2019-12-11-Relationship-Extraction/?nsukey=C6qNhMRVv4F%2FfrB0wEm0d8laZp4NeQQhIxPtI4QcWyBc6pesMsAdSSRj6edN80HZT5vwAgaX9oE9BC8r1E%2BKm%2BFPy%2BsryhViv5eojtlJf4g%2ButND7rBNLT3VwGHdOc9Dl75gahGONWGc9rLIRd%2FXcz10kqKjHJxM74C3eVAzjzF0nz9DUIaVzKJJ1p2Pghmh6GXYpaNSiWa8fM4k82EGuA%3D%3D" target="_blank" rel="noopener">Yam大佬的博客</a></li>
-</ol>
+<p>基于深度学习的方法 </p>
+<p><em>参考：<a href="https://zhuanlan.zhihu.com/p/43061858" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/43061858</a></em></p>
+<ul>
+<li>Bert-BiLSTM-CRF: <a href="https://github.com/macanv/BERT-BiLSTM-CRF-NER" target="_blank" rel="noopener">https://github.com/macanv/BERT-BiLSTM-CRF-NER</a></li>
+<li>IDCNN/BiLSTM-CRF: <a href="https://github.com/crownpku/Information-Extraction-Chinese/tree/master/NER_IDCNN_CRF" target="_blank" rel="noopener">https://github.com/crownpku/Information-Extraction-Chinese/tree/master/NER_IDCNN_CRF</a></li>
+<li>BiLSTM-CRF: <a href="https://github.com/Determined22/zh-NER-TF" target="_blank" rel="noopener">https://github.com/Determined22/zh-NER-TF</a></li>
+</ul>
+<h4 id="2-3-数据集"><a href="#2-3-数据集" class="headerlink" title="2.3 数据集"></a>2.3 数据集</h4><p>参考：<a href="https://yq.aliyun.com/articles/604048" target="_blank" rel="noopener">https://yq.aliyun.com/articles/604048</a></p>
+<ul>
+<li><code>CoNLL2003</code> <a href="https://www.clips.uantwerpen.be/conll2003/ner/" target="_blank" rel="noopener">https://www.clips.uantwerpen.be/conll2003/ner/</a></li>
+<li>OntoNotes 5.0 / CoNNLL 2012 (<a href="https://catalog.ldc.upenn.edu/ldc2013t19" target="_blank" rel="noopener">https://catalog.ldc.upenn.edu/ldc2013t19</a>)</li>
+</ul>
 
           
         
@@ -964,7 +1425,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/16/Git/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/CORPUS/ACE_2005/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -983,7 +1444,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/12/16/Git/README/" itemprop="url">README</a></h2>
+                <a class="post-title-link" href="/2020/01/04/NLP/CORPUS/ACE_2005/" itemprop="url">ACE_2005</a></h2>
         
 
         <div class="post-meta">
@@ -995,8 +1456,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-16T15:41:26+08:00">
-                2019-12-16
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:49:36+08:00">
+                2020-01-04
               </time>
             
 
@@ -1018,292 +1479,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Github常用命令"><a href="#Github常用命令" class="headerlink" title="Github常用命令"></a>Github常用命令</h1><p>今日又重新启用了    github  来管理软件课设，渣渣以前还没用过呢</p>
-<p>主要阐述一下关于    远程库与本地库的关联<br>至于多人协作开发部分，学了再记</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/14/Algorithm/anti-optimum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/14/Algorithm/anti-optimum/" itemprop="url">anti-optimum</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-14T17:57:28+08:00">
-                2019-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/14/Mathmatics/sympy/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/14/Mathmatics/sympy/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-14T16:56:08+08:00">
-                2019-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/" itemprop="url" rel="index">
-                    <span itemprop="name">Mathmatics</span>
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
                   </a>
                 </span>
 
@@ -1313,8 +1490,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Mathmatics/sympy/" itemprop="url" rel="index">
-                    <span itemprop="name">sympy</span>
+                  <a href="/categories/NLP/CORPUS/" itemprop="url" rel="index">
+                    <span itemprop="name">CORPUS</span>
                   </a>
                 </span>
 
@@ -1352,443 +1529,589 @@
       
         
           
-            <h1 id="Sympy"><a href="#Sympy" class="headerlink" title="Sympy"></a>Sympy</h1><blockquote>
-<p>SymPy is a Python library for symbolic mathematics. If you are new to SymPy, start with the Tutorial.<br>This is the central page for all of SymPy’s documentation.</p>
-</blockquote>
-<p><em>source: <a href="https://docs.sympy.org/1.4/index.html" target="_blank" rel="noopener">https://docs.sympy.org/1.4/index.html</a></em></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/Python/%E5%BA%8F%E5%88%97%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/13/Python/%E5%BA%8F%E5%88%97%E5%8C%96/" itemprop="url">序列化</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T14:49:33+08:00">
-                2019-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="序列化-Serialize"><a href="#序列化-Serialize" class="headerlink" title="序列化 Serialize"></a>序列化 Serialize</h1><h2 id="json操作"><a href="#json操作" class="headerlink" title="json操作"></a><code>json</code>操作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">json.loads()        <span class="comment"># 加载json数据</span></span><br><span class="line">json.dumps(nlp_res, sort_keys=<span class="literal">True</span>, indent=<span class="number">4</span>, separators=(<span class="string">', '</span>, <span class="string">': '</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(os.path.join(output_file_dir, <span class="string">'openie.json'</span>), <span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    json.dump(openie_data, f, indent=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/13/Python/IO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/13/Python/IO/" itemprop="url">IO</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-13T14:46:17+08:00">
-                2019-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="python中的IO"><a href="#python中的IO" class="headerlink" title="python中的IO"></a>python中的IO</h1><h2 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'file.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.read()  <span class="comment"># 一次性读取所有内容</span></span><br><span class="line">    f.readline()        <span class="comment"># 逐行读取内容</span></span><br><span class="line">    f.readlines()       <span class="comment"># 一次进行逐行读取,返回 list</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="文件操作-os-path"><a href="#文件操作-os-path" class="headerlink" title="文件操作 os.path"></a>文件操作 <code>os.path</code></h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">list_files</span><span class="params">()</span>:</span></span><br><span class="line">    news_file_list = []</span><br><span class="line">    <span class="keyword">for</span> d <span class="keyword">in</span> os.listdir(data_dir_path):</span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(os.path.join(data_dir_path, d)):</span><br><span class="line">            news_file_list.append(os.path.join(data_dir_path, d, <span class="string">'news.txt'</span>))</span><br><span class="line">    <span class="keyword">return</span> news_file_list</span><br><span class="line"></span><br><span class="line">os.path.dirname()   <span class="comment"># 返回所在的文件夹名称</span></span><br><span class="line">os.path.exists()    <span class="comment"># 判断路径是否存在</span></span><br><span class="line">os.path.abspath()   <span class="comment"># 返回绝对路径</span></span><br><span class="line">os.path.isdir()     <span class="comment"># 判断是否为目录，注：要输入绝对路径</span></span><br><span class="line">os.path.isfile()    <span class="comment"># 判断是否为文件</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/12/MLDL/conda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/12/MLDL/conda/" itemprop="url">conda</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-12T21:58:02+08:00">
-                2019-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MLDL/" itemprop="url" rel="index">
-                    <span itemprop="name">MLDL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Conda"><a href="#Conda" class="headerlink" title="Conda"></a>Conda</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看已创建的 python 环境</span></span><br><span class="line">conda info --env</span><br><span class="line"><span class="comment"># 查看conda下的所有基本配置</span></span><br><span class="line">conda config --show</span><br><span class="line"><span class="comment"># 删除conda的channel</span></span><br><span class="line">conda config --remove channels <span class="string">'default'</span></span><br><span class="line"><span class="comment"># 添加conda的channel</span></span><br><span class="line">conda config --add channels https://xxx</span><br><span class="line"><span class="comment"># 配置清华PyPI镜像（如无法运行，将pip版本升级到&gt;=10.0.0）</span></span><br><span class="line">pip config set <span class="keyword">global</span>.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line"><span class="comment"># 创建环境</span></span><br><span class="line">conda create --name envname python=<span class="number">3.6</span></span><br><span class="line"><span class="comment"># 激活环境</span></span><br><span class="line">conda activate envname</span><br><span class="line"><span class="comment"># 获取当前环境中已经安装的包</span></span><br><span class="line">conda list</span><br><span class="line"><span class="comment"># 获取某个环境中安装的包</span></span><br><span class="line">conda list -n envname</span><br><span class="line"><span class="comment"># 退出环境</span></span><br><span class="line">conda deactivate</span><br><span class="line"><span class="comment"># 删除环境</span></span><br><span class="line">conda remove -n envname --all</span><br><span class="line"><span class="comment"># 导出环境</span></span><br><span class="line">conda env export &gt; environment.yml</span><br><span class="line"><span class="comment"># 根据 .yml 文件创建环境</span></span><br><span class="line">conda env create -f environment.yml</span><br></pre></td></tr></table></figure>
-
-<h2 id="pip-源"><a href="#pip-源" class="headerlink" title="pip 源"></a>pip 源</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt <span class="comment"># pip 清华源</span></span><br><span class="line">pip install -i http://pypi.douban.com/simple/ -r requirements.txt           <span class="comment"># pip 豆瓣源</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://zhuanlan.zhihu.com/p/57287956" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/57287956</a></li>
-<li></li>
+            <h1 id="ACE-2005-数据集详解"><a href="#ACE-2005-数据集详解" class="headerlink" title="ACE 2005 数据集详解"></a>ACE 2005 数据集详解</h1><p><code>ace_2005_td_v7_LDC2006T06</code></p>
+<h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h2><h2 id="2-事件抽取任务"><a href="#2-事件抽取任务" class="headerlink" title="2. 事件抽取任务"></a>2. 事件抽取任务</h2><ul>
+<li>事件检测（Event Detection），主要是根据上下文识别出触发词以及代表的事件类型和子类型；</li>
+<li>事件元素识别（Argument Detection）：事件元素是指事件的参与者。</li>
 </ul>
+<h2 id="3-标注类型"><a href="#3-标注类型" class="headerlink" title="3. 标注类型"></a>3. 标注类型</h2><p>ACE2005定义了8种事件类别以及33种子类别。</p>
+<p><img src="/2020/01/04/NLP/CORPUS/ACE_2005/ace_2005.jpg" alt="ace_2005"></p>
+<p><img src="/2020/01/04/NLP/CORPUS/ACE_2005/ACE2005_datasets.png" alt="ace_2005"></p>
+<h2 id="4-文件类型分析"><a href="#4-文件类型分析" class="headerlink" title="4. 文件类型分析"></a>4. 文件类型分析</h2><h3 id="4-1-xxx-apf-xml-文件"><a href="#4-1-xxx-apf-xml-文件" class="headerlink" title="4.1 xxx.apf.xml 文件"></a>4.1 <code>xxx.apf.xml</code> 文件</h3><p>噶该文件为 <code>ACE annotation file format</code>，里面包含了多种标注：<code>entity</code>、<code>relation</code>、<code>event</code>；</p>
+<h4 id="4-1-1-entity-的标注"><a href="#4-1-1-entity-的标注" class="headerlink" title="4.1.1 entity 的标注"></a>4.1.1 <code>entity</code> 的标注</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">entity</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-E1"</span> <span class="attr">TYPE</span>=<span class="string">"PER"</span> <span class="attr">SUBTYPE</span>=<span class="string">"Individual"</span> <span class="attr">CLASS</span>=<span class="string">"SPC"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">entity_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-E1-2"</span> <span class="attr">TYPE</span>=<span class="string">"NOM"</span> <span class="attr">LDCTYPE</span>=<span class="string">"NOMPRE"</span> <span class="attr">LDCATR</span>=<span class="string">"TRUE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"490"</span> <span class="attr">END</span>=<span class="string">"498"</span>&gt;</span>Secretary<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"490"</span> <span class="attr">END</span>=<span class="string">"498"</span>&gt;</span>Secretary<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">entity_mention</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">entity_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-E1-14"</span> <span class="attr">TYPE</span>=<span class="string">"NAM"</span> <span class="attr">LDCTYPE</span>=<span class="string">"NAM"</span> <span class="attr">LDCATR</span>=<span class="string">"FALSE"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"754"</span> <span class="attr">END</span>=<span class="string">"793"</span>&gt;</span>Secretary of Homeland Security Tom Ridge<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"785"</span> <span class="attr">END</span>=<span class="string">"793"</span>&gt;</span>Tom Ridge<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">entity_mention</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">entity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-1-2-relation-的标注"><a href="#4-1-2-relation-的标注" class="headerlink" title="4.1.2 relation 的标注"></a>4.1.2 <code>relation</code> 的标注</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">relation</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-R2"</span> <span class="attr">TYPE</span>=<span class="string">"PART-WHOLE"</span> <span class="attr">SUBTYPE</span>=<span class="string">"Geographical"</span> <span class="attr">TENSE</span>=<span class="string">"Unspecified"</span> <span class="attr">MODALITY</span>=<span class="string">"Asserted"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relation_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-1"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relation_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E3"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-2"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">relation_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-R2-1"</span> <span class="attr">LEXICALCONDITION</span>=<span class="string">"Possessive"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"1873"</span> <span class="attr">END</span>=<span class="string">"1882"</span>&gt;</span>our shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relation_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99-69"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-1"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"1873"</span> <span class="attr">END</span>=<span class="string">"1882"</span>&gt;</span>our shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">relation_mention_argument</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relation_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E3-70"</span> <span class="attr">ROLE</span>=<span class="string">"Arg-2"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"1873"</span> <span class="attr">END</span>=<span class="string">"1875"</span>&gt;</span>our<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">relation_mention_argument</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">relation_mention</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">relation</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-1-3-event-的标注"><a href="#4-1-3-event-的标注" class="headerlink" title="4.1.3 event 的标注"></a>4.1.3 <code>event</code> 的标注</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">event</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-EV1"</span> <span class="attr">TYPE</span>=<span class="string">"Movement"</span> <span class="attr">SUBTYPE</span>=<span class="string">"Transport"</span> <span class="attr">MODALITY</span>=<span class="string">"Asserted"</span> <span class="attr">POLARITY</span>=<span class="string">"Positive"</span> <span class="attr">GENERICITY</span>=<span class="string">"Specific"</span> <span class="attr">TENSE</span>=<span class="string">"Past"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E96"</span> <span class="attr">ROLE</span>=<span class="string">"Vehicle"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E98"</span> <span class="attr">ROLE</span>=<span class="string">"Person"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99"</span> <span class="attr">ROLE</span>=<span class="string">"Destination"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E4"</span> <span class="attr">ROLE</span>=<span class="string">"Agent"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">event_mention</span> <span class="attr">ID</span>=<span class="string">"CNN_CF_20030303.1900.00-EV1-1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"369"</span> <span class="attr">END</span>=<span class="string">"449"</span>&gt;</span>a 30-foot Cuban patrol boat with four heavily armed men landed on</span><br><span class="line">American shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ldc_scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"277"</span> <span class="attr">END</span>=<span class="string">"514"</span>&gt;</span>Even as the</span><br><span class="line">secretary of homeland security was putting his people on high alert last</span><br><span class="line">month, a 30-foot Cuban patrol boat with four heavily armed men landed on</span><br><span class="line">American shores, utterly undetected by the Coast Guard Secretary Ridge</span><br><span class="line">now leads<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ldc_scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">anchor</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"425"</span> <span class="attr">END</span>=<span class="string">"430"</span>&gt;</span>landed<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">anchor</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">event_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E96-178"</span> <span class="attr">ROLE</span>=<span class="string">"Vehicle"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"369"</span> <span class="attr">END</span>=<span class="string">"423"</span>&gt;</span>a 30-foot Cuban patrol boat with four heavily armed men<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">event_mention_argument</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">event_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E98-180"</span> <span class="attr">ROLE</span>=<span class="string">"Person"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"402"</span> <span class="attr">END</span>=<span class="string">"423"</span>&gt;</span>four heavily armed men<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">event_mention_argument</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">event_mention_argument</span> <span class="attr">REFID</span>=<span class="string">"CNN_CF_20030303.1900.00-E99-181"</span> <span class="attr">ROLE</span>=<span class="string">"Destination"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">extent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charseq</span> <span class="attr">START</span>=<span class="string">"435"</span> <span class="attr">END</span>=<span class="string">"449"</span>&gt;</span>American shores<span class="tag">&lt;/<span class="name">charseq</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">extent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">event_mention_argument</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">event_mention</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">event</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-xxx-sgm-文件"><a href="#4-2-xxx-sgm-文件" class="headerlink" title="4.2 xxx.sgm 文件"></a>4.2 <code>xxx.sgm</code> 文件</h3><p><code>.sgm</code>文件为 SGM 格式的文件，其中保存的为新闻的原文</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">DOC</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">DOCID</span>&gt;</span> CNN_CF_20030303.1900.00 <span class="tag">&lt;/<span class="name">DOCID</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">DOCTYPE</span> <span class="attr">SOURCE</span>=<span class="string">"broadcast conversation"</span>&gt;</span> STORY <span class="tag">&lt;/<span class="name">DOCTYPE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">DATETIME</span>&gt;</span> 2003-03-03T19:00:00-05:00 <span class="tag">&lt;/<span class="name">DATETIME</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">BODY</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">HEADLINE</span>&gt;</span></span><br><span class="line">New Questions About Attacking Iraq; Is Torturing Terrorists Necessary?</span><br><span class="line"><span class="tag">&lt;/<span class="name">HEADLINE</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TEXT</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TURN</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">SPEAKER</span>&gt;</span> BEGALA <span class="tag">&lt;/<span class="name">SPEAKER</span>&gt;</span></span><br><span class="line">Well, we'll debate that later on in the show. We'll have a couple of</span><br><span class="line">experts come out, so I'll withhold my comments until then. Even as the</span><br><span class="line">secretary of homeland security was putting his people on high alert last</span><br><span class="line">month, a 30-foot Cuban patrol boat with four heavily armed men landed on</span><br><span class="line">American shores, utterly undetected by the Coast Guard Secretary Ridge</span><br><span class="line">now leads. Now, why has our president placed homeland security in the</span><br><span class="line">hands of Republican political hacks instead of professionals, by the way?</span><br><span class="line">Attorney General John Ashcroft, for example, is a career politician. He</span><br><span class="line">lost an election to a dead man. Secretary of Homeland Security Tom Ridge</span><br><span class="line">is another career politician who was passed over by Mr. Bush for the vice</span><br><span class="line">presidency. And Deputy Secretary of Homeland Security Asa Hutchinson is</span><br><span class="line">yet another career politician and a graduate of the disgraceful Bob Jones</span><br><span class="line">University. Apparently, Mr. Bush only turns to professionals when it's</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-事件抽取"><a href="#5-事件抽取" class="headerlink" title="5. 事件抽取"></a>5. 事件抽取</h3><p>因为用ACE2005数据集多用来做事件抽取的任务，这里详细介绍下事件抽取相关。</p>
+<p>关于 event-type 以及 event-argument 的相关，可以参考 <a href="https://www.ldc.upenn.edu/sites/www.ldc.upenn.edu/files/english-events-guidelines-v5.4.3.pdf" target="_blank" rel="noopener">ldc-document</a></p>
+<h3 id="6-ACE-数据的预处理"><a href="#6-ACE-数据的预处理" class="headerlink" title="6. ACE 数据的预处理"></a>6. ACE 数据的预处理</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/" itemprop="url">中文事件抽取综述</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:47:57+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/Course/" itemprop="url" rel="index">
+                    <span itemprop="name">Course</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="中文事件抽取技术研究"><a href="#中文事件抽取技术研究" class="headerlink" title="中文事件抽取技术研究"></a>中文事件抽取技术研究</h2><p><em>C:/Users/wangc/Desktop/newsGrid/paper/事件抽取</em></p>
+<h3 id="1-Motivation"><a href="#1-Motivation" class="headerlink" title="1. Motivation"></a>1. Motivation</h3><h4 id="1-1-事件抽取的三大关键技术："><a href="#1-1-事件抽取的三大关键技术：" class="headerlink" title="1.1 事件抽取的三大关键技术："></a>1.1 事件抽取的三大关键技术：</h4><ul>
+<li>EMD（Entity Mention Detection），实体识别</li>
+<li>ED（Event Detection），事件的识别</li>
+<li>ARP（Argument Role Prediction），论元角色的识别</li>
+</ul>
+<h4 id="1-2-事件抽取的方法："><a href="#1-2-事件抽取的方法：" class="headerlink" title="1.2 事件抽取的方法："></a>1.2 事件抽取的方法：</h4><ul>
+<li>基于模式匹配的方法</li>
+<li>基于机器学习的方法</li>
+</ul>
+<h4 id="1-3-基于机器学习的方法把事件抽取的任务看作分类问题，"><a href="#1-3-基于机器学习的方法把事件抽取的任务看作分类问题，" class="headerlink" title="1.3 基于机器学习的方法把事件抽取的任务看作分类问题，"></a>1.3 基于机器学习的方法把事件抽取的任务看作分类问题，</h4><blockquote>
+<p>Hai Leong Chieu 和 Hwee Tou<br>Ng 于 2002 年首次在事件抽取中引入最大熵分类<br>器[9 ] ,用于事件元素的识别 ; David Ahn 2006 年结<br>合 MegaM 和 Timbl 两种机器学习方法分别实现了<br>事件抽取中事件类别识别和事件元素识别这两个主<br>要步骤 , 在 ACE 英文语料上均取得了不错的效<br>果[4 ] 。 但 Ahn 的方法由于将每个词作为一个实例<br>来训练机器学习模型 ,引入了大量的反例 ,导致正反<br>例严重不平衡 ;此外 ,事件类别的多元分类以及为每<br>类事件元素单独构造多元分类器在语料规模较小的<br>时候存在着一定的数据稀疏问题 。</p>
+</blockquote>
+<h3 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h3><blockquote>
+<p>本文提出一种基于触发<br>词扩展和二元分类相结合的识别方法进行事件类别<br>的识别 ,多元分类模型的方法进行事件元素的识别 ,<br>较好的避免了正反例不平衡和数据稀疏问题 。</p>
+</blockquote>
+<p><strong>keywords: 基于触发词扩展和二元分类的事件识别，多元分类用于事件元素识别</strong></p>
+<h4 id="2-1-系统架构图"><a href="#2-1-系统架构图" class="headerlink" title="2.1 系统架构图"></a>2.1 系统架构图</h4><p><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B01.png" alt="系统架构图"></p>
+<h4 id="2-2-事件类别的识别"><a href="#2-2-事件类别的识别" class="headerlink" title="2.2 事件类别的识别"></a>2.2 事件类别的识别</h4><p>a. 通过对句子的分词查看扩充之后的触发词表，并对每一个候选事件划定一个候选事件类别的范围；</p>
+<p>b. 通过将候选事件类别识别看作一个二元分类的问题，判断是否为满足候选类别的事件；<br><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B02.png" alt="特征描述"></p>
+<h4 id="2-3-事件元素的识别"><a href="#2-3-事件元素的识别" class="headerlink" title="2.3 事件元素的识别"></a>2.3 事件元素的识别</h4><p>将事件元素的识别任务看成分类问题，转换为对文本中每个候选元素进行类别标签的识别，再进行挑选</p>
+<p>a. 三种多元分类的策略</p>
+<p><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B03.png" alt="分类策略"></p>
+<p>b. 特征的选取</p>
+<p><img src="/2020/01/04/NLP/Course/%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B0/Paper_%E4%B8%AD%E6%96%87%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96%E7%BB%BC%E8%BF%B04.png" alt="分类特征"></p>
+<h3 id="3-Performance"><a href="#3-Performance" class="headerlink" title="3. Performance"></a>3. Performance</h3><p>使用 ACE 2005 中文语料作为实验数据，使用 F值的评价方法进行评测。</p>
+<h3 id="4-Conclusion"><a href="#4-Conclusion" class="headerlink" title="4. Conclusion"></a>4. Conclusion</h3><p>这篇文章采用的是对事件识别和事件论元识别的分类方法，一种典型的 Pipe Model，在模型的改进方面并没有多大的创新。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/" itemprop="url">新闻推荐系统_武楚涵</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:46:06+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/Course/" itemprop="url" rel="index">
+                    <span itemprop="name">Course</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="新闻推荐"><a href="#新闻推荐" class="headerlink" title="新闻推荐"></a>新闻推荐</h1><p><em>清华大学武楚涵博士</em></p>
+<h2 id="相关工作"><a href="#相关工作" class="headerlink" title="相关工作"></a>相关工作</h2><p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu01.jpg" alt="wu_01"></p>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu02.jpg" alt="wu_02"></p>
+<ol>
+<li>Google News Personalization: Scalable Online Collaborative Filtering”, WWW’07, pp. 271-280, 2007.</li>
+</ol>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu03.jpg" alt="wu_03"></p>
+<ol>
+<li>Jeong Woo Son, A.-Yeong Kim, Seong-Bae Park:<br>A location-based news article recommendation with explicit localized semantic analysis. SIGIR 2013: 293-302</li>
+<li>Trapit Bansal, Mrinal Kanti Das, Chiranjib Bhattacharyya:<br>Content Driven User Profiling for Comment-Worthy Recommendations of News and Blog Articles. RecSys 2015: 195-202</li>
+<li>Jianxun Lian, Fuzheng Zhang, Xing Xie, Guangzhong Sun:<br>Towards Better Representation Learning for Personalized News Recommendation: a Multi-Channel Deep Fusion Approach. IJCAI 2018: 3805-3811</li>
+</ol>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu04.jpg" alt="wu_04"></p>
+<ol>
+<li>Shumpei Okura, Yukihiro Tagami, Shingo Ono, Akira Tajima:<br>Embedding-based News Recommendation for Millions of Users. 1933-1942</li>
+</ol>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu05.jpg" alt="wu_05"></p>
+<ol>
+<li>Hongwei Wang, Fuzheng Zhang, Xing Xie, Minyi Guo:<br>DKN: Deep Knowledge-Aware Network for News Recommendation. WWW 2018: 1835-1844</li>
+</ol>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu06.jpg" alt="wu_06"></p>
+<ol>
+<li>Qiannan Zhu, Xiaofei Zhou, Zeliang Song, Jianlong Tan, Li Guo:<br>DAN: Deep Attention Neural Network for News Recommendation. AAAI 2019: 5973-5980</li>
+</ol>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu07.jpg" alt="wu_07"></p>
+<ol>
+<li>Dhruv Khattar, Vaibhav Kumar, Vasudeva Varma, Manish Gupta:<br>Weave&amp;Rec: A Word Embedding based 3-D Convolutional Network for News Recommendation. CIKM 2018: 1855-1858</li>
+</ol>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu08.jpg" alt="wu_08"></p>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu09.jpg" alt="wu_09"></p>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu10.jpg" alt="wu_10"></p>
+<p><img src="/2020/01/04/NLP/Course/%E6%96%B0%E9%97%BB%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F_%E6%AD%A6%E6%A5%9A%E6%B6%B5/wu11.jpg" alt="wu_11"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/" itemprop="url">事件抽取_陈玉博</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-04T22:45:08+08:00">
+                2020-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/Course/" itemprop="url" rel="index">
+                    <span itemprop="name">Course</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="事件抽取-讲座"><a href="#事件抽取-讲座" class="headerlink" title="事件抽取-讲座"></a>事件抽取-讲座</h1><p><em>主讲人：陈玉博，中科院自动化所，DmCNN的一作</em></p>
+<p><em>参考CSDN公开课视频：<a href="https://edu.csdn.net/course/play/25560/307899" target="_blank" rel="noopener">https://edu.csdn.net/course/play/25560/307899</a></em></p>
+<h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_01.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_02.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_03.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_04.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_05.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_06.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_07.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_08.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_09.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_10.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_11.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_12.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_13.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_14.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_15.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_16.png" alt="chen_ee"></p>
+<h2 id="1-特征表示"><a href="#1-特征表示" class="headerlink" title="1. 特征表示"></a>1. 特征表示</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_17.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_18.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_19.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_20.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_21.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_22.png" alt="chen_ee"></p>
+<h2 id="2-训练数据生成和扩展"><a href="#2-训练数据生成和扩展" class="headerlink" title="2. 训练数据生成和扩展"></a>2. 训练数据生成和扩展</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_23.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_24.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_25.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_26.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_27.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_28.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_29.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_30.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_31.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_32.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_33.png" alt="chen_ee"></p>
+<h2 id="3-多事件协同抽取"><a href="#3-多事件协同抽取" class="headerlink" title="3. 多事件协同抽取"></a>3. 多事件协同抽取</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_34.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_35.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_36.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_37.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_38.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_39.png" alt="chen_ee"></p>
+<h2 id="4-篇章级事件抽取"><a href="#4-篇章级事件抽取" class="headerlink" title="4. 篇章级事件抽取"></a>4. 篇章级事件抽取</h2><p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_40.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_41.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_42.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_43.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_44.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_45.png" alt="chen_ee"></p>
+<p><img src="/2020/01/04/NLP/Course/%E4%BA%8B%E4%BB%B6%E6%8A%BD%E5%8F%96_%E9%99%88%E7%8E%89%E5%8D%9A/chen_47.png" alt="chen_ee"></p>
 
           
         
@@ -1828,7 +2151,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/8/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/10/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <a class="extend prev" rel="prev" href="/page/8/">&lt;i class=&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/10/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -1878,7 +2201,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1889,7 +2212,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -1900,7 +2223,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

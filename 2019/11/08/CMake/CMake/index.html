@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="笔记记录">
 <meta property="og:description" content="CMake首先，CMake是什么？引用官方网站 12345CMake is an open-source, cross-platform family of tools designed to build, test and package software. CMake is used to control the software compilation process using simpl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-05T09:29:43.015Z">
+<meta property="og:updated_time" content="2020-06-22T14:12:59.540Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -403,7 +403,7 @@
 <p>2.建议语言： C C++ Java</p>
 <p>3.安装：官方网站下载安装(一般Linux发行版都已经包含该组件)   </p>
 <p>现在开始……</p>
-<h1 id="cmake语言与语法"><a href="#cmake语言与语法" class="headerlink" title="cmake语言与语法"></a>cmake语言与语法</h1><p>一份最简化的  CMakeLists.txt  如下：     </p>
+<h2 id="cmake语言与语法"><a href="#cmake语言与语法" class="headerlink" title="cmake语言与语法"></a>cmake语言与语法</h2><p>一份最简化的  CMakeLists.txt  如下：     </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PROJECT(HELLO)</span><br><span class="line">ADD_EXECUTABLE(hello main.c)</span><br></pre></td></tr></table></figure>
 
 <p>扩充一下，加一些提示性信息：      </p>
@@ -422,10 +422,18 @@
 <p>3.MESSAGE指令：<br><code>MESSAGE([SEND_ERROR  | STATUS  | FATAL_ERROR]  &quot;messageto display&quot;...)</code><br>用于向终端输出用户定义的消息</p>
 <p>4.ADD_EXECUTABLE指令：<br>ADD_EXECUTABLE(HELLO  ${SRC_LIST})        </p>
 <p>定义该工程会生成一个名为hello的可执行文件，即最终目标文件，后面是相关的源文件列表</p>
+<h2 id="CMake-生成解决方案"><a href="#CMake-生成解决方案" class="headerlink" title="CMake 生成解决方案"></a>CMake 生成解决方案</h2><blockquote>
+<p>CMake是一个工程文件生成工具。用户可以使用预定义好的CMake脚本，根据自己的选择（像是Visual Studio, Code::Blocks, Eclipse）生成不同IDE的工程文件。这允许我们从源码里创建一个Visual Studio工程文件，之后进行编译。</p>
+</blockquote>
+<p>可以选择 GUI 启动 CMake，CMake需要一个源代码目录和一个存放编译结果的目标文件目录。可以新建一个 build 文件夹选中作为目标目录。</p>
+<p>步骤: <code>Configure</code> –&gt; 选择工程生成器 <code>Visual Studio xx</code> 及其它编译选项进行配置 –&gt; <code>Configure</code> 保存设置 –&gt; <code>Generate</code> 生成工程文件在 <code>build</code> 文件夹下。</p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ol>
 <li>变量使用  ${}来取值，但是在  IF  控制语句中是直接使用变量名<br>目前，还没遇到，遇到再说吧 :)</li>
 </ol>
 <p>2.指令是<strong>大小写无关的</strong>，不过一般的指令都是大写的</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://learnopengl-cn.readthedocs.io/zh/latest/01%20Getting%20started/02%20Creating%20a%20window/" target="_blank" rel="noopener">cmake</a></li>
+</ul>
 
       
     </div>
@@ -487,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/08/C/CMake/README/" rel="next" title="README">
-                <i class="fa fa-chevron-left"></i> README
+              <a href="/2019/11/08/C/stdlib_h/" rel="next" title="stdlib_h">
+                <i class="fa fa-chevron-left"></i> stdlib_h
               </a>
             
           </div>
@@ -497,8 +505,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/11/08/CMake/README/" rel="prev" title="README">
-                README <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/08/C/string_h/" rel="prev" title="string_h">
+                string_h <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -580,7 +588,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">256</span>
+                  <span class="site-state-item-count">281</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -591,7 +599,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -602,7 +610,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">67</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -645,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CMake"><span class="nav-number">1.</span> <span class="nav-text">CMake</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cmake语言与语法"><span class="nav-number">2.</span> <span class="nav-text">cmake语言与语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">2.1.</span> <span class="nav-text">Tips</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CMake"><span class="nav-number">1.</span> <span class="nav-text">CMake</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cmake语言与语法"><span class="nav-number">1.1.</span> <span class="nav-text">cmake语言与语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMake-生成解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">CMake 生成解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips"><span class="nav-number">1.3.</span> <span class="nav-text">Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">1.4.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
             
 
           </div>
