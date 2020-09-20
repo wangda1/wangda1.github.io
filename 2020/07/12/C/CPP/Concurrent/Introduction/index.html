@@ -88,7 +88,7 @@
 <meta property="og:description" content="C++并发C++并发的两种方式C++的并发主要可以分为 多进程 与 多线程的方式：  多进程的方式： windows: CreateProcessA linux: fork   多线程的方式： C++11: thread     并发编程的核心问题从来就不是并发容器或者同步原语，而是并发模式，你要处理什么问题？你需要什么样的语义？这才是核心问题。  这里主要介绍C++中的并发库 #include">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;12&#x2F;C&#x2F;CPP&#x2F;Concurrent&#x2F;Introduction&#x2F;deadlock.png">
-<meta property="og:updated_time" content="2020-07-15T14:44:22.915Z">
+<meta property="og:updated_time" content="2020-08-21T08:04:05.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;07&#x2F;12&#x2F;C&#x2F;CPP&#x2F;Concurrent&#x2F;Introduction&#x2F;deadlock.png">
 
@@ -477,9 +477,21 @@
 <p><code>std::unique_lock&lt;mutex&gt; locker(_mu, std::defer_lock);</code></p>
 <h3 id="Condition-Variable"><a href="#Condition-Variable" class="headerlink" title="Condition Variable"></a>Condition Variable</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">std</span>::condition_variable cond;</span><br><span class="line">cond.notify_one();</span><br><span class="line">cond.notify_all();</span><br><span class="line"></span><br><span class="line">cond.wait(locker);</span><br></pre></td></tr></table></figure>
 
-<h3 id="Future-Promise-and-async"><a href="#Future-Promise-and-async" class="headerlink" title="Future, Promise and async()"></a>Future, Promise and async()</h3><h2 id="little-tricks"><a href="#little-tricks" class="headerlink" title="little tricks"></a>little tricks</h2><ul>
-<li><code>std::thread::hardware_concurrency()</code>可以获得机器的最大线程数量。</li>
-<li><code>std::this_thread::get_id()</code> 获取当前线程号</li>
+<h3 id="Future-Promise-and-async"><a href="#Future-Promise-and-async" class="headerlink" title="Future, Promise and async()"></a>Future, Promise and async()</h3><p><code>std::future</code> 是一个模板类，一个channel用于接收未来将要获得的结果</p>
+<ul>
+<li>使用<code>get()</code>获得返回值，但仅能调用一次</li>
+<li>使用<code>std::move()</code>移动</li>
+</ul>
+<p><code>std::promise</code> 是一个模板类，用于预设一个值，可与<code>std::future</code>配合使用</p>
+<p><code>std::async()</code> 异步调用的函数，参数：</p>
+<ul>
+<li><p>第一个参数：<code>std::launch::async</code>会新起一个thread，<code>std::launch::deferred</code>不会新起一个thread，直到调用 <code>get()</code> 才执行</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// std::future</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; fu = <span class="built_in">std</span>::async([]()&#123; <span class="keyword">return</span> <span class="number">2</span>; &#125;);</span><br><span class="line">x = fu.<span class="built_in">get</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// std::promise</span></span><br><span class="line"><span class="built_in">std</span>::promise&lt;<span class="keyword">int</span>&gt; p;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; f = p.get_future();</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; fu = <span class="built_in">std</span>::async(<span class="built_in">std</span>::launch::async, factorial, <span class="built_in">std</span>::ref(f));</span><br><span class="line"></span><br><span class="line">p.set_value(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// shared_future</span></span><br><span class="line"><span class="comment">// 当有多个 future ，不能进行共享，可与使用 shared_future</span></span><br><span class="line"><span class="built_in">std</span>::promise&lt;<span class="keyword">int</span>&gt; p;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; f = p.get_future();</span><br><span class="line"><span class="built_in">std</span>::shared_future&lt;<span class="keyword">int</span>&gt; sf = f.share();</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; fu = <span class="built_in">std</span>::async(<span class="built_in">std</span>::launch::async, factorial, sf);</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; fu = <span class="built_in">std</span>::async(<span class="built_in">std</span>::launch::async, factorial, sf);</span><br><span class="line"></span><br><span class="line">p.set_value(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="little-tricks"><a href="#little-tricks" class="headerlink" title="little tricks"></a>little tricks</h2></li>
+<li><p><code>std::thread::hardware_concurrency()</code>可以获得机器的最大线程数量。</p>
+</li>
+<li><p><code>std::this_thread::get_id()</code> 获取当前线程号</p>
+</li>
 </ul>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://www.youtube.com/user/BoQianTheProgrammer" target="_blank" rel="noopener">https://www.youtube.com/user/BoQianTheProgrammer</a></li>
@@ -640,7 +652,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

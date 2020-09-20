@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/Visual_Studio_manual/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/Latex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/02/Something/Visual_Studio_manual/" itemprop="url">Visual Studio 的使用</a></h2>
+                <a class="post-title-link" href="/2020/01/02/Something/Latex/" itemprop="url">Latex 入门</a></h2>
         
 
         <div class="post-meta">
@@ -387,15 +387,36 @@
       
         
           
-            <h1 id="Visual-Studio-的使用"><a href="#Visual-Studio-的使用" class="headerlink" title="Visual Studio 的使用"></a>Visual Studio 的使用</h1><h2 id="解决方案（Solution）"><a href="#解决方案（Solution）" class="headerlink" title="解决方案（Solution）"></a>解决方案（Solution）</h2><h2 id="选项卡"><a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h2><h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p><code>选项</code>中可设置字体和行号</p>
-<h3 id="项目文件讲解"><a href="#项目文件讲解" class="headerlink" title="项目文件讲解"></a>项目文件讲解</h3><h3 id="扩展管理"><a href="#扩展管理" class="headerlink" title="扩展管理"></a>扩展管理</h3><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
-<li>编译缺失文件？</li>
-</ol>
+            <h1 id="Latex"><a href="#Latex" class="headerlink" title="Latex"></a>Latex</h1><h2 id="线下环境"><a href="#线下环境" class="headerlink" title="线下环境"></a>线下环境</h2><ul>
+<li>TeXlive+TeXstuido</li>
+</ul>
+<h2 id="线上环境"><a href="#线上环境" class="headerlink" title="线上环境"></a>线上环境</h2><ul>
+<li><a href="https://www.overleaf.com/" target="_blank" rel="noopener">overleaf</a></li>
+</ul>
+<h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;document&#125;</span><br><span class="line">\section&#123;text&#125;</span><br><span class="line">\subsection&#123;text&#125;</span><br><span class="line">\end&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>添加include的目录，具体使在C盘查找文件目录，然后将其包含在VC++目录-》包含目录中。</li>
-<li>确认项目的Windows SDK版本是否正确。</li>
-<li>确认平台是否正确，是x86还是x64</li>
-<li>确认项目时debug版本，还是release版本。</li>
+<li>斜体<code>\textit{text}</code></li>
+<li>加粗<code>\textbf{text}</code></li>
+<li>角标<code>\textsuperscript</code></li>
+<li>换行<code>\newline</code> 或 <code>\\</code></li>
+</ul>
+<h2 id="新建列表"><a href="#新建列表" class="headerlink" title="新建列表"></a>新建列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;itemize&#125;</span><br><span class="line">\item</span><br><span class="line">\item</span><br><span class="line">\end&#123;itemize&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入表格"><a href="#插入表格" class="headerlink" title="插入表格"></a>插入表格</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[htbp]</span><br><span class="line">\caption&#123;spacy NER Accuracy Table\textsuperscript&#123;\cite&#123;b3&#125;&#125;&#125;</span><br><span class="line">\begin&#123;center&#125;</span><br><span class="line">\begin&#123;tabular&#125;&#123;|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">\textbf&#123;F&#125;&amp;\textbf&#123;P&#125;&amp;\textbf&#123;R&#125; \\</span><br><span class="line">\hline</span><br><span class="line">85.55&amp;85.89&amp;85.21  \\</span><br><span class="line">\hline</span><br><span class="line">\end&#123;tabular&#125;</span><br><span class="line">\label&#123;tab1&#125;</span><br><span class="line">\end&#123;center&#125;</span><br><span class="line">\end&#123;table&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[htbp]</span><br><span class="line">\includegraphics[scale=0.6]&#123;figure/entity_top5.png&#125;</span><br><span class="line">\caption&#123;Top 5 entities in multiple categories.&#125;</span><br><span class="line">\label&#123;fig&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>文本中的引用</p>
+<p><code>text\cite{bn}</code></p>
+<p>Reference 的列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;thebibliography&#125;&#123;00&#125;</span><br><span class="line">\bibitem&#123;b1&#125;</span><br><span class="line">\bibitem&#123;b2&#125;</span><br><span class="line">\bibitem&#123;b3&#125;</span><br><span class="line">\end&#123;thebibliography&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://www.jianshu.com/p/3e842d67ada2" target="_blank" rel="noopener">Latex环境配置</a></li>
+<li><a href="https://blog.csdn.net/JueChenYi/article/details/77116011" target="_blank" rel="noopener">latex插入表格</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/32925549" target="_blank" rel="noopener">latex插入图片</a></li>
+<li><a href="https://blog.csdn.net/Gentleman_Qin/article/details/79963396" target="_blank" rel="noopener">常用Latex参考</a></li>
 </ul>
 
           
@@ -650,6 +671,157 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">r<span class="emphasis">_&#123;t&#125; =&amp; \sigma(W_</span>&#123;ir&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;ir&#125; + W<span class="emphasis">_&#123;hr&#125;h_</span>&#123;(t-1)&#125; + b_&#123;hr&#125;) \\</span><br><span class="line">z<span class="emphasis">_&#123;t&#125; =&amp; \sigma(W_</span>&#123;iz&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;iz&#125; + W<span class="emphasis">_&#123;hz&#125;h_</span>&#123;(t-1)&#125; + b_&#123;hz&#125;) \\</span><br><span class="line">n<span class="emphasis">_&#123;t&#125; =&amp; tanh(W_</span>&#123;in&#125;x<span class="emphasis">_&#123;t&#125; + b_</span>&#123;in&#125; + r<span class="emphasis">_&#123;t&#125;*(W_</span>&#123;hn&#125;h<span class="emphasis">_&#123;(t-1)&#125; + b_</span>&#123;hn&#125;)) \\</span><br><span class="line">h<span class="emphasis">_&#123;t&#125; =&amp; (1-z_</span>&#123;t&#125;) <span class="emphasis">* n_&#123;t&#125; + z_&#123;t&#125; *</span> h_&#123;(t-1)&#125;        </span><br><span class="line">\end&#123;aligned&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
 
 <p>$$<br>\begin{aligned}<br>r_{t} =&amp; \sigma(W_{ir}x_{t} + b_{ir} + W_{hr}h_{(t-1)} + b_{hr}) \<br>z_{t} =&amp; \sigma(W_{iz}x_{t} + b_{iz} + W_{hz}h_{(t-1)} + b_{hz}) \<br>n_{t} =&amp; tanh(W_{in}x_{t} + b_{in} + r_{t}*(W_{hn}h_{(t-1)} + b_{hn})) \<br>h_{t} =&amp; (1-z_{t}) * n_{t} + z_{t} * h_{(t-1)}<br>\end{aligned}<br>$$</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/02/Something/Visual_Studio_manual/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/02/Something/Visual_Studio_manual/" itemprop="url">Visual Studio 的使用</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-02T09:30:31+08:00">
+                2020-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Something/" itemprop="url" rel="index">
+                    <span itemprop="name">Something</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Visual-Studio-的使用"><a href="#Visual-Studio-的使用" class="headerlink" title="Visual Studio 的使用"></a>Visual Studio 的使用</h1><h2 id="解决方案（Solution）"><a href="#解决方案（Solution）" class="headerlink" title="解决方案（Solution）"></a>解决方案（Solution）</h2><h2 id="选项卡"><a href="#选项卡" class="headerlink" title="选项卡"></a>选项卡</h2><h3 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h3><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p><code>选项</code>中可设置字体和行号</p>
+<h3 id="项目文件讲解"><a href="#项目文件讲解" class="headerlink" title="项目文件讲解"></a>项目文件讲解</h3><h3 id="扩展管理"><a href="#扩展管理" class="headerlink" title="扩展管理"></a>扩展管理</h3><h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><ol>
+<li>编译缺失文件？</li>
+</ol>
+<ul>
+<li>添加include的目录，具体使在C盘查找文件目录，然后将其包含在VC++目录-》包含目录中。</li>
+<li>确认项目的Windows SDK版本是否正确。</li>
+<li>确认平台是否正确，是x86还是x64</li>
+<li>确认项目时debug版本，还是release版本。</li>
+</ul>
 
           
         
@@ -1793,147 +1965,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/14/Algorithm/anti-optimum/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/12/14/Algorithm/anti-optimum/" itemprop="url">anti-optimum</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-14T17:57:28+08:00">
-                2019-12-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1988,7 +2019,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

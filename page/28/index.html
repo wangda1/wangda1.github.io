@@ -294,6 +294,170 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/CTF/PWN/%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/25/CTF/PWN/%E4%B8%80%E4%BA%9B%E6%8A%80%E5%B7%A7/" itemprop="url">一些技巧</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-25T19:27:00+08:00">
+                2018-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/" itemprop="url" rel="index">
+                    <span itemprop="name">CTF</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CTF/PWN/" itemprop="url" rel="index">
+                    <span itemprop="name">PWN</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一些技巧"><a href="#一些技巧" class="headerlink" title="一些技巧"></a>一些技巧</h1><ul>
+<li><p>vmmap：gdb调试命令可用于查看内存分布图及可执行状况</p>
+</li>
+<li><p>shellcode.ljust(num,’A’) 可以构造包含shellcode以A填充的n字节payload</p>
+</li>
+<li><p>ret2lib 中，采用  u64(sh.recvuntil(‘\n’)[:-1]+’\0’)的方式可以有效地计算出地址来</p>
+</li>
+<li><p>而关键在于 ‘\0’的补多少，8-len</p>
+</li>
+<li><p>今天突然发现一种简单的方式：1. addr_.ljust(8,’\0’) 2.u64(addr_) 相当于上述写法</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/25/CTF/PWN/%E6%A0%88%E6%BA%A2%E5%87%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1760,201 +1924,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/18/CTF/PWN/C%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/18/CTF/PWN/C%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">C中一些函数的使用</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-18T18:29:00+08:00">
-                2018-04-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/PWN/" itemprop="url" rel="index">
-                    <span itemprop="name">PWN</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="C中一些函数的使用"><a href="#C中一些函数的使用" class="headerlink" title="C中一些函数的使用"></a>C中一些函数的使用</h1><ul>
-<li><font color="#A600C4"><span style="font-size: 19px;">setvbuf()</span></font> 函数原型： int setvbuf(FILE * stream, char * buf, int type, unsigned size); </li>
-</ul>
-<ol>
-<li><ul>
-<li><font color="#333333" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">_IOFBF (满缓冲)：当缓冲区为空时，从流读入数据。或当缓冲区满时，向流写入数据。</font><ul>
-<li><font color="#333333" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">_IOLBF (行缓冲)：每次从流中读入一行数据或向流中写入—行数据。</font></li>
-<li><font color="#333333" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">_IONBF (无缓冲）</font></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><span style="color: rgb(51, 51, 51); font-size: 14px;">与</span> <span style="font-size: 19px;"><font color="#A600C4">setbuf</font></span><span style="color: rgb(51, 51, 51); font-size: 14px;">的区别：setbuf()只能对缓冲区进行简单操作；两者都可以通过用户设置缓冲区，而不用再使用 fopen()打开的默认缓冲区</span></font></li>
-</ul>
-<p><font color="#333333" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><span style="font-size: 14px;"><b>printf(),scanf(),gets(),puts()等函数的区别</b></span></font><br><font color="#333333" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><span style="font-size: 14px;"><b>     </b>都是从输入，输出缓冲区取内容输入或输出</span></font></p>
-<p><font color="#333333" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><span style="font-size: 14px;"><br></span></font></p>
-<p><font color="#FF0000" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">#include &lt;stdio.h&gt;</font></p>
-<ul>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><font color="#A600C4" style="font-size: 19px;">scanf(),gets()</font><font color="#333333" style="font-size: 14px;">：scanf() 会在</font><b style="font-size: 14px; color: rgb(51, 51, 51);">回车，空格，tab键结束</b><font color="#333333" style="font-size: 14px;">，并且这些键会</font><b style="font-size: 14px; color: rgb(51, 51, 51);">保留</b><font color="#333333" style="font-size: 14px;">在缓冲区中，scanf()会在字符串结尾自动补\0;    gets()会收入前面的这些键，以空格键结束，结尾自动补\0，并且不会保留在缓冲区中</font></font></li>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><font color="#A600C4" style="font-size: 19px;">printf(),puts()</font><font color="#333333" style="font-size: 14px;">会直接输出，但</font><b style="font-size: 14px; color: rgb(51, 51, 51);">puts()会将字符串结尾的\0转换成回车</b></font></li>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><span style="font-size: 18px;"><font color="#7600D8">size_t fread(void <em>ptr,size_t size,size_t nmemb,FILE *stream)：</font>从stream中读取数据到 ptr，size (size 大小）</em> nmemb（块大小）</span></font></li>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif"><span style="font-size: 18px;"><font color="#7600D8">size_t fwrite</font> 与之类似<font color="#FF0000">（两者都是对二进制文件进行读写）</font></span></font></li>
-</ul>
-<p><font color="#FF0000" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">#include &lt;unistd.h&gt;</font></p>
-<ul>
-<li><font color="#A600C4" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif" size="4"><b>ssize_t read(int fd, void * buf, size_t count) </b></font></li>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif" size="4"><b>fd为文件描述符，buf缓冲区指针，count为字节数</b></font></li>
-</ul>
-<p><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif" size="4"><b><br></b></font></p>
-<ul>
-<li><font color="#A600C4" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif" size="4"><b>ssize_t write (int fd, const void * buf, size_t count)</b></font></li>
-</ul>
-<p><font color="#FF0000">#include &lt;stdlib.h&gt;</font></p>
-<ul>
-<li><font color="#A600C4" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">strtoul  将 string to unsigned long int</font></li>
-<li><font color="#A600C4" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">strtol 将 string to long int</font></li>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">在ANSI C里规范定义了 <font color="#FF0000">stof( ),atoi( ),atol( ),strtod( ),strtol( ),strtoul( )</font> 可以将字符串转换成数字</font></li>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">long int strtol(const char* str,char* endptr,int base)</font></li>
-<li><font face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif">Python里的int与此作用相似</font></li>
-</ul>
-<p><font color="#A600C4" face="微软雅黑, Microsoft Yahei, Arial, Helvetica, sans-serif" size="4"><b><br></b></font></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2009,7 +1978,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

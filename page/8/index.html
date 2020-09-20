@@ -294,6 +294,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/CUDA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/05/MLDL/CUDA/" itemprop="url">CUDA</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:15:39+08:00">
+                2020-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MLDL/" itemprop="url" rel="index">
+                    <span itemprop="name">MLDL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="CUDA"><a href="#CUDA" class="headerlink" title="CUDA"></a>CUDA</h1><h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p>暑假实习的是关于一个 GPU 开发库的Python版本项目，该项目 C++ 版本与 Python 版本进行同步开发，Python版本使用 <code>swig</code> 进行 C++ interface 的 wrap，这些 GPU 编程库往往都有很多相似的地方，当时借鉴了很多 CUDA 的相关资料，这里进行记录</p>
+<h3 id="1-2-高效的-GPU-任务具备条件"><a href="#1-2-高效的-GPU-任务具备条件" class="headerlink" title="1.2 高效的 GPU 任务具备条件"></a>1.2 高效的 GPU 任务具备条件</h3><ol>
+<li>具有成千上万的独立工作<ul>
+<li>尽量利用大量的 ALU 单元</li>
+<li>大量的片元切换隐延迟</li>
+</ul>
+</li>
+<li>可以共享指令流<ul>
+<li>适用于 SIMD 处理</li>
+</ul>
+</li>
+<li>最好是计算密集型任务<ul>
+<li>通信和计算开销比例适合</li>
+<li>不要受制于访存带宽</li>
+</ul>
+</li>
+</ol>
+<p><strong>CUDA这一部分应该掌握GPU软硬件之间的对应关系</strong></p>
+<h2 id="2-GPU的体系结构"><a href="#2-GPU的体系结构" class="headerlink" title="2. GPU的体系结构"></a>2. GPU的体系结构</h2><h3 id="2-1-硬件"><a href="#2-1-硬件" class="headerlink" title="2.1 硬件"></a>2.1 硬件</h3><ul>
+<li>SP（Streaming Processor），亦称 CUDA core，指令和任务的实际执行者</li>
+<li>SM（Streaming Multiprocessor），GPu大核，拥有除SP外的其它资源如： wrap scheduler、register、shared memory等。</li>
+</ul>
+<p>展示GPU的一个SM的示意图（绿色部分为 SP）：</p>
+<p><img src="/2020/01/05/MLDL/CUDA/cuda_sm.png" alt="cuda_sm"></p>
+<p>GPU 中的内存按照访存速度划分：</p>
+<ul>
+<li>Register</li>
+<li>shared memory (block)</li>
+<li>local memory</li>
+<li>global memory (device)</li>
+<li>constant memory (device)</li>
+<li>texture memory</li>
+<li>instruction memory (invisible)</li>
+</ul>
+<h3 id="2-2-软件"><a href="#2-2-软件" class="headerlink" title="2.2 软件"></a>2.2 软件</h3><p>软件的三级结构： </p>
+<ul>
+<li>thread</li>
+<li>block</li>
+<li>grid</li>
+</ul>
+<p><img src="/2020/01/05/MLDL/CUDA/cuda_sw.png" alt="cuda_sw"></p>
+<h3 id="2-3-软硬件之间的对应关系"><a href="#2-3-软硬件之间的对应关系" class="headerlink" title="2.3 软硬件之间的对应关系"></a>2.3 软硬件之间的对应关系</h3><p><img src="/2020/01/05/MLDL/CUDA/cuda_sw_hw.png" alt="cuda_sw_hw"></p>
+<h3 id="2-4-SIMD与SIMT之间的区别"><a href="#2-4-SIMD与SIMT之间的区别" class="headerlink" title="2.4 SIMD与SIMT之间的区别"></a>2.4 SIMD与SIMT之间的区别</h3><p>其实还是不太明白 <code>SIMT</code> 与 <code>SIMD</code>之间的区别</p>
+<h2 id="3-CUDA的编程模型"><a href="#3-CUDA的编程模型" class="headerlink" title="3. CUDA的编程模型"></a>3. CUDA的编程模型</h2><h3 id="3-1-CUDA-的算法框架"><a href="#3-1-CUDA-的算法框架" class="headerlink" title="3.1 CUDA 的算法框架"></a>3.1 CUDA 的算法框架</h3><p>1) 在 GPU 上分配显存，拷贝数据 host to device<br>2) kernel invocation code<br>3) 运算结束后，输出数据拷贝 device to host</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>[Introduction-to-GPUs.pdf](/2020/01/05/MLDL/CUDA/Introduction-to-GPUs.pdf</li>
+<li><a href="https://blog.csdn.net/junparadox/article/details/50540602" target="_blank" rel="noopener">CUDA编程</a></li>
+<li><a href="https://www.bilibili.com/video/av10436982?from=search&seid=450076380525809673" target="_blank" rel="noopener">《CUDA编程教程》 B站视频</a></li>
+<li>《CUDA并行程序设计 GPU编程指南》</li>
+<li><a href="https://www.easyhpc.net/lab/detail/22/" target="_blank" rel="noopener">超算课堂-CUDA编程实训</a></li>
+<li><a href="https://devblogs.nvidia.com/easy-introduction-cuda-c-and-c/" target="_blank" rel="noopener">Nvidia-introductoion-of-cuda-c-and-c</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/MLDL/RNN/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1860,188 +2053,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/" itemprop="url">遗传算法</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-05T16:03:25+08:00">
-                2020-01-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="优化问题（一）遗传算法"><a href="#优化问题（一）遗传算法" class="headerlink" title="优化问题（一）遗传算法"></a>优化问题（一）遗传算法</h1><blockquote>
-<p>遗传算法（Genetic Algorithm, GA）起源于对生物系统所进行的计算机模拟研究。它是模仿自然界生物进化机制发展起来的随机全局搜索和优化方法，借鉴了达尔文的进化论和孟德尔的遗传学说。其本质是一种高效、并行、全局搜索的方法，能在搜索过程中自动获取和积累有关搜索空间的知识，并自适应地控制搜索过程以求得最佳解。</p>
-</blockquote>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p><strong>遗传算法是以面为单位的搜索，比以点为单位的搜索，更能发现全局最优解。</strong></p>
-<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/genetic_algorithm_process.jpeg" alt="process"></p>
-<h2 id="验证函数"><a href="#验证函数" class="headerlink" title="验证函数"></a>验证函数</h2><p>$$f(x)=xsin(10\pi x)+2$$</p>
-<h2 id="遗传算法的几个重要步骤"><a href="#遗传算法的几个重要步骤" class="headerlink" title="遗传算法的几个重要步骤"></a>遗传算法的几个重要步骤</h2><h3 id="1-基因的编码"><a href="#1-基因的编码" class="headerlink" title="1. 基因的编码"></a>1. 基因的编码</h3><p>编码的主要目的是为后期的遗传变异建立基础。</p>
-<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/genetic_algorithm.png" alt="code"></p>
-<p>1.1 基因的编码方式</p>
-<ul>
-<li>二进制编码</li>
-<li>浮点数编码</li>
-</ul>
-<p>在我们常用的问题中，基因型–编码；表现型–坐标；我们只需要在相应的坐标精度下使用一种编码表方式将坐标编码出来。</p>
-<h3 id="2-适应性评价与选择函数"><a href="#2-适应性评价与选择函数" class="headerlink" title="2. 适应性评价与选择函数"></a>2. 适应性评价与选择函数</h3><p>这里是对个体的评价和选择的过程，也是对搜索空间的修剪。</p>
-<p>2.1 适应度函数（fitness function）— 目标函数</p>
-<p>适应度函数即是衡量该基因型的个体对环境的适应度评估标准。它是我们作为选择函数选择的依据。我们可以很明显地以<strong>目标函数</strong>作为我们的适应度函数</p>
-<p>2.2 选择函数（selection）</p>
-<p><em>为什么这里会出现选择函数而不是直接对适应度最高的函数进行选择呢？</em></p>
-<p>模拟生物界的遗传进化规律，并不是所有的优良个体都会被保存，也不是所有的劣势个体都会被淘汰。</p>
-<p>常用方法：</p>
-<ul>
-<li>轮盘赌（Roulette Wheel Selection）</li>
-</ul>
-<p><em>转盘游戏</em></p>
-<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/roulette_wheel_selection.png" alt="roulette_wheel"></p>
-<h3 id="3-基因重组与基因突变"><a href="#3-基因重组与基因突变" class="headerlink" title="3. 基因重组与基因突变"></a>3. 基因重组与基因突变</h3><p>这部分是对搜索空间的扩大，通过对个体进行变异从而得到更多基因型和表现型的个体，这部分会有大量的随机操作</p>
-<p>3.1 基因重组</p>
-<p>通过对两个基因的编码进行部分替换得到</p>
-<p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/ga_ge_reconstruct.png" alt="ge_reconstruct"></p>
-<p>3.2 基因突变</p>
-<p>对单个个体的基因型进行改变</p>
-<ul>
-<li>二进制的编码： <code>0</code> 与 <code>1</code> 之间的互换</li>
-<li>浮点数的编码：对浮点数增加/减少一个随机数</li>
-</ul>
-<h3 id="4-遗传算子总结"><a href="#4-遗传算子总结" class="headerlink" title="4. 遗传算子总结"></a>4. 遗传算子总结</h3><p><img src="/2020/01/05/Algorithm/%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/ga_operator.png" alt="ga_operator"></p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://blog.csdn.net/u010451580/article/details/51178225" target="_blank" rel="noopener">遗传算法详解</a></li>
-<li><a href="https://blog.csdn.net/zzzzjh/article/details/80633573" target="_blank" rel="noopener">遗传算法python实现</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2096,7 +2107,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

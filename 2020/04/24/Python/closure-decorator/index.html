@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="闭包（Closure）装饰器 （Decorator）装饰器的主要依据是python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数 不带参数的装饰器带参数的装饰器调用序列关于接受参数的包装器的调用序列，看到 ptython-cookbook 上的，对于理解 装饰器很有帮助；  定义一个接受参数的包装器看上去比较复杂主要是因为底层的调用序列。特别的，如果你有下面这个代码： 123@deco">
+<meta name="description" content="闭包（Closure）装饰器 （Decorator）装饰器的主要依据是python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数，主要功能是在代码运行期间动态增加函数功能，但又不改变原函数的定义。 不带参数的装饰器带参数的装饰器调用序列关于接受参数的包装器的调用序列，看到 ptython-cookbook 上的，对于理解 装饰器很有帮助；  定义一个接受参数的包装器看上去比较复杂主要是">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="闭包 与 装饰器">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;04&#x2F;24&#x2F;Python&#x2F;closure-decorator&#x2F;index.html">
 <meta property="og:site_name" content="笔记记录">
-<meta property="og:description" content="闭包（Closure）装饰器 （Decorator）装饰器的主要依据是python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数 不带参数的装饰器带参数的装饰器调用序列关于接受参数的包装器的调用序列，看到 ptython-cookbook 上的，对于理解 装饰器很有帮助；  定义一个接受参数的包装器看上去比较复杂主要是因为底层的调用序列。特别的，如果你有下面这个代码： 123@deco">
+<meta property="og:description" content="闭包（Closure）装饰器 （Decorator）装饰器的主要依据是python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数，主要功能是在代码运行期间动态增加函数功能，但又不改变原函数的定义。 不带参数的装饰器带参数的装饰器调用序列关于接受参数的包装器的调用序列，看到 ptython-cookbook 上的，对于理解 装饰器很有帮助；  定义一个接受参数的包装器看上去比较复杂主要是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-04-28T04:09:47.690Z">
+<meta property="og:updated_time" content="2020-09-02T12:19:38.228Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -384,7 +384,7 @@
       
 
       
-        <h1 id="闭包（Closure）"><a href="#闭包（Closure）" class="headerlink" title="闭包（Closure）"></a>闭包（Closure）</h1><h1 id="装饰器-（Decorator）"><a href="#装饰器-（Decorator）" class="headerlink" title="装饰器 （Decorator）"></a>装饰器 （Decorator）</h1><p>装饰器的主要依据是<strong>python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数</strong></p>
+        <h1 id="闭包（Closure）"><a href="#闭包（Closure）" class="headerlink" title="闭包（Closure）"></a>闭包（Closure）</h1><h1 id="装饰器-（Decorator）"><a href="#装饰器-（Decorator）" class="headerlink" title="装饰器 （Decorator）"></a>装饰器 （Decorator）</h1><p>装饰器的主要依据是<strong>python中函数是一个对象，函数对象可以赋值给变量，通过变量调用函数</strong>，主要功能是在代码运行期间动态增加函数功能，但又不改变原函数的定义。</p>
 <h2 id="不带参数的装饰器"><a href="#不带参数的装饰器" class="headerlink" title="不带参数的装饰器"></a>不带参数的装饰器</h2><h2 id="带参数的装饰器"><a href="#带参数的装饰器" class="headerlink" title="带参数的装饰器"></a>带参数的装饰器</h2><h2 id="调用序列"><a href="#调用序列" class="headerlink" title="调用序列"></a>调用序列</h2><p>关于接受参数的包装器的调用序列，看到 ptython-cookbook 上的，对于理解 装饰器很有帮助；</p>
 <blockquote>
 <p>定义一个接受参数的包装器看上去比较复杂主要是因为底层的调用序列。特别的，如果你有下面这个代码：</p>
@@ -395,7 +395,7 @@
 </blockquote>
 <p>举个栗子：</p>
 <p>如何查看函数被调用了多少次？</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CallingCounter</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span> <span class="params">(self, func)</span>:</span></span><br><span class="line">        self.func = func</span><br><span class="line">        self.count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span> <span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        self.count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.func(*args, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_func</span><span class="params">(func)</span>:</span></span><br><span class="line">    num = [<span class="number">0</span>]   <span class="comment"># 闭包中外函数中的变量指向的引用不可变</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call_func</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        num[<span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">        print(<span class="string">"执行次数"</span>,num[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> call_func</span><br><span class="line">————————————————</span><br><span class="line">版权声明：本文为CSDN博主「宁致乐水」的原创文章，遵循CC <span class="number">4.0</span> BY-SA版权协议，转载请附上原文出处链接及本声明。</span><br><span class="line">原文链接：https://blog.csdn.net/qq_31603575/article/details/<span class="number">80011287</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CallingCounter</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span> <span class="params">(self, func)</span>:</span></span><br><span class="line">        self.func = func</span><br><span class="line">        self.count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span> <span class="params">(self, *args, **kwargs)</span>:</span></span><br><span class="line">        self.count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> self.func(*args, **kwargs)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_func</span><span class="params">(func)</span>:</span></span><br><span class="line">    num = [<span class="number">0</span>]   <span class="comment"># 闭包中外函数中的变量指向的引用不可变</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">call_func</span><span class="params">(*args, **kwargs)</span>:</span></span><br><span class="line">        num[<span class="number">0</span>] += <span class="number">1</span></span><br><span class="line">        print(<span class="string">"执行次数"</span>,num[<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> func(*args, **kwargs)</span><br><span class="line">    <span class="keyword">return</span> call_func</span><br></pre></td></tr></table></figure>
 <h2 id="reference"><a href="#reference" class="headerlink" title="reference"></a>reference</h2><ul>
 <li><a href="https://zhuanlan.zhihu.com/p/22229197" target="_blank" rel="noopener">深入浅出python闭包</a></li>
 <li><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017451662295584" target="_blank" rel="noopener">廖雪峰的官方网站</a></li>
@@ -460,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/22/Linux/VIM/" rel="next" title="Vim 使用">
-                <i class="fa fa-chevron-left"></i> Vim 使用
+              <a href="/2020/03/22/Linux/MISC(1)/" rel="next" title="Linux 命令杂谈">
+                <i class="fa fa-chevron-left"></i> Linux 命令杂谈
               </a>
             
           </div>
@@ -553,7 +553,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

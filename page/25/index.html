@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/spacy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/" itemprop="url">实体链接（Entity Link）</a></h2>
+                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/spacy/" itemprop="url">spacy 使用记录</a></h2>
         
 
         <div class="post-meta">
@@ -398,8 +398,208 @@
       
         
           
-            <h1 id="实体链接（Entity-Link）"><a href="#实体链接（Entity-Link）" class="headerlink" title="实体链接（Entity Link）"></a>实体链接（Entity Link）</h1><p>实体链接是构建知识图谱中 NER（实体抽取）后续的一步，主要对异构数据源中的不同 mention 对应到 Knowledge Base 中的 Entity.</p>
-<p>这里有一篇很不错的总结 <a href="https://mp.weixin.qq.com/s?__biz=MzI0ODcxODk5OA==&mid=2247512392&idx=3&sn=9aa4fcf03743afec55b3ce86526aea8a&chksm=e99e82b1dee90ba7e033a35937720529708042ba9107abf1063f8da582a7259d4e67d62c672e&mpshare=1&scene=1&srcid=0325Li1Uw40dxdp1IwPY0z5B&sharer_sharetime=1585144022945&sharer_shareid=df1013bd655d09f93207e8213ac4db3a#rd" target="_blank" rel="noopener">知识图谱-实体链接综述</a></p>
+            <h1 id="spacy-使用记录"><a href="#spacy-使用记录" class="headerlink" title="spacy 使用记录"></a>spacy 使用记录</h1><h2 id="NER的使用"><a href="#NER的使用" class="headerlink" title="NER的使用"></a>NER的使用</h2><h2 id="EL的使用"><a href="#EL的使用" class="headerlink" title="EL的使用"></a>EL的使用</h2><p>update on 2020/3/26</p>
+<p><code>spacy</code> 并没有提供现成的 EL model，而是要通过spacy提供的 framework 自己训练出一个 model，至于为什么 spacy 不提供一个训练好的 model release 出来，见 <a href="https://github.com/explosion/spaCy/issues/4511" target="_blank" rel="noopener">issues#4511</a> 作者给出了解释。</p>
+<p>Model 的训练过程需要耗费较长时间，这里记录一下，步骤参考：<a href="https://github.com/explosion/spaCy/tree/master/bin/wiki_entity_linking" target="_blank" rel="noopener">https://github.com/explosion/spaCy/tree/master/bin/wiki_entity_linking</a></p>
+<p>Step 1.</p>
+<p><code>python wikidata_pretrain_kb.py wiki/latest-all.json.bz2 wiki/enwiki-latest-pages-articles-multistream.xml.bz2 output/ en_core_web_md</code></p>
+<p>这里使用的是 英文的 <code>en_core_web_md</code> 模型，使用 <code>en_core_web_sm</code> 模型会报错。</p>
+<p>然后经历的过程大概是这样的：</p>
+<ul>
+<li>Intel(R) Xeon(R) Gold 6132 CPU @ 2.60GHz 6核</li>
+<li>60GB 内存</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">2020-03-25 10:57:56,366 - INFO - __main__ - Creating KB with Wikipedia and WikiData</span><br><span class="line">2020-03-25 10:57:56,366 - INFO - __main__ - STEP 1: Loading NLP model en_core_web_md</span><br><span class="line">2020-03-25 10:58:09,601 - INFO - __main__ - STEP 2: Writing prior probabilities to output/prior_prob.csv</span><br><span class="line">2020-03-25 11:02:19,011 - INFO - bin.wiki_entity_linking.wikipedia_processor - processed 25000000 lines of Wikipedia XML dump</span><br><span class="line">2020-03-25 11:06:06,973 - INFO - bin.wiki_entity_linking.wikipedia_processor - processed 50000000 lines of Wikipedia XML dump</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-25 13:04:44,104 - INFO - bin.wiki_entity_linking.wikipedia_processor - Finished. processed 1154673507 lines of Wikipedia XML dump</span><br><span class="line">2020-03-25 13:06:49,519 - INFO - __main__ - STEP 3: Calculating and writing entity frequencies to output/entity_freq.csv</span><br><span class="line">2020-03-25 13:07:47,159 - INFO - __main__ - STEP 4: Parsing and writing Wikidata entity definitions to output/entity_defs.csv</span><br><span class="line">2020-03-25 13:11:46,605 - INFO - bin.wiki_entity_linking.wikidata_processor - processed 500000 lines of WikiData JSON dump</span><br><span class="line">2020-03-25 13:14:44,627 - INFO - bin.wiki_entity_linking.wikidata_processor - processed 1000000 lines of WikiData JSON dump</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-25 23:17:48,677 - INFO - bin.wiki_entity_linking.wikidata_processor - Finished. Processed 78951019 lines of WikiData JSON dump</span><br><span class="line">2020-03-25 23:17:52,051 - INFO - __main__ - STEP 4b: Writing Wikidata entity aliases to output/entity_alias.csv</span><br><span class="line">2020-03-25 23:17:56,290 - INFO - __main__ - STEP 4c: Writing Wikidata entity descriptions to output/entity_descriptions.csv</span><br><span class="line">2020-03-25 23:17:58,717 - INFO - __main__ - STEP 5: Parsing and writing Wikipedia gold entities to output/gold_entities.jsonl</span><br><span class="line">2020-03-25 23:19:36,808 - INFO - bin.wiki_entity_linking.wikipedia_processor - Processed 10000 articles</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">2020-03-26 02:17:41,098 - INFO - bin.wiki_entity_linking.wikipedia_processor - Finished. Processed 6890313 articles</span><br><span class="line">2020-03-26 02:17:43,364 - INFO - __main__ - STEP 6: Creating the KB at output/kb</span><br><span class="line">2020-03-26 02:17:52,463 - INFO - bin.wiki_entity_linking.kb_creator - Loaded pretrained vectors of size 300</span><br><span class="line">2020-03-26 02:17:52,463 - INFO - bin.wiki_entity_linking.kb_creator - Filtering entities with fewer than 20 mentions</span><br><span class="line">2020-03-26 02:18:17,807 - INFO - bin.wiki_entity_linking.kb_creator - Kept 1148892 entities from the set of 5763431</span><br><span class="line">2020-03-26 02:18:17,808 - INFO - bin.wiki_entity_linking.kb_creator - Training entity encoder</span><br><span class="line">2020-03-26 02:18:27,323 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 1.0226774291992187 </span><br><span class="line">2020-03-26 02:20:38,614 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.3986138000488281 </span><br><span class="line">2020-03-26 02:22:47,917 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.22751368713378906 </span><br><span class="line">2020-03-26 02:24:58,512 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.15389662170410157 </span><br><span class="line">2020-03-26 02:27:09,470 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.11821630859375 </span><br><span class="line">2020-03-26 02:29:19,072 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.09795716857910156 </span><br><span class="line">2020-03-26 02:31:27,877 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.0902191925048828 </span><br><span class="line">2020-03-26 02:33:37,375 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07779336547851562 </span><br><span class="line">2020-03-26 02:35:46,578 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07243069458007813 </span><br><span class="line">2020-03-26 02:37:56,318 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07262858581542969 </span><br><span class="line">2020-03-26 02:40:06,218 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07191573333740234 </span><br><span class="line">2020-03-26 02:42:16,195 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.07062159729003906 </span><br><span class="line">2020-03-26 02:44:26,376 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.0659771957397461 </span><br><span class="line">2020-03-26 02:46:36,478 - INFO - bin.wiki_entity_linking.train_descriptions - loss: 0.06245959091186523 </span><br><span class="line">2020-03-26 02:48:08,080 - INFO - bin.wiki_entity_linking.train_descriptions - Trained entity descriptions on 343000 (non-unique) descriptions across 5 epochs</span><br><span class="line">2020-03-26 02:48:08,081 - INFO - bin.wiki_entity_linking.train_descriptions - Final loss: 0.06493917846679688</span><br><span class="line">2020-03-26 02:48:08,081 - INFO - bin.wiki_entity_linking.kb_creator - Getting entity embeddings</span><br><span class="line">2020-03-26 02:49:16,621 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 200000 entities</span><br><span class="line">2020-03-26 02:50:26,592 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 300000 entities</span><br><span class="line">2020-03-26 02:51:30,845 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 400000 entities</span><br><span class="line">2020-03-26 02:52:37,864 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 500000 entities</span><br><span class="line">2020-03-26 02:53:41,903 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 600000 entities</span><br><span class="line">2020-03-26 02:54:48,951 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 700000 entities</span><br><span class="line">2020-03-26 02:55:53,231 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 800000 entities</span><br><span class="line">2020-03-26 02:57:01,271 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 900000 entities</span><br><span class="line">2020-03-26 02:58:04,693 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1000000 entities</span><br><span class="line">2020-03-26 02:59:13,314 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1100000 entities</span><br><span class="line">2020-03-26 03:00:18,196 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1148892 entities</span><br><span class="line">2020-03-26 03:00:49,433 - INFO - bin.wiki_entity_linking.train_descriptions - Encoded: 1148892 entities</span><br><span class="line">2020-03-26 03:00:49,558 - INFO - bin.wiki_entity_linking.kb_creator - Adding 1148892 entities</span><br><span class="line">2020-03-26 03:00:57,009 - INFO - bin.wiki_entity_linking.kb_creator - Adding aliases from Wikipedia and Wikidata</span><br><span class="line">2020-03-26 03:00:57,011 - INFO - bin.wiki_entity_linking.kb_creator - Adding WP aliases</span><br><span class="line">2020-03-26 03:01:58,750 - INFO - __main__ - kb entities: 1148892</span><br><span class="line">2020-03-26 03:01:58,750 - INFO - __main__ - kb aliases: 1665015</span><br><span class="line">2020-03-26 03:02:09,177 - INFO - __main__ - Done!</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/wiki_data/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/wiki_data/" itemprop="url">wiki data 简介</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-16T10:09:00+08:00">
+                2019-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/" itemprop="url" rel="index">
+                    <span itemprop="name">实体与关系抽取</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Wikidata-简介"><a href="#Wikidata-简介" class="headerlink" title="Wikidata 简介"></a>Wikidata 简介</h1><p>这里为什么简要介绍 wiki data，因为实体链接（Entity link）常用到的数据集是 wiki data，</p>
+<h2 id="wiki-data-与-wiki-pedia-的关系"><a href="#wiki-data-与-wiki-pedia-的关系" class="headerlink" title="wiki data 与 wiki pedia 的关系"></a>wiki data 与 wiki pedia 的关系</h2><blockquote>
+<p>wikidata is a free and open knowledge base that can be read and edited by both humans and machines. Wikidata acts as central storage for the structured data of its Wikimedia sister projects including Wikipedia, Wikivoyage, Wikisource, and others.</p>
+</blockquote>
+<h2 id="wiki-data-的说明-url"><a href="#wiki-data-的说明-url" class="headerlink" title="wiki data 的说明 url"></a>wiki data 的说明 <a href="https://en.wikipedia.org/wiki/Wikidata" target="_blank" rel="noopener">url</a></h2><ul>
+<li>Items: Wikidata is a document-oriented database, focused on items, which represent topics, concepts, or objects.Each item is identified by a unique number, prefixed with the letter Q, known as a “QID”.</li>
+<li>Property: A property describes the data value of a statement and can be thought of as a category of data, for example color (P462) for the data value blue (Q1088).</li>
+<li>Statements: Statements are how any information known about an item is recorded in Wikidata. </li>
+<li>Lexemes: In linguistics, a lexeme is a unit of lexical meaning. Similarly, Wikidata’s lexemes are items with a structure that makes them more suitable to store lexicographical data.</li>
+</ul>
+<h2 id="Wikidata-api-的使用"><a href="#Wikidata-api-的使用" class="headerlink" title="Wikidata api 的使用"></a>Wikidata api 的使用</h2><ul>
+<li><a href="https://www.wikidata.org/w/api.php" target="_blank" rel="noopener">api document</a></li>
+<li><a href="https://www.mediawiki.org/wiki/API:Presenting_Wikidata_knowledge" target="_blank" rel="noopener">document2</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">params = dict (</span><br><span class="line">        action=<span class="string">'wbsearchentities'</span>,</span><br><span class="line">        format=<span class="string">'json'</span>,</span><br><span class="line">        language=<span class="string">'en'</span>,</span><br><span class="line">        uselang=<span class="string">'en'</span>,</span><br><span class="line">        <span class="comment"># type='property',</span></span><br><span class="line">        search=<span class="string">'Hubei Province'</span></span><br><span class="line">        )</span><br><span class="line">http_proxies = &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://127.0.0.1:1080"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"https://127.0.0.1:1080"</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(<span class="string">'https://www.wikidata.org/w/api.php?'</span>, params, proxies=http_proxies).json()</span><br><span class="line">print(response.get(<span class="string">'search'</span>)[<span class="number">0</span>][<span class="string">'id'</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="Wikipedia-api-的使用"><a href="#Wikipedia-api-的使用" class="headerlink" title="Wikipedia api 的使用"></a>Wikipedia api 的使用</h2><ul>
+<li><a href="https://en.wikipedia.org/w/api.php?action=help&modules=query" target="_blank" rel="noopener">api document</a></li>
+<li><a href="https://www.mediawiki.org/wiki/API:Main_page" target="_blank" rel="noopener">document2</a></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">params_wikipedia = dict (</span><br><span class="line">        action=<span class="string">'query'</span>,</span><br><span class="line">        prop=<span class="string">'pageprops'</span>,</span><br><span class="line">        ppprop=<span class="string">'wikibase_item'</span>,</span><br><span class="line">        redirects=<span class="number">1</span>,</span><br><span class="line">        titles=<span class="string">'trump'</span></span><br><span class="line">)</span><br><span class="line">http_proxies = &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://127.0.0.1:1080"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"https://127.0.0.1:1080"</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(<span class="string">'https://en.www.wikipedia.org/w/api.php?'</span>, params, proxies=http_proxies).json()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>pip install wikipedia</code> 上述方法的 python 库版本</li>
+</ul>
+<blockquote>
+<p>Wikipedia is a Python library that makes it easy to access and parse data from Wikipedia.<br>Search Wikipedia, get article summaries, get data like links and images from a page, and more. Wikipedia wraps the MediaWiki API so you can focus on using Wikipedia data, not getting it.</p>
+</blockquote>
+<p>注： wikidata api 与 wikipedia api 所返回的的 QID 都是吧wikidata 中的 QID，但 pageId 不同，它分别代表在 Wikidata 与 Wikipedia 中的 page number.</p>
+<h2 id="Wikidata-数据源的下载"><a href="#Wikidata-数据源的下载" class="headerlink" title="Wikidata 数据源的下载"></a>Wikidata 数据源的下载</h2><p><a href="https://www.wikidata.org/wiki/Wikidata:Database_download" target="_blank" rel="noopener">https://www.wikidata.org/wiki/Wikidata:Database_download</a> 可下载 Wikidata 的数据（数据规模较大），进行关系抽取等任务。</p>
+<p><code>spacy</code> 的 EL（Entity Link）任务就是利用从 Wikidata 下载的数据进行模型的训练。</p>
+<blockquote>
+<p>This takes as input the locations of a Wikipedia and a Wikidata dump, and produces a KB directory + training file</p>
+<ul>
+<li>WikiData: get latest-all.json.bz2 from <a href="https://dumps.wikimedia.org/wikidatawiki/entities/" target="_blank" rel="noopener">https://dumps.wikimedia.org/wikidatawiki/entities/</a></li>
+<li>Wikipedia: get enwiki-latest-pages-articles-multistream.xml.bz2 from <a href="https://dumps.wikimedia.org/enwiki/latest/" target="_blank" rel="noopener">https://dumps.wikimedia.org/enwiki/latest/</a> (or for any other language)</li>
+</ul>
+</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>两种方式进行 entity 的查询会返回一系列 candidate 进行候选，这种方法往往在 NLP 的 <code>实体对齐、实体消歧</code> 中存在一定的局限性，常作为 EL 的前序步骤。</p>
 
           
         
@@ -637,7 +837,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/wiki_data/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -656,7 +856,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/wiki_data/" itemprop="url">wiki data 简介</a></h2>
+                <a class="post-title-link" href="/2019/01/16/NLP/%E5%AE%9E%E4%BD%93%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%8A%BD%E5%8F%96/%E5%AE%9E%E4%BD%93%E9%93%BE%E6%8E%A5/" itemprop="url">实体链接（Entity Link）</a></h2>
         
 
         <div class="post-meta">
@@ -741,45 +941,8 @@
       
         
           
-            <h1 id="Wikidata-简介"><a href="#Wikidata-简介" class="headerlink" title="Wikidata 简介"></a>Wikidata 简介</h1><p>这里为什么简要介绍 wiki data，因为实体链接（Entity link）常用到的数据集是 wiki data，</p>
-<h2 id="wiki-data-与-wiki-pedia-的关系"><a href="#wiki-data-与-wiki-pedia-的关系" class="headerlink" title="wiki data 与 wiki pedia 的关系"></a>wiki data 与 wiki pedia 的关系</h2><blockquote>
-<p>wikidata is a free and open knowledge base that can be read and edited by both humans and machines. Wikidata acts as central storage for the structured data of its Wikimedia sister projects including Wikipedia, Wikivoyage, Wikisource, and others.</p>
-</blockquote>
-<h2 id="wiki-data-的说明-url"><a href="#wiki-data-的说明-url" class="headerlink" title="wiki data 的说明 url"></a>wiki data 的说明 <a href="https://en.wikipedia.org/wiki/Wikidata" target="_blank" rel="noopener">url</a></h2><ul>
-<li>Items: Wikidata is a document-oriented database, focused on items, which represent topics, concepts, or objects.Each item is identified by a unique number, prefixed with the letter Q, known as a “QID”.</li>
-<li>Property: A property describes the data value of a statement and can be thought of as a category of data, for example color (P462) for the data value blue (Q1088).</li>
-<li>Statements: Statements are how any information known about an item is recorded in Wikidata. </li>
-<li>Lexemes: In linguistics, a lexeme is a unit of lexical meaning. Similarly, Wikidata’s lexemes are items with a structure that makes them more suitable to store lexicographical data.</li>
-</ul>
-<h2 id="Wikidata-api-的使用"><a href="#Wikidata-api-的使用" class="headerlink" title="Wikidata api 的使用"></a>Wikidata api 的使用</h2><ul>
-<li><a href="https://www.wikidata.org/w/api.php" target="_blank" rel="noopener">api document</a></li>
-<li><a href="https://www.mediawiki.org/wiki/API:Presenting_Wikidata_knowledge" target="_blank" rel="noopener">document2</a></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">params = dict (</span><br><span class="line">        action=<span class="string">'wbsearchentities'</span>,</span><br><span class="line">        format=<span class="string">'json'</span>,</span><br><span class="line">        language=<span class="string">'en'</span>,</span><br><span class="line">        uselang=<span class="string">'en'</span>,</span><br><span class="line">        <span class="comment"># type='property',</span></span><br><span class="line">        search=<span class="string">'Hubei Province'</span></span><br><span class="line">        )</span><br><span class="line">http_proxies = &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://127.0.0.1:1080"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"https://127.0.0.1:1080"</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(<span class="string">'https://www.wikidata.org/w/api.php?'</span>, params, proxies=http_proxies).json()</span><br><span class="line">print(response.get(<span class="string">'search'</span>)[<span class="number">0</span>][<span class="string">'id'</span>])</span><br></pre></td></tr></table></figure>
-
-<h2 id="Wikipedia-api-的使用"><a href="#Wikipedia-api-的使用" class="headerlink" title="Wikipedia api 的使用"></a>Wikipedia api 的使用</h2><ul>
-<li><a href="https://en.wikipedia.org/w/api.php?action=help&modules=query" target="_blank" rel="noopener">api document</a></li>
-<li><a href="https://www.mediawiki.org/wiki/API:Main_page" target="_blank" rel="noopener">document2</a></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">params_wikipedia = dict (</span><br><span class="line">        action=<span class="string">'query'</span>,</span><br><span class="line">        prop=<span class="string">'pageprops'</span>,</span><br><span class="line">        ppprop=<span class="string">'wikibase_item'</span>,</span><br><span class="line">        redirects=<span class="number">1</span>,</span><br><span class="line">        titles=<span class="string">'trump'</span></span><br><span class="line">)</span><br><span class="line">http_proxies = &#123;</span><br><span class="line">    <span class="string">"http"</span>: <span class="string">"http://127.0.0.1:1080"</span>,</span><br><span class="line">    <span class="string">"https"</span>: <span class="string">"https://127.0.0.1:1080"</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(<span class="string">'https://en.www.wikipedia.org/w/api.php?'</span>, params, proxies=http_proxies).json()</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>pip install wikipedia</code> 上述方法的 python 库版本</li>
-</ul>
-<blockquote>
-<p>Wikipedia is a Python library that makes it easy to access and parse data from Wikipedia.<br>Search Wikipedia, get article summaries, get data like links and images from a page, and more. Wikipedia wraps the MediaWiki API so you can focus on using Wikipedia data, not getting it.</p>
-</blockquote>
-<p>注： wikidata api 与 wikipedia api 所返回的的 QID 都是吧wikidata 中的 QID，但 pageId 不同，它分别代表在 Wikidata 与 Wikipedia 中的 page number.</p>
-<h2 id="Wikidata-数据源的下载"><a href="#Wikidata-数据源的下载" class="headerlink" title="Wikidata 数据源的下载"></a>Wikidata 数据源的下载</h2><p><a href="https://www.wikidata.org/wiki/Wikidata:Database_download" target="_blank" rel="noopener">https://www.wikidata.org/wiki/Wikidata:Database_download</a> 可下载 Wikidata 的数据（数据规模较大），进行关系抽取等任务。</p>
-<p><code>spacy</code> 的 EL（Entity Link）任务就是利用从 Wikidata 下载的数据进行模型的训练。</p>
-<blockquote>
-<p>This takes as input the locations of a Wikipedia and a Wikidata dump, and produces a KB directory + training file</p>
-<ul>
-<li>WikiData: get latest-all.json.bz2 from <a href="https://dumps.wikimedia.org/wikidatawiki/entities/" target="_blank" rel="noopener">https://dumps.wikimedia.org/wikidatawiki/entities/</a></li>
-<li>Wikipedia: get enwiki-latest-pages-articles-multistream.xml.bz2 from <a href="https://dumps.wikimedia.org/enwiki/latest/" target="_blank" rel="noopener">https://dumps.wikimedia.org/enwiki/latest/</a> (or for any other language)</li>
-</ul>
-</blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>两种方式进行 entity 的查询会返回一系列 candidate 进行候选，这种方法往往在 NLP 的 <code>实体对齐、实体消歧</code> 中存在一定的局限性，常作为 EL 的前序步骤。</p>
+            <h1 id="实体链接（Entity-Link）"><a href="#实体链接（Entity-Link）" class="headerlink" title="实体链接（Entity Link）"></a>实体链接（Entity Link）</h1><p>实体链接是构建知识图谱中 NER（实体抽取）后续的一步，主要对异构数据源中的不同 mention 对应到 Knowledge Base 中的 Entity.</p>
+<p>这里有一篇很不错的总结 <a href="https://mp.weixin.qq.com/s?__biz=MzI0ODcxODk5OA==&mid=2247512392&idx=3&sn=9aa4fcf03743afec55b3ce86526aea8a&chksm=e99e82b1dee90ba7e033a35937720529708042ba9107abf1063f8da582a7259d4e67d62c672e&mpshare=1&scene=1&srcid=0325Li1Uw40dxdp1IwPY0z5B&sharer_sharetime=1585144022945&sharer_shareid=df1013bd655d09f93207e8213ac4db3a#rd" target="_blank" rel="noopener">知识图谱-实体链接综述</a></p>
 
           
         
@@ -1802,192 +1965,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/11/CTF/Heap_Stack/UNLINK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/11/CTF/Heap_Stack/UNLINK/" itemprop="url">UNLINK</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-11T11:06:00+08:00">
-                2018-05-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/" itemprop="url" rel="index">
-                    <span itemprop="name">CTF</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CTF/Heap-Stack/" itemprop="url" rel="index">
-                    <span itemprop="name">Heap_Stack</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="UNLINK"><a href="#UNLINK" class="headerlink" title="UNLINK"></a>UNLINK</h1><p><strong>unlink 中的很重要的一点就是合并</strong></p>
-<ul>
-<li><font color="#FF0000">常用的两道检查（这里以后向合并为例，一般构造为后向合并）</font></li>
-</ul>
-<ol>
-<li><font color="#7600D8"><span style="font-size: 19px;">判断两个块的 size 是否正常（即：size 未经修改）</span></font></li>
-</ol>
-<p><font color="#FF0000">（这里的P是指 需要 unlink的 P，也就是 目前在 bins中的 P）</font></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 由于P已经在双向链表中，所以有两个地方记录其大小，所以检查一下其大小是否一致。</span><br><span class="line">if (__builtin_expect (chunksize(P) != prev_size (next_chunk(P)), 0))      \</span><br><span class="line">  malloc_printerr (&quot;corrupted size vs. prev_size&quot;);               \</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2. 判断指针是否连接正确（即：指针未经修改）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(这里的P也是要 unlink 也就是在 bins中的 P)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// fd bkif (__builtin_expect (FD-&gt;bk != P || BK-&gt;fd != P, 0))                      \</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">malloc_printerr (check_action, &quot;corrupted double-linked list&quot;, P, AV);  \</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><font color="#7600D8"> 下面图来看</font></li>
-<li><font color="#7600D8">当我们时，若进行后向合并</font><font color="#FF0000">（合并低地址）</font><font color="#7600D8">则 进行的操作为：</font></li>
-</ul>
-<ol>
-<li><font color="#FF0000">BK = P -&gt; bk</font></li>
-<li><font color="#FF0000">FD = P -&gt;fd</font></li>
-<li><font color="#FF0000">FD -&gt; bk = BK</font> <font color="#7600D8">（ptr - 0x10(64bits)）</font></li>
-<li><font color="#FF0000">BK -&gt; fd = FD  </font> <font color="#7600D8"> (ptr - 0x18(64bits))</font></li>
-</ol>
-<ul>
-<li><font color="#FF0000">unlink之后的ptr 的内容修改为 ptr - 0x18!!!!至此任务完成</font></li>
-</ul>
-<p><font color="#FF0000"><span style="font-size: 19px;"><br></span></font></p>
-<p><font color="#FF0000"><span style="font-size: 19px;"><br></span></font></p>
-<p><font color="#FF0000"><span style="font-size: 19px;">小结：完成unlink需要：先free出两个 chunk ，然后再把 构造 chunk 内容，然后 free 中间指针完成 unlink</span></font><br><font size="4"><br></font></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2042,7 +2019,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/LinuxCommand/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2017/metasploit/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/LinuxCommand/" itemprop="url">LinuxCommand</a></h2>
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2017/metasploit/" itemprop="url">metasploit</a></h2>
         
 
         <div class="post-meta">
@@ -359,8 +359,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
+                  <a href="/categories/CypherSecurity/2017/" itemprop="url" rel="index">
+                    <span itemprop="name">2017</span>
                   </a>
                 </span>
 
@@ -398,168 +398,27 @@
       
         
           
-            <h1 id="Linux-Command-in-use"><a href="#Linux-Command-in-use" class="headerlink" title="Linux Command in use"></a>Linux Command in use</h1><h2 id="Kali更新源"><a href="#Kali更新源" class="headerlink" title="Kali更新源"></a>Kali更新源</h2><p>添加国内更新源:  </p>
-<blockquote>
+            <h1 id="Metasploit"><a href="#Metasploit" class="headerlink" title="Metasploit"></a>Metasploit</h1><p>这个在 Kali中是自带的，无需安装</p>
+<p>我的 kali 4.6.0 amd64</p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>metasploit 默认使用 postgresql 数据库，进行一些信息的存储与检索</p>
+<ol>
+<li>启动  postgresql</li>
+</ol>
 <ul>
-<li>命令: vim /etc/apt/sources.list 修改此文件  </li>
-<li>以deb http://  形式添加到此文件中  </li>
-<li>命令: apt-get update 更新源  </li>
-<li>命令: apt-get upgrade 更新安装包</li>
+<li>service postgresql start</li>
 </ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/README/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="WhiteHat"><a href="#WhiteHat" class="headerlink" title="WhiteHat"></a>WhiteHat</h1><p>Learn something interesting</p>
+<ol start="2">
+<li>初始化 msfdb</li>
+</ol>
+<ul>
+<li>msfdb init<br>初始化  数据库为  msfdb    用户名为  msf   默认密码为  空</li>
+</ul>
+<ol start="3">
+<li>启动</li>
+</ol>
+<ul>
+<li>msfconsole<br>控制台启动 metsploit</li>
+</ul>
 
           
         
@@ -765,521 +624,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/WLAN/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/WLAN/" itemprop="url">WLAN</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="无线破解"><a href="#无线破解" class="headerlink" title="无线破解"></a>无线破解</h1><p><a href="http://netsecurity.51cto.com/art/201105/264844_all.htm" target="_blank" rel="noopener">引用</a>      感谢！<br><a href="http://www.jianshu.com/p/fd16236057df" target="_blank" rel="noopener">简书</a>        感谢！</p>
-<p>工具:<br><strong>aircrack-ng全家桶: airmon-ng airodump-ng aireplay-ng aircrack-ng</strong><br><a href="https://www.path8.net/tn/archives/40" target="_blank" rel="noopener">工具使用</a>    感谢！</p>
-<h2 id="开启网卡监听模式"><a href="#开启网卡监听模式" class="headerlink" title="开启网卡监听模式"></a>开启网卡监听模式</h2><blockquote>
-<ul>
-<li>airmon-ng start wlan0</li>
-</ul>
-</blockquote>
-<h2 id="改变网卡MAC"><a href="#改变网卡MAC" class="headerlink" title="改变网卡MAC"></a>改变网卡MAC</h2><blockquote>
-<p>-macchanger -m 00:11:22:33:44:55 wlan0mon</p>
-</blockquote>
-<h2 id="扫描与抓包"><a href="#扫描与抓包" class="headerlink" title="扫描与抓包"></a>扫描与抓包</h2><blockquote>
-<ul>
-<li>airodump-ng wlan0mon  </li>
-<li>airodump-ng –ivs -w xxxx -c channel_num device 用于抓取特定频道的数据包以ivs文件保存  </li>
-<li>aireplay-ng -3 -b AP’MAC -h Client’MAC device 用于使用ARP注入来产生大量数据包，配合airodump-ng使用  </li>
-</ul>
-</blockquote>
-<h2 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h2><blockquote>
-<ul>
-<li>aircrack-ng xxxx.ivs  进行解包</li>
-</ul>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/WordPress/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/WordPress/" itemprop="url">WordPress</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="WordPress漏洞利用"><a href="#WordPress漏洞利用" class="headerlink" title="WordPress漏洞利用"></a>WordPress漏洞利用</h1><h2 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h2><blockquote>
-<ul>
-<li>WordPress插件注入漏洞 <a href="https://www.exploit-db.com/exploits/36613/" target="_blank" rel="noopener">EXPLOIT-DATABASE</a>  </li>
-<li><a href="http://www.freebuf.com/articles/web/65894.html" target="_blank" rel="noopener">FREEBUF</a></li>
-</ul>
-</blockquote>
-<h2 id="WPScan的利用"><a href="#WPScan的利用" class="headerlink" title="WPScan的利用"></a>WPScan的利用</h2><blockquote>
-<ul>
-<li>命令  wpscan -url URL</li>
-</ul>
-</blockquote>
-<h2 id="nikto的利用"><a href="#nikto的利用" class="headerlink" title="nikto的利用"></a>nikto的利用</h2><blockquote>
-<ul>
-<li>命令  nikto  -h   URL  </li>
-<li>可以通过一些cookies查看是否为WordPress站点，用于验证是否为WordPress站点</li>
-</ul>
-</blockquote>
-<h2 id="Backup组件下载漏洞"><a href="#Backup组件下载漏洞" class="headerlink" title="Backup组件下载漏洞"></a>Backup组件下载漏洞</h2><blockquote>
-<ul>
-<li>路径: wp-content/wpbackitup_backups/</li>
-</ul>
-</blockquote>
-<h2 id="Slider-Revolution-Plugin-任意文件下载漏洞"><a href="#Slider-Revolution-Plugin-任意文件下载漏洞" class="headerlink" title="Slider Revolution Plugin 任意文件下载漏洞"></a>Slider Revolution Plugin 任意文件下载漏洞</h2><blockquote>
-<ul>
-<li>路径: wp-admin/admin-ajax.php?action=revslider_show_image&amp;img=文件名  </li>
-<li>例如: wp-admin/admin-ajax.php?action=revslider_show_image&amp;img=../wp-config.php</li>
-<li>可以下载当前目录下的任意文件(路径首先正确),特别地，当拿到wp-config文件后就bam!bam!bam!</li>
-</ul>
-</blockquote>
-<h2 id="Complete-Gallery-Manager-3-3-3任意文件上传漏洞"><a href="#Complete-Gallery-Manager-3-3-3任意文件上传漏洞" class="headerlink" title="Complete Gallery Manager 3.3.3任意文件上传漏洞"></a>Complete Gallery Manager 3.3.3任意文件上传漏洞</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/Proxy/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/Proxy/" itemprop="url">Proxy</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Proxy-For-Use"><a href="#Proxy-For-Use" class="headerlink" title="Proxy For Use"></a>Proxy For Use</h1><h2 id="mitmproxy"><a href="#mitmproxy" class="headerlink" title="mitmproxy"></a>mitmproxy</h2><blockquote>
-<ul>
-<li>命令: mitmproxy -p 8800 用于设置  mitmproxy 监听端口为 8800  </li>
-<li>命令: L 可用于过滤 设置过滤条件，例如,Limit:/.js 仅查看js请求   </li>
-<li>命令: I 可用于拦截请求,例如，Intercept filter: -u .php 可用于拦截 php 请求  </li>
-</ul>
-</blockquote>
-<h2 id="Owasp-zap"><a href="#Owasp-zap" class="headerlink" title="Owasp-zap"></a>Owasp-zap</h2><p>OWASP Zed Attak Proxy Project 攻击代理(简称ZAP),功能  “拦截代理”  “自动处理”  “被动处理”  “暴力破解”  “端口扫描”  “蜘蛛搜索”等功能<br>会话类调试工具，调试功能不会产生大量请求，对服务器影响小</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2017/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1432,7 +776,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/%E8%AF%B7%E6%B1%82%E8%A7%A3%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/LinuxCommand/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -1451,7 +795,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/%E8%AF%B7%E6%B1%82%E8%A7%A3%E6%9E%90/" itemprop="url">请求解析</a></h2>
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/LinuxCommand/" itemprop="url">LinuxCommand</a></h2>
         
 
         <div class="post-meta">
@@ -1536,21 +880,13 @@
       
         
           
-            <h1 id="浏览器请求解析"><a href="#浏览器请求解析" class="headerlink" title="浏览器请求解析"></a>浏览器请求解析</h1><p><a href="http://2277259257.iteye.com/blog/2026803" target="_blank" rel="noopener">引用</a>  感谢!</p>
-<p>在HTTP服务中三个环节  <strong>请求 – 处理 – 响应</strong>  每个环节的编码格式都是很重要的，统一的编码格式才不致出现访问出错或者网页乱码的情况  </p>
-<h2 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h2><blockquote>
+            <h1 id="Linux-Command-in-use"><a href="#Linux-Command-in-use" class="headerlink" title="Linux Command in use"></a>Linux Command in use</h1><h2 id="Kali更新源"><a href="#Kali更新源" class="headerlink" title="Kali更新源"></a>Kali更新源</h2><p>添加国内更新源:  </p>
+<blockquote>
 <ul>
-<li>浏览器会对请求进行编码组合成请求的URL;</li>
-</ul>
-</blockquote>
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><blockquote>
-<ul>
-<li>请求的媒体类型与编码都会写入消息头中;</li>
-</ul>
-</blockquote>
-<h2 id="HTTP响应"><a href="#HTTP响应" class="headerlink" title="HTTP响应"></a>HTTP响应</h2><blockquote>
-<ul>
-<li>响应的内容媒体类型与编码在消息头中;</li>
+<li>命令: vim /etc/apt/sources.list 修改此文件  </li>
+<li>以deb http://  形式添加到此文件中  </li>
+<li>命令: apt-get update 更新源  </li>
+<li>命令: apt-get upgrade 更新安装包</li>
 </ul>
 </blockquote>
 
@@ -1914,6 +1250,653 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/README/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/README/" itemprop="url">README</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">CypherSecurity</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
+                    <span itemprop="name">2016</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="WhiteHat"><a href="#WhiteHat" class="headerlink" title="WhiteHat"></a>WhiteHat</h1><p>Learn something interesting</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/GoogleHack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/GoogleHack/" itemprop="url">GoogleHack</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">CypherSecurity</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
+                    <span itemprop="name">2016</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="GoogleHack"><a href="#GoogleHack" class="headerlink" title="GoogleHack"></a>GoogleHack</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<ul>
+<li>寻找持续构建工具Jenkins的管理面板   </li>
+<li>搞定xampp  </li>
+<li>后门查找  </li>
+<li>google hack database  </li>
+</ul>
+</blockquote>
+<h2 id="GoogleHack查询语法"><a href="#GoogleHack查询语法" class="headerlink" title="GoogleHack查询语法"></a>GoogleHack查询语法</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/WLAN/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/WLAN/" itemprop="url">WLAN</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">CypherSecurity</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
+                    <span itemprop="name">2016</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="无线破解"><a href="#无线破解" class="headerlink" title="无线破解"></a>无线破解</h1><p><a href="http://netsecurity.51cto.com/art/201105/264844_all.htm" target="_blank" rel="noopener">引用</a>      感谢！<br><a href="http://www.jianshu.com/p/fd16236057df" target="_blank" rel="noopener">简书</a>        感谢！</p>
+<p>工具:<br><strong>aircrack-ng全家桶: airmon-ng airodump-ng aireplay-ng aircrack-ng</strong><br><a href="https://www.path8.net/tn/archives/40" target="_blank" rel="noopener">工具使用</a>    感谢！</p>
+<h2 id="开启网卡监听模式"><a href="#开启网卡监听模式" class="headerlink" title="开启网卡监听模式"></a>开启网卡监听模式</h2><blockquote>
+<ul>
+<li>airmon-ng start wlan0</li>
+</ul>
+</blockquote>
+<h2 id="改变网卡MAC"><a href="#改变网卡MAC" class="headerlink" title="改变网卡MAC"></a>改变网卡MAC</h2><blockquote>
+<p>-macchanger -m 00:11:22:33:44:55 wlan0mon</p>
+</blockquote>
+<h2 id="扫描与抓包"><a href="#扫描与抓包" class="headerlink" title="扫描与抓包"></a>扫描与抓包</h2><blockquote>
+<ul>
+<li>airodump-ng wlan0mon  </li>
+<li>airodump-ng –ivs -w xxxx -c channel_num device 用于抓取特定频道的数据包以ivs文件保存  </li>
+<li>aireplay-ng -3 -b AP’MAC -h Client’MAC device 用于使用ARP注入来产生大量数据包，配合airodump-ng使用  </li>
+</ul>
+</blockquote>
+<h2 id="解包"><a href="#解包" class="headerlink" title="解包"></a>解包</h2><blockquote>
+<ul>
+<li>aircrack-ng xxxx.ivs  进行解包</li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/Proxy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/Proxy/" itemprop="url">Proxy</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
+                    <span itemprop="name">CypherSecurity</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
+                    <span itemprop="name">2016</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Proxy-For-Use"><a href="#Proxy-For-Use" class="headerlink" title="Proxy For Use"></a>Proxy For Use</h1><h2 id="mitmproxy"><a href="#mitmproxy" class="headerlink" title="mitmproxy"></a>mitmproxy</h2><blockquote>
+<ul>
+<li>命令: mitmproxy -p 8800 用于设置  mitmproxy 监听端口为 8800  </li>
+<li>命令: L 可用于过滤 设置过滤条件，例如,Limit:/.js 仅查看js请求   </li>
+<li>命令: I 可用于拦截请求,例如，Intercept filter: -u .php 可用于拦截 php 请求  </li>
+</ul>
+</blockquote>
+<h2 id="Owasp-zap"><a href="#Owasp-zap" class="headerlink" title="Owasp-zap"></a>Owasp-zap</h2><p>OWASP Zed Attak Proxy Project 攻击代理(简称ZAP),功能  “拦截代理”  “自动处理”  “被动处理”  “暴力破解”  “端口扫描”  “蜘蛛搜索”等功能<br>会话类调试工具，调试功能不会产生大量请求，对服务器影响小</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1968,7 +1951,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

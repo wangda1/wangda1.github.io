@@ -294,7 +294,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/menuIcon/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/QMessageBox/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -313,7 +313,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/QT/menuIcon/" itemprop="url">menuIcon</a></h2>
+                <a class="post-title-link" href="/2019/11/08/QT/QMessageBox/" itemprop="url">QMessageBox</a></h2>
         
 
         <div class="post-meta">
@@ -387,22 +387,17 @@
       
         
           
-            <h1 id="menuIcon"><a href="#menuIcon" class="headerlink" title="menuIcon"></a>menuIcon</h1><p>添加菜单图标</p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><p>1.在menuBar输入框中输入自己要输入的一级菜单名称，二级菜单…</p>
-<p>2.Qt中的一个菜单被视为一个Action，在下面Action编辑器中更改“文本”等</p>
-<ul>
-<li>这里可以通过 &amp;Open,&amp;New,设置加速键，<strong>加速键</strong>：即当菜单处于激活状态时的快捷键</li>
-<li>这里也可以设置<strong>快捷键shortcut</strong>，在shortcut输入框中输入快捷键</li>
-</ul>
-<p>3.当要添加菜单图标时，需要用到“图标”后面的“添加文件”，“添加资源”；</p>
-<ul>
-<li><strong>资源文件</strong>：Qt使用资源文件将各种外部文件添加至最终生成的可执行文件中</li>
-<li>文件</li>
-</ul>
-<p>4.选取图标所在文件夹里的文件即可</p>
-<h2 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h2><p>原理与上述同，上代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;mainwindow.h&quot;</span><br><span class="line">#include &quot;ui_mainwindow.h&quot;</span><br><span class="line"></span><br><span class="line">MainWindow::MainWindow(QWidget *parent) :</span><br><span class="line">    QMainWindow(parent),</span><br><span class="line">    ui(new Ui::MainWindow)</span><br><span class="line">&#123;</span><br><span class="line">    ui-&gt;setupUi(this);</span><br><span class="line">    //创建新的动作</span><br><span class="line">    QAction *openAction = new QAction(&quot;&amp;Open&quot;,this);</span><br><span class="line">    //添加图标,这里的路径参考ui_mainwindow.h文件，里面代码与此相同</span><br><span class="line">    QIcon icon(&quot;:/myImages/img/actions/fileopen.png&quot;);</span><br><span class="line">    openAction-&gt;setIcon(icon);</span><br><span class="line">    //设置快捷键</span><br><span class="line">    openAction-&gt;setShortcut(QKeySequence(&quot;Ctrl+O&quot;));</span><br><span class="line">    //在文件菜单中设置新的打开动作</span><br><span class="line">    ui-&gt;menu-&gt;addAction(openAction);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MainWindow::~MainWindow()</span><br><span class="line">&#123;</span><br><span class="line">    delete ui;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在主窗口的构造函数中添加”//“部分代码</p>
+            <h1 id="QMessageBox"><a href="#QMessageBox" class="headerlink" title="QMessageBox"></a>QMessageBox</h1><p>弹窗</p>
+<h2 id="modal-dialog"><a href="#modal-dialog" class="headerlink" title="modal dialog"></a>modal dialog</h2><p>对话框的两种模式，default是application modal，两者区别见下：<br><strong>application modal</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">When an application modal dialog is opened, the user must finish interacting with the dialog and close it before they can access any other window in the application.</span><br></pre></td></tr></table></figure>
+<p>什么意思呢？就是在application dialog模式下，必须完成与该dialog的交互，才能与其它dialog交互，完全阻塞</p>
+<p><strong>window modal</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Window modal dialogs only block access to the window associated with the dialog, allowing the user to continue to use other windows in an application.</span><br></pre></td></tr></table></figure>
+<p>window modal模式下，就是非必须完成交互也能与其它不相关窗口交互</p>
+<h2 id="QMessageBox-1"><a href="#QMessageBox-1" class="headerlink" title="QMessageBox"></a>QMessageBox</h2><p>继承于QDialog class</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">QMessageBox box;</span><br><span class="line">        box.setWindowTitle(&quot;警告&quot;);</span><br><span class="line">        box.setIcon(QMessageBox::Warning);</span><br><span class="line">        box.setText(curFile+&quot;尚未保存，是否保存？&quot;);</span><br><span class="line">        QPushButton *yesBtn = box.addButton(&quot;是(&amp;Y)&quot;,QMessageBox::YesRole);</span><br><span class="line">        box.addButton(&quot;否(&amp;N)&quot;,QMessageBox::NoRole);</span><br><span class="line">        QPushButton *cancelBtn = box.addButton(&quot;取消&quot;,QMessageBox::RejectRole);</span><br><span class="line">        box.exec();                                                 //窗口关闭时获取DialogCode</span><br><span class="line">        if(box.clickedButton()==yesBtn) &#123;</span><br><span class="line">            return save();</span><br><span class="line">        &#125;</span><br><span class="line">        else if(box.clickedButton()==cancelBtn)&#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
 
           
         
@@ -451,7 +446,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/QT/README/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/SQL/BasicOperation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="wanncy">
@@ -470,149 +465,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/08/QT/README/" itemprop="url">README</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/QT/" itemprop="url" rel="index">
-                    <span itemprop="name">QT</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="QT开发笔记"><a href="#QT开发笔记" class="headerlink" title="QT开发笔记"></a>QT开发笔记</h1><p>软件课设</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/SQL/DataTypeAndEngines/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/SQL/DataTypeAndEngines/" itemprop="url">DataTypeAndEngines</a></h2>
+                <a class="post-title-link" href="/2019/11/08/SQL/BasicOperation/" itemprop="url">BasicOperation</a></h2>
         
 
         <div class="post-meta">
@@ -686,52 +539,381 @@
       
         
           
-            <h1 id="DataType-and-Engines-数据类型与存储引擎"><a href="#DataType-and-Engines-数据类型与存储引擎" class="headerlink" title="DataType and Engines  数据类型与存储引擎"></a>DataType and Engines  数据类型与存储引擎</h1><h2 id="DataType-数据类型"><a href="#DataType-数据类型" class="headerlink" title="DataType 数据类型"></a>DataType 数据类型</h2><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>1.CHAR:  CHAR(M),VARCHAR(M)</p>
-<p>2.TEXT:  TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT </p>
-<p>3.BINARY: BINARY(M),VARBINARY(M)  </p>
-<p>4.BLOB:  TINYBLOB,BLOB,MEDIUMBLOB,LONGBLOB </p>
-<p>1,3仅能存储字符数据，2,4可用来存储二进制数据，如：图片，音频，视频等</p>
-<h3 id="日期与时间类型"><a href="#日期与时间类型" class="headerlink" title="日期与时间类型"></a>日期与时间类型</h3><blockquote>
-<ul>
-<li>DATE  DATETIME  TIMESTAMP TIME  YEAR</li>
-</ul>
-</blockquote>
-<h3 id="浮点数，定点数与位类型"><a href="#浮点数，定点数与位类型" class="headerlink" title="浮点数，定点数与位类型"></a>浮点数，定点数与位类型</h3><p>1.FLOAT   DOUBLE</p>
-<p>2.DEC(M,D)  DECIMAL(M,D)</p>
-<p>3.BIT(M)</p>
-<h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><blockquote>
-<ul>
-<li>TINYINT   SMALLINT    MEDIUMINT   INT &amp;&amp; INTEGER    BIGINT</li>
-</ul>
-</blockquote>
-<h2 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h2><p>存储引擎就是存储数据，建立索引，更新与查询数据的方法</p>
+            <h1 id="MySQL的基本操作"><a href="#MySQL的基本操作" class="headerlink" title="MySQL的基本操作"></a>MySQL的基本操作</h1><p>MySQL数据库:<br><strong>系统数据库:</strong>  </p>
 <blockquote>
 <ul>
-<li>查询引擎命令: SHOW ENGINES; </li>
-<li>查询支持的存储引擎:  SHOW VARIABLES LIKE ‘have%’</li>
+<li>information_schema: 数据库对象信息  </li>
+<li>performance_schema: 性能参数  </li>
+<li>mysql:  用户权限信息  </li>
+<li>test：  用作测试的数据库 </li>
 </ul>
 </blockquote>
-<p><strong><em>补:SHOW ENGINES \G;是一种较为理想的查看方式，而 SHOW ENGINGES;SHOW ENGINES \g;查看起来则不方便</em></strong></p>
-<p>MySQL有多个可用的存储引擎，主要有:  InnoDB  MyISAM  MEMORY</p>
-<p>InnoDB:  </p>
+<p><strong>用户数据库(可创建多个)</strong></p>
+<h2 id="MySQL数据库的操作"><a href="#MySQL数据库的操作" class="headerlink" title="MySQL数据库的操作"></a>MySQL数据库的操作</h2><blockquote>
+<ul>
+<li>新建数据库:  create database 数据库名;  </li>
+<li>查看数据库:  show databases;(查看所有）  </li>
+<li>选择数据库:  use 数据库名;  </li>
+<li>删除数据库:  drop database 数据库名;</li>
+<li>查看支持的引擎:  show variables like ‘have%’;  </li>
+<li>查看引擎:    show engines;</li>
+</ul>
+</blockquote>
+<h2 id="MySQL数据表的操作"><a href="#MySQL数据表的操作" class="headerlink" title="MySQL数据表的操作"></a>MySQL数据表的操作</h2><p><strong><em>表中数据库对象:  列，索引，触发器</em></strong>  </p>
 <blockquote>
 <ul>
-<li></li>
+<li>新建表:  create table 数据表名 (             );  </li>
+<li>查看表:  describe/desc 数据表名; show columns from  </li>
+<li>删除表:  drop table 数据表名;  </li>
+<li>修改表:  alter </li>
 </ul>
 </blockquote>
-<p>MyISAM:  </p>
+<h2 id="MySQL语句操作"><a href="#MySQL语句操作" class="headerlink" title="MySQL语句操作"></a>MySQL语句操作</h2><h2 id="操作表的约束"><a href="#操作表的约束" class="headerlink" title="操作表的约束"></a>操作表的约束</h2><p>对于字段的完整性约束</p>
 <blockquote>
 <ul>
-<li></li>
+<li>NOT NULL 非空  </li>
+<li>DEFAULT  默认  </li>
+<li>UNIQUE KEY(UK)  唯一  </li>
+<li>PRIMARY KEY(PK) 主键  </li>
+<li>AUTO_INCREMENT  自动增加  </li>
+<li>FOREIGN KEY     外键</li>
 </ul>
 </blockquote>
-<p>MEMORY:  </p>
-<blockquote>
-<ul>
-<li></li>
-</ul>
-</blockquote>
+<p><strong><em>表名，主键具有唯一性</em></strong><br><strong><em>外键提前需要有父表的主键</em></strong></p>
 
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/SQL/RADME/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/SQL/RADME/" itemprop="url">RADME</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>年轻不懂事，搞点事情  </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/Python/requests/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/Python/requests/" itemprop="url">requests</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Requests"><a href="#Requests" class="headerlink" title="Requests"></a>Requests</h1><p>python requests模块使用：</p>
+<p>官方文档：<a href="http://docs.python-requests.org/zh_CN/latest/user/quickstart.html" target="_blank" rel="noopener">http://docs.python-requests.org/zh_CN/latest/user/quickstart.html</a></p>
+<p><code>import requests</code></p>
+<h2 id="01-发送请求"><a href="#01-发送请求" class="headerlink" title="01 发送请求"></a>01 发送请求</h2><h3 id="1-1-GET"><a href="#1-1-GET" class="headerlink" title="1.1 GET"></a>1.1 GET</h3><ul>
+<li><p>当URL参数不多的时候，可以这样<br><code>requests.get(&#39;http://baidu.com&#39;)</code></p>
+</li>
+<li><p>当参数多的时候，可以通过一个dic来传递参数，使其自动构造URL</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">paydict = &#123;<span class="string">'key1'</span>:<span class="string">'value1'</span>,<span class="string">'key2'</span>:<span class="string">'value2'</span>&#125;</span><br><span class="line">r = requests.get(<span class="string">'http://baidu.com'</span>,params=paydict<span class="string">')</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-POST"><a href="#1-2-POST" class="headerlink" title="1.2 POST"></a>1.2 POST</h3><h2 id="02-响应内容"><a href="#02-响应内容" class="headerlink" title="02 响应内容"></a>02 响应内容</h2><p><strong>返回值r是Response对象</strong></p>
+<ul>
+<li><p>r.encoding 编码，这个可以自己设置</p>
+</li>
+<li><p>r.text 返回文本形式内容</p>
+</li>
+<li><p>r.content 返回二进制形式内容</p>
+</li>
+<li><p>r.raw 返回原始内容</p>
+</li>
+</ul>
+<h2 id="03-Misc"><a href="#03-Misc" class="headerlink" title="03 Misc"></a>03 Misc</h2><h3 id="3-1-requests-请求资源的高效利用"><a href="#3-1-requests-请求资源的高效利用" class="headerlink" title="3.1 requests 请求资源的高效利用"></a>3.1 requests 请求资源的高效利用</h3><p>requests 底层是 http，http 底层是 tcp。</p>
+<p>遇到一个问题： 当使用爬虫爬取数据，如何在爬取多个 url 时，充分利用资源：</p>
+<p>参考：</p>
+<ol>
+<li><a href="https://stackoverflow.com/questions/10115126/python-requests-close-http-connection" target="_blank" rel="noopener">stackoverflow</a></li>
+<li><a href="https://requests.readthedocs.io/zh_CN/latest/user/advanced.html#session-objects" target="_blank" rel="noopener">requests docs</a></li>
+<li><a href="https://www.cnblogs.com/gl1573/p/10129382.html" target="_blank" rel="noopener">Python: requests 详解超时和重试</a></li>
+</ol>
+<p>当在爬虫过程中使用多线程爬取内容时，往往会出现 <code>too many open files</code> 的 error,</p>
+<ul>
+<li>TCP 在建立连接后，默认会保持一段时间的连接，当我们使用以下代码把网页内容 pull 下来后，我们需要及时关闭连接。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">response = requests.get(url, proxies=proxies, headers=headers, timeout=timeout)</span><br><span class="line">response_content = response.content</span><br><span class="line"><span class="comment"># 无论 get/post 方法，均可以使用 close() 关闭连接</span></span><br><span class="line">response.close()</span><br><span class="line"><span class="comment"># 或者使用 with-statement 管理 context</span></span><br><span class="line"><span class="keyword">with</span> requests.get(url, proxies=proxies, headers=headers, timeout=timeout) <span class="keyword">as</span> r:</span><br><span class="line">    response_content = response.content</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>requests 中的 <code>session</code> 对象，可以在一个会话中保持一些请求的参数，借用官方文档：</li>
+</ul>
+<blockquote>
+<p>会话对象让你能够跨请求保持某些参数。它也会在同一个 Session 实例发出的所有请求之间保持 cookie， 期间使用 urllib3 的 connection pooling 功能。所以如果你向同一主机发送多个请求，底层的 TCP 连接将会被重用，从而带来显著的性能提升。 (参见 HTTP persistent connection).</p>
+</blockquote>
+<p>使用 <code>session</code> 的目的还是利用 <code>session</code> 的 <code>connection pool</code> 功能，可以高效地复用链接。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 with-statement</span></span><br><span class="line"><span class="keyword">with</span> requests.Session() <span class="keyword">as</span> s:</span><br><span class="line">    s.get(<span class="string">'http://example.com/aaa'</span>)</span><br><span class="line">    s.get(<span class="string">'http://example.com/bbb'</span>)</span><br><span class="line">    s.get(<span class="string">'http://example.com/ccc'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 或使用 close() 方法</span></span><br><span class="line">s = requests.Session()</span><br><span class="line">s.get(<span class="string">'http://example.com/aaa'</span>)</span><br><span class="line">s.get(<span class="string">'http://example.com/bbb'</span>)</span><br><span class="line">s.get(<span class="string">'http://example.com/ccc'</span>)</span><br><span class="line">s.close()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>同时还应该及时清理建立连接较慢和返回较慢的连接，以提高爬虫的效率，主要使用的手段是 <code>timeout</code> 与 <code>max_retries</code></p>
+<p>  <code>timeout</code> 应注意其可以为（连接超时，读取超时）：连接超时指建立连接的最大时间，读取超时指收到服务器回复的最大时间，也可单独设置。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_response</span><span class="params">(url, proxies, headers, timeout=<span class="params">(<span class="number">5</span>, <span class="number">10</span>)</span>, max_retries=<span class="number">3</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    存在连接时间较长阻塞的情况，这里设置 timeout, max_retries</span></span><br><span class="line"><span class="string">    :param url: 请求的 url</span></span><br><span class="line"><span class="string">    :param proxies:</span></span><br><span class="line"><span class="string">    :param header:</span></span><br><span class="line"><span class="string">    :param time_out: (connect_time_out, read_time_out)</span></span><br><span class="line"><span class="string">    :param max_retries: 重试次数</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; max_retries:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            response = requests.get(url, proxies=proxies, headers=headers, timeout=timeout)</span><br><span class="line">            response_content = response.content</span><br><span class="line">            response.close()</span><br><span class="line">            <span class="keyword">return</span> response_content</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.RequestException <span class="keyword">as</span> e:</span><br><span class="line">            log.error(<span class="string">'&#123;&#125; times request'</span>.format(i+<span class="number">1</span>) + str(e) + url)</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">None</span></span><br></pre></td></tr></table></figure>
           
         
       
@@ -923,148 +1105,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/SQL/RADME/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/SQL/RADME/" itemprop="url">RADME</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/SQL/" itemprop="url" rel="index">
-                    <span itemprop="name">SQL</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><p>年轻不懂事，搞点事情  </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/SQL/README/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1164,6 +1204,192 @@
 <li>DataTypeAndEngines MySQL存储引擎与数据类型  2017.4.26  </li>
 <li>BasicOperation     MySQL基本操作  2017.4.26  </li>
 <li>DataQuery          MySQL数据查询  2017.4.26  </li>
+<li></li>
+</ul>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/SQL/DataTypeAndEngines/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wanncy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="笔记记录">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/08/SQL/DataTypeAndEngines/" itemprop="url">DataTypeAndEngines</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
+                2019-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="DataType-and-Engines-数据类型与存储引擎"><a href="#DataType-and-Engines-数据类型与存储引擎" class="headerlink" title="DataType and Engines  数据类型与存储引擎"></a>DataType and Engines  数据类型与存储引擎</h1><h2 id="DataType-数据类型"><a href="#DataType-数据类型" class="headerlink" title="DataType 数据类型"></a>DataType 数据类型</h2><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><p>1.CHAR:  CHAR(M),VARCHAR(M)</p>
+<p>2.TEXT:  TINYTEXT,TEXT,MEDIUMTEXT,LONGTEXT </p>
+<p>3.BINARY: BINARY(M),VARBINARY(M)  </p>
+<p>4.BLOB:  TINYBLOB,BLOB,MEDIUMBLOB,LONGBLOB </p>
+<p>1,3仅能存储字符数据，2,4可用来存储二进制数据，如：图片，音频，视频等</p>
+<h3 id="日期与时间类型"><a href="#日期与时间类型" class="headerlink" title="日期与时间类型"></a>日期与时间类型</h3><blockquote>
+<ul>
+<li>DATE  DATETIME  TIMESTAMP TIME  YEAR</li>
+</ul>
+</blockquote>
+<h3 id="浮点数，定点数与位类型"><a href="#浮点数，定点数与位类型" class="headerlink" title="浮点数，定点数与位类型"></a>浮点数，定点数与位类型</h3><p>1.FLOAT   DOUBLE</p>
+<p>2.DEC(M,D)  DECIMAL(M,D)</p>
+<p>3.BIT(M)</p>
+<h3 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h3><blockquote>
+<ul>
+<li>TINYINT   SMALLINT    MEDIUMINT   INT &amp;&amp; INTEGER    BIGINT</li>
+</ul>
+</blockquote>
+<h2 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h2><p>存储引擎就是存储数据，建立索引，更新与查询数据的方法</p>
+<blockquote>
+<ul>
+<li>查询引擎命令: SHOW ENGINES; </li>
+<li>查询支持的存储引擎:  SHOW VARIABLES LIKE ‘have%’</li>
+</ul>
+</blockquote>
+<p><strong><em>补:SHOW ENGINES \G;是一种较为理想的查看方式，而 SHOW ENGINGES;SHOW ENGINES \g;查看起来则不方便</em></strong></p>
+<p>MySQL有多个可用的存储引擎，主要有:  InnoDB  MyISAM  MEMORY</p>
+<p>InnoDB:  </p>
+<blockquote>
+<ul>
+<li></li>
+</ul>
+</blockquote>
+<p>MyISAM:  </p>
+<blockquote>
+<ul>
+<li></li>
+</ul>
+</blockquote>
+<p>MEMORY:  </p>
+<blockquote>
+<ul>
 <li></li>
 </ul>
 </blockquote>
@@ -1689,166 +1915,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/08/CypherSecurity/2016/GoogleHack/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="wanncy">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="笔记记录">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/08/CypherSecurity/2016/GoogleHack/" itemprop="url">GoogleHack</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-08T19:09:36+08:00">
-                2019-11-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/" itemprop="url" rel="index">
-                    <span itemprop="name">CypherSecurity</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/CypherSecurity/2016/" itemprop="url" rel="index">
-                    <span itemprop="name">2016</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="GoogleHack"><a href="#GoogleHack" class="headerlink" title="GoogleHack"></a>GoogleHack</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<ul>
-<li>寻找持续构建工具Jenkins的管理面板   </li>
-<li>搞定xampp  </li>
-<li>后门查找  </li>
-<li>google hack database  </li>
-</ul>
-</blockquote>
-<h2 id="GoogleHack查询语法"><a href="#GoogleHack查询语法" class="headerlink" title="GoogleHack查询语法"></a>GoogleHack查询语法</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1903,7 +1969,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">281</span>
+                  <span class="site-state-item-count">282</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
